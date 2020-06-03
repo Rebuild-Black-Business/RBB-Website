@@ -1,5 +1,12 @@
 import React from 'react';
+import {
+  Flex
+} from '@chakra-ui/core';
 
 export default () => {
-  return <p>Hello world</p>;
+  return (
+    <Flex align="center" justify="center">
+      <p>Hello world</p>
+    </Flex>
+  )
 }
