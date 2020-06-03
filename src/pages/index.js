@@ -1,12 +1,20 @@
 import React from 'react';
+
 import {
-  Flex
+  Flex, Link, Heading
 } from '@chakra-ui/core';
+import { Helmet } from 'react-helmet';
+import Layout from '../components/Layout';
+import { Link as GatsbyLink } from 'gatsby';
 
 export default () => {
   return (
-    <Flex align="center" justify="center">
-      <p>Hello world</p>
-    </Flex>
+    <Layout>
+      <Helmet><title>Home</title></Helmet>
+      <Link as={GatsbyLink} to="/about">About</Link>
+      <Flex align="center" justify="center">
+        <Heading>Hello world</Heading>
+      </Flex>
+    </Layout>
   )
 }
