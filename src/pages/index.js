@@ -13,7 +13,7 @@ export default () => {
       <Helmet><title>Home</title></Helmet>
       <Link as={GatsbyLink} to="/about">About</Link>
       <Flex align="center" justify="center">
-        <Heading>Hello world</Heading>
+        <Heading>Home</Heading>
       </Flex>
     </Layout>
   )
