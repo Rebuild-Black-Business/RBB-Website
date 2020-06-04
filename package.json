@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gatsby develop"
+    "start": "gatsby develop",
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +17,13 @@
     "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "dotenv": "^8.2.0",
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.22.20",
     "gatsby-plugin-chakra-ui": "^0.1.4",
     "gatsby-plugin-react-helmet": "^3.3.3",
+    "gatsby-source-airtable": "^2.1.1",
+    "gatsby-source-filesystem": "^2.3.10",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0"
