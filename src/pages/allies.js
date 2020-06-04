@@ -1,12 +1,12 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 
-import { Flex, Link, Heading } from "@chakra-ui/core";
-import { Link as GatsbyLink } from "gatsby";
-import { Helmet } from "react-helmet";
-import Layout from "../components/Layout";
+import { Flex, Link, Heading } from '@chakra-ui/core';
+import { Link as GatsbyLink } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import Layout from '../components/Layout';
 
-const Allies = (data) => {
+const Allies = data => {
   return (
     <Layout>
       <Helmet>
@@ -23,7 +23,7 @@ const Allies = (data) => {
   );
 };
 
-export default (props) => (
+export default props => (
   <StaticQuery
     query={graphql`
       query {
@@ -40,6 +40,6 @@ export default (props) => (
         }
       }
     `}
-    render={(data) => <Allies data={data} {...props} />}
+    render={data => <Allies data={data} {...props} />}
   />
 );
