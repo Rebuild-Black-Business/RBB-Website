@@ -14,7 +14,7 @@ module.exports = {
       logo: '',
     },
     social: {
-      twitter: ''
+      twitter: '',
       fbAppID: '',
       instagram: '',
       github: '',
