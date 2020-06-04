@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { Flex, Link, Heading } from "@chakra-ui/core";
-import { Helmet } from "react-helmet";
-import Layout from "../components/Layout";
-import { Link as GatsbyLink } from "gatsby";
+import { Flex, Link, Heading } from '@chakra-ui/core';
+import { Helmet } from 'react-helmet';
+import Layout from '../components/Layout';
+import { Link as GatsbyLink } from 'gatsby';
 
 export default () => {
   return (
