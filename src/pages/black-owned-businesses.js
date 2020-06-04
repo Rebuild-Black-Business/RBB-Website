@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Flex, Heading } from '@chakra-ui/core';
 import Layout from '../components/Layout';
-import AllyFeed from '../components/Feeds/AllyFeed';
+import BlackOwnedBusinessFeed from '../components/Feeds/BlackOwnedBusinessFeed';
 
-export default function Allies() {
+export default function BlackOwnedBusinesses() {
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading>Allies</Heading>
-        <AllyFeed />
+        <Heading>Black Owned Businesses</Heading>
+        <BlackOwnedBusinessFeed />
       </Flex>
     </Layout>
   );

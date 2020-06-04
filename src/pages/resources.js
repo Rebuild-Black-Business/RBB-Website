@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Flex, Heading } from '@chakra-ui/core';
 import Layout from '../components/Layout';
-import AllyFeed from '../components/Feeds/AllyFeed';
+import SupportingOrgFeed from '../components/Feeds/SupportingOrgFeed';
 
-export default function Allies() {
+export default function Resources() {
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading>Allies</Heading>
-        <AllyFeed />
+        <Heading>Resources</Heading>
+        <SupportingOrgFeed />
       </Flex>
     </Layout>
   );
