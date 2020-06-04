@@ -1,2 +1,8 @@
+[build]
+  functions = "./functions"
+  publish = "public"
+  command = "cd functions && npm i && cd .. && npm run build"
+
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
+
