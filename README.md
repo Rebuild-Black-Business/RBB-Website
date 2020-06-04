@@ -50,6 +50,12 @@ git checkout -b feature/task-description
 
 To send your changes for review, open a pull request. If you’ve never opened a pull request before, [read Thanoshan’s article on creating a pull request](https://www.freecodecamp.org/news/how-to-make-your-first-pull-request-on-github-3/) for more information!
 
+Once you've created your pull request, please assign the following folks as reviewers:
+
+- @magnificode
+- @domitriusclark
+- @racedale
+
 ## Terminology
 
 - User Types - Dynamic user data for the various types of data used on the site. Currently this includes the following
