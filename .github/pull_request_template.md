@@ -1,13 +1,12 @@
-Related to #
+# Describe your PR
 
+Related to #
 Fixes #
 
-# Changes in this PR:
+## Pages/Interfaces that will change
 
-## Pages/Interfaces that will change:
-
-## Steps to test:
+## Steps to test
 
 1.
 
-### Additional notes:
+### Additional notes
