@@ -34,6 +34,7 @@ module.exports = {
         isUsingColorMode: false
       }
     },
-    "gatsby-plugin-react-helmet"
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-netlify"
   ],
 };
