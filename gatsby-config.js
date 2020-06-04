@@ -30,6 +30,28 @@ module.exports = {
     image: `${BASE_SITE_URL}/icons/icon-512x512.png`, // used for RSS feed image and SEO fallback
     logoText: 'Rebuild Black Business',
     siteUrl: BASE_SITE_URL,
+    menuLinks: [
+      {
+        name: 'About',
+        slug: '/about',
+      },
+      {
+        name: 'Businesses In Need',
+        slug: '/businesses-in-need',
+      },
+      {
+        name: 'Black Owned Businesses',
+        slug: '/black-owned-businesses',
+      },
+      {
+        name: 'Resources',
+        slug: '/resources',
+      },
+      {
+        name: 'Allies',
+        slug: '/allies',
+      },
+    ],
   },
   plugins: [
     {
