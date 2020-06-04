@@ -1,12 +1,12 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 
-import { Flex, Link, Heading } from "@chakra-ui/core";
-import { Link as GatsbyLink } from "gatsby";
-import { Helmet } from "react-helmet";
-import Layout from "../components/Layout";
+import { Flex, Link, Heading } from '@chakra-ui/core';
+import { Link as GatsbyLink } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import Layout from '../components/Layout';
 
-const BusinessesInNeed = (data) => {
+const BusinessesInNeed = data => {
   return (
     <Layout>
       <Helmet>
@@ -23,7 +23,7 @@ const BusinessesInNeed = (data) => {
   );
 };
 
-export default (props) => (
+export default props => (
   <StaticQuery
     query={graphql`
       query {
@@ -35,13 +35,12 @@ export default (props) => (
               Donation_Website
               Email
               Impacted_Business_Name
-              Location__Zip_Code_
               Name
             }
           }
         }
       }
     `}
-    render={(data) => <BusinessesInNeed data={data} {...props} />}
+    render={data => <BusinessesInNeed data={data} {...props} />}
   />
 );
