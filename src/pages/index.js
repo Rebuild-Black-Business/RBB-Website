@@ -21,7 +21,9 @@ export default () => {
           publicId="test toasts"
           mt={10}
           transforms={{
-            height: 0.3
+            height: 0.3,
+            fetchFormat: "auto",
+            quality: "auto"
           }}
         />
       </Flex>
