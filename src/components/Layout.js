@@ -1,10 +1,12 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+
+
+import { SEO } from '.'
 
 export default function Layout({ children }) {
   return (
     <>
-      <Helmet defaultTitle="Rebuild Black Businesses" titleTemplate="%s - Rebuild Black Businesses" />
+      <SEO />
       {children}
     </>
   )
