@@ -1,15 +1,13 @@
-const envs = require("dotenv").config();
-
-if (envs.error) {
-  throw envs.error;
-}
+require("dotenv").config({
+  path: `.env`,
+});
 
 module.exports = {
   plugins: [
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        apiKey: envs.AIRTABLE_API_KEY, // pulls in from your .env file
+        apiKey: process.env.AIRTABLE_API_KEY, // pulls in from your .env file
         tables: [
           {
             baseId: `appFoFzjMcciPUgoK`, // note that this is not a secret, just an id
