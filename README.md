@@ -1,9 +1,6 @@
 <h1 align="center">Welcome to Rebuild Black Business 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://twitter.com/ThugDebugger" target="_blank">
-    <img alt="Twitter: ThugDebugger" src="https://img.shields.io/twitter/follow/ThugDebugger.svg?style=social" />
-  </a>
 </p>
 
 > The website for https://www.rebuildblackbusiness.com/
@@ -16,6 +13,8 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 ### How can I get involved now?
 
+The first step is to make sure that you're a part of the [Discord Community](https://discord.gg/272XMuv). State in the #sorting-hat channel your desire to join the Developer team. This will get you access to the development channels for further information.
+
 We're tracking all high level Web Development tasks in Trello:
 
 - [Front-End Development Trello](https://trello.com/b/d1sguaj6/rebuild-black-business-frontend-dev)
@@ -23,28 +22,15 @@ We're tracking all high level Web Development tasks in Trello:
 
 If you see a task in the Trello that seems like something you'd like to tackle, comment on the task expressing your interest. A project manager will assign the task to you. Tasks are then elaborated on in detail within [GitHub Issues](https://github.com/Rebuild-Black-Business/RBB-Website/issues). The Trello card will have a link to the corresponding issue so you can get started!
 
-### Branching Convetions
+### Branch Name Conventions
 
-When contributing, please branch any new feature off of `master` using the following naming conventions:
+When contributing, please fork this repository by clicking the “fork” button at the top right. This creates your own copy of the repository where you’re able to make changes. Once you have forked the repository, please structure your branches using the following format.
 
 `feature/task-description` - Feature branches are for all new feature work. The task description should be descriptive enough to quickly understand the work done in this branch. Please keep your features concise and ensure the work done in this branch directly relates to your task.
 
 `fix/task-description` - Fix branches should be leveraged for bug fixes on existing features
 
 `hotfix/task-description` - Hotfix branches should only ever be leveraged for _critical_ bug fixes that need attention immediately. This would only be use if there is a broken feature or bug on production that needs to be addressed urgently.
-
-Once you're ready to start contributing, here's a quick example of the flow you should follow to create new a new feature branch:
-
-```sh
-# Make sure you're on the master branch
-git checkout master
-
-# Pull most recent changes from master
-git pull origin master
-
-# Chek out new feature branch
-git checkout -b feature/task-description
-```
 
 ### Pull Requests
 
@@ -80,9 +66,13 @@ To get access to this data, please join the [Rebuild Black Business Discord](htt
 
 **Clone the repository**
 
+First, fork this repository by clicking the “fork” button at the top right. This creates your own copy of the repository where you’re able to make changes.
+
+Second, clone your copy of the repo to your local machine:
+
 ```sh
 # clone the repo
-git clone git@github.com:Rebuild-Black-Business/RBB-Website.git
+git clone git@github.com:YOUR_USERNAME_HERE/RBB-Website.git
 # move into the new folder
 cd RBB-Website/
 # install dependencies
