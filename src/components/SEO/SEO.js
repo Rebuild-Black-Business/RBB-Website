@@ -46,7 +46,10 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => {
 
   return (
     <React.Fragment>
-      <Helmet>
+      <Helmet
+        defaultTitle={seo.title}
+        titleTemplate={`%s - ${seo.title}`}
+      >
         {/* General tags */}
         <title>{title}</title>
         <meta name="description" content={description} />
