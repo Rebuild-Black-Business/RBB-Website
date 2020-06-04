@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import { SEO } from '.'
+import { SEO } from '.';
 
 export default function Layout({ children }) {
   return (
