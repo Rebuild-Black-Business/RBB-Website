@@ -39,7 +39,7 @@ const SEO = ({ canonicalUrl }) => {
   const url = seo?.siteUrl;
 
   return (
-    <React.Fragment>
+    <>
       <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`}>
         {/* General tags */}
         <title>{title}</title>
@@ -67,7 +67,7 @@ const SEO = ({ canonicalUrl }) => {
           defer
         />
       </Helmet>
-    </React.Fragment>
+    </>
   );
 };
 
