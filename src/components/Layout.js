@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import { SEO } from '.'
 
 export default function Layout({ children }) {
@@ -9,5 +8,5 @@ export default function Layout({ children }) {
       <SEO />
       {children}
     </>
-  )
+  );
 }
