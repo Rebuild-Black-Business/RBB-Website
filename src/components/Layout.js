@@ -1,12 +1,33 @@
 import React from 'react';
 
 import { SEO } from '.';
+import Nav from './Nav/Nav';
+import { StaticQuery, graphql } from 'gatsby';
 
 export default function Layout({ children }) {
   return (
-    <>
-      <SEO />
-      {children}
-    </>
+    <StaticQuery
+      query={MenuLinks}
+      render={data => (
+        <>
+          <SEO />
+          <Nav menuLinks={data.site.siteMetadata.menuLinks} />
+          {children}
+        </>
+      )}
+    />
   );
 }
+
+const MenuLinks = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        menuLinks {
+          name
+          slug
+        }
+      }
+    }
+  }
+`;
