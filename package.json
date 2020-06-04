@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "gatsby develop",
+    "prettier": "prettier --write \"src/**/*.js\"",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages"
   },
   "keywords": [],
@@ -31,6 +32,17 @@
     "babel-preset-gatsby": "^0.4.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.8",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
