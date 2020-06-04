@@ -35,6 +35,19 @@ When contributing, please branch any new feature off of `master` using the follo
 
 `hotfix/task-description` - Hotfix branches should only ever be leveraged for _critical_ bug fixes that need attention immediately. This would only be use if there is a broken feature or bug on production that needs to be addressed urgently.
 
+Once you're ready to start contributing, here's a quick example of the flow you should follow to create new a new feature branch:
+
+```sh
+# Make sure you're on the master branch
+git checkout master
+
+# Pull most recent changes from master
+git pull origin master
+
+# Chek out new feature branch
+git checkout -b feature/task-description
+```
+
 ### Pull Requests
 
 To send your changes for review, open a pull request. If you’ve never opened a pull request before, [read Thanoshan’s article on creating a pull request](https://www.freecodecamp.org/news/how-to-make-your-first-pull-request-on-github-3/) for more information!
