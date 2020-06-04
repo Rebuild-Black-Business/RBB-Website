@@ -15,7 +15,9 @@ export default () => {
         About
       </Link>
       <Flex align="center" justify="center">
-        <Heading>Home</Heading>
+        <Heading size="2xl" fontFamily="Arvo">
+          Home
+        </Heading>
       </Flex>
     </Layout>
   );
