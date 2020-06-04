@@ -1,13 +1,13 @@
-
-// this will probably be www.rebuildblackbusiness.com
-const BASE_SITE_URL = process.env.BASE_SITE_URL;
+const BASE_SITE_URL = 'https://www.rebuildblackbusiness.com';
 
 module.exports = {
   siteMetadata: {
     title: `Rebuild Black Business`,
     // eslint-disable-next-line max-len
     description: ``,
-    author: ``,
+    author: {
+      name: '',
+    },
     organization: {
       name: '',
       url: '',
@@ -23,7 +23,7 @@ module.exports = {
       src: '',
       alt: '',
     },
-    image_url: `${BASE_SITE_URL}/icons/icon-512x512.png`, // used for RSS feed image
+    image: `${BASE_SITE_URL}/icons/icon-512x512.png`, // used for RSS feed image and SEO fallback
     logoText: 'Rebuild Black Business',
     siteUrl: BASE_SITE_URL,
   },
