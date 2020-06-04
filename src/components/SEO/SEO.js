@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => {
-  const site = useStaticQuery(
+  const { site } = useStaticQuery(
     graphql`
       {
         site {
@@ -40,16 +40,12 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => {
   const description = postMeta?.description || seo?.description;
   const image = postImage ? `${seo.siteUrl}${postImage}` : seo?.image;
   const url = postMeta.slug ? `${seo.siteUrl}/${postMeta.slug}/` : seo?.siteUrl;
-  
-  
+
   // const datePublished = isBlogPost ? postMeta.datePublished : false;
 
   return (
     <React.Fragment>
-      <Helmet
-        defaultTitle={seo.title}
-        titleTemplate={`%s - ${seo.title}`}
-      >
+      <Helmet defaultTitle={seo.title} titleTemplate={`%s - ${seo.title}`}>
         {/* General tags */}
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -70,7 +66,12 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
-        <script src="https://cdn.usefathom.com/script.js" spa="auto" site={process.env.FATHOM_SITE_ID} defer/>
+        <script
+          src="https://cdn.usefathom.com/script.js"
+          spa="auto"
+          site={process.env.FATHOM_SITE_ID}
+          defer
+        />
       </Helmet>
     </React.Fragment>
   );
