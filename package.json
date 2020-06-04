@@ -21,5 +21,12 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.4.8",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "react-test-renderer": "^16.13.1"
   }
 }
