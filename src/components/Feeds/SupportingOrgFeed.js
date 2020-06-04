@@ -1,25 +1,18 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { Flex, Link, Heading } from '@chakra-ui/core';
-import { Link as GatsbyLink } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import Layout from '../components/Layout';
+import { Flex, Heading, Box } from '@chakra-ui/core';
 
 const SupportingOrgs = data => {
   return (
-    <Layout>
-      <Helmet>
-        <title>Supporting Orgs</title>
-      </Helmet>
-      <Link as={GatsbyLink} to="/">
-        Home
-      </Link>
+    <>
       <Flex align="center" justify="center">
-        <Heading>Supporting Orgs</Heading>
+        <Heading as="h3" size="lg">
+          Supporting Orgs
+        </Heading>
       </Flex>
-      <div>{JSON.stringify(data, null, 2)}</div>
-    </Layout>
+      <Box as="pre">{JSON.stringify(data, null, 2)}</Box>
+    </>
   );
 };
 
