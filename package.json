@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "gatsby develop"
   },
   "keywords": [],
@@ -23,6 +23,8 @@
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.9.0",
+    "@testing-library/react": "^10.1.0",
     "babel-jest": "^26.0.1",
     "babel-preset-gatsby": "^0.4.8",
     "identity-obj-proxy": "^3.0.0",
