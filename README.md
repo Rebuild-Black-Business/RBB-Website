@@ -119,5 +119,4 @@ npm run test
 
 👤 **Rebuild Black Business**
 
-- Twitter: [@ThugDebugger](https://twitter.com/ThugDebugger)
 - Github: [@Rebuild-Black-Business](https://github.com/Rebuild-Black-Business)
