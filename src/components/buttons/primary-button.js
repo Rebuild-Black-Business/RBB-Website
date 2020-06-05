@@ -1,38 +1,42 @@
 import React from 'react';
-import { PseudoBox } from '@chakra-ui/core';
+import { Button, useTheme } from '@chakra-ui/core';
 
-const PrimaryButton = props => (
-  <PseudoBox
-    as="button"
-    bg="#0E1111"
-    border="1px solid #ffffff"
-    borderRadius="100px"
-    boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
-    color="#F4F5F7"
-    fontFamily="Arvo"
-    fontSize="16px"
-    fontStyle="normal"
-    fontWeight="bold"
-    height="44px"
-    letterSpacing="0.05em"
-    lineHeight="20px"
-    padding="10px 35px"
-    textTransform="uppercase"
-    _hover={{ bg: '#565858' }}
-    _focus={{ bg: '#565858' }}
-    _active={{
-      bg: '#F7F7F2',
-      border: '1px solid #565858',
-      color: '#565858',
-    }}
-    _disabled={{
-      bg: '#0E1111',
-      boxShadow: 'none',
-      color: '#7D7D7D',
-    }}
-  >
-    {props.text}
-  </PseudoBox>
-);
+function PrimaryButton(props) {
+  const theme = useTheme();
+
+  return (
+    <Button
+      {...props}
+      bg={theme.buttons.primary.backgroundColor}
+      color={theme.buttons.primary.color}
+      borderRadius="button"
+      border="primaryButton"
+      borderWidth="button"
+      fontFamily={theme.buttons.primary.fontFamily}
+      fontSize="button"
+      fontWeight="bold"
+      letterSpacing="button"
+      lineHeight="button"
+      padding={theme.buttons.primary.padding}
+      textTransform={theme.buttons.primary.textTransform}
+      _active={{
+        bg: theme.buttons.primary.activeBackgroundColor,
+        borderColor: theme.buttons.primary.activeColor,
+        color: theme.buttons.primary.activeColor,
+      }}
+      _disabled={{
+        color: theme.buttons.primary.disabledColor,
+      }}
+      _focus={{
+        bg: theme.buttons.primary.hoverBackgroundColor,
+      }}
+      _hover={{
+        bg: theme.buttons.primary.hoverBackgroundColor,
+      }}
+    >
+      {props.children}
+    </Button>
+  );
+}
 
 export default PrimaryButton;
