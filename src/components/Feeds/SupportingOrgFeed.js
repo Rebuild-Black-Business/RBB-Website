@@ -1,11 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { Flex, Heading, Box, useTheme } from '@chakra-ui/core';
+import { Flex, Heading, Box } from '@chakra-ui/core';
 
 const SupportingOrgs = data => {
-  const theme = useTheme();
-  console.log(theme.colors);
   return (
     <>
       <Flex align="center" justify="center">
