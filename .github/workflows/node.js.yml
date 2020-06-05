@@ -31,4 +31,6 @@ jobs:
         run: npm test
 
       - name: Run Cypress tests
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
         run: npm run test:e2e:ci
