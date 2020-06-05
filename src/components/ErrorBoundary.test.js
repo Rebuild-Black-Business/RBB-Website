@@ -9,9 +9,7 @@ jest.mock('../utils/logError', () =>
 
 const error = expect.any(Error);
 const errorInfo = { componentStack: expect.stringContaining('ErrorBoundary') };
-const ErroringComponent = () => {
-  return this.fake.caboom();
-};
+const ErroringComponent = () => this.fake.caboom();
 
 beforeEach(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {});
