@@ -22,47 +22,50 @@ const Nav = props => {
   const { menuLinks } = props;
 
   return (
-    <nav id="primary-navigation">
-      <Flex
-        as="nav"
-        align="center"
-        justify="space-between"
-        wrap="wrap"
-        {...props}
-      >
-        <Flex align="center" mr={5}>
-          <Heading as="h1" size="lg">
-            <Link as={GatsbyLink} to="/">
-              Rebuild Black Businesses
-            </Link>
-          </Heading>
-        </Flex>
-
-        <Box display={{ sm: 'block', md: 'none' }} onClick={handleToggle}>
-          <svg
-            width="12px"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </Box>
-
-        <Flex
-          as="ul"
-          display={{ sm: show ? 'block' : 'none', md: 'flex' }}
-          width={{ sm: 'full', md: 'auto' }}
-          alignItems="center"
-          justify="flex-end"
-          flexGrow={1}
-        >
-          {menuLinks.map(link => (
-            <NavItem slug={link.slug}>{link.name}</NavItem>
-          ))}
-        </Flex>
+    <Flex
+      id="primary-navigation"
+      as="nav"
+      align="center"
+      justify="space-between"
+      wrap="wrap"
+      {...props}
+    >
+      <Flex align="center" mr={5}>
+        <Heading as="h1" size="lg">
+          <Link as={GatsbyLink} to="/">
+            Rebuild Black Businesses
+          </Link>
+        </Heading>
       </Flex>
-    </nav>
+
+      <Box display={{ sm: 'block', md: 'none' }} onClick={handleToggle}>
+        <svg
+          width="12px"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </Box>
+
+      <Flex
+        as="ul"
+        display={{ sm: show ? 'block' : 'none', md: 'flex' }}
+        width={{ sm: 'full', md: 'auto' }}
+        alignItems="center"
+        justify="flex-end"
+        flexGrow={1}
+      >
+        {menuLinks.map(link => (
+          <li>
+            <NavItem as="li" slug={link.slug}>
+              {link.name}
+            </NavItem>
+          </li>
+        ))}
+      </Flex>
+    </Flex>
   );
 };
 

@@ -1,10 +1,21 @@
 /// <reference types="Cypress" />
+import logger from '../helpers/logger';
 
 describe('Accessibility tests', () => {
   beforeEach(() => {
     cy.visit('/').get('main').injectAxe();
   });
+
   it('Has no detectable accessibility violations on load', () => {
-    cy.checkA11y();
+    cy.checkA11y(
+      null,
+      {
+        rules: {
+          'landmark-unique': { enabled: true },
+          list: { enabled: true },
+        },
+      },
+      logger
+    );
   });
 });
