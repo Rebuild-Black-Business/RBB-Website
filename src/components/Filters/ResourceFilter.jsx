@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Flex, Input, Select, useTheme } from '@chakra-ui/core';
+import { Flex, Input, Select } from '@chakra-ui/core';
+
+import PrimaryButton from '../Buttons/PrimaryButton';
 
 const userRoles = [
   {
@@ -25,9 +27,9 @@ function ResourceFilter() {
         })}
       </Select>
       <Input placeholder="Enter city" />
-      <Button variantColor="black" variant="solid">
-        Search
-      </Button>
+      <div>
+        <PrimaryButton>Search</PrimaryButton>
+      </div>
     </Flex>
   );
 }
