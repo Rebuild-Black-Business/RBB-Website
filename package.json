@@ -23,6 +23,8 @@
     "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@reach/skip-nav": "0.10.3",
+    "@reach/visually-hidden": "0.10.2",
     "dotenv": "^8.2.0",
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.22.20",
