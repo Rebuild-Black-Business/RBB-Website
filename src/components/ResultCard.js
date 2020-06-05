@@ -106,13 +106,13 @@ const ResultCard = forwardRef(
           )}
           <CardText as="p">{businessLocation}</CardText>
           <CardButtonGroup>
-            <CardButton as="a" href={businessUrl} minWidth="50%">
+            <CardButton as="a" href={businessUrl}>
               {(businessCategory &&
                 categoryData[businessCategory]?.buttonText) ||
                 'Learn More'}
             </CardButton>
             {donationUrl && (
-              <CardButton href={donationUrl} as="a" minWidth="50%">
+              <CardButton href={donationUrl} as="a">
                 Donate
               </CardButton>
             )}

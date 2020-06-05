@@ -17,7 +17,12 @@ export default () => {
           Home
         </Heading>
       </Flex>
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} ml={10} mr={10}>
+      <Grid
+        templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }}
+        gap={6}
+        ml={10}
+        mr={10}
+      >
         <ResultCard
           businessCategory="entertainment"
           businessName="Dad's Donuts"

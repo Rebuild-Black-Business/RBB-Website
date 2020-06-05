@@ -36,7 +36,7 @@ const CardImage = forwardRef(({ children, ...props }, ref) => {
 
 const CardContent = forwardRef(({ children, ...props }, ref) => {
   return (
-    <Box p={6} flexGrow={1} {...props} ref={ref}>
+    <Box p={{ base: 3, md: 6 }} flexGrow={1} {...props} ref={ref}>
       {children}
     </Box>
   );
