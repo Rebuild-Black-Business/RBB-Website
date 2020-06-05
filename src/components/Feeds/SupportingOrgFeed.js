@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Flex, Heading, Box } from '@chakra-ui/core';
 
@@ -12,7 +12,7 @@ const SupportingOrgs = data => {
   const [allOrgs] = useState(data.data.allAirtableSupportOrgs.nodes);
   const [orgs, setOrgs] = useState(allOrgs);
 
-  useEffect(() => {
+  useMemo(() => {
     const filteredResults = allOrgs.filter(org => {
       const input = searchFilters.location.toLowerCase();
       const orgName = org.data['Location__Zip_Code_'].toLowerCase();
@@ -20,6 +20,14 @@ const SupportingOrgs = data => {
     });
     setOrgs(filteredResults);
   }, [searchFilters.location, allOrgs]);
+
+  const renderResults = () => {
+    return orgs.length > 0 ? (
+      <Box as="pre">{JSON.stringify(orgs, null, 2)}</Box>
+    ) : (
+      <Box as="pre">No results...</Box>
+    );
+  };
 
   return (
     <>
@@ -29,7 +37,7 @@ const SupportingOrgs = data => {
         </Heading>
       </Flex>
       <ResourceFilter onSearch={filters => setSearchFilters(filters)} />
-      {orgs && <Box as="pre">{JSON.stringify(orgs, null, 2)}</Box>}
+      {renderResults()}
     </>
   );
 };
