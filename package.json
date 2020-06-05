@@ -33,9 +33,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
-<<<<<<< HEAD
-    "use-cloudinary": "^2.2.5"
-=======
+    "use-cloudinary": "^2.2.5",
     "typeface-arvo": "^1.1.3",
     "typeface-inter": "^3.12.0"
   },
@@ -63,6 +61,5 @@
   },
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"
->>>>>>> c63484794166108256b487397fde13c99d96429a
   }
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading, Link } from '@chakra-ui/core';
 import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout';
 import { Link as GatsbyLink } from 'gatsby';
 import Image from '../components/Image';
+import Search from '../components/Search';
 
 export default () => {
   return (
@@ -12,22 +13,26 @@ export default () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <Link as={GatsbyLink} to="/about">About</Link>
-      <Flex align="center" justify="center">
+      <Link as={GatsbyLink} to="/about">
+        About
+      </Link>
+      <Flex direction="column" align="center" justify="center">
         <Heading size="2xl" fontFamily="Arvo">
           Home
         </Heading>
 
         <Image
-          cloudName="testing-hooks-upload"
-          publicId="test toasts"
+          cloudName="rebuild-black-business"
+          publicId="samples/animals/three-dogs"
           mt={10}
           transforms={{
             height: 0.3,
-            fetchFormat: "auto",
-            quality: "auto"
+            fetchFormat: 'auto',
+            quality: 'auto',
           }}
         />
+
+        <Search />
       </Flex>
     </Layout>
   );
