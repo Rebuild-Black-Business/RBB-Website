@@ -30,6 +30,12 @@ jobs:
       - name: Run Jest tests
         run: npm test
 
+      - name: Log the last 4 characters of the Airtable secret
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        run: |
+          echo -n $AIRTABLE_API_KEY | tail -c 4
+
       - name: Run Cypress tests
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
