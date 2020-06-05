@@ -6,6 +6,7 @@ function PrimaryButton(props) {
 
   return (
     <Button
+      {...props}
       bg={theme.buttons.primary.backgroundColor}
       color={theme.buttons.primary.color}
       borderRadius="button"
