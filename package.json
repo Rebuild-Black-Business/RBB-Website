@@ -22,6 +22,8 @@
     "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@reach/skip-nav": "0.10.3",
+    "@reach/visually-hidden": "0.10.2",
     "@typescript-eslint/eslint-plugin": "2.x",
     "@typescript-eslint/parser": "2.x",
     "babel-eslint": "10.x",
