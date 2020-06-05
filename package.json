@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
+    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
-    "prettier": "prettier --write \"src/**/*.js\""
+    "prettier": "prettier --write \"src/**/*.js\"",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "keywords": [],
   "author": "",
@@ -35,16 +39,21 @@
     "typeface-inter": "^3.12.0"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.1.0",
+    "axe-core": "^3.5.4",
     "babel-jest": "^26.0.1",
     "babel-preset-gatsby": "^0.4.8",
+    "cypress": "^4.7.0",
+    "cypress-axe": "^0.8.1",
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "lint-staged": "^10.2.8",
     "prettier": "^2.0.5",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "start-server-and-test": "^1.11.0"
   },
   "husky": {
     "hooks": {

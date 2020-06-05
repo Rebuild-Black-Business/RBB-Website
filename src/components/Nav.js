@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Flex, Link, Box } from '@chakra-ui/core';
+import { Flex, Link, Box, List, ListItem } from '@chakra-ui/core';
 import { Link as GatsbyLink } from 'gatsby';
 
 const Nav = forwardRef(
@@ -20,7 +20,15 @@ const Nav = forwardRef(
 );
 
 const NavMenu = forwardRef(
-  ({ component: Comp = Flex, as = 'ul', children, ...props }, ref) => (
+  (
+    {
+      component: Comp = Flex,
+      as = props => <List styleType="none" {...props} />,
+      children,
+      ...props
+    },
+    ref
+  ) => (
     <Comp ref={ref} as={as} {...props}>
       {children}
     </Comp>
@@ -28,8 +36,8 @@ const NavMenu = forwardRef(
 );
 
 const NavItem = forwardRef(
-  ({ component: Comp = Box, as = 'li', children, ...props }, ref) => (
-    <Comp ref={ref} as={as} {...props}>
+  ({ component: Comp = ListItem, children, ...props }, ref) => (
+    <Comp ref={ref} {...props}>
       {children}
     </Comp>
   )

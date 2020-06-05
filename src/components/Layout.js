@@ -14,7 +14,7 @@ export default function Layout({ children }) {
           <SkipNavLink />
           <PrimaryNav menuLinks={data.site.siteMetadata.menuLinks} />
           <SkipNavContent />
-          {children}
+          <main id="primary-content">{children}</main>
         </>
       )}
     />
