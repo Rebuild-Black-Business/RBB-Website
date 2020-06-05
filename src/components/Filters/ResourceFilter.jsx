@@ -20,7 +20,7 @@ function ResourceFilter(props) {
   const roleRef = useRef({});
   const locationRef = useRef('');
 
-  const handleSearch = event => {
+  const handleSearchClick = event => {
     event.preventDefault();
     onSearch({
       role: roleRef.current.value,
@@ -50,10 +50,14 @@ function ResourceFilter(props) {
             id="location"
             type="text"
             placeholder="Enter city"
+            onKeyPress={() => console.log('handleSearchEnter')}
           />
         </Flex>
         <Flex direction="column">
-          <PrimaryButton onClick={handleSearch} onKeyPress={handleSearch}>
+          <PrimaryButton
+            onClick={handleSearchClick}
+            onKeyPress={() => console.log('handleSearchEnter')}
+          >
             Search
           </PrimaryButton>
         </Flex>
