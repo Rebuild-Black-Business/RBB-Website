@@ -12,7 +12,7 @@ export default function Layout({ children }) {
         <>
           <SEO />
           <Nav menuLinks={data.site.siteMetadata.menuLinks} />
-          {children}
+          <main id="primary-content">{children}</main>
         </>
       )}
     />
