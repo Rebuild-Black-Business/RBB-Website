@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop https://localhost:8000 cy:open",
+    "test:e2e:ci": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop https://localhost:8000 cy:run",
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
-    "prettier": "prettier --write \"src/**/*.js\""
+    "prettier": "prettier --write \"src/**/*.js\"",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "keywords": [],
   "author": "",
