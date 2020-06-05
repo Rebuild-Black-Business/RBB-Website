@@ -9,6 +9,6 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
-    'cypress/no-unnecessary-waiting': [0],
+    'cypress/no-unnecessary-waiting': 'warn',
   },
 };
