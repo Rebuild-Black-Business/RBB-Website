@@ -85,6 +85,9 @@ Check the “show API key” box at the top-right, then look for yours in the co
 
 ![Airtable API key in the docs](docs/images/airtable-api-key.png)
 
+_Note:_ If you don't see this checkbox, make sure you're logged in to Airtable, and go to [your account settings page](https://airtable.com/account) to generate a key:
+![Airtable API key in account settings](docs/images/airtable-api-key-acount-settings.png)
+
 Once you have your API key, create a file called `.env` and add your API key:
 
 ```bash
