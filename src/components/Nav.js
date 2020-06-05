@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Flex, Link, Box, List, ListItem } from '@chakra-ui/core';
+import { Flex, Link, List, ListItem } from '@chakra-ui/core';
 import { Link as GatsbyLink } from 'gatsby';
 
 const Nav = forwardRef(
