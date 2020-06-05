@@ -1,7 +1,8 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-
 import { Flex, Heading, Box } from '@chakra-ui/core';
+
+import ResourceFilter from '../Filters/ResourceFilter';
 
 const SupportingOrgs = data => {
   return (
@@ -11,6 +12,7 @@ const SupportingOrgs = data => {
           Supporting Orgs
         </Heading>
       </Flex>
+      <ResourceFilter />
       <Box as="pre">{JSON.stringify(data, null, 2)}</Box>
     </>
   );
