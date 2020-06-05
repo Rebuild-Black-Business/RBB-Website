@@ -9,12 +9,20 @@ jest.mock('../utils/logError', () =>
 
 const error = expect.any(Error);
 const errorInfo = { componentStack: expect.stringContaining('ErrorBoundary') };
+const ErroringComponent = () => {
+  return this.fake.caboom();
+};
+
+beforeEach(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+});
 
 test('Log error to Sentry and show a whoopsie message', () => {
   // Render
   render(
-    <ErrorBoundary forceError={true}>
+    <ErrorBoundary>
       <h1 data-testid="child">Oh Hi</h1>
+      <ErroringComponent />
     </ErrorBoundary>
   );
   // Make sure we log the error to our service (Sentry)

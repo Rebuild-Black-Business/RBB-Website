@@ -13,15 +13,6 @@ export default class ErrorBoundary extends React.Component {
     logError({ error, errorInfo });
   }
 
-  // ? This is purely here for testing purposes
-  componentDidMount() {
-    this.props.forceError &&
-      logError({
-        error: new Error('Test errors'),
-        errorInfo: { componentStack: 'ErrorBoundary' },
-      });
-  }
-
   render() {
     if (this.state.error) {
       // TODO show a nicer "error" UI once it's designed
