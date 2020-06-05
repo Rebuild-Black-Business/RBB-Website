@@ -36,11 +36,7 @@ When contributing, please fork this repository by clicking the “fork” button
 
 To send your changes for review, open a pull request. If you’ve never opened a pull request before, [read Thanoshan’s article on creating a pull request](https://www.freecodecamp.org/news/how-to-make-your-first-pull-request-on-github-3/) for more information!
 
-Once you've created your pull request, please assign the following folks as reviewers:
-
-- @magnificode
-- @domitriusclark
-- @racedale
+Code reviewers will automatically be notified for a review.
 
 ## Terminology
 
@@ -88,6 +84,9 @@ Once you've obtained access, go to the API docs and grab your API key: https://a
 Check the “show API key” box at the top-right, then look for yours in the code sample displayed next to the “Authentication” docs.
 
 ![Airtable API key in the docs](docs/images/airtable-api-key.png)
+
+_Note:_ If you don't see this checkbox, make sure you're logged in to Airtable, and go to [your account settings page](https://airtable.com/account) to generate a key:
+![Airtable API key in account settings](docs/images/airtable-api-key-acount-settings.png)
 
 Once you have your API key, create a file called `.env` and add your API key:
 
