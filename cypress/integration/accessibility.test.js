@@ -7,15 +7,6 @@ describe('Accessibility tests', () => {
   });
 
   it('Has no detectable accessibility violations on load', () => {
-    cy.checkA11y(
-      null,
-      {
-        rules: {
-          'landmark-unique': { enabled: true },
-          list: { enabled: true },
-        },
-      },
-      logger
-    );
+    cy.checkA11y(null, null, logger);
   });
 });
