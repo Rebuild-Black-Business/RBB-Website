@@ -8,15 +8,13 @@ jest.mock('../utils/logError', () =>
 );
 
 const error = expect.any(Error);
-const errorInfo = {
-  componentStack: expect.stringContaining('ErrorBoundary'),
-};
+const errorInfo = { componentStack: expect.stringContaining('ErrorBoundary') };
 
 test('Log error to Sentry and show a whoopsie message', () => {
   // Render
   render(
     <ErrorBoundary forceError={true}>
-      <h1 data-testid="expected-child">Oh Hi</h1>
+      <h1 data-testid="child">Oh Hi</h1>
     </ErrorBoundary>
   );
   // Make sure we log the error to our service (Sentry)
@@ -24,6 +22,6 @@ test('Log error to Sentry and show a whoopsie message', () => {
   expect(logError).toHaveBeenCalledWith({ error, errorInfo });
 
   // Make sure we're displaying the correct thing
-  expect(screen.queryByTestId('expected-child')).not.toBeInTheDocument();
-  expect(screen.getByText(/Something went wrong!/i)).toBeInTheDocument();
+  expect(screen.queryByTestId('child')).not.toBeInTheDocument();
+  expect(screen.getByTestId('error-message')).toBeInTheDocument();
 });
