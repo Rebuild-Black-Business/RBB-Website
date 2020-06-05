@@ -1,0 +1,36 @@
+# For all pull requests made to any branches, this workflow will:
+# - install all dependencies
+# - run all tests
+
+name: Tests
+
+on: 'pull_request'
+
+jobs:
+  test-package:
+    name: Run Tests with Jest
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node_version: ['12']
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Setup node
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Jest tests
+        run: npm test
+
+      - name: Run Cypress tests
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        run: npm run test:e2e:ci
