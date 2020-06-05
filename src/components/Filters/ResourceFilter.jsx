@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
@@ -18,13 +18,21 @@ function ResourceFilter(props) {
   const { onSearch } = props;
 
   const roleRef = useRef({});
-  const locationRef = useRef('');
+  const [location, setLocation] = useState('');
 
   const handleSearchClick = event => {
     event.preventDefault();
     onSearch({
       role: roleRef.current.value,
-      location: locationRef.current.value,
+      location: location,
+    });
+  };
+
+  const handleSearchKeyPress = event => {
+    event.preventDefault();
+    onSearch({
+      role: roleRef.current.value,
+      location: location,
     });
   };
 
@@ -46,17 +54,26 @@ function ResourceFilter(props) {
         <Flex direction="column">
           <FormLabel htmlFor="location">Location</FormLabel>
           <Input
-            ref={locationRef}
+            value={location}
             id="location"
             type="text"
             placeholder="Enter city"
-            onKeyPress={() => console.log('handleSearchEnter')}
+            onChange={event => setLocation(event.currentTarget.value)}
+            onKeyPress={event => {
+              if (event.key === 'Enter') {
+                handleSearchKeyPress(event);
+              }
+            }}
           />
         </Flex>
         <Flex direction="column">
           <PrimaryButton
             onClick={handleSearchClick}
-            onKeyPress={() => console.log('handleSearchEnter')}
+            onKeyPress={event => {
+              if (event.key === 'Enter') {
+                handleSearchKeyPress(event);
+              }
+            }}
           >
             Search
           </PrimaryButton>

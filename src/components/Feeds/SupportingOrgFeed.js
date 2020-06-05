@@ -11,9 +11,6 @@ const SupportingOrgs = data => {
   });
   const [allOrgs] = useState(data.data.allAirtableSupportOrgs.nodes);
   const [orgs, setOrgs] = useState(allOrgs);
-  console.log('search filters', searchFilters);
-  console.log('allOrgs', allOrgs);
-  console.log('orgs', orgs);
 
   useEffect(() => {
     const filteredResults = allOrgs.filter(org => {
