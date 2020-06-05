@@ -1,7 +1,7 @@
 [build]
   functions = "./functions"
-  publish = "public"
-  command = "cd functions && npm i && cd .. && npm run build"
+  publish = "public/"
+  command = "cd functions && npm i && cd .. && gatsby build"
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
