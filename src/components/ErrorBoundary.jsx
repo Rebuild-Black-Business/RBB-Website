@@ -1,24 +1,31 @@
+import * as React from 'react';
+import logError from '../utils/logError';
+
 // ? We're not able to use SFC's and hooks with componentDidCatch: https://reactjs.org/docs/hooks-faq.html#do-hooks-cover-all-use-cases-for-classes
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { error: null };
+    this.state = { error: props.forceError };
   }
 
   componentDidCatch(error, errorInfo) {
     this.setState({ error });
-    Sentry.configureScope(scope => {
-      Object.keys(errorInfo).forEach(key => {
-        scope.setExtra(key, errorInfo[key]);
+    logError({ error, errorInfo });
+  }
+
+  // ? This is purely here for testing purposes
+  componentDidMount() {
+    this.props.forceError &&
+      logError({
+        error: new Error('Test errors'),
+        errorInfo: { componentStack: 'ErrorBoundary' },
       });
-    });
-    Sentry.captureException(error);
   }
 
   render() {
     if (this.state.error) {
       // TODO show a nicer "error" UI once it's designed
-      return <h1>Something went wrong!</h1>;
+      return <h1 data-testid="error-message">Something went wrong!</h1>;
     } else {
       // when there's not an error, render children untouched
       return this.props.children;
