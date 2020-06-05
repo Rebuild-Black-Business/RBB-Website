@@ -100,6 +100,16 @@ module.exports = {
         isUsingColorMode: false,
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GOOGLE_TAGMANAGER_ID, // pulls in from your .env file
+
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+      },
+    },
     'gatsby-plugin-react-helmet',
   ],
 };
