@@ -45,6 +45,5 @@ export function Button({ variant, ...props }) {
     throw new Error(`Invalid <Button> variant: "${variant}"`);
 
   const buttonStyles = getButtonStyles(theme, variant);
-  console.log(buttonStyles);
   return <ChakraButton {...buttonStyles} {...props} />;
 }
