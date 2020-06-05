@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Flex, Link, Heading, Box } from '@chakra-ui/core';
+import { Flex, Link, Heading, Box, List, ListItem } from '@chakra-ui/core';
 import { Link as GatsbyLink } from 'gatsby';
 
 const NavItem = ({ slug, children }) => (
@@ -50,7 +50,7 @@ const Nav = props => {
       </Box>
 
       <Flex
-        as="ul"
+        as={props => <List styleType="none" {...props} />}
         display={{ sm: show ? 'block' : 'none', md: 'flex' }}
         width={{ sm: 'full', md: 'auto' }}
         alignItems="center"
@@ -58,11 +58,11 @@ const Nav = props => {
         flexGrow={1}
       >
         {menuLinks.map(link => (
-          <li>
+          <ListItem>
             <NavItem as="li" slug={link.slug}>
               {link.name}
             </NavItem>
-          </li>
+          </ListItem>
         ))}
       </Flex>
     </Flex>
