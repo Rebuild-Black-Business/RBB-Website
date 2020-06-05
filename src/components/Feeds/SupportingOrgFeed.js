@@ -42,18 +42,6 @@ const SupportingOrgs = data => {
   );
 };
 
-// allAirtableSupportOrgs(filter: {data: {Location__Zip_Code_: {regex: "/At/gi"}}}) {
-//   edges {
-//     node {
-//       data {
-//         Name
-//         Location__Zip_Code_
-//         Website
-//       }
-//     }
-//   }
-// }
-
 export default props => (
   <StaticQuery
     query={graphql`
