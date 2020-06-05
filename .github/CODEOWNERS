@@ -1,0 +1,3 @@
+# Order is important; the last matching pattern takes the most precedence.
+# These folks default to review everything
+* @magnificode @domitriusclark @racedale

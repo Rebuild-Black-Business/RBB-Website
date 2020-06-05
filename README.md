@@ -36,11 +36,7 @@ When contributing, please fork this repository by clicking the “fork” button
 
 To send your changes for review, open a pull request. If you’ve never opened a pull request before, [read Thanoshan’s article on creating a pull request](https://www.freecodecamp.org/news/how-to-make-your-first-pull-request-on-github-3/) for more information!
 
-Once you've created your pull request, please assign the following folks as reviewers:
-
-- @magnificode
-- @domitriusclark
-- @racedale
+Code reviewers will automatically be notified for a review.
 
 ## Terminology
 
