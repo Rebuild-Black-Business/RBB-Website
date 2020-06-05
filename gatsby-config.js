@@ -107,7 +107,7 @@ module.exports = {
         dsn: process.env.SENTRY_DSN,
         environment: process.env.NODE_ENV,
         enabled: (() =>
-          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
+          ['production', 'staging'].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
   ],
