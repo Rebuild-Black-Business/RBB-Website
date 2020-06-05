@@ -9,6 +9,7 @@ export default () => {
     <Layout>
       <Helmet>
         <title>Home</title>
+        <html lang="en" />
       </Helmet>
       <Flex align="center" justify="center">
         <Heading size="2xl" fontFamily="Arvo">
