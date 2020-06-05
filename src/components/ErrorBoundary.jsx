@@ -17,7 +17,7 @@ export default class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.error) {
-      // render fallback UI
+      // TODO show a nicer "error" UI once it's designed
       return <h1>Something went wrong!</h1>;
     } else {
       // when there's not an error, render children untouched
