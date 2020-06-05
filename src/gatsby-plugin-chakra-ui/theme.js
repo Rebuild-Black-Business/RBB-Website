@@ -1,9 +1,8 @@
-import React from 'react';
-import { ThemeProvider, theme } from '@chakra-ui/core';
+import { theme } from '@chakra-ui/core';
 import 'typeface-inter';
 import 'typeface-arvo';
 
-const customeTheme = {
+const customTheme = {
   ...theme,
   fonts: {
     ...theme.fonts,
@@ -31,6 +30,4 @@ const customeTheme = {
   },
 };
 
-export const wrapRootElement = ({ element }) => (
-  <ThemeProvider theme={customeTheme}>{element}</ThemeProvider>
-);
+export default customTheme;
