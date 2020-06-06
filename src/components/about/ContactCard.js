@@ -17,28 +17,35 @@ import {
   Link,
 } from '@chakra-ui/core';
 
-const CardContent = ({ title, blurb }) => {
+const CardContent = ({ title, blurb, imageUrl, imageAlt }) => {
   const theme = useTheme();
   return (
-    <Flex
-      w="100%"
-      direction="column"
-      p="4"
-      align="center"
-      justify="center"
-      textAlign="center"
-    >
-      <Text fontSize={theme.fontSizes.lg} fontFamily={theme.fonts.heading}>
-        {title}
-      </Text>
-      <Text
+    <>
+      {imageUrl ? (
+        <CardImage imageUrl={imageUrl} imageAlt={imageAlt} />
+      ) : (
+        <NoImage />
+      )}
+      <Flex
+        w="100%"
+        direction="column"
         p="4"
-        fontSize={theme.fontSizes.paragraph}
-        fontFamily={theme.fonts.heading}
+        align="center"
+        justify="center"
+        textAlign="center"
       >
-        {blurb}
-      </Text>
-    </Flex>
+        <Text fontSize={theme.fontSizes.lg} fontFamily={theme.fonts.heading}>
+          {title}
+        </Text>
+        <Text
+          p="4"
+          fontSize={theme.fontSizes.paragraph}
+          fontFamily={theme.fonts.heading}
+        >
+          {blurb}
+        </Text>
+      </Flex>
+    </>
   );
 };
 
@@ -54,7 +61,13 @@ const NoImage = () => (
 // @TODO :: Replace with new Image component
 const CardImage = ({ imageUrl, imageAlt }) => (
   <Flex w="342px" h="220px">
-    <Image width="100%" height="100%" src={imageUrl} alt={imageAlt} />
+    <Image
+      objectFit="cover"
+      width="100%"
+      height="100%"
+      src={imageUrl}
+      alt={imageAlt}
+    />
   </Flex>
 );
 
@@ -75,13 +88,7 @@ const ModalForm = ({ isOpen, onClose, title }) => (
   </Modal>
 );
 
-const BusinessOwnerCard = ({
-  imageUrl,
-  imageAlt,
-  modalTitle,
-  title,
-  blurb,
-}) => {
+const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
 
@@ -96,19 +103,19 @@ const BusinessOwnerCard = ({
         direction="column"
         onClick={onOpen}
       >
-        {imageUrl ? (
-          <CardImage imageUrl={imageUrl} imageAlt={imageAlt} />
-        ) : (
-          <NoImage />
-        )}
-        <CardContent title={title} blurb={blurb} />
+        <CardContent
+          title={title}
+          blurb={blurb}
+          imageUrl={imageUrl}
+          imageAlt={imageAlt}
+        />
       </Flex>
       <ModalForm isOpen={isOpen} title={modalTitle} onClose={onClose} />
     </>
   );
 };
 
-const GeneralInquiryCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
+const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
   <Flex
     as="a"
     href={`mailto:${email}`}
@@ -117,12 +124,12 @@ const GeneralInquiryCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
     maxH="322px"
     direction="column"
   >
-    {imageUrl ? (
-      <CardImage imageUrl={imageUrl} imageAlt={imageAlt} />
-    ) : (
-      <NoImage />
-    )}
-    <CardContent title={title} blurb={blurb} />
+    <CardContent
+      title={title}
+      blurb={blurb}
+      imageUrl={imageUrl}
+      imageAlt={imageAlt}
+    />
   </Flex>
 );
 
@@ -135,12 +142,12 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     maxH="322px"
     direction="column"
   >
-    {imageUrl ? (
-      <CardImage imageUrl={imageUrl} imageAlt={imageAlt} />
-    ) : (
-      <NoImage />
-    )}
-    <CardContent title={title} blurb={blurb} />
+    <CardContent
+      title={title}
+      blurb={blurb}
+      imageUrl={imageUrl}
+      imageAlt={imageAlt}
+    />
   </Flex>
 );
 
@@ -151,8 +158,8 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
  * @param {string} blurb - The cards blurb
  * @param {string} imageUrl - The images url
  * @param {string} imageAlt - The alt text for the image
- * @param {boolean} businessOwner - If businessOwner then card with modal will be displayed
- * @param {boolean} generalInquiry - If generalInquiry then card with mailto link will be displayed
+ * @param {boolean} modalCard - If doesModal then card with modal will be displayed
+ * @param {boolean} mailtoCard - If doesMailto then card with mailto link will be displayed
  * @param {string} modalTitle - The title to be displayed in the modal
  * @param {string} email - The RBB support email address
  */
@@ -161,14 +168,14 @@ const ContactCard = ({
   blurb,
   imageUrl,
   imageAlt,
-  businessOwnerCard,
-  generalInquiryCard,
+  modalCard,
+  mailtoCard,
   modalTitle,
   email,
 }) => {
-  if (businessOwnerCard) {
+  if (modalCard) {
     return (
-      <BusinessOwnerCard
+      <ModalCard
         modalTitle={modalTitle}
         title={title}
         blurb={blurb}
@@ -177,9 +184,9 @@ const ContactCard = ({
       />
     );
   }
-  if (generalInquiryCard) {
+  if (mailtoCard) {
     return (
-      <GeneralInquiryCard
+      <MailtoCard
         email={email}
         title={title}
         blurb={blurb}

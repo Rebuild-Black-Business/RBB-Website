@@ -11,7 +11,7 @@ export default function About() {
         <Heading>About</Heading>
         <Flex w="1240px" margin="3em" justify="space-evenly">
           <ContactCard
-            businessOwnerCard
+            modalCard
             title="Business Owner"
             modalTitle="This is a modal!"
             blurb="Add your business to our list"
@@ -19,7 +19,7 @@ export default function About() {
             imageAlt="Random image from unsplash"
           />
           <ContactCard
-            generalInquiryCard
+            mailtoCard
             title="General Inquiry"
             email="test@test.com"
             blurb="Send us an email and we'll be in touch"
