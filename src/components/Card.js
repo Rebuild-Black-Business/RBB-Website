@@ -87,19 +87,7 @@ const CardButtonGroup = forwardRef(({ children, ...props }, ref) => {
 
 const CardButton = forwardRef(({ children, ...props }, ref) => {
   return (
-    <Button
-      flexGrow={1}
-      // TODO: Unsure about these colors BTW, we can swap this out for a themed
-      // Button component when it's available.
-      //   bg="#140303"
-      //   color="white"
-      //   _hover={{ bg: '#000' }}
-      //   _active={{ bg: '#000' }}
-      //   _focus={{ bg: '#000' }}
-      variant="primary"
-      {...props}
-      ref={ref}
-    >
+    <Button flexGrow={1} variant="primary" {...props} ref={ref}>
       {children}
     </Button>
   );
