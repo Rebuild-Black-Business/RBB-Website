@@ -96,6 +96,22 @@ AIRTABLE_API_KEY=YOUR_API_KEY
 
 > **NOTE:** See `.env.EXAMPLE` for a copy-pasteable template to get set up!
 
+## Cloudinary
+
+CLOUD_NAME=rebuild-black-business
+
+Our cloud name is used for every call to our `useImage` hook. Having this on hand will be useful.
+
+For our search functionality, we're making use of serverless functions through Netlify.
+
+To test locally, you're going to want to set up the [Netlify CLI](https://docs.netlify.com/cli/get-started/#installation) and run
+
+```bash
+  netlify dev
+```
+
+This will allow you to consume the env variables from our Netlify account and perform hits to our serverless functions (currentl only search)
+
 ## Usage
 
 Now that you’ve got the files and an API key, you can start the site on your machine!
