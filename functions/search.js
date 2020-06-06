@@ -12,7 +12,6 @@ exports.handler = async event => {
     .expression(body.expression)
     .execute()
     .then(result => result);
-  console.log(res);
   return {
     statusCode: 200,
     body: JSON.stringify(res),
