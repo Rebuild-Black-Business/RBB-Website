@@ -36,8 +36,8 @@ module.exports = {
         slug: '/about',
       },
       {
-        name: 'Businesses In Need',
-        slug: '/businesses-in-need',
+        name: 'Businesses',
+        slug: '/businesses',
       },
       {
         name: 'Black Owned Businesses',
