@@ -77,9 +77,13 @@ npm install
 
 **Add environment variables**
 
-This site uses Airtable to keep track of business data. You’ll need an Airtable API key get access to the base we’re using here. To get access, please reach out to your Team Lead in Discord.
+This site uses Airtable to keep track of business data. We have set up a dummy database that mirrors the production database that you can get access to by signing up for Airtable via this link: https://airtable.com/invite/l?inviteId=invMvhnrpHMbuDNHe&inviteToken=50cc562d70779ebf8db6109fb31046358875f0c5c2d7b37143d433e56a9f9177
 
-Once you've obtained access, go to the API docs and grab your API key: https://airtable.com/appFoFzjMcciPUgoK/api/docs#javascript/authentication
+Upon clicking the above link, you will get "Read Only" access to the database.
+
+Once you've obtained access, go to the API docs and grab your API key by visiting the following link: https://airtable.com/appFoFzjMcciPUgoK/api/docs#javascript/authentication
+
+Or by clicking on your user image in Airtable, and finding the "API Documentation" link:
 
 ![Airtable API documentation link](docs/images/airtable-api-key-api-documentation.png)
 
@@ -88,6 +92,7 @@ Check the “show API key” box at the top-right, then look for yours in the co
 ![Airtable API key in the docs](docs/images/airtable-api-key.png)
 
 _Note:_ If you don't see this checkbox, make sure you're logged in to Airtable, and go to [your account settings page](https://airtable.com/account) to generate a key:
+
 ![Airtable API key in account settings](docs/images/airtable-api-key-acount-settings.png)
 
 Once you have your API key, create a file called `.env` and add your API key:
@@ -97,6 +102,12 @@ AIRTABLE_API_KEY=YOUR_API_KEY
 ```
 
 > **NOTE:** See `.env.EXAMPLE` for a copy-pasteable template to get set up!
+
+### Airtable Base ID
+
+Additionally, the `.env.EXAMPLE` file has the `AIRTABLE_BASE_ID` pre-defined for you. This ID references the dummy database mentioned above. Copy and paste that directly into your newly created `.env` file as well.
+
+If you ever lose the base ID for the dummy database, it is `appkenjGlBB01wr3i`.
 
 ## Cloudinary
 
