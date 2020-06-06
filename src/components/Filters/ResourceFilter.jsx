@@ -3,6 +3,17 @@ import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 
+const resourceCategories = [
+  { id: 'legal', label: 'Legal' },
+  { id: 'financial', label: 'Financial' },
+  { id: 'outreach', label: 'Outreach' },
+  { id: 'health', label: 'Health' },
+  { id: 'business', label: 'Business' },
+  { id: 'real-estate', label: 'Real Estate' },
+  { id: 'tech', label: 'Tech' },
+  { id: 'other', label: 'Other' },
+];
+
 function ResourceFilter(props) {
   const { onSearch } = props;
   const [location, setLocation] = useState('');
@@ -11,7 +22,7 @@ function ResourceFilter(props) {
   const handleSearchClick = event => {
     event.preventDefault();
     onSearch({
-      role: categoryRef.current.value,
+      category: categoryRef.current.value,
       location: location,
     });
   };
@@ -19,7 +30,7 @@ function ResourceFilter(props) {
   const handleSearchKeyPress = event => {
     event.preventDefault();
     onSearch({
-      role: categoryRef.current.value,
+      category: categoryRef.current.value,
       location: location,
     });
   };
@@ -36,6 +47,13 @@ function ResourceFilter(props) {
           >
             {
               // TODO: Iterate through list of categories to create <option>s
+              resourceCategories.map(resource => {
+                return (
+                  <option key={resource.id} value={resource.label}>
+                    {resource.label}
+                  </option>
+                );
+              })
             }
           </Select>
         </Flex>

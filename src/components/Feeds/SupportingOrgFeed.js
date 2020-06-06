@@ -9,17 +9,23 @@ const SupportingOrgs = data => {
     category: '',
     location: '',
   });
-  const [allOrgs] = useState(data.data.allAirtableSupportOrgs.nodes);
-  const [orgs, setOrgs] = useState(allOrgs);
+  const [allResources] = useState(data.data.allAirtableSupportOrgs.nodes);
+  const [orgs, setOrgs] = useState(allResources);
 
   useMemo(() => {
-    const filteredResults = allOrgs.filter(org => {
-      const input = searchFilters.location.toLowerCase();
-      const orgName = org.data['Location__Zip_Code_'].toLowerCase();
-      return orgName.includes(input);
-    });
+    const filteredResults = allResources
+      .filter(org => {
+        const input = searchFilters.location.toLowerCase();
+        const orgName = org.data['Location__Zip_Code_'].toLowerCase();
+        return orgName.includes(input);
+      })
+      .filter(
+        resource =>
+          resource.data['Category'] === searchFilters.category ||
+          searchFilters.category === ''
+      );
     setOrgs(filteredResults);
-  }, [searchFilters.location, allOrgs]);
+  }, [searchFilters, allResources]);
 
   const renderResults = () => {
     return orgs.length > 0 ? (
