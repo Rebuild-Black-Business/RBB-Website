@@ -9,7 +9,7 @@ export default function About() {
     <Layout>
       <Flex align="center" justify="center" direction="column">
         <Heading>About</Heading>
-        <Flex w="1000px" margin="3em" justify="space-evenly">
+        <Flex w="1240px" margin="3em" justify="space-evenly">
           <ContactCard
             businessOwnerCard
             title="Business Owner"

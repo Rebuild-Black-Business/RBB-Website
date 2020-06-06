@@ -44,7 +44,7 @@ const CardContent = ({ title, blurb }) => {
 
 // @TODO :: Add a fallback image to be displayed incase of no image
 const NoImage = () => (
-  <Box maxW="295px" maxH="215px" bg="#414A4C">
+  <Box maxW="342px" maxH="220px" bg="#414A4C">
     <Flex justify="center" align="center">
       <p>No image available</p>
     </Flex>
@@ -53,9 +53,9 @@ const NoImage = () => (
 
 // @TODO :: Replace with new Image component
 const CardImage = ({ imageUrl, imageAlt }) => (
-  <Box maxW="295px" maxH="215px">
+  <Flex w="342px" h="220px">
     <Image width="100%" height="100%" src={imageUrl} alt={imageAlt} />
-  </Box>
+  </Flex>
 );
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
@@ -91,8 +91,8 @@ const BusinessOwnerCard = ({
         ref={focusRef}
         tabIndex={-1}
         as="button"
-        w="295px"
-        h="322px"
+        maxW="342px"
+        maxH="322px"
         direction="column"
         onClick={onOpen}
       >
@@ -113,8 +113,8 @@ const GeneralInquiryCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
     as="a"
     href={`mailto:${email}`}
     isExternal
-    w="295px"
-    h="322px"
+    maxW="342px"
+    maxH="322px"
     direction="column"
   >
     {imageUrl ? (
@@ -131,9 +131,8 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     as={Link}
     href="https://discord.com/invite/272XMuv"
     isExternal
-    rel="noopener noreferrer"
-    w="295px"
-    h="322px"
+    maxW="342px"
+    maxH="322px"
     direction="column"
   >
     {imageUrl ? (
