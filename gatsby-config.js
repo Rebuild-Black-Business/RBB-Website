@@ -36,8 +36,8 @@ module.exports = {
         slug: '/about',
       },
       {
-        name: 'Businesses In Need',
-        slug: '/businesses-in-need',
+        name: 'Businesses',
+        slug: '/businesses',
       },
       {
         name: 'Black Owned Businesses',
@@ -99,6 +99,22 @@ module.exports = {
       options: {
         isUsingColorMode: false,
         isResettingCSS: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GOOGLE_TAGMANAGER_ID, // pulls in from your .env file
+
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: process.env.FACEBOOK_PIXEL_ID,
       },
     },
     'gatsby-plugin-react-helmet',
