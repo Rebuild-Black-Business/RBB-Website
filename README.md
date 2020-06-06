@@ -81,6 +81,8 @@ This site uses Airtable to keep track of business data. You’ll need an Airtabl
 
 Once you've obtained access, go to the API docs and grab your API key: https://airtable.com/appFoFzjMcciPUgoK/api/docs#javascript/authentication
 
+![Airtable API documentation link](docs/images/airtable-api-key-api-documentation.png)
+
 Check the “show API key” box at the top-right, then look for yours in the code sample displayed next to the “Authentication” docs.
 
 ![Airtable API key in the docs](docs/images/airtable-api-key.png)
@@ -95,6 +97,22 @@ AIRTABLE_API_KEY=YOUR_API_KEY
 ```
 
 > **NOTE:** See `.env.EXAMPLE` for a copy-pasteable template to get set up!
+
+## Cloudinary
+
+CLOUD_NAME=rebuild-black-business
+
+Our cloud name is used for every call to our `useImage` hook. Having this on hand will be useful.
+
+For our search functionality, we're making use of serverless functions through Netlify.
+
+To test locally, you're going to want to set up the [Netlify CLI](https://docs.netlify.com/cli/get-started/#installation) and run
+
+```bash
+  netlify dev
+```
+
+This will allow you to consume the env variables from our Netlify account and perform hits to our serverless functions (currentl only search)
 
 ## Usage
 

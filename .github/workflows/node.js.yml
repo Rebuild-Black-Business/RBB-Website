@@ -27,8 +27,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run ESLint
+        run: npm run lint
+
       - name: Run Jest tests
         run: npm test
+        
       # - name: Run Cypress tests
       #   env:
       #     AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
