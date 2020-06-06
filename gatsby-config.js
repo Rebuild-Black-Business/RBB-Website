@@ -40,10 +40,6 @@ module.exports = {
         slug: '/businesses',
       },
       {
-        name: 'Black Owned Businesses',
-        slug: '/black-owned-businesses',
-      },
-      {
         name: 'Resources',
         slug: '/resources',
       },
@@ -61,27 +57,27 @@ module.exports = {
         tables: [
           {
             baseId: `appFoFzjMcciPUgoK`, // note that this is not a secret, just an id
-            tableName: `Businesses In Need`,
+            tableName: `Businesses`,
             tableView: `Approved`, // optional
-            queryName: `BizInNeed`,
+            queryName: `Businesses`,
             separateNodeType: true,
             separateMapType: true,
+            defaultValues: {
+              Business_Description: '',
+              Donation_Link: '',
+            },
           },
           {
             baseId: `appFoFzjMcciPUgoK`, // note that this is not a secret, just an id
-            tableName: `Black Owned Businesses`,
+            tableName: `Resources`,
             tableView: `Approved`, // optional
-            queryName: `BlackOwnedBiz`,
+            queryName: `Resources`,
             separateNodeType: true,
             separateMapType: true,
-          },
-          {
-            baseId: `appFoFzjMcciPUgoK`, // note that this is not a secret, just an id
-            tableName: `Supporting Organizations`,
-            tableView: `Approved`, // optional
-            queryName: `SupportOrgs`,
-            separateNodeType: true,
-            separateMapType: true,
+            defaultValues: {
+              Description: '',
+              Zip_Code: '',
+            },
           },
           {
             baseId: `appFoFzjMcciPUgoK`, // note that this is not a secret, just an id
