@@ -11,10 +11,10 @@ describe('Navigation tests', () => {
     cy.url().should('include', '/about');
   });
 
-  it('Clicking "Businesses In Need" navigates user to the businesses-in-need page', () => {
-    cy.get("a[href$='/businesses-in-need']").click();
+  it('Clicking "Businesses" navigates user to the businesses page', () => {
+    cy.get("a[href$='/businesses']").click();
 
-    cy.url().should('include', '/businesses-in-need');
+    cy.url().should('include', '/businesses');
   });
 
   it('Clicking "Resources" navigates user to the resources page', () => {
