@@ -26,3 +26,18 @@ export default function Image(props) {
 
   return <ChakraImage {...props} src={data} alt="Media from Cloudinary" />;
 }
+
+/*
+  Image Component in use
+
+  <Image
+    cloudName="rebuild-black-business"
+    publicId="samples/animals/three-dogs"
+    mt={10}
+    transforms={{
+      height: 0.3,
+      fetchFormat: 'auto',
+      quality: 'auto',
+    }}
+  />
+*/

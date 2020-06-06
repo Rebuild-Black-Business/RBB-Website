@@ -3,12 +3,13 @@ import Image from './Image';
 import { Flex, Grid, Button } from '@chakra-ui/core';
 import { useSearch } from 'use-cloudinary';
 
-export default function Images() {
+// This serves as strictly an example usecase for search to work.
+
+export default function Search() {
   const { search, data, status } = useSearch({
     endpoint: '/.netlify/functions/search',
   });
 
-  console.log(data);
   // Again we can place Skeleton or Spinner components 👍
   if (status === 'loading') return <p>Loading...</p>;
 
