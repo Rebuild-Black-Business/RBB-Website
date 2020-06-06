@@ -1,22 +1,24 @@
 import React, { useMemo, useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { Flex, Heading, Box } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/core';
 
 import ResourceFilter from '../Filters/ResourceFilter';
 
-const SupportingOrgs = data => {
+const ResourceFeed = data => {
   const [searchFilters, setSearchFilters] = useState({
     category: '',
     location: '',
   });
-  const [allResources] = useState(data.data.allAirtableSupportOrgs.nodes);
+  const [allResources] = useState(data.data.allAirtableResources.nodes);
   const [orgs, setOrgs] = useState(allResources);
 
   useMemo(() => {
     const filteredResults = allResources
       .filter(org => {
         const input = searchFilters.location.toLowerCase();
-        const orgName = org.data['Location__Zip_Code_'].toLowerCase();
+        // @TODO :: Zip codes will be leveraged as the data that we collect, however we will take the zip codes from the DB and convert it to "City, ST" format.
+        // @TODO :: explore https://www.npmjs.com/package/zipcodes - this thing also includes distance measurements so we could eventually do things like "within 25 miles of me"
+        const orgName = org.data['Zip_Code'].toLowerCase();
         return orgName.includes(input);
       })
       .filter(
@@ -37,11 +39,6 @@ const SupportingOrgs = data => {
 
   return (
     <>
-      <Flex align="center" justify="center">
-        <Heading as="h3" size="lg">
-          Supporting Orgs
-        </Heading>
-      </Flex>
       <ResourceFilter onSearch={filters => setSearchFilters(filters)} />
       {renderResults()}
     </>
@@ -52,21 +49,23 @@ export default props => (
   <StaticQuery
     query={graphql`
       query {
-        allAirtableSupportOrgs {
+        allAirtableResources {
           nodes {
             data {
-              Category
-              CreatedAt
               Email
-              Location__Zip_Code_
               Name
-              Service_Org_Name
+              Entity_Name
+              Category
+              Tagged_For
+              Description
+              Zip_Code
               Website
+              CreatedAt
             }
           }
         }
       }
     `}
-    render={data => <SupportingOrgs data={data} {...props} />}
+    render={data => <ResourceFeed data={data} {...props} />}
   />
 );

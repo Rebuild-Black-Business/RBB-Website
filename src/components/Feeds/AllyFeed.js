@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import { Box } from '@chakra-ui/core';
 
-const SupportingOrgs = data => {
+const AllyFeed = data => {
   return <Box as="pre">{JSON.stringify(data, null, 2)}</Box>;
 };
 
@@ -14,16 +14,16 @@ export default props => (
         allAirtableAllies {
           nodes {
             data {
-              CreatedAt
               Email
-              Location__Zip_Code_
               Name
               Speciality
+              Zip_Code
+              CreatedAt
             }
           }
         }
       }
     `}
-    render={data => <SupportingOrgs data={data} {...props} />}
+    render={data => <AllyFeed data={data} {...props} />}
   />
 );
