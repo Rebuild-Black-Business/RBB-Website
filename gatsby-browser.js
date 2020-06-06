@@ -1,1 +1,1 @@
-export { wrapRootElement } from './wrap-root-element';
+import '@reach/skip-nav/styles.css';
