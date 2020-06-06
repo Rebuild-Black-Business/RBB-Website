@@ -18,7 +18,8 @@ const ResourceFeed = data => {
         const input = searchFilters.location.toLowerCase();
         // @TODO :: Zip codes will be leveraged as the data that we collect, however we will take the zip codes from the DB and convert it to "City, ST" format.
         // @TODO :: explore https://www.npmjs.com/package/zipcodes - this thing also includes distance measurements so we could eventually do things like "within 25 miles of me"
-        const orgName = org.data['Zip_Code'].toLowerCase();
+        // @TODO :: Remove the toString here, this is a stopgap since we're now getting integers from the DB instead of strings.
+        const orgName = org.data['Zip_Code'].toString().toLowerCase();
         return orgName.includes(input);
       })
       .filter(
@@ -31,7 +32,9 @@ const ResourceFeed = data => {
 
   const renderResults = () => {
     return orgs.length > 0 ? (
-      <Box as="pre">{JSON.stringify(orgs, null, 2)}</Box>
+      <Box as="pre" whiteSpace="break-spaces">
+        {JSON.stringify(orgs, null, 2)}
+      </Box>
     ) : (
       <Box as="pre">No results...</Box>
     );

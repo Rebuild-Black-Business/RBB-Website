@@ -4,7 +4,11 @@ import { StaticQuery, graphql } from 'gatsby';
 import { Box } from '@chakra-ui/core';
 
 const BusinessesFeed = data => {
-  return <Box as="pre">{JSON.stringify(data, null, 2)}</Box>;
+  return (
+    <Box as="pre" whiteSpace="break-spaces">
+      {JSON.stringify(data, null, 2)}
+    </Box>
+  );
 };
 
 export default props => (
