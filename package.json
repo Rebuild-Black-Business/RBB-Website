@@ -63,7 +63,8 @@
     "lint-staged": "^10.2.8",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1",
-    "start-server-and-test": "^1.11.0"
+    "start-server-and-test": "^1.11.0",
+    "zipcodes": "^8.0.0"
   },
   "husky": {
     "hooks": {
