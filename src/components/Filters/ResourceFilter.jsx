@@ -45,16 +45,13 @@ function ResourceFilter(props) {
             id="category"
             placeholder="Choose a category"
           >
-            {
-              // TODO: Iterate through list of categories to create <option>s
-              resourceCategories.map(resource => {
-                return (
-                  <option key={resource.id} value={resource.label}>
-                    {resource.label}
-                  </option>
-                );
-              })
-            }
+            {resourceCategories.map(resource => {
+              return (
+                <option key={resource.id} value={resource.label}>
+                  {resource.label}
+                </option>
+              );
+            })}
           </Select>
         </Flex>
         <Flex direction="column">
