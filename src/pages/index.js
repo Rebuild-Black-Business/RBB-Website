@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading, Link } from '@chakra-ui/core';
 import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout';
+import { Link as GatsbyLink } from 'gatsby';
 
 export default () => {
   return (
@@ -10,7 +11,10 @@ export default () => {
       <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Home</title>
       </Helmet>
-      <Flex align="center" justify="center">
+      <Link as={GatsbyLink} to="/about">
+        About
+      </Link>
+      <Flex direction="column" align="center" justify="center">
         <Heading size="2xl" fontFamily="Arvo">
           Home
         </Heading>
