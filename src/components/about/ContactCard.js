@@ -32,7 +32,7 @@ const CardContent = ({ title, blurb }) => {
         {title}
       </Text>
       <Text
-        pt="3"
+        p="4"
         fontSize={theme.fontSizes.paragraph}
         fontFamily={theme.fonts.heading}
       >
