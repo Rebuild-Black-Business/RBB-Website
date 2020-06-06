@@ -6,7 +6,7 @@ import ResourceFilter from '../Filters/ResourceFilter';
 
 const SupportingOrgs = data => {
   const [searchFilters, setSearchFilters] = useState({
-    role: '',
+    category: '',
     location: '',
   });
   const [allOrgs] = useState(data.data.allAirtableSupportOrgs.nodes);

@@ -3,27 +3,15 @@ import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 
-const userRoles = [
-  {
-    role: 'ally',
-    label: 'Ally',
-  },
-  {
-    role: 'owner',
-    label: 'Business owner',
-  },
-];
-
 function ResourceFilter(props) {
   const { onSearch } = props;
-
-  const roleRef = useRef({});
   const [location, setLocation] = useState('');
+  const categoryRef = useRef({});
 
   const handleSearchClick = event => {
     event.preventDefault();
     onSearch({
-      role: roleRef.current.value,
+      role: categoryRef.current.value,
       location: location,
     });
   };
@@ -31,7 +19,7 @@ function ResourceFilter(props) {
   const handleSearchKeyPress = event => {
     event.preventDefault();
     onSearch({
-      role: roleRef.current.value,
+      role: categoryRef.current.value,
       location: location,
     });
   };
@@ -40,15 +28,15 @@ function ResourceFilter(props) {
     <FormControl>
       <Flex>
         <Flex direction="column">
-          <FormLabel htmlFor="role">Resources For</FormLabel>
-          <Select ref={roleRef} id="role" placeholder="Who are you?">
-            {userRoles.map((role, index) => {
-              return (
-                <option key={index} value={role.role}>
-                  {role.label}
-                </option>
-              );
-            })}
+          <FormLabel htmlFor="category">Category</FormLabel>
+          <Select
+            ref={categoryRef}
+            id="category"
+            placeholder="Choose a category"
+          >
+            {
+              // TODO: Iterate through list of categories to create <option>s
+            }
           </Select>
         </Flex>
         <Flex direction="column">
