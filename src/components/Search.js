@@ -45,6 +45,7 @@ export default function Images() {
         {data &&
           data.resources.map(image => (
             <Image
+              cloudName="rebuild-black-business"
               border="2px solid black"
               publicId={image.public_id}
               options={{ height: 0.2 }}
