@@ -12,15 +12,37 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Text,
+  useTheme,
+  Link,
 } from '@chakra-ui/core';
 
-const CardContent = ({ title, blurb }) => (
-  <Flex w="100%" direction="column" p="4" align="center" justify="center">
-    <h5>{title}</h5>
-    <p>{blurb}</p>
-  </Flex>
-);
+const CardContent = ({ title, blurb }) => {
+  const theme = useTheme();
+  return (
+    <Flex
+      w="100%"
+      direction="column"
+      p="4"
+      align="center"
+      justify="center"
+      textAlign="center"
+    >
+      <Text fontSize={theme.fontSizes.lg} fontFamily={theme.fonts.heading}>
+        {title}
+      </Text>
+      <Text
+        pt="3"
+        fontSize={theme.fontSizes.paragraph}
+        fontFamily={theme.fonts.heading}
+      >
+        {blurb}
+      </Text>
+    </Flex>
+  );
+};
 
+// @TODO :: Add a fallback image to be displayed incase of no image
 const NoImage = () => (
   <Box maxW="295px" maxH="215px" bg="#414A4C">
     <Flex justify="center" align="center">
@@ -29,12 +51,14 @@ const NoImage = () => (
   </Box>
 );
 
+// @TODO :: Replace with new Image component
 const CardImage = ({ imageUrl, imageAlt }) => (
   <Box maxW="295px" maxH="215px">
     <Image width="100%" height="100%" src={imageUrl} alt={imageAlt} />
   </Box>
 );
 
+// @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
@@ -85,7 +109,14 @@ const BusinessOwnerCard = ({
 };
 
 const GeneralInquiryCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
-  <Flex as="a" href={`mailto:${email}`} w="295px" h="322px" direction="column">
+  <Flex
+    as="a"
+    href={`mailto:${email}`}
+    isExternal
+    w="295px"
+    h="322px"
+    direction="column"
+  >
     {imageUrl ? (
       <CardImage imageUrl={imageUrl} imageAlt={imageAlt} />
     ) : (
@@ -97,9 +128,9 @@ const GeneralInquiryCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
 
 const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
   <Flex
-    as="a"
+    as={Link}
     href="https://discord.com/invite/272XMuv"
-    target="_blank"
+    isExternal
     rel="noopener noreferrer"
     w="295px"
     h="322px"
