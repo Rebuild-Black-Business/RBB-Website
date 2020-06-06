@@ -81,6 +81,8 @@ This site uses Airtable to keep track of business data. You’ll need an Airtabl
 
 Once you've obtained access, go to the API docs and grab your API key: https://airtable.com/appFoFzjMcciPUgoK/api/docs#javascript/authentication
 
+![Airtable API documentation link](docs/images/airtable-api-key-api-documentation.png)
+
 Check the “show API key” box at the top-right, then look for yours in the code sample displayed next to the “Authentication” docs.
 
 ![Airtable API key in the docs](docs/images/airtable-api-key.png)
