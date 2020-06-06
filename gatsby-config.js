@@ -10,22 +10,22 @@ module.exports = {
     // eslint-disable-next-line max-len
     description: ``,
     author: {
-      name: '',
+      name: 'Rebuild Black Business',
     },
     organization: {
-      name: '',
-      url: '',
-      logo: '',
+      name: 'Rebuild Black Business',
+      url: BASE_SITE_URL,
+      logo: '#',
     },
     social: {
       twitter: '',
       fbAppID: '',
       instagram: '',
-      github: '',
+      github: 'https://github.com/Rebuild-Black-Business',
     },
     logo: {
-      src: '',
-      alt: '',
+      src: '#',
+      alt: 'Rebuild Black Business',
     },
     image: `${BASE_SITE_URL}/icons/icon-512x512.png`, // used for RSS feed image and SEO fallback
     logoText: 'Rebuild Black Business',
