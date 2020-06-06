@@ -6,10 +6,10 @@ import {
   Flex,
   Image,
   Heading,
-  Button,
   Text,
   Stack,
 } from '@chakra-ui/core';
+import { Button } from './Button';
 
 const CardWrapper = forwardRef(({ children, ...props }, ref) => {
   return (
@@ -91,11 +91,12 @@ const CardButton = forwardRef(({ children, ...props }, ref) => {
       flexGrow={1}
       // TODO: Unsure about these colors BTW, we can swap this out for a themed
       // Button component when it's available.
-      bg="#140303"
-      color="white"
-      _hover={{ bg: '#000' }}
-      _active={{ bg: '#000' }}
-      _focus={{ bg: '#000' }}
+      //   bg="#140303"
+      //   color="white"
+      //   _hover={{ bg: '#000' }}
+      //   _active={{ bg: '#000' }}
+      //   _focus={{ bg: '#000' }}
+      variant="primary"
       {...props}
       ref={ref}
     >
