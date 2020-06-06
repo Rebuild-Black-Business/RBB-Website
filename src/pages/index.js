@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 export default () => {
   return (
     <Layout>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Home</title>
       </Helmet>
       <Flex align="center" justify="center">
