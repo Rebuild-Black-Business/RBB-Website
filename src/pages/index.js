@@ -28,27 +28,27 @@ export default () => {
         mr={10}
       >
         <ResultCard
-          businessCategory="entertainment"
-          businessName="Dad's Donuts"
-          businessDescription={`Urna ad aliquet taciti dapibus rutrum morbi iaculis ut, lacinia sit luctus leo posuere montes torquent, mi ligula lacus inceptos pharetra vitae augue.`}
-          businessLocation="Atlanta, GA"
-          businessUrl="https://renderatl.com"
+          category="entertainment"
+          name="Dad's Donuts"
+          description={`Urna ad aliquet taciti dapibus rutrum morbi iaculis ut, lacinia sit luctus leo posuere montes torquent, mi ligula lacus inceptos pharetra vitae augue.`}
+          location="Atlanta, GA"
+          websiteUrl="https://renderatl.com"
           donationUrl="https://renderatl.com"
         />
         <ResultCard
           imageSrc="https://picsum.photos/900/900"
-          businessCategory="foodAndBeverage"
-          businessName="Baddy Books"
-          businessDescription={`Urna ad aliquet taciti dapibus rutrum morbi iaculis ut, lacinia sit luctus leo posuere montes torquent, mi ligula lacus inceptos pharetra vitae augue.`}
-          businessLocation="Atlanta, GA"
-          businessUrl="https://renderatl.com"
+          category="foodAndBeverage"
+          name="Baddy Books"
+          description={`Urna ad aliquet taciti dapibus rutrum morbi iaculis ut, lacinia sit luctus leo posuere montes torquent, mi ligula lacus inceptos pharetra vitae augue.`}
+          location="Atlanta, GA"
+          websiteUrl="https://renderatl.com"
         />
         <ResultCard
-          businessCategory="Random Thing"
-          businessName="Trisha's Tacos"
-          businessDescription={`Neque justo aliquam diam ante, mattis malesuada donec nisi elit, tempor dui et.`}
-          businessLocation="Atlanta, GA"
-          businessUrl="https://renderatl.com"
+          category="Random Thing"
+          name="Trisha's Tacos"
+          description={`Neque justo aliquam diam ante, mattis malesuada donec nisi elit, tempor dui et.`}
+          location="Atlanta, GA"
+          websiteUrl="https://renderatl.com"
         />
       </Grid>
     </Layout>

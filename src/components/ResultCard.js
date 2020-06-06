@@ -62,30 +62,40 @@ const ResultCard = forwardRef(
       children,
       imageSrc,
       imageAlt,
-      businessCategory,
-      businessName,
-      businessDescription,
-      businessLocation,
-      businessUrl,
+      category,
+      name,
+      description,
+      location,
+      websiteUrl,
       donationUrl,
       ...props
     },
     ref
   ) => {
     const hasFallbackImage =
-      businessCategory && Object.keys(categoryData).includes(businessCategory);
+      category && Object.keys(categoryData).includes(category);
     const hasImage = !!(imageSrc || hasFallbackImage);
+
+    // I'm not sure how categories are going to work, so this probaably needs to
+    // change. Also unsure how we're going to handle the schema category on the
+    // card wrapee
+    const categoryLabel =
+      (categoryData[category] && categoryData[category].label) || category;
     return (
       <CardWrapper
         ref={ref}
         {...props}
         // TODO: Use real theme colors per the design
         border="1px solid gray"
+        itemScope
+        // TODO: the category in Airtable isn't going to match the schema
+        // category, will need to be fixed. Omitting for now.
+        // itemType={`http://schema.org/${categoryLabel}`}
       >
         {hasImage && (
           <CardImage
-            src={imageSrc || categoryData[businessCategory].image.src}
-            alt={imageSrc ? imageAlt : categoryData[businessCategory].image.alt}
+            src={imageSrc || categoryData[category].image.src}
+            alt={imageSrc ? imageAlt : categoryData[category].image.alt}
           />
         )}
         <CardContent
@@ -93,23 +103,13 @@ const ResultCard = forwardRef(
           bg={hasImage ? 'white' : '#555'}
           color={hasImage ? undefined : 'white'}
         >
-          <CardHeading>{businessName}</CardHeading>
-          {businessCategory && (
-            <CardText as="span">
-              {(categoryData[businessCategory] &&
-                categoryData[businessCategory].label) ||
-                businessCategory}
-            </CardText>
-          )}
-          {businessDescription && (
-            <CardText as="p">{businessDescription}</CardText>
-          )}
-          <CardText as="p">{businessLocation}</CardText>
+          <CardHeading itemprop="name">{name}</CardHeading>
+          {category && <CardText as="span">{categoryLabel}</CardText>}
+          {description && <CardText as="p">{description}</CardText>}
+          <CardText as="p">{location}</CardText>
           <CardButtonGroup>
-            <CardButton as="a" href={businessUrl}>
-              {(businessCategory &&
-                categoryData[businessCategory]?.buttonText) ||
-                'Learn More'}
+            <CardButton as="a" href={websiteUrl}>
+              {(category && categoryData[category]?.buttonText) || 'Learn More'}
             </CardButton>
             {donationUrl && (
               <CardButton href={donationUrl} as="a">
@@ -128,11 +128,11 @@ const ResultCard = forwardRef(
 
 ResultCard.displayName = 'ResultCard';
 ResultCard.propTypes = {
-  businessCategory: PropTypes.string,
-  businessName: PropTypes.string.isRequired,
-  businessDescription: PropTypes.string,
-  businessLocation: PropTypes.string.isRequired,
-  businessUrl: PropTypes.string.isRequired,
+  category: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  location: PropTypes.string.isRequired,
+  websiteUrl: PropTypes.string.isRequired,
   donationUrl: PropTypes.string,
   imageSrc: PropTypes.string,
   imageAlt: (props, name, compName, _, propName) => {
