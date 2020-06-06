@@ -2,7 +2,7 @@ import zipcodes from 'zipcodes';
 
 const zipcodeConversion = zipcode => {
   try {
-    convertedZipcode = zipcodes.lookup(zipcode);
+    let convertedZipcode = zipcodes.lookup(zipcode);
     if (!convertedZipcode) throw error;
     return convertedZipcode;
   } catch (error) {
