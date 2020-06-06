@@ -8,7 +8,7 @@ import { Link as GatsbyLink } from 'gatsby';
 export default () => {
   return (
     <Layout>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Home</title>
       </Helmet>
       <Link as={GatsbyLink} to="/about">

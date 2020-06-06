@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import { Box } from '@chakra-ui/core';
 
-const SupportingOrgs = data => {
+const BusinessesFeed = data => {
   return <Box as="pre">{JSON.stringify(data, null, 2)}</Box>;
 };
 
@@ -11,21 +11,24 @@ export default props => (
   <StaticQuery
     query={graphql`
       query {
-        allAirtableBlackOwnedBiz {
+        allAirtableBusinesses {
           nodes {
             data {
+              Email
+              Name
               Business_Name
               Category
-              CreatedAt
-              Email
-              ID
-              Name
+              Zip_Code
+              Business_Description
               Website
+              Donation_Link
+              In_Need
+              CreatedAt
             }
           }
         }
       }
     `}
-    render={data => <SupportingOrgs data={data} {...props} />}
+    render={data => <BusinessesFeed data={data} {...props} />}
   />
 );
