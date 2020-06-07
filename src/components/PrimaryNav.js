@@ -54,7 +54,11 @@ const PrimaryNav = forwardRef(
         </Flex>
 
         <Box display={['block', 'block', 'none']} mr={{ sm: '5' }}>
-          <button onClick={handleToggle}>
+          <button
+            onClick={handleToggle}
+            aria-expanded={isVisible}
+            aria-controls="navigation"
+          >
             <VisuallyHidden>
               {`${isVisible ? 'Hide' : 'Show'} the navigation menu`}
             </VisuallyHidden>
@@ -66,6 +70,7 @@ const PrimaryNav = forwardRef(
               fill={theme.colors['rbb-white']}
             >
               <title>Menu</title>
+
               <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
             </svg>
           </button>
@@ -78,6 +83,8 @@ const PrimaryNav = forwardRef(
           justify="flex-end"
           flexGrow={1}
           hidden={!isVisible || undefined}
+          aria-hidden={isVisible}
+          id="navigation"
         >
           {menuLinks.map((link, index, src) => (
             <NavItem
