@@ -33,7 +33,6 @@
     "gatsby-plugin-google-tagmanager": "^2.3.4",
     "gatsby-plugin-netlify": "^2.3.4",
     "gatsby-plugin-react-helmet": "^3.3.3",
-    "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sentry": "^1.0.1",
     "gatsby-source-airtable": "^2.1.1",
     "gatsby-source-filesystem": "^2.3.10",
