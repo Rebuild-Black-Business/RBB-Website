@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
+import {
+  Checkbox,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+} from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 
@@ -9,11 +16,6 @@ const businessTypes = [
   { id: 'health', label: 'Health & Wellness' },
   { id: 'professional', label: 'Professional Services' },
   { id: 'retail', label: 'Retail' },
-];
-
-export const needTypes = [
-  { id: 'impacted', label: 'Impacted by protests' },
-  { id: 'not-impacted', label: 'Not impacted' },
 ];
 
 function ResourceFilter(props) {
@@ -27,7 +29,7 @@ function ResourceFilter(props) {
     onSearch({
       type: typeRef.current.value,
       location: location,
-      need: needRef.current.value,
+      need: needRef.current.checked,
     });
   };
 
@@ -36,7 +38,7 @@ function ResourceFilter(props) {
     onSearch({
       type: typeRef.current.value,
       location: location,
-      need: needRef.current.value,
+      need: needRef.current.checked,
     });
   };
 
@@ -72,15 +74,9 @@ function ResourceFilter(props) {
         </Flex>
         <Flex direction="column">
           <FormLabel htmlFor="need">Need</FormLabel>
-          <Select ref={needRef} id="need" defaultValue={0}>
-            {needTypes.map(needType => {
-              return (
-                <option key={needType.id} value={needType.id}>
-                  {needType.label}
-                </option>
-              );
-            })}
-          </Select>
+          <Checkbox ref={needRef} defaultIsChecked>
+            Affected by protests
+          </Checkbox>
         </Flex>
         <Flex direction="column">
           <PrimaryButton

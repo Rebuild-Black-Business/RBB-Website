@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Box } from '@chakra-ui/core';
 
-import BusinessFilter, { needTypes } from '../Filters/BusinessFilter';
+import BusinessFilter from '../Filters/BusinessFilter';
 
 const BusinessesFeed = data => {
   const [businessFilters, setBusinessFilters] = useState({
     type: '',
     location: '',
-    need: needTypes[0].id,
+    need: true,
   });
+  console.log('businessFilters', businessFilters);
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
   const [businesses, setBusinesses] = useState(allBusinesses);
 
@@ -17,7 +18,7 @@ const BusinessesFeed = data => {
     const filteredBusinesses = allBusinesses
       .filter(biz => {
         // Need filter
-        if (businessFilters.need === needTypes[0].id) {
+        if (businessFilters.need) {
           return biz.data['In_Need'];
         } else {
           return !biz.data['In_Need'];
