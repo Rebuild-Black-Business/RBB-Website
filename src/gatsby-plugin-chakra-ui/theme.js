@@ -134,7 +134,6 @@ const customTheme = {
         default: '#00000',
         hover: '#F46036',
         focus: '#F46036',
-        visited: '#BA2A2A',
       },
     },
     bizOrAlly: {
@@ -142,7 +141,6 @@ const customTheme = {
         default: '#F46036',
         hover: '#BA2A2A',
         focus: '#BA2A2A',
-        visited: '#565656',
       },
     },
   },

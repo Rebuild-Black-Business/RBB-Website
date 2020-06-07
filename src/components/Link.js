@@ -27,11 +27,6 @@ function Link(props) {
           ? theme.links.bizOrAlly.color.focus
           : theme.links.default.color.focus,
       }}
-      _visited={{
-        color: isBizOrAlly
-          ? theme.links.bizOrAlly.color.visited
-          : theme.links.default.color.visited,
-      }}
     >
       {props.children}
     </ChakraLink>
