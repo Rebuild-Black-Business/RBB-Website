@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import { Flex, PseudoBox, useTheme } from '@chakra-ui/core';
-
+import ArrowSVG from '../Svgs/ArrowSVG';
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
 
@@ -18,11 +17,12 @@ const RIGHT_PAGE = 'RIGHT';
 
 const Pagination = props => {
   const theme = useTheme();
+  const mql = window.matchMedia('(min-width: 480px)');
 
   const [totalRecords, setTotalRecords] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
   const [pageLimit, setPageLimit] = useState(10);
-  const [pageNeighbors, setPageNeighbors] = useState(1);
+  const [pageNeighbors, setPageNeighbors] = useState(mql.matches ? 2 : 1); // For mobile this is 1, desktop 2  |  window && window.matchMedia('')
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState([]);
 
@@ -150,6 +150,7 @@ const Pagination = props => {
 
   return (
     <Flex flexWrap="nowrap" justifyContent="center">
+      <ArrowSVG direction="LEFT" />
       {pages.map((page, i) => {
         return (
           <PseudoBox
@@ -194,6 +195,7 @@ const Pagination = props => {
           </PseudoBox>
         );
       })}
+      <ArrowSVG direction="RIGHT" />
     </Flex>
   );
 };

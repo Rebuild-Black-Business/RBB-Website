@@ -1,3 +1,4 @@
+import React from 'react';
 import { theme } from '@chakra-ui/core';
 import 'typeface-inter';
 import 'typeface-arvo';
