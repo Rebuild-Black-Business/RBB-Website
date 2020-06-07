@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import { Button as ChakraButton, useTheme } from '@chakra-ui/core';
 
 function getButtonStyles(theme, variant) {
@@ -38,12 +39,20 @@ function getButtonStyles(theme, variant) {
   };
 }
 
-export function Button({ variant, ...props }) {
+const Button = forwardRef(({ variant = 'primary', ...props }, ref) => {
   const theme = useTheme();
 
   if (!['cta', 'primary', 'secondary'].includes(variant))
     throw new Error(`Invalid <Button> variant: "${variant}"`);
 
   const buttonStyles = getButtonStyles(theme, variant);
-  return <ChakraButton {...buttonStyles} {...props} />;
-}
+  return <ChakraButton {...buttonStyles} ref={ref} {...props} />;
+});
+
+Button.displayName = 'Button';
+Button.propTypes = {
+  variant: PropTypes.oneOf(['cta', 'primary', 'secondary']),
+};
+
+export { Button };
+export default Button;
