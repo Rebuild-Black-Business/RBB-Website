@@ -11,7 +11,6 @@ const BusinessesFeed = data => {
     location: '',
     need: true,
   });
-  console.log('businessFilters', businessFilters);
 
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
   const [businesses, setBusinesses] = useState(allBusinesses);
@@ -39,14 +38,8 @@ const BusinessesFeed = data => {
       .filter(biz => {
         // Return when no location entered
         if (businessFilters.location === '') return biz;
-        console.log('associatedZipCodes', associatedZipCodes);
-        console.log(`biz.data['Zip_Code']`, biz.data['Zip_Code']);
-
-        return associatedZipCodes.includes(`${biz.data['Zip_Code']}`)
-          ? biz
-          : null;
+        return associatedZipCodes.includes(biz.data['Zip_Code']) ? biz : null;
       });
-    console.log('filteredBusinesses', filteredBusinesses);
 
     setBusinesses(filteredBusinesses);
   }, [businessFilters, allBusinesses]);

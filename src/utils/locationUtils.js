@@ -7,8 +7,8 @@ export function getLocationZip(locationString) {
       citystateArray[0],
       citystateArray[1]
     );
-    return zipAndCoordinates.map(location => location.zip);
+    return zipAndCoordinates.map(location => parseInt(location.zip));
   } else {
-    return parseInt(locationString);
+    return [parseInt(locationString)];
   }
 }
