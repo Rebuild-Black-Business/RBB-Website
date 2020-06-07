@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+
+import ResultCard from '../ResultCard';
 import { Box } from '@chakra-ui/core';
 
 import BusinessFilter from '../Filters/BusinessFilter';
@@ -44,20 +46,26 @@ const BusinessesFeed = data => {
     setBusinesses(filteredBusinesses);
   }, [businessFilters, allBusinesses]);
 
-  const renderResults = () => {
-    return businesses.length > 0 ? (
-      <Box as="pre" whiteSpace="break-spaces">
-        {JSON.stringify(businesses, null, 2)}
-      </Box>
-    ) : (
-      <Box as="pre">No results...</Box>
-    );
-  };
-
   return (
     <>
       <BusinessFilter onSearch={filters => setBusinessFilters(filters)} />
-      {renderResults()}
+      {businesses.length > 0 ? (
+        <>
+          <Box>
+            {businesses.map(business => (
+              <ResultCard
+                name={business.data.Business_Name}
+                category={business.data.Category}
+                description={business.data.Business_Description}
+                location={business.data.Zip_Code}
+                websiteUrl={business.data.Website}
+              />
+            ))}
+          </Box>
+        </>
+      ) : (
+        <Box as="pre">No results...</Box>
+      )}
     </>
   );
 };
