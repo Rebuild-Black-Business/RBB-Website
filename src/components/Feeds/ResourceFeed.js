@@ -33,13 +33,13 @@ const ResourceFeed = data => {
   const renderResults = () => {
     return orgs.length > 0 ? (
       <Box as="pre" whiteSpace="break-spaces">
-        {orgs.map(business => (
+        {orgs.map(org => (
           <ResultCard
-            name={business.data.Entity_Name}
-            category={business.data.Category}
-            description={business.data.Description}
-            location={business.data.Zip_Code}
-            websiteUrl={business.data.Website}
+            name={org.data.Entity_Name}
+            category={org.data.Category}
+            description={org.data.Description}
+            location={org.data.Zip_Code}
+            websiteUrl={org.data.Website}
           />
         ))}
       </Box>
