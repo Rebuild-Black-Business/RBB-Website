@@ -21,6 +21,7 @@ const customTheme = {
     '3xl': '2.5rem',
   },
   fontWeights: {
+    regular: 'regular',
     bold: 'bold',
   },
   border: {
@@ -125,6 +126,12 @@ const customTheme = {
       fontFamily: 'Arvo',
       textTransform: 'uppercase',
     },
+  },
+  footer: {
+    background: '#001514',
+    iconsBackground: '#C4C4C4',
+    iconsFill: '#000000',
+    text: '#F7F7F2',
   },
 };
 
