@@ -56,6 +56,22 @@ const categoryData = {
   },
 };
 
+/**
+ * @component
+ * @example
+ * return (
+ *   <ResultCard
+ *     category="foodAndBeverage"
+ *     name="Dad's Donuts"
+ *     description="Blah blah blaaaah"
+ *     location="Atlanta, GA"
+ *     websiteUrl="https://dobusiness.com"
+ *     donationUrl="https://donatemoney.com"
+ *     imageSrc="https://imagesrc.jpg"
+ *     imageAlt="cool image you got there"
+ *   />
+ * )
+ */
 const ResultCard = forwardRef(
   (
     {
