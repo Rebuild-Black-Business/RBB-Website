@@ -6,14 +6,14 @@ import { Box } from '@chakra-ui/core';
 const BusinessesFeed = data => {
   return (
     <Box as="pre" whiteSpace="break-spaces">
-      {data.data.allAirtableBusinesses.nodes.map(item => (
+      {data.data.allAirtableBusinesses.nodes.map(business => (
         <ResultCard
-          name={item.data.Business_Name}
-          category={item.data.Category}
-          description={item.data.Business_Description}
-          location={item.data.zip_code}
-          websiteUrl={item.data.Website}
-          donationUrl={item.data.donationUrl}
+          name={business.data.Business_Name}
+          category={business.data.Category}
+          description={business.data.Business_Description}
+          location={business.data.zip_code}
+          websiteUrl={business.data.Website}
+          donationUrl={business.data.donationUrl}
         />
       ))}
     </Box>
