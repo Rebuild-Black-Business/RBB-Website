@@ -1,12 +1,21 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-
+import ResultCard from '../ResultCard';
 import { Box } from '@chakra-ui/core';
 
 const BusinessesFeed = data => {
+  const businesses = data.data.allAirtableBusinesses.nodes;
   return (
-    <Box as="pre" whiteSpace="break-spaces">
-      {JSON.stringify(data, null, 2)}
+    <Box>
+      {businesses.map(business => (
+        <ResultCard
+          name={business.data.Business_Name}
+          category={business.data.Category}
+          description={business.data.Business_Description}
+          location={business.data.Zip_Code}
+          websiteUrl={business.data.Website}
+        />
+      ))}
     </Box>
   );
 };

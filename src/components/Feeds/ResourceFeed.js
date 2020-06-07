@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Box } from '@chakra-ui/core';
-
 import ResourceFilter from '../Filters/ResourceFilter';
+import ResultCard from '../ResultCard';
 
 const ResourceFeed = data => {
   const [searchFilters, setSearchFilters] = useState({
@@ -32,8 +32,16 @@ const ResourceFeed = data => {
 
   const renderResults = () => {
     return orgs.length > 0 ? (
-      <Box as="pre" whiteSpace="break-spaces">
-        {JSON.stringify(orgs, null, 2)}
+      <Box>
+        {orgs.map(org => (
+          <ResultCard
+            name={org.data.Entity_Name}
+            category={org.data.Category}
+            description={org.data.Description}
+            location={org.data.Zip_Code}
+            websiteUrl={org.data.Website}
+          />
+        ))}
       </Box>
     ) : (
       <Box as="pre">No results...</Box>
