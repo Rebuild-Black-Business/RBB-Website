@@ -40,7 +40,6 @@ const ResourceFeed = data => {
             description={business.data.Description}
             location={business.data.Zip_Code}
             websiteUrl={business.data.Website}
-            donationUrl={business.data.donationUrl}
           />
         ))}
       </Box>
