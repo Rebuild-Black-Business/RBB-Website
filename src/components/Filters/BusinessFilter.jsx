@@ -63,7 +63,7 @@ function ResourceFilter(props) {
             value={location}
             id="location"
             type="text"
-            placeholder="Enter city"
+            placeholder="Denver, CO or 80219"
             onChange={event => setLocation(event.currentTarget.value)}
             onKeyPress={event => {
               if (event.key === 'Enter') {

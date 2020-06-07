@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { Box } from '@chakra-ui/core';
 
 import BusinessFilter from '../Filters/BusinessFilter';
+import { getLocationZip } from '../../utils/locationUtils';
 
 const BusinessesFeed = data => {
   const [businessFilters, setBusinessFilters] = useState({
@@ -11,10 +12,12 @@ const BusinessesFeed = data => {
     need: true,
   });
   console.log('businessFilters', businessFilters);
+
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
   const [businesses, setBusinesses] = useState(allBusinesses);
 
   useEffect(() => {
+    const associatedZipCodes = getLocationZip(businessFilters.location);
     const filteredBusinesses = allBusinesses
       .filter(biz => {
         // Need filter
@@ -32,8 +35,18 @@ const BusinessesFeed = data => {
           businessFilters.type === ''
           ? biz
           : null;
+      })
+      .filter(biz => {
+        // Return when no location entered
+        if (businessFilters.location === '') return biz;
+        console.log('associatedZipCodes', associatedZipCodes);
+        console.log(`biz.data['Zip_Code']`, biz.data['Zip_Code']);
+
+        return associatedZipCodes.includes(`${biz.data['Zip_Code']}`)
+          ? biz
+          : null;
       });
-    console.log(filteredBusinesses);
+    console.log('filteredBusinesses', filteredBusinesses);
 
     setBusinesses(filteredBusinesses);
   }, [businessFilters, allBusinesses]);
