@@ -8,7 +8,6 @@ const customTheme = {
     ...theme.fonts,
     'heading-slab': 'Inter',
     heading: 'Arvo',
-    link: 'Arvo',
   },
   fontSizes: {
     ...theme.fontSizes,
@@ -128,11 +127,22 @@ const customTheme = {
     },
   },
   links: {
-    color: {
-      default: '#F46036',
-      hover: '#BA2A2A',
-      focus: '#BA2A2A',
-      visited: '#565656',
+    font: 'Arvo',
+    default: {
+      color: {
+        default: '#00000',
+        hover: '#F46036',
+        focus: '#F46036',
+        visited: '#BA2A2A',
+      },
+    },
+    bizOrAlly: {
+      color: {
+        default: '#F46036',
+        hover: '#BA2A2A',
+        focus: '#BA2A2A',
+        visited: '#565656',
+      },
     },
   },
 };
