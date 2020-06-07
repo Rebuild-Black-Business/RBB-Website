@@ -56,7 +56,7 @@ const PrimaryNav = forwardRef(
         <Box display={['block', 'block', 'none']} mr={{ sm: '5' }}>
           <button
             onClick={handleToggle}
-            aria-expanded={isVisible}
+            aria-expanded={isVisible && !isMedium}
             aria-controls="navigation"
           >
             <VisuallyHidden>
