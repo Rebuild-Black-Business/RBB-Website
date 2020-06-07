@@ -36,6 +36,7 @@ const customTheme = {
     'rbb-white': '#1e6b7f',
     'rbb-red': '#fafcd6',
     'rbb-orange': '#f46036',
+    'rbb-hover-gray': '#757575',
   },
   letterSpacings: {
     button: '0.05em',
