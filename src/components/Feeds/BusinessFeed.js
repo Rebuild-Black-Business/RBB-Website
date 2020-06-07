@@ -1,13 +1,17 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-
 import { Box } from '@chakra-ui/core';
+
+import BusinessFilter from '../Filters/BusinessFilter';
 
 const BusinessesFeed = data => {
   return (
-    <Box as="pre" whiteSpace="break-spaces">
-      {JSON.stringify(data, null, 2)}
-    </Box>
+    <>
+      <BusinessFilter onSearch={value => console.log(value)} />
+      <Box as="pre" whiteSpace="break-spaces">
+        {JSON.stringify(data, null, 2)}
+      </Box>
+    </>
   );
 };
 
