@@ -8,6 +8,7 @@ const customTheme = {
     ...theme.fonts,
     'heading-slab': 'Inter',
     heading: 'Arvo',
+    link: 'Arvo',
   },
   fontSizes: {
     ...theme.fontSizes,
@@ -124,6 +125,14 @@ const customTheme = {
       padding: '2px 44px',
       fontFamily: 'Arvo',
       textTransform: 'uppercase',
+    },
+  },
+  links: {
+    color: {
+      default: '#F46036',
+      hover: '#BA2A2A',
+      focus: '#BA2A2A',
+      visited: '#565656',
     },
   },
 };
