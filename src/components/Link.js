@@ -5,8 +5,7 @@ import { Link as GatsbyLink } from 'gatsby';
 function Link(props) {
   const theme = useTheme();
   const isBizOrAlly = props.isBizOrAlly ? true : false;
-  console.log('isBiz: ', isBizOrAlly);
-  console.log('visited: ', theme.links.bizOrAlly.color.visited);
+
   return (
     <ChakraLink
       as={GatsbyLink}
