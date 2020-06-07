@@ -9,7 +9,7 @@ export default function Businesses() {
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading>Businesses</Heading>
+        <Heading as="h1">Businesses</Heading>
         <Pagination
           onPageChanged={pagination => {
             // @TODO add pagination handler
