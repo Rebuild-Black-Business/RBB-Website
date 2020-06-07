@@ -32,7 +32,7 @@ const ResourceFeed = data => {
 
   const renderResults = () => {
     return orgs.length > 0 ? (
-      <Box as="pre" whiteSpace="break-spaces">
+      <Box>
         {orgs.map(org => (
           <ResultCard
             name={org.data.Entity_Name}

@@ -6,7 +6,7 @@ import { Box } from '@chakra-ui/core';
 const BusinessesFeed = data => {
   const businesses = data.data.allAirtableBusinesses.nodes;
   return (
-    <Box as="pre" whiteSpace="break-spaces">
+    <Box>
       {businesses.map(business => (
         <ResultCard
           name={business.data.Business_Name}
