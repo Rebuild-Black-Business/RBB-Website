@@ -11,9 +11,8 @@ const BusinessesFeed = data => {
           name={business.data.Business_Name}
           category={business.data.Category}
           description={business.data.Business_Description}
-          location={business.data.zip_code}
+          location={business.data.Zip_Code}
           websiteUrl={business.data.Website}
-          donationUrl={business.data.donationUrl}
         />
       ))}
     </Box>
