@@ -1,10 +1,10 @@
 import React, { useState, useLayoutEffect, forwardRef } from 'react';
 import { useTheme } from '@chakra-ui/core';
-import { Flex, Link, Box, Image } from '@chakra-ui/core';
+import { Flex, Link, Box } from '@chakra-ui/core';
 import { Link as GatsbyLink } from 'gatsby';
 import VisuallyHidden from '@reach/visually-hidden';
 import { Nav, NavMenu, NavItem, NavLink } from './Nav';
-import Logo from '../assets/RBB-logo.svg';
+import Image from './Image';
 // Logo sometimes takes a while to load. Looking for ways to optimize the file size
 
 const INITIAL_TOGGLE_STATE = false;
@@ -41,7 +41,15 @@ const PrimaryNav = forwardRef(
       >
         <Flex align="center" ml={5} my={[5, 5, 0]}>
           <Link as={GatsbyLink} to="/">
-            <Image size="16" src={Logo} alt={logoInformation.alt} />
+            <Image
+              cloudName="rebuild-black-business"
+              publicId="assets/RBBLogoFinal_ugdskx"
+              transforms={{
+                height: 0.1,
+                fetchFormat: 'auto',
+                quality: 'auto',
+              }}
+            />
           </Link>
         </Flex>
 
