@@ -39,9 +39,10 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
-    "use-cloudinary": "^2.2.5",
     "typeface-arvo": "^1.1.3",
-    "typeface-inter": "^3.12.0"
+    "typeface-inter": "^3.12.0",
+    "use-cloudinary": "^2.2.5",
+    "zipcodes": "^8.0.0"
   },
   "devDependencies": {
     "@testing-library/cypress": "^6.0.0",
@@ -63,8 +64,7 @@
     "lint-staged": "^10.2.8",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1",
-    "start-server-and-test": "^1.11.0",
-    "zipcodes": "^8.0.0"
+    "start-server-and-test": "^1.11.0"
   },
   "husky": {
     "hooks": {
