@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from 'gatsby';
 
 function Link(props) {
   const theme = useTheme();
-  const isBizOrAlly = props.isBizOrAlly ? true : false;
+  const isCallToAction = props.isCallToAction ? true : false;
 
   return (
     <ChakraLink
@@ -13,19 +13,19 @@ function Link(props) {
       fontFamily={theme.links.font}
       textDecoration="underline"
       color={
-        isBizOrAlly
-          ? theme.links.bizOrAlly.color.default
-          : theme.links.default.color.default
+        isCallToAction
+          ? theme.links.cta.color.default
+          : theme.links.standard.color.default
       }
       _hover={{
-        color: isBizOrAlly
-          ? theme.links.bizOrAlly.color.hover
-          : theme.links.default.color.hover,
+        color: isCallToAction
+          ? theme.links.cta.color.hover
+          : theme.links.standard.color.hover,
       }}
       _focus={{
-        color: isBizOrAlly
-          ? theme.links.bizOrAlly.color.focus
-          : theme.links.default.color.focus,
+        color: isCallToAction
+          ? theme.links.cta.color.focus
+          : theme.links.standard.color.focus,
       }}
     >
       {props.children}

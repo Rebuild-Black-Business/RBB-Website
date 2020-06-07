@@ -129,14 +129,14 @@ const customTheme = {
   },
   links: {
     font: 'Arvo',
-    default: {
+    standard: {
       color: {
         default: '#00000',
         hover: '#F46036',
         focus: '#F46036',
       },
     },
-    bizOrAlly: {
+    cta: {
       color: {
         default: '#F46036',
         hover: '#BA2A2A',
