@@ -9,7 +9,11 @@ export default function About() {
     <Layout>
       <Flex align="center" justify="center" direction="column">
         <Heading>About</Heading>
-        <Flex w="1240px" margin="3em" justify="space-evenly">
+        <Flex
+          margin="3em"
+          justify="space-evenly"
+          direction={['column', 'column', 'column', 'row']}
+        >
           <ContactCard
             modalCard
             title="Business Owner"
