@@ -22,8 +22,8 @@ const FooterLinks = () => {
               {data.site.siteMetadata.menuLinks.map(link => (
                 <NavItem key={link.name} mr="4" mt={[2, null]} display="flex">
                   <NavLink
-                    fontWeight={theme.fontWeights.regular}
                     fontFamily={theme.fonts.heading}
+                    opacity={0.7}
                     color={theme.footer.text}
                     to={link.slug}
                   >

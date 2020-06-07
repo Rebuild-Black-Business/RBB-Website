@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, useTheme } from '@chakra-ui/core';
+import { Flex, useTheme } from '@chakra-ui/core';
 import SocialLinks from './SocialLinks';
 import FooterLinks from './FooterLinks';
 import PhotoCredit from './PhotoCredits';
@@ -20,7 +20,7 @@ const Footer = () => {
         align="center"
         justify="space-evenly"
         minW={{ sm: '300px', md: '500px' }}
-        h="100%"
+        h="80%"
         mt="5"
       >
         <SocialLinks />

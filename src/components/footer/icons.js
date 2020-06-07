@@ -2,6 +2,10 @@ import React from 'react';
 import { Box, Link, useTheme } from '@chakra-ui/core';
 import footerStyles from './Footer.module.css';
 
+/**
+ * Icon container with external link
+ * @param {string} The external link the icon points to
+ */
 const IconContainer = ({ children, link }) => {
   const theme = useTheme();
   return (
@@ -21,10 +25,14 @@ const IconContainer = ({ children, link }) => {
   );
 };
 
-export function Twitter() {
+/**
+ * The Twitter icon link
+ * @param {string} The external link the icon points to
+ */
+export function Twitter({ link }) {
   const theme = useTheme();
   return (
-    <IconContainer link="#">
+    <IconContainer link={link}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24px"
@@ -43,10 +51,14 @@ export function Twitter() {
   );
 }
 
-export function Instagram() {
+/**
+ * The Instagram icon link
+ * @param {string} The external link the icon points to
+ */
+export function Instagram({ link }) {
   const theme = useTheme();
   return (
-    <IconContainer link="#">
+    <IconContainer link={link}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24px"
@@ -65,10 +77,14 @@ export function Instagram() {
   );
 }
 
-export function Facebook() {
+/**
+ * The Facebook icon link
+ * @param {string} The external link the icon points to
+ */
+export function Facebook({ link }) {
   const theme = useTheme();
   return (
-    <IconContainer link="#">
+    <IconContainer link={link}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24px"
@@ -87,14 +103,18 @@ export function Facebook() {
   );
 }
 
-export function Envelope() {
+/**
+ * The Envelope icon link
+ * @param {string} The external link the icon points to
+ */
+export function Envelope({ link }) {
   const theme = useTheme();
   return (
-    <IconContainer link="#">
+    <IconContainer link={link}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="20px"
-        height="20px"
+        width="24px"
+        height="24px"
         viewBox="0 0 1792 1792"
         aria-labelledby="envelopeTitle"
         role="img"
