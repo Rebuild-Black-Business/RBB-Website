@@ -11,7 +11,7 @@ const businessTypes = [
   { id: 'retail', label: 'Retail' },
 ];
 
-const needTypes = [
+export const needTypes = [
   { id: 'impacted', label: 'Impacted by protests' },
   { id: 'not-impacted', label: 'Not impacted' },
 ];
@@ -72,15 +72,11 @@ function ResourceFilter(props) {
         </Flex>
         <Flex direction="column">
           <FormLabel htmlFor="need">Need</FormLabel>
-          <Select ref={needRef} id="need">
-            {needTypes.map((resource, index) => {
+          <Select ref={needRef} id="need" defaultValue={0}>
+            {needTypes.map(needType => {
               return (
-                <option
-                  selected={index === 0}
-                  key={resource.id}
-                  value={resource.label}
-                >
-                  {resource.label}
+                <option key={needType.id} value={needType.id}>
+                  {needType.label}
                 </option>
               );
             })}
