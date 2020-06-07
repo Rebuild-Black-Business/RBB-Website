@@ -10,9 +10,10 @@ export default function About() {
       <Flex align="center" justify="center" direction="column">
         <Heading>About</Heading>
         <Flex
-          margin="3em"
+          w="100%"
+          // margin="3em"
           justify="space-evenly"
-          direction={['column', 'column', 'column', 'row']}
+          direction={['column', 'column', 'row', 'row']}
         >
           <ContactCard
             modalCard

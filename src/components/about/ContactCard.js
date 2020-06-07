@@ -37,15 +37,26 @@ const CardContent = ({ title, blurb, imageUrl, imageAlt }) => {
       >
         <Text
           color="white"
-          fontSize={theme.fontSizes.lg}
+          fontSize={[
+            theme.fontSizes.md,
+            theme.fontSizes.md,
+            theme.fontSizes.lg,
+            theme.fontSizes.lg,
+          ]}
           fontFamily={theme.fonts.heading}
         >
           {title}
         </Text>
         <Text
           p="4"
-          fontSize={theme.fontSizes.paragraph}
+          fontSize={[
+            theme.fontSizes.sm,
+            theme.fontSizes.sm,
+            theme.fontSizes.md,
+            theme.fontSizes.md,
+          ]}
           fontFamily={theme.fonts.heading}
+          height="90px"
           color="#F7F7F2"
         >
           {blurb}
@@ -66,11 +77,11 @@ const NoImage = () => (
 
 // @TODO :: Replace with new Image component
 const CardImage = ({ imageUrl, imageAlt }) => (
-  <Flex w="342px" h="220px">
+  <Flex maxW="342px" maxH="220px">
     <Image
       objectFit="cover"
-      width="100%"
-      height="100%"
+      // width="100%"
+      // height="100%"
       src={imageUrl}
       alt={imageAlt}
     />
@@ -104,8 +115,11 @@ const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
         ref={focusRef}
         tabIndex={-1}
         as="button"
-        maxW="342px"
-        maxH="322px"
+        margin="10% auto"
+        maxW={['297px', '297px', '342px', '342px']}
+        maxH={['474px', '474px', '322px', '322px']}
+        // maxW="342px"
+        // maxH="322px"
         direction="column"
         onClick={onOpen}
       >
@@ -123,11 +137,12 @@ const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
 
 const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
   <Flex
+    margin="10% auto"
     as="a"
     href={`mailto:${email}`}
     isExternal
-    maxW="342px"
-    maxH="322px"
+    maxW={['297px', '297px', '342px', '342px']}
+    maxH={['474px', '474px', '322px', '322px']}
     direction="column"
   >
     <CardContent
@@ -144,8 +159,9 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     as={Link}
     href="https://discord.com/invite/272XMuv"
     isExternal
-    maxW="342px"
-    maxH="322px"
+    margin="10% auto"
+    maxW={['297px', '297px', '342px', '342px']}
+    maxH={['474px', '474px', '322px', '322px']}
     direction="column"
   >
     <CardContent
