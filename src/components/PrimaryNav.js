@@ -5,7 +5,6 @@ import { Link as GatsbyLink } from 'gatsby';
 import VisuallyHidden from '@reach/visually-hidden';
 import { Nav, NavMenu, NavItem, NavLink } from './Nav';
 import Image from './Image';
-// Logo sometimes takes a while to load. Looking for ways to optimize the file size
 
 const INITIAL_TOGGLE_STATE = false;
 
@@ -49,6 +48,7 @@ const PrimaryNav = forwardRef(
                 fetchFormat: 'auto',
                 quality: 'auto',
               }}
+              alt={logoInformation.alt}
             />
           </Link>
         </Flex>
