@@ -4,9 +4,10 @@ import ResultCard from '../ResultCard';
 import { Box } from '@chakra-ui/core';
 
 const BusinessesFeed = data => {
+  const businesses = data.data.allAirtableBusinesses.nodes;
   return (
     <Box as="pre" whiteSpace="break-spaces">
-      {data.data.allAirtableBusinesses.nodes.map(business => (
+      {businesses.map(business => (
         <ResultCard
           name={business.data.Business_Name}
           category={business.data.Category}
