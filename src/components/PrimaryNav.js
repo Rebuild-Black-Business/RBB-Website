@@ -106,7 +106,6 @@ function useThemeBreakpoint(breakpoint) {
   const index = sizes.indexOf(breakpoint);
   const theme = useTheme();
   const query = `(min-width: ${theme.breakpoints[index]})`;
-  console.log(query);
   const [matches, setMatches] = useState(
     typeof window !== 'undefined' ? window.matchMedia(query).matches : false
   );
