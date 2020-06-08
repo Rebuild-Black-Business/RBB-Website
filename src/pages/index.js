@@ -26,6 +26,7 @@ export default () => {
           </Box>
         </ContentBlock>
 
+        <Heading>Right Side Content</Heading>
         <ContentBlock
           layout="right"
           imageSource="url('https://placehold.it/1920x300')"
@@ -40,7 +41,6 @@ export default () => {
           </Box>
         </ContentBlock>
 
-        <Heading>Right Side Content</Heading>
         <ContentBlock
           layout="right"
           imageSource="url('https://placehold.it/1920x300')"
