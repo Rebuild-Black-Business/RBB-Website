@@ -10,7 +10,7 @@ export default function About() {
       <Flex align="center" justify="center" direction="column">
         <Flex
           w="100%"
-          h="250px"
+          minH="250px"
           backgroundColor="#000"
           align="center"
           justify="center"
@@ -19,37 +19,52 @@ export default function About() {
         >
           <Heading>ABOUT</Heading>
         </Flex>
-        <Flex w="100%" backgroundColor="#F7F7F2" h="250px">
-          <Flex direction="column" align="center" justify="center">
-            <Flex direction="row">
+        <Flex w="100%" minH="500px" backgroundColor="#F7F7F2">
+          <Flex
+            direction="column"
+            align="center"
+            justify="center"
+            marginTop={['21px', '21px', '0']}
+            marginBottom={['21px', '21px', '0']}
+          >
+            <Flex direction={['column', 'column', 'row', 'row']}>
               <Heading
                 display="inline-block"
                 lineHeight="1"
                 verticalAlign="top"
+                textAlign="center"
               >
                 MISSION
               </Heading>
               <Divider
-                marginLeft="25px"
-                marginRight="25px"
+                marginLeft={['98px', '98px', '25px', '25px']}
+                marginRight={['97px', '97px', '25px', '25px']}
+                marginTop={['25px', '25px', '0']}
+                marginBottom={['25px', '25px', '0']}
                 border="1px solid"
                 borderColor="#BA2A2A"
                 orientation="vertical"
               />
-              <p style={{ whiteSpace: 'pre-wrap' }}> {MISSION_STRING} </p>
+              <p style={{ whiteSpace: 'pre-wrap' }}>{MISSION_STRING}</p>
             </Flex>
 
-            <Flex direction="row" marginTop="4em">
+            <Flex
+              direction={['column', 'column', 'row', 'row']}
+              marginTop="3em"
+            >
               <Heading
                 display="inline-block"
                 lineHeight="1"
                 verticalAlign="top"
+                textAlign="center"
               >
                 WHO WE ARE
               </Heading>
               <Divider
-                marginLeft="25px"
-                marginRight="25px"
+                marginLeft={['98px', '98px', '25px', '25px']}
+                marginRight={['97px', '97px', '25px', '25px']}
+                marginTop={['25px', '25px', '0']}
+                marginBottom={['25px', '25px', '0']}
                 border="1px solid"
                 borderColor="#BA2A2A"
                 orientation="vertical"
@@ -62,6 +77,8 @@ export default function About() {
         <Flex
           align="center"
           width="100%"
+          minH="500px"
+          maxH="500px"
           justify="center"
           direction="column"
           backgroundColor="#DEDEDA"
