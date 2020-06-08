@@ -90,7 +90,14 @@ const ModalForm = ({ isOpen, onClose, title }) => (
   </Modal>
 );
 
-const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
+const ModalCard = ({
+  imageUrl,
+  imageAlt,
+  modalTitle,
+  title,
+  blurb,
+  margin,
+}) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
 
@@ -100,11 +107,12 @@ const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
         as="a"
         href="#"
         ref={focusRef}
-        margin="2% auto"
+        margin="5% auto"
         maxW={['279px', '342px']}
         maxH="322px"
         direction="column"
         onClick={onOpen}
+        marginBottom={margin}
       >
         <CardContent
           title={title}
@@ -123,7 +131,7 @@ const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
     as="a"
     href={`mailto:${email}`}
     isExternal
-    margin="2% auto"
+    margin="5% auto"
     maxW={['279px', '342px']}
     maxH="322px"
     direction="column"
@@ -142,7 +150,7 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     as={Link}
     href="https://discord.com/invite/272XMuv"
     isExternal
-    margin="2% auto"
+    margin="5% auto"
     maxW={['279px', '342px']}
     maxH="322px"
     direction="column"

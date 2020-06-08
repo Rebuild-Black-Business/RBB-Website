@@ -22,7 +22,7 @@ export default function About() {
         </Flex>
         <Flex
           w="100%"
-          h={['605px', '605px', '405px', '377px', '377px']}
+          h={['100%', '100%', '405px', '377px', '377px']}
           backgroundColor="#F7F7F2"
         >
           <Flex
@@ -34,7 +34,7 @@ export default function About() {
             marginLeft={['0', '0', '5%', '15%', '15%', '30%']}
             marginRight={['0', '0', '5%', '20%', '20%', '35%']}
           >
-            <Content heading="MISSION" message={MISSION_MESSAGE} />
+            <Content heading="MISSION" message={MISSION_MESSAGE} margin="3em" />
             <Content
               heading="WHO WE ARE"
               message={WHO_WE_ARE_MESSAGE}
@@ -50,16 +50,15 @@ export default function About() {
           direction="column"
           backgroundColor="#DEDEDA"
         >
-          <Heading
-            fontFamily={theme.fontSizes['heading-slab']}
-            color={theme.colors['rbb-black-200']}
-            as="h2"
-            size="xl"
-            paddingTop="32px"
-          >
+          <Heading as="h2" size="xl" paddingTop={['40px', '44px']}>
             CONTACT
           </Heading>
-          <Flex w="80%" direction={['column', 'column', 'row', 'row']}>
+          <Flex
+            w={['100%', '100%', '80%', '80%']}
+            direction={['column', 'column', 'row', 'row']}
+            paddingTop="32px"
+            paddingBottom="32px"
+          >
             <ContactCard
               modalCard
               title="Business Owner"

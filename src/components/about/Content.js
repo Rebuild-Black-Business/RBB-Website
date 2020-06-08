@@ -1,4 +1,4 @@
-import { Divider, Flex, Heading, Text } from '@chakra-ui/core';
+import { Divider, Flex, Heading, Text, theme } from '@chakra-ui/core';
 import React from 'react';
 
 const Content = ({ heading, message, margin }) => {
@@ -11,14 +11,16 @@ const Content = ({ heading, message, margin }) => {
         lineHeight="1"
         verticalAlign="top"
         textAlign={['center', 'center', 'center', 'right']}
+        fontFamily={theme.fonts['heading-slab']}
+        color={theme.colors['rbb-black-200']}
         minW="285px"
-        paddingRight="22px"
+        paddingRight={['0px', '0px', '22px', '22px']}
       >
         {heading}
       </Heading>
       <Divider
-        marginLeft={['98px', '128px', '25px', '25px']}
-        marginRight={['97px', '97px', '25px', '25px']}
+        marginLeft={['15%', '15%', '25px', '25px']}
+        marginRight={['15%', '15%', '15%', '25px']}
         marginTop={['25px', '25px', '0']}
         marginBottom={['25px', '25px', '0']}
         border="1px solid"
@@ -30,7 +32,7 @@ const Content = ({ heading, message, margin }) => {
         textAlign={['center', 'center', 'center', 'left']}
         marginLeft={['17px', '17px', '0']}
         marginRight={['16px', '16px', '0']}
-        paddingLeft="25px"
+        paddingLeft={['0px', '0px', '25px', '25px']}
       >
         {message}
       </Text>
