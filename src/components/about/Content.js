@@ -12,12 +12,11 @@ const Content = ({ heading, message, margin }) => {
         verticalAlign="top"
         textAlign={['center', 'center', 'center', 'right']}
         minW="285px"
-        paddingRight="22px"
       >
         {heading}
       </Heading>
       <Divider
-        marginLeft={['98px', '128px', '25px', '25px']}
+        marginLeft={['98px', '98px', '25px', '25px']}
         marginRight={['97px', '97px', '25px', '25px']}
         marginTop={['25px', '25px', '0']}
         marginBottom={['25px', '25px', '0']}
@@ -30,7 +29,6 @@ const Content = ({ heading, message, margin }) => {
         textAlign={['center', 'center', 'center', 'left']}
         marginLeft={['17px', '17px', '0']}
         marginRight={['16px', '16px', '0']}
-        paddingLeft="25px"
       >
         {message}
       </Text>
