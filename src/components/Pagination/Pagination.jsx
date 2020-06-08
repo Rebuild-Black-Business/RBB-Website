@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, PseudoBox, IconButton, useTheme } from '@chakra-ui/core';
+import { Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import PaginationArrow from '../Svgs/PaginationArrow';
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
