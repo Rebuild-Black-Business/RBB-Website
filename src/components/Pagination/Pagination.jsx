@@ -5,16 +5,19 @@ import { Flex, Button, useTheme } from '@chakra-ui/core';
 
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
-const SET_PAGINATION_CONFIG = 'SET_PAGINATION_CONFIG';
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_PAGE_NUMBERS = 'SET_PAGE_NUMBERS';
+const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE';
+const UPDATE_PAGE_LIMIT = 'UPDATE_PAGE_LIMIT';
+const UPDATE_PAGE_NEIGHBORS = 'UDPATE_PAGE_NEIGHBORS';
+const UPDATE_PAGE_NUMBERS = 'UPDATE_PAGE_NUMBERS';
+const UPDATE_TOTAL_PAGES = 'UPDATE_TOTAL_PAGES';
+const UPDATE_TOTAL_RECORDS = 'UPDATE_TOTAL_RECORDS';
 
 /**
  * @function range
  *
  * @param {number} from - Range start value
  * @param {number} to - Range end value
- * @param {number} step - Number to increment each loop count by
+ * @param {number} [step] - Number to increment each loop count by
  * @returns {Array.<number>} - An array of numbers
  */
 
@@ -29,32 +32,56 @@ const range = (from, to, step = 1) => {
 };
 
 /**
- * @function Pagination
+ * @function reducer
  *
- * @param {number} currentPage - current page number that is being viewed
- * @param {number} totalRecords - Total records count
- * @param {number} pageLimit - Number of items to display per page
- * @param {number} pageNeighbors - Number of neighboring pages when pagination is in the middle of the list
- * @param {function} onPageChanged - Callback function that passes paginated information
- *
+ * @param {Object} state - Current state
+ * @param {number} state.currentPage - Current page number
+ * @param {number} state.totalRecords - The total records count
+ * @param {number} state.pageLimit - A number representing number of items per page
+ * @param {number} state.pageNeighbors - Number of neighboring pages when pagination is in the middle of the list
+ * @param {Array.<number|LEFT_PAGE|RIGHT_PAGE>} state.pages - An array containing numbers, "LEFT", or "RIGHT"
+ * @param {Object} action - Action object containing action type and various payloads
+ * @param {UPDATE_CURRENT_PAGE| UPDATE_PAGE_LIMIT | UPDATE_PAGE_NEIGHBORS | UPDATE_PAGE_NUMBERS | UPDATE_TOTAL_PAGES | UPDATE_TOTAL_RECORDS} action.type - Action type to dispatch
+ * @param {number} [action.currentPage] - Current page number to update
+ * @param {number} [action.pageNeighbors] - Number to update page neighbors
+ * @param {number} [action.pageLimit] - Number to update page limit
+ * @param {number} [action.totalRecords] - Number to update total records
+ * @param {number} [action.totalPages] - Number to update total pages
+ * @param {Array.<number|LEFT_PAGE|RIGHT_PAGE>} [action.pages] - Array containing numbers, "LEFT", or "RIGHT" to update page list
+ * @returns {state} - Returns current state
  */
 
 function reducer(state, action) {
   switch (action.type) {
-    case SET_PAGINATION_CONFIG:
+    case UPDATE_CURRENT_PAGE:
       return {
         ...state,
-        ...action.payload,
+        currentPage: action.currentPage,
       };
-    case SET_CURRENT_PAGE:
+    case UPDATE_PAGE_LIMIT:
       return {
         ...state,
-        currentPage: action.payload,
+        pageLimit: action.pageLimit,
       };
-    case SET_PAGE_NUMBERS: {
+    case UPDATE_PAGE_NEIGHBORS:
       return {
         ...state,
-        pages: action.payload,
+        pageNeighbors: action.pageNeighbors,
+      };
+    case UPDATE_TOTAL_PAGES:
+      return {
+        ...state,
+        totalPages: action.totalPages,
+      };
+    case UPDATE_TOTAL_RECORDS:
+      return {
+        ...state,
+        totalRecords: action.totalRecords,
+      };
+    case UPDATE_PAGE_NUMBERS: {
+      return {
+        ...state,
+        pages: action.pages,
       };
     }
     default:
@@ -62,8 +89,22 @@ function reducer(state, action) {
   }
 }
 
+/**
+ * @function Pagination
+ *
+ * @param {Object} props - Props object that is passed into Pagination
+ * @param {number} props.currentPage - current page number that is being viewed
+ * @param {number} props.totalRecords - Total records count
+ * @param {number} [props.pageLimit=10] - Number of items to display per page
+ * @param {number} [props.pageNeighbors=1] - Number of neighboring pages when pagination is in the middle of the list
+ * @param {function} props.onPageChanged - Callback function that passes paginated information
+ *
+ */
+
 const Pagination = props => {
   const theme = useTheme();
+
+  const { currentPage, pageLimit, pageNeighbors, totalRecords } = props;
 
   const [state, dispatch] = useReducer(reducer, {
     totalRecords: null,
@@ -76,14 +117,24 @@ const Pagination = props => {
 
   useEffect(() => {
     dispatch({
-      type: SET_PAGINATION_CONFIG,
-      payload: {
-        currentPage: props.currentPage,
-        totalRecords: props.totalRecords,
-        pageLimit: props.pageLimit,
-        pageNeighbors: Math.max(0, Math.min(props.pageNeighbors, 2)),
-        totalPages: Math.ceil(props.totalRecords / props.pageLimit),
-      },
+      type: UPDATE_PAGE_NEIGHBORS,
+      pageNeighbors: Math.max(0, Math.min(pageNeighbors, 2)),
+    });
+    dispatch({
+      type: UPDATE_PAGE_LIMIT,
+      pageLimit,
+    });
+    dispatch({
+      type: UPDATE_TOTAL_RECORDS,
+      totalRecords,
+    });
+    dispatch({
+      type: UPDATE_TOTAL_PAGES,
+      totalPages: Math.ceil(totalRecords / pageLimit),
+    });
+    dispatch({
+      type: UPDATE_CURRENT_PAGE,
+      currentPage,
     });
   }, [
     props.currentPage,
@@ -162,8 +213,8 @@ const Pagination = props => {
     const pageNumbers = fetchPageNumbers();
 
     dispatch({
-      type: SET_PAGE_NUMBERS,
-      payload: pageNumbers,
+      type: UPDATE_PAGE_NUMBERS,
+      pages: pageNumbers,
     });
   }, [state.currentPage, state.totalPages, state.pageNeighbors]);
 
@@ -173,8 +224,8 @@ const Pagination = props => {
 
     const currentPage = Math.max(0, Math.min(page, totalPages));
     dispatch({
-      type: SET_CURRENT_PAGE,
-      payload: currentPage,
+      type: UPDATE_CURRENT_PAGE,
+      currentPage,
     });
 
     const paginationData = {
