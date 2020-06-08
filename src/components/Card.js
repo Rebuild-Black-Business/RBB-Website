@@ -45,7 +45,13 @@ const CardContent = forwardRef(({ children, ...props }, ref) => {
 const CardHeading = forwardRef(({ children, ...props }, ref) => {
   return (
     <Box
-      as={props => <Heading {...props} size="lg" as="h3" />}
+      as={props => (
+        <Heading
+          {...props}
+          fontSize={props.fontSize ? props.fontSize : '2xl'}
+          as="h3"
+        />
+      )}
       mb={3}
       {...props}
       ref={ref}
