@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 
 import ResultCard from '../ResultCard';
-import { Box } from '@chakra-ui/core';
+import { Box, SimpleGrid } from '@chakra-ui/core';
 
 import BusinessFilter from '../Filters/BusinessFilter';
 import { getLocationZip } from '../../utils/locationUtils';
@@ -10,7 +10,7 @@ export default data => {
   const [businessFilters, setBusinessFilters] = useState({
     type: '',
     location: '',
-    need: true,
+    need: 'true',
   });
 
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
@@ -21,7 +21,7 @@ export default data => {
     const filteredBusinesses = allBusinesses
       .filter(biz => {
         // Need filter
-        if (businessFilters.need) {
+        if (businessFilters.need === 'true') {
           return biz.data['In_Need'];
         } else {
           return biz;
@@ -45,26 +45,24 @@ export default data => {
   }, [businessFilters, allBusinesses]);
 
   return (
-    <>
+    <Box maxW="859px">
       <BusinessFilter onSearch={filters => setBusinessFilters(filters)} />
       {businesses.length > 0 ? (
-        <>
-          <Box>
-            {businesses.map((business, index) => (
-              <ResultCard
-                key={index}
-                name={business.data.Business_Name}
-                category={business.data.Category}
-                description={business.data.Business_Description}
-                location={business.data.Zip_Code}
-                websiteUrl={business.data.Website}
-              />
-            ))}
-          </Box>
-        </>
+        <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+          {businesses.map((business, index) => (
+            <ResultCard
+              key={index}
+              name={business.data.Business_Name}
+              category={business.data.Category}
+              description={business.data.Business_Description}
+              location={business.data.Zip_Code}
+              websiteUrl={business.data.Website}
+            />
+          ))}
+        </SimpleGrid>
       ) : (
         <Box as="pre">No results...</Box>
       )}
-    </>
+    </Box>
   );
 };
