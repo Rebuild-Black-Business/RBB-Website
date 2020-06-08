@@ -18,7 +18,7 @@ const businessTypes = [
   { id: 'retail', label: 'Retail' },
 ];
 
-function ResourceFilter(props) {
+function BusinessFilter(props) {
   const { onSearch } = props;
   const [location, setLocation] = useState('');
   const typeRef = useRef();
@@ -95,4 +95,4 @@ function ResourceFilter(props) {
   );
 }
 
-export default ResourceFilter;
+export default BusinessFilter;
