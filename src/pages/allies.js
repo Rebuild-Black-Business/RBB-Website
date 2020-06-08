@@ -1,15 +1,35 @@
 import React from 'react';
 
-import { Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading, useTheme, Text, Box } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import AllyFeed from '../components/Feeds/AllyFeed';
 import Pagination from '../components/Pagination/Pagination';
 
 export default function Allies() {
+  const theme = useTheme();
+
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading as="h1">Allies</Heading>
+        <Box maxW="859px">
+          <Heading
+            as="h1"
+            fontFamily={theme.fonts['heading-slab']}
+            fontSize="3xl"
+            paddingTop="59px"
+            textAlign="center"
+            textTransform="uppercase"
+          >
+            Allies
+          </Heading>
+          <Text paddingBottom="59px">
+            These Allies have skills to share in assisting black-owned
+            businesses to return to business, and stay afloat while operating.
+            Reach out to those on this page if you know of a way to join the
+            fight in helping businesses survive and thrive.
+          </Text>
+        </Box>
+        <AllyFeed />
         <Pagination
           onPageChanged={pagination => {
             // @TODO add pagination handler
@@ -17,7 +37,6 @@ export default function Allies() {
           totalRecords={70}
           pageLimit={5}
         />
-        <AllyFeed />
       </Flex>
     </Layout>
   );

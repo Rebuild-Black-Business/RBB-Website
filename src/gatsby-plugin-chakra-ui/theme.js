@@ -130,12 +130,29 @@ const customTheme = {
       textTransform: 'uppercase',
     },
   },
-  footer: {
-    background: '#001514',
-    iconsBackground: '#C4C4C4',
-    iconsFill: '#000000',
-    text: '#F7F7F2',
-    photoCreditLink: '#FFFFFF',
+  links: {
+    font: 'Arvo',
+    standard: {
+      color: {
+        default: '#00000',
+        hover: '#F46036',
+        focus: '#F46036',
+      },
+    },
+    cta: {
+      color: {
+        default: '#F46036',
+        hover: '#BA2A2A',
+        focus: '#BA2A2A',
+      },
+    },
+    footer: {
+      color: {
+        default: '#F7F7F2B3',
+        hover: '#ffffff',
+        focus: '#ffffff',
+      },
+    },
   },
 };
 
