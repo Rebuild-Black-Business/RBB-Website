@@ -147,7 +147,7 @@ ResultCard.propTypes = {
   category: PropTypes.string,
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.number.isRequired,
   websiteUrl: PropTypes.string.isRequired,
   donationUrl: PropTypes.string,
   imageSrc: PropTypes.string,

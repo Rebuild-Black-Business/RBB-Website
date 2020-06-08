@@ -8,7 +8,7 @@ export default function About() {
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading>About</Heading>
+        <Heading as="h1">About</Heading>
         <Flex w="1240px" margin="3em" justify="space-evenly">
           <ContactCard
             modalCard
