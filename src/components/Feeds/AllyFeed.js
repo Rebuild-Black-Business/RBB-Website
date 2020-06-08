@@ -54,66 +54,75 @@ const AllyFeed = data => {
           paddingBottom={theme.spacing.lg}
         >
           {allAllies.map((allies, index) => {
-            // @TODO :: Need to add ither cloundiary image, or background image to this card, as per the designs.
             if (index === 4)
               return (
-                <CardWrapper
-                  gridColumn={[null, null, 'span 2']}
-                  pr={theme.spacing.lg}
-                  pos="relative"
-                >
-                  <Image
-                    cloudName="rebuild-black-business"
-                    publicId="assets/ally-sign-up"
-                    transforms={{
-                      fetchFormat: 'auto',
-                      quality: 'auto',
-                    }}
-                    objectFit="cover"
-                    pos="absolute"
-                    zIndex="-1"
-                    w="100%"
-                    h="100%"
-                    top="0"
-                    left="0"
-                  />
-                  <CardContent
-                    color={theme.colors['rbb-white']}
-                    display="flex"
-                    flexDirection="column"
+                <>
+                  <CardWrapper
+                    gridColumn={[null, null, 'span 2']}
+                    pr={theme.spacing.lg}
+                    pos="relative"
                   >
-                    <CardHeading
-                      fontFamily={theme.fonts['heading-slab']}
-                      textTransform="uppercase"
-                      fontSize={theme.fontSizes.xl}
-                      lineHeight="1"
-                      overflowWrap="break-word"
-                      wordWrap="break-word"
-                      wordBreak="break-word"
-                      hyphens="auto"
+                    <Image
+                      cloudName="rebuild-black-business"
+                      publicId="assets/ally-sign-up"
+                      transforms={{
+                        fetchFormat: 'auto',
+                        quality: 'auto',
+                      }}
+                      objectFit="cover"
+                      pos="absolute"
+                      zIndex="-1"
+                      w="100%"
+                      h="100%"
+                      top="0"
+                      left="0"
+                    />
+                    <CardContent
+                      color={theme.colors['rbb-white']}
+                      display="flex"
+                      flexDirection="column"
                     >
-                      Sign up to be an Ally
-                    </CardHeading>
-                    <CardText
-                      as="p"
-                      fontFamily={theme.fonts.heading}
-                      fontSize={theme.fontSizes.base}
-                    >
-                      Use your skills to assist Black-owned businesses to return
-                      to business and stay afloat while operating. Sign up to be
-                      added to a private directory of Allies shared with Black
-                      business owners.
-                    </CardText>
-                    <Button
-                      variant="cta"
-                      mt={theme.spacing.base}
-                      onClick={onOpen}
-                      ref={focusRef}
-                    >
-                      Share Your Skills
-                    </Button>
-                  </CardContent>
-                </CardWrapper>
+                      <CardHeading
+                        fontFamily={theme.fonts['heading-slab']}
+                        textTransform="uppercase"
+                        fontSize={theme.fontSizes.xl}
+                        lineHeight="1"
+                        overflowWrap="break-word"
+                        wordWrap="break-word"
+                        wordBreak="break-word"
+                        hyphens="auto"
+                      >
+                        Sign up to be an Ally
+                      </CardHeading>
+                      <CardText
+                        as="p"
+                        fontFamily={theme.fonts.heading}
+                        fontSize={theme.fontSizes.base}
+                      >
+                        Use your skills to assist Black-owned businesses to
+                        return to business and stay afloat while operating. Sign
+                        added to a private directory of Allies shared with Black
+                        business owners.
+                      </CardText>
+                      <Button
+                        variant="cta"
+                        mt={theme.spacing.base}
+                        onClick={onOpen}
+                        ref={focusRef}
+                      >
+                        Share Your Skills
+                      </Button>
+                    </CardContent>
+                  </CardWrapper>
+
+                  <AllyCard
+                    key={index}
+                    name={allies.data.Name}
+                    email={allies.data.Email}
+                    specialty={allies.data.Speciality}
+                    location={allies.data.Zip_Code}
+                  />
+                </>
               );
             return (
               <AllyCard
