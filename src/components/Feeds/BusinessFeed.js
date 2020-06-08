@@ -52,8 +52,9 @@ const BusinessesFeed = data => {
       {businesses.length > 0 ? (
         <>
           <Box>
-            {businesses.map(business => (
+            {businesses.map((business, index) => (
               <ResultCard
+                key={index}
                 name={business.data.Business_Name}
                 category={business.data.Category}
                 description={business.data.Business_Description}
