@@ -30,8 +30,6 @@ const AllyCard = forwardRef(
     const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
     const theme = useTheme();
 
-    console.log(specialty);
-
     return (
       <CardWrapper ref={ref} {...props}>
         <CardContent
