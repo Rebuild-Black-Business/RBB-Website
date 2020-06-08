@@ -1,4 +1,4 @@
-import { Divider, Flex, Heading, Text } from '@chakra-ui/core';
+import { Divider, Flex, Heading, Text, theme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
