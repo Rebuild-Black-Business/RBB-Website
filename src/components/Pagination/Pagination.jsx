@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import { Flex, PseudoBox, IconButton, useTheme } from '@chakra-ui/core';
+import PaginationArrow from '../Svgs/PaginationArrow';
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
 
@@ -17,12 +17,12 @@ const RIGHT_PAGE = 'RIGHT';
 
 const Pagination = props => {
   const theme = useTheme();
-  const mql = window.matchMedia('(min-width: 480px)');
+  const mq = window.matchMedia('(min-width: 480px)');
 
   const [totalRecords, setTotalRecords] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
   const [pageLimit, setPageLimit] = useState(10);
-  const [pageNeighbors, setPageNeighbors] = useState(mql.matches ? 2 : 1); // For mobile this is 1, desktop 2  |  window && window.matchMedia('')
+  const [pageNeighbors, setPageNeighbors] = useState(mq.matches ? 2 : 1); // For mobile this is 1, desktop 2  |  window && window.matchMedia('')
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState([]);
 
@@ -162,30 +162,11 @@ const Pagination = props => {
 
   return (
     <Flex flexWrap="nowrap" justifyContent="center">
-      <PseudoBox
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        height={10}
-        width={10}
-        _hover={{
-          color: 'rbb-white',
-          stroke: 'rbb-black',
-        }}
-      >
-        <IconButton
-          onClick={handleArrowClickBackward}
-          variant="unstyled"
-          fill="rbb-white"
-          icon="arrowLeft"
-          size="lg"
-          isDisabled={currentPage === 1}
-          minWidth={0}
-          css={css`
-            transform: rotate(225deg 11 12);
-          `}
-        />
-      </PseudoBox>
+      <PaginationArrow
+        isDisabled={currentPage === 1}
+        onClick={handleArrowClickBackward}
+        icon="arrowLeft"
+      />
       {pages.map((page, i) => {
         return (
           <PseudoBox
@@ -230,30 +211,11 @@ const Pagination = props => {
           </PseudoBox>
         );
       })}
-      <PseudoBox
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        height={10}
-        width={10}
-        _hover={{
-          color: 'rbb-white',
-          stroke: 'rbb-black',
-        }}
-      >
-        <IconButton
-          onClick={handleArrowClickForward}
-          variant="unstyled"
-          fill="rbb-white"
-          icon="arrowRight"
-          size="lg"
-          isDisabled={currentPage === totalPages}
-          minWidth={0}
-          css={css`
-            transform: rotate(45deg 11 12);
-          `}
-        />
-      </PseudoBox>
+      <PaginationArrow
+        icon="arrowRight"
+        isDisabled={currentPage === totalPages}
+        onClick={handleArrowClickForward}
+      />
     </Flex>
   );
 };
