@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 
 import ResultCard from '../ResultCard';
 import { Box, SimpleGrid } from '@chakra-ui/core';
@@ -7,7 +6,7 @@ import { Box, SimpleGrid } from '@chakra-ui/core';
 import BusinessFilter from '../Filters/BusinessFilter';
 import { getLocationZip } from '../../utils/locationUtils';
 
-const BusinessesFeed = data => {
+export default data => {
   const [businessFilters, setBusinessFilters] = useState({
     type: '',
     location: '',
@@ -67,29 +66,3 @@ const BusinessesFeed = data => {
     </Box>
   );
 };
-
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allAirtableBusinesses {
-          nodes {
-            data {
-              Email
-              Name
-              Business_Name
-              Category
-              Zip_Code
-              Business_Description
-              Website
-              Donation_Link
-              In_Need
-              CreatedAt
-            }
-          }
-        }
-      }
-    `}
-    render={data => <BusinessesFeed data={data} {...props} />}
-  />
-);
