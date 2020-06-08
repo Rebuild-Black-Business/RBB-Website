@@ -1,16 +1,23 @@
 import React from 'react';
 
 import { graphql, navigate } from 'gatsby';
-import { Flex, Heading } from '@chakra-ui/core';
-import Layout from '../components/Layout';
-import BusinessFeed from '../components/Feeds/BusinessFeed';
-import Pagination from '../components/Pagination/Pagination';
+import { Flex } from '@chakra-ui/core';
+
+import { PageHero, Layout, BusinessFeed, Pagination } from '../components';
 
 export default function Businesses(data) {
+  const pageSubtitle = (
+    <p>
+      These business owners have been impacted during the protests. Your support
+      will assist their rebuilding efforts. If you are a business owner in need,
+      please <a href="#temp">sign up to be added to our list</a>
+    </p>
+  );
+
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading as="h1">Businesses</Heading>
+        <PageHero title="Businesses" subtitle={pageSubtitle} />
         <Pagination
           onPageChanged={pagination =>
             navigate(
