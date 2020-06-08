@@ -48,7 +48,7 @@ const AllyFeed = data => {
     >
       {allAllies.length > 0 ? (
         <SimpleGrid
-          columns={[null, null, 2, 4]}
+          columns={[null, 1, 2, 4]}
           spacing={theme.spacing.med}
           paddingBottom={theme.spacing.lg}
         >
@@ -57,7 +57,7 @@ const AllyFeed = data => {
             if (index === 4)
               return (
                 <CardWrapper
-                  gridColumn="span 2"
+                  gridColumn={[null, null, 'span 2']}
                   pr={theme.spacing.lg}
                   bg={theme.colors['rbb-black-100']}
                 >
