@@ -19,7 +19,11 @@ export default function About() {
         >
           <Heading>ABOUT</Heading>
         </Flex>
-        <Flex w="100%" minH="500px" backgroundColor="#F7F7F2">
+        <Flex
+          w="100%"
+          h={['605px', '605px', '377px']}
+          backgroundColor="#F7F7F2"
+        >
           <Flex
             direction="column"
             align="center"
