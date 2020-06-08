@@ -62,7 +62,6 @@ const Content = ({
   );
 };
 
-
 Content.propTypes = {
   heading: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,

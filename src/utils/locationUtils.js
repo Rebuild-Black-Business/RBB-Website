@@ -1,3 +1,5 @@
+import zipcodes from 'zipcodes';
+
 export function getLocationZip(locationString) {
   if (locationString.includes(',')) {
     const citystateArray = locationString.split(', ');
