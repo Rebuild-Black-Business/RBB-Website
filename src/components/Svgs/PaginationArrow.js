@@ -2,13 +2,21 @@ import React from 'react';
 import { PseudoBox, IconButton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 
-const PaginationArrow = ({ onClick, transform, isDisabled, icon }) => {
+/**
+ * @function PaginationArrow
+ *
+ * @param {function} onClick - Callback function that runs when icon is clicked
+ * @param {boolean} isDisabled - Boolean that determines whether the icon is disabled
+ * @param {string} icon - Name of the svg icon from the theme.js file
+ *
+ */
+
+const PaginationArrow = ({ onClick, isDisabled, icon }) => {
   return (
     <PseudoBox
       display="flex"
       alignItems="center"
       justifyContent="center"
-      alignSelf="baseline"
       height={10}
       width={10}
       stroke="rbb-black"
@@ -25,6 +33,7 @@ const PaginationArrow = ({ onClick, transform, isDisabled, icon }) => {
       <IconButton
         onClick={onClick}
         aria-label="Next"
+        aria-labelledby={icon}
         variant="unstyled"
         fill="white"
         icon={icon}
@@ -37,9 +46,8 @@ const PaginationArrow = ({ onClick, transform, isDisabled, icon }) => {
 };
 
 PaginationArrow.propTypes = {
-  handleMove: PropTypes.func.isRequired,
-  transform: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   icon: PropTypes.oneOf(['arrowRight', 'arrowLeft']).isRequired,
 };
 

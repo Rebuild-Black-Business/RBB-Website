@@ -17,12 +17,12 @@ const RIGHT_PAGE = 'RIGHT';
 
 const Pagination = props => {
   const theme = useTheme();
-  const mq = window.matchMedia('(min-width: 480px)');
+  const mq = window && window.matchMedia('(min-width: 480px)');
 
   const [totalRecords, setTotalRecords] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
   const [pageLimit, setPageLimit] = useState(10);
-  const [pageNeighbors, setPageNeighbors] = useState(mq.matches ? 2 : 1); // For mobile this is 1, desktop 2  |  window && window.matchMedia('')
+  const [pageNeighbors, setPageNeighbors] = useState(mq.matches ? 2 : 1);
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState([]);
 
@@ -148,23 +148,19 @@ const Pagination = props => {
     gotoPage(currentPage + pageNeighbors * 2 + 1);
   };
 
-  const handleArrowClickForward = () => {
-    setCurrentPage(currentPage =>
-      currentPage < totalPages ? currentPage + 1 : currentPage
-    );
+  const handleIncrementCurrentPage = () => {
+    gotoPage(currentPage < totalPages ? currentPage + 1 : currentPage);
   };
 
-  const handleArrowClickBackward = () => {
-    setCurrentPage(currentPage =>
-      currentPage > 1 ? currentPage - 1 : currentPage
-    );
+  const handleDecrementCurrentPage = () => {
+    gotoPage(currentPage > 1 ? currentPage - 1 : currentPage);
   };
 
   return (
     <Flex flexWrap="nowrap" justifyContent="center">
       <PaginationArrow
         isDisabled={currentPage === 1}
-        onClick={handleArrowClickBackward}
+        onClick={handleDecrementCurrentPage}
         icon="arrowLeft"
       />
       {pages.map((page, i) => {
@@ -214,7 +210,7 @@ const Pagination = props => {
       <PaginationArrow
         icon="arrowRight"
         isDisabled={currentPage === totalPages}
-        onClick={handleArrowClickForward}
+        onClick={handleIncrementCurrentPage}
       />
     </Flex>
   );
