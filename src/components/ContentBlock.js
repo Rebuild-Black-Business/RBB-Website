@@ -1,5 +1,5 @@
 import React from 'react';
-import { PseudoBox, Box, Image, Flex, theme } from '@chakra-ui/core';
+import { PseudoBox, Box, Flex, theme } from '@chakra-ui/core';
 
 const fullWidthOverlayOpacity = 0.3;
 
