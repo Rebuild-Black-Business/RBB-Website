@@ -3,7 +3,6 @@ import React from 'react';
 import { Flex, Heading } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import ContactCard from '../components/about/ContactCard';
-import { Helmet } from 'react-helmet';
 
 export default function About() {
   return (

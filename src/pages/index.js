@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Flex, Heading } from '@chakra-ui/core';
-import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout';
 
 export default () => {

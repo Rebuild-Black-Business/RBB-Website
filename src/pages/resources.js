@@ -4,7 +4,6 @@ import { Flex, Heading } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import ResourceFeed from '../components/Feeds/ResourceFeed';
 import Pagination from '../components/Pagination/Pagination';
-import { Helmet } from 'react-helmet';
 
 export default function Resources() {
   return (
