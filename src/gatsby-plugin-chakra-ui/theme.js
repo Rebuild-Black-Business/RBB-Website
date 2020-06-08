@@ -20,6 +20,9 @@ const customTheme = {
     '2xl': '2rem',
     '3xl': '2.5rem',
   },
+  // Mobile views were not covered under default 'sm' breakpoint
+  // Going to just write in mock sizes, but open to changing them
+  breakpoints: ['16em', '48em', '64em', '80em'],
   fontWeights: {
     bold: 'bold',
   },
@@ -31,12 +34,12 @@ const customTheme = {
   },
   colors: {
     ...theme.colors,
-    'rbb-black': '#140303',
-    'rbb-gray': '#259f6c',
-    'rbb-white': '#1e6b7f',
-    'rbb-red': '#fafcd6',
-    'rbb-orange': '#f46036',
-    'rbb-hover-gray': '#757575',
+    'rbb-black-000': '#140303',
+    'rbb-black-100': '#001514',
+    'rbb-gray': '#565656',
+    'rbb-white': '#F7F7F2',
+    'rbb-red': '#BA2A2A',
+    'rbb-orange': '#F46036',
   },
   letterSpacings: {
     button: '0.05em',

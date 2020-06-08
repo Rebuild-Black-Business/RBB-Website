@@ -9,7 +9,7 @@ export default function Resources() {
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading>Resources</Heading>
+        <Heading as="h1">Resources</Heading>
         <Pagination
           onPageChanged={pagination => {
             // @TODO add pagination handler

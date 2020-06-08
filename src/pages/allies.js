@@ -9,7 +9,7 @@ export default function Allies() {
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading>Allies</Heading>
+        <Heading as="h1">Allies</Heading>
         <Pagination
           onPageChanged={pagination => {
             // @TODO add pagination handler

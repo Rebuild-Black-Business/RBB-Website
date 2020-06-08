@@ -44,12 +44,12 @@ module.exports = {
         slug: '/businesses',
       },
       {
-        name: 'Resources',
-        slug: '/resources',
-      },
-      {
         name: 'Allies',
         slug: '/allies',
+      },
+      {
+        name: 'Resources',
+        slug: '/resources',
       },
     ],
     photoCreditLinks: [
