@@ -22,23 +22,31 @@ export default function About() {
         </Flex>
         <Flex
           w="100%"
-          h={['605px', '605px', '505px', '490px', '377px']}
+          h={['625px', '625px', '505px', '490px', '377px']}
           backgroundColor="#F7F7F2"
         >
           <Flex
             direction="column"
             align="center"
             justify="center"
-            marginTop={['21px', '21px', '0', '0']}
-            marginBottom={['21px', '21px', '0', '0']}
+            marginTop={['16px', '16px', '0', '0']}
+            marginBottom={['18px', '18px', '0', '0']}
             marginLeft={['0', '0', '5%', '15%', '15%', '30%']}
-            marginRight={['0', '0', '5%', '20%', '20%', '35%']}
+            marginRight={['0', '0', '5%', '20%', '22%', '35%']}
           >
-            <Content heading="MISSION" message={MISSION_MESSAGE} />
+            <Content
+              heading="MISSION"
+              message={MISSION_MESSAGE}
+              marginTop="31px"
+              marginBottom="0"
+              dividerMargin="101px"
+            />
             <Content
               heading="WHO WE ARE"
               message={WHO_WE_ARE_MESSAGE}
-              margin="3em"
+              marginTop="48px"
+              marginBottom="31px"
+              dividerMargin="63px"
             />
           </Flex>
         </Flex>

@@ -1,11 +1,32 @@
 import { Divider, Flex, Heading, Text } from '@chakra-ui/core';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-const Content = ({ heading, message, margin }) => {
+/**
+ * @component
+ * @example
+ * return (
+ *   <Content
+ *     heading="MISSION"
+ *     message="Our mission statement..."
+ *     marginTop="25px"
+ *     marginBottom="25px
+ *     dividerMargin="10px"
+ *   />
+ * )
+ */
+const Content = ({
+  heading,
+  message,
+  marginTop,
+  marginBottom,
+  dividerMargin,
+}) => {
   return (
     <Flex
       direction={['column', 'column', 'column', 'row', 'row']}
-      marginTop={margin}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
     >
       <Heading
         lineHeight="1"
@@ -17,8 +38,8 @@ const Content = ({ heading, message, margin }) => {
         {heading}
       </Heading>
       <Divider
-        marginLeft={['98px', '98px', '25px', '25px']}
-        marginRight={['97px', '97px', '25px', '25px']}
+        marginLeft={[dividerMargin, dividerMargin, '3px', '3px']}
+        marginRight={[dividerMargin, dividerMargin, '28px', '28px']}
         marginTop={['25px', '25px', '25px', '0']}
         marginBottom={['25px', '25px', '25px', '0']}
         border="1px solid"
@@ -28,14 +49,21 @@ const Content = ({ heading, message, margin }) => {
       <Text
         style={{ whiteSpace: 'pre-wrap' }}
         textAlign={['center', 'center', 'center', 'left']}
-        marginLeft={['17px', '17px', '0']}
-        marginRight={['16px', '16px', '0']}
-        paddingLeft={['0', '0', '25px']}
+        marginLeft={['24px', '24px', '0']}
+        marginRight={['24px', '24px', '0']}
       >
         {message}
       </Text>
     </Flex>
   );
+};
+
+Content.propTypes = {
+  heading: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  marginTop: PropTypes.string,
+  marginBottom: PropTypes.string,
+  dividerMargin: PropTypes.string,
 };
 
 export default Content;
