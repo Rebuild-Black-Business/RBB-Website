@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
 import ResultCard from '../ResultCard';
@@ -17,7 +17,7 @@ const BusinessesFeed = data => {
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
   const [businesses, setBusinesses] = useState(allBusinesses);
 
-  useEffect(() => {
+  useMemo(() => {
     const associatedZipCodes = getLocationZip(businessFilters.location);
     const filteredBusinesses = allBusinesses
       .filter(biz => {
