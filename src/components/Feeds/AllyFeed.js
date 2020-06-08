@@ -17,6 +17,7 @@ import {
 import AllyCard from '../Cards/AllyCard';
 import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
+import Image from '../Image';
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
@@ -59,8 +60,23 @@ const AllyFeed = data => {
                 <CardWrapper
                   gridColumn={[null, null, 'span 2']}
                   pr={theme.spacing.lg}
-                  bg={theme.colors['rbb-black-100']}
+                  pos="relative"
                 >
+                  <Image
+                    cloudName="rebuild-black-business"
+                    publicId="assets/ally-sign-up"
+                    transforms={{
+                      fetchFormat: 'auto',
+                      quality: 'auto',
+                    }}
+                    objectFit="cover"
+                    pos="absolute"
+                    zIndex="-1"
+                    w="100%"
+                    h="100%"
+                    top="0"
+                    left="0"
+                  />
                   <CardContent
                     color={theme.colors['rbb-white']}
                     display="flex"
