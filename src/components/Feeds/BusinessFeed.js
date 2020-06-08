@@ -25,7 +25,7 @@ const BusinessesFeed = data => {
         if (businessFilters.need) {
           return biz.data['In_Need'];
         } else {
-          return !biz.data['In_Need'];
+          return biz;
         }
       })
       .filter(biz => {
