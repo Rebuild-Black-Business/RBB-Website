@@ -12,7 +12,6 @@ export default function Businesses(data) {
       <Flex align="center" justify="center" direction="column">
         <Heading as="h1">Businesses</Heading>
         <Pagination
-          currentPage={data.pageContext.page}
           totalRecords={data.pageContext.totalRecords}
           pageLimit={data.pageContext.itemsPerPage}
         />

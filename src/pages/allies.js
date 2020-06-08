@@ -10,13 +10,7 @@ export default function Allies() {
     <Layout>
       <Flex align="center" justify="center" direction="column">
         <Heading as="h1">Allies</Heading>
-        <Pagination
-          onPageChanged={pagination => {
-            // @TODO add pagination handler
-          }}
-          totalRecords={70}
-          pageLimit={5}
-        />
+        <Pagination totalRecords={70} pageLimit={5} />
         <AllyFeed />
       </Flex>
     </Layout>
