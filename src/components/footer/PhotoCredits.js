@@ -21,6 +21,7 @@ const CreditLink = () => {
                   return (
                     <Text
                       fontSize="12px"
+                      fontWeight="bold"
                       textDecoration="underline"
                       fontFamily={theme.fonts.heading}
                       opacity={0.7}
@@ -47,16 +48,21 @@ const CreditLink = () => {
 const PhotoCredit = () => {
   const theme = useTheme();
   return (
-    <Flex w="80%" textAlign="center" direction={['column', 'row']}>
-      <Text
-        fontSize="12px"
-        fontFamily={theme.fonts.heading}
-        color={theme.footer.text}
-        opacity={0.5}
+    <Flex w="100%" justify="center" align="center" pb="3">
+      <Flex
+        textAlign="center"
+        direction={['column', 'column', 'column', 'row']}
       >
-        Photography credits:
-      </Text>
-      <CreditLink />
+        <Text
+          fontSize="12px"
+          fontFamily={theme.fonts.heading}
+          color={theme.colors['rbb-white']}
+          opacity={0.5}
+        >
+          Photography credits:
+        </Text>
+        <CreditLink />
+      </Flex>
     </Flex>
   );
 };

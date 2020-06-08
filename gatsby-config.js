@@ -47,10 +47,6 @@ module.exports = {
         name: 'Allies',
         slug: '/allies',
       },
-      {
-        name: 'Resources',
-        slug: '/resources',
-      },
     ],
     photoCreditLinks: [
       {

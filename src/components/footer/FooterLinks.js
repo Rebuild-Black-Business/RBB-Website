@@ -1,11 +1,11 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { useTheme } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/core';
 import ErrorBoundary from './../ErrorBoundary';
-import { NavMenu, NavItem, NavLink } from '../Nav';
+import { NavMenu, NavItem } from '../Nav';
+import Link from './../Link';
 
 const FooterLinks = () => {
-  const theme = useTheme();
   return (
     <ErrorBoundary>
       <StaticQuery
@@ -13,22 +13,22 @@ const FooterLinks = () => {
         render={data => {
           return (
             <NavMenu
-              display="flex"
-              width="90%"
-              wrap={['wrap', null]}
-              alignItems="center"
-              justify="center"
+              as={Flex}
+              w={['90%', '90%', '90%', '65%']}
+              justify="space-evenly"
+              wrap={['wrap', 'wrap', 'wrap', null]}
+              align="center"
             >
               {data.site.siteMetadata.menuLinks.map(link => (
-                <NavItem key={link.name} mr="4" mt={[2, null]} display="flex">
-                  <NavLink
-                    fontFamily={theme.fonts.heading}
-                    opacity={0.7}
-                    color={theme.footer.text}
-                    to={link.slug}
-                  >
+                <NavItem
+                  key={link.name}
+                  mr="2"
+                  mt={[2, 2, 2, null]}
+                  display="flex"
+                >
+                  <Link variant="footer" opacity={0.7} to={link.slug}>
                     {link.name}
-                  </NavLink>
+                  </Link>
                 </NavItem>
               ))}
             </NavMenu>

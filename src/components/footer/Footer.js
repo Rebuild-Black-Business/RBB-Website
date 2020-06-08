@@ -13,20 +13,22 @@ const Footer = () => {
       align="center"
       justify="center"
       h="375px"
-      bg={theme.footer.background}
+      bg={theme.colors['rbb-black-100']}
     >
       <Flex
         direction="column"
         align="center"
         justify="space-evenly"
-        minW={{ sm: '300px', md: '500px' }}
+        maxW="1220px"
         h="80%"
         mt="5"
       >
         <SocialLinks />
         <FooterLinks />
-        <PhotoCredit />
-        <Copyright />
+        <Flex direction="column">
+          <PhotoCredit />
+          <Copyright />
+        </Flex>
       </Flex>
     </Flex>
   );
