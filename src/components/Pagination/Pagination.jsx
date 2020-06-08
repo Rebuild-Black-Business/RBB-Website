@@ -17,7 +17,11 @@ const RIGHT_PAGE = 'RIGHT';
 
 const Pagination = props => {
   const theme = useTheme();
-  const mq = window && window.matchMedia('(min-width: 480px)');
+  let mq;
+
+  if (typeof window !== 'undefined') {
+    mq = window.matchMedia('(min-width: 480px)');
+  }
 
   const [totalRecords, setTotalRecords] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
