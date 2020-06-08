@@ -1,36 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link as ChakraLink, useTheme } from '@chakra-ui/core';
 import { Link as GatsbyLink } from 'gatsby';
 
+function getLinkStyles(theme, variant) {
+  return {
+    fontFamily: theme.links.font,
+    textDecoration: 'underline',
+    color: theme.links[variant].color.default,
+    _hover: { color: theme.links[variant].color.hover },
+    _focus: { color: theme.links[variant].color.focus },
+  };
+}
+
 function Link(props) {
   const theme = useTheme();
-  const isCallToAction = props.isCallToAction ? true : false;
+
+  if (!['standard', 'cta', 'footer'].includes(props.variant))
+    throw new Error(`Invalid <Link> variant: "${props.variant}"`);
+
+  const linkStyles = getLinkStyles(theme, props.variant);
 
   return (
-    <ChakraLink
-      as={GatsbyLink}
-      {...props}
-      fontFamily={theme.links.font}
-      textDecoration="underline"
-      color={
-        isCallToAction
-          ? theme.links.cta.color.default
-          : theme.links.standard.color.default
-      }
-      _hover={{
-        color: isCallToAction
-          ? theme.links.cta.color.hover
-          : theme.links.standard.color.hover,
-      }}
-      _focus={{
-        color: isCallToAction
-          ? theme.links.cta.color.focus
-          : theme.links.standard.color.focus,
-      }}
-    >
+    <ChakraLink as={GatsbyLink} {...linkStyles} {...props}>
       {props.children}
     </ChakraLink>
   );
 }
+
+Link.displayName = 'Link';
+Link.propTypes = {
+  variant: PropTypes.oneOf(['standard', 'cta', 'footer']),
+};
 
 export default Link;
