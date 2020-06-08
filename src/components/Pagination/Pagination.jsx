@@ -136,12 +136,7 @@ const Pagination = props => {
       type: UPDATE_CURRENT_PAGE,
       currentPage,
     });
-  }, [
-    props.currentPage,
-    props.totalRecords,
-    props.pageLimit,
-    props.pageNeighbors,
-  ]);
+  }, [currentPage, totalRecords, pageLimit, pageNeighbors]);
 
   useEffect(() => {
     /**
