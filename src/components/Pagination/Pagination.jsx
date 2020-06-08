@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, PseudoBox, useTheme } from '@chakra-ui/core';
-import ArrowSVG from '../Svgs/ArrowSVG';
+import { css } from '@emotion/core';
+import { Flex, PseudoBox, IconButton, useTheme } from '@chakra-ui/core';
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
 
@@ -148,9 +148,44 @@ const Pagination = props => {
     gotoPage(currentPage + pageNeighbors * 2 + 1);
   };
 
+  const handleArrowClickForward = () => {
+    setCurrentPage(currentPage =>
+      currentPage < totalPages ? currentPage + 1 : currentPage
+    );
+  };
+
+  const handleArrowClickBackward = () => {
+    setCurrentPage(currentPage =>
+      currentPage > 1 ? currentPage - 1 : currentPage
+    );
+  };
+
   return (
     <Flex flexWrap="nowrap" justifyContent="center">
-      <ArrowSVG direction="LEFT" />
+      <PseudoBox
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height={10}
+        width={10}
+        _hover={{
+          color: 'rbb-white',
+          stroke: 'rbb-black',
+        }}
+      >
+        <IconButton
+          onClick={handleArrowClickBackward}
+          variant="unstyled"
+          fill="rbb-white"
+          icon="arrowLeft"
+          size="lg"
+          isDisabled={currentPage === 1}
+          minWidth={0}
+          css={css`
+            transform: rotate(225deg 11 12);
+          `}
+        />
+      </PseudoBox>
       {pages.map((page, i) => {
         return (
           <PseudoBox
@@ -195,7 +230,30 @@ const Pagination = props => {
           </PseudoBox>
         );
       })}
-      <ArrowSVG direction="RIGHT" />
+      <PseudoBox
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height={10}
+        width={10}
+        _hover={{
+          color: 'rbb-white',
+          stroke: 'rbb-black',
+        }}
+      >
+        <IconButton
+          onClick={handleArrowClickForward}
+          variant="unstyled"
+          fill="rbb-white"
+          icon="arrowRight"
+          size="lg"
+          isDisabled={currentPage === totalPages}
+          minWidth={0}
+          css={css`
+            transform: rotate(45deg 11 12);
+          `}
+        />
+      </PseudoBox>
     </Flex>
   );
 };

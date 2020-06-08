@@ -1,11 +1,18 @@
 import React from 'react';
-import { PseudoBox } from '@chakra-ui/core';
+import { PseudoBox, IconButton } from '@chakra-ui/core';
+import PropTypes from 'prop-types';
 
-export default function ArrowSVG({ direction }) {
+const ArrowSVG = ({ direction, handleMove }) => {
   const LEFT = '225';
   const RIGHT = '45';
   return (
-    <PseudoBox display="flex" alignItems="center" justifyContent="center">
+    <PseudoBox
+      fill={'orange'}
+      onClick={handleMove}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
       <svg width="22px" height="24px" viewBox="0 0 22 24">
         <path
           transform={`rotate(${direction === 'LEFT' ? LEFT : RIGHT} 11 12)`}
@@ -14,4 +21,11 @@ export default function ArrowSVG({ direction }) {
       </svg>
     </PseudoBox>
   );
-}
+};
+
+ArrowSVG.propTypes = {
+  handleMove: PropTypes.func.isRequired,
+  direction: PropTypes.oneOf(['LEFT', 'RIGHT']),
+};
+
+export default ArrowSVG;
