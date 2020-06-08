@@ -14,6 +14,7 @@ import {
   Button,
   Text,
   useTheme,
+  Heading,
   Link,
 } from '@chakra-ui/core';
 
@@ -33,14 +34,21 @@ const CardContent = ({ title, blurb, imageUrl, imageAlt }) => {
         align="center"
         justify="center"
         textAlign="center"
+        backgroundColor="#001514"
       >
-        <Text fontSize={theme.fontSizes.lg} fontFamily={theme.fonts.heading}>
+        <Heading
+          color="white"
+          fontFamily={theme.fonts.heading}
+          as="h5"
+          size="md"
+        >
           {title}
-        </Text>
+        </Heading>
         <Text
-          p="4"
+          p="2"
           fontSize={theme.fontSizes.paragraph}
           fontFamily={theme.fonts.heading}
+          color="#F7F7F2"
         >
           {blurb}
         </Text>
@@ -61,16 +69,7 @@ const NoImage = () => (
 // @TODO :: Replace with new Image component
 const CardImage = ({ imageUrl, imageAlt }) => (
   <Flex w="100%" minH="220px" position="relative" overflow="hidden">
-    <Image
-      objectFit="cover"
-      width="100%"
-      height="100%"
-      position="absolute"
-      top="0"
-      left="0"
-      src={imageUrl}
-      alt={imageAlt}
-    />
+    <Image objectFit="cover" src={imageUrl} alt={imageAlt} />
   </Flex>
 );
 
@@ -91,7 +90,14 @@ const ModalForm = ({ isOpen, onClose, title }) => (
   </Modal>
 );
 
-const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
+const ModalCard = ({
+  imageUrl,
+  imageAlt,
+  modalTitle,
+  title,
+  blurb,
+  margin,
+}) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
 
@@ -101,10 +107,12 @@ const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
         as="a"
         href="#"
         ref={focusRef}
-        maxW={[null, '100%', '342px']}
+        margin="5% auto"
+        maxW={['279px', '342px']}
         maxH="322px"
         direction="column"
         onClick={onOpen}
+        marginBottom={margin}
       >
         <CardContent
           title={title}
@@ -123,7 +131,8 @@ const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
     as="a"
     href={`mailto:${email}`}
     isExternal
-    maxW={[null, '100%', '342px']}
+    margin="5% auto"
+    maxW={['279px', '342px']}
     maxH="322px"
     direction="column"
   >
@@ -141,7 +150,8 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     as={Link}
     href="https://discord.com/invite/272XMuv"
     isExternal
-    maxW={[null, '100%', '342px']}
+    margin="5% auto"
+    maxW={['279px', '342px']}
     maxH="322px"
     direction="column"
   >

@@ -20,11 +20,7 @@ export default function About() {
         >
           <Heading>ABOUT</Heading>
         </Flex>
-        <Flex
-          w="100%"
-          h={['625px', '625px', '505px', '490px', '377px']}
-          backgroundColor="#F7F7F2"
-        >
+        <Flex w="100%" backgroundColor="#F7F7F2">
           <Flex
             direction="column"
             align="center"
@@ -55,13 +51,19 @@ export default function About() {
           align="center"
           width="100%"
           minH="500px"
-          maxH="500px"
           justify="center"
           direction="column"
           backgroundColor="#DEDEDA"
         >
-          <Heading>CONTACT</Heading>
-          <Flex w="1240px" margin="3em" justify="space-evenly">
+          <Heading as="h2" size="xl" paddingTop={['40px', '44px']}>
+            CONTACT
+          </Heading>
+          <Flex
+            w="100%"
+            direction={['column', 'column', 'row', 'row']}
+            paddingTop="32px"
+            paddingBottom="32px"
+          >
             <ContactCard
               modalCard
               title="Business Owner"
