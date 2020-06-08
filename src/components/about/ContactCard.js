@@ -161,8 +161,8 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
  * @param {string} blurb - The cards blurb
  * @param {string} imageUrl - The images url
  * @param {string} imageAlt - The alt text for the image
- * @param {boolean} modalCard - If doesModal then card with modal will be displayed
- * @param {boolean} mailtoCard - If doesMailto then card with mailto link will be displayed
+ * @param {boolean} modalCard - If modalCard then card with modal will be displayed
+ * @param {boolean} mailtoCard - If mailtoCard then card with mailto link will be displayed
  * @param {string} modalTitle - The title to be displayed in the modal
  * @param {string} email - The RBB support email address
  */
