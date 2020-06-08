@@ -11,9 +11,6 @@ export default function Allies() {
 
   return (
     <Layout>
-      <Helmet htmlAttributes={{ lang: 'en' }}>
-        <title>Allies</title>
-      </Helmet>
       <Flex align="center" justify="center" direction="column">
         <Box maxW="859px">
           <Heading

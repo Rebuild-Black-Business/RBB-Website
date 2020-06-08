@@ -8,9 +8,6 @@ import { Helmet } from 'react-helmet';
 export default function About() {
   return (
     <Layout>
-      <Helmet htmlAttributes={{ lang: 'en' }}>
-        <title>About</title>
-      </Helmet>
       <Flex align="center" justify="center" direction="column">
         <Heading as="h1">About</Heading>
         <Flex w="1240px" margin="3em" justify="space-evenly">

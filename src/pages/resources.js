@@ -9,9 +9,6 @@ import { Helmet } from 'react-helmet';
 export default function Resources() {
   return (
     <Layout>
-      <Helmet htmlAttributes={{ lang: 'en' }}>
-        <title>Resources</title>
-      </Helmet>
       <Flex align="center" justify="center" direction="column">
         <Heading as="h1">Resources</Heading>
         <Pagination
