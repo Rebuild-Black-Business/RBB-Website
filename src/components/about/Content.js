@@ -29,6 +29,7 @@ const Content = ({
       marginBottom={marginBottom}
     >
       <Heading
+        as="h2"
         lineHeight="1"
         verticalAlign="top"
         textAlign={['center', 'center', 'center', 'right']}
