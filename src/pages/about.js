@@ -34,16 +34,12 @@ export default function About() {
             marginLeft={['0', '0', '5%', '15%', '15%', '30%']}
             marginRight={['0', '0', '5%', '20%', '20%', '35%']}
           >
-            <Content
-              heading="MISSION"
-              message={MISSION_MESSAGE}
-              margin="0"
-            ></Content>
+            <Content heading="MISSION" message={MISSION_MESSAGE} />
             <Content
               heading="WHO WE ARE"
               message={WHO_WE_ARE_MESSAGE}
               margin="3em"
-            ></Content>
+            />
           </Flex>
         </Flex>
 
