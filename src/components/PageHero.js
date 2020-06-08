@@ -16,8 +16,14 @@ const PageHero = ({ title, subtitle }) => {
         display="block"
         style={{ filter: 'grayscale(100%)' }}
         transforms={{
-          effect: 'gradient_fade:100,y_-0.4',
-          gravity: 'north',
+          transformation: [
+            { effect: 'gradient_fade:100,y_-0.4', gravity: 'north' },
+            {
+              effect: 'gradient_fade:10,y_0.4',
+              gravity: 'south',
+              background: 'rgb:000000',
+            },
+          ],
         }}
       />
       <Stack
