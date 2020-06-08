@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
+import useMedia from 'react-use/lib/useMedia';
 
 const PLACEHOLDER = '...';
 
@@ -12,16 +13,14 @@ const PLACEHOLDER = '...';
  * @param {number} props.currentPage - current page number that is being viewed
  * @param {number} totalRecords - Total records count
  * @param {number} [pageLimit=10] - Number of items to display per page
- * @param {number} [props.pageNeighbors=1] - Number of neighboring pages when pagination is in the middle of the list
  * @param {function} onPageChanged - Callback function that passes paginated information
  */
 function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
   const theme = useTheme();
 
-  const pageNeighbors = useMemo(
-    () => Math.max(0, Math.min(props.pageNeighbors, 2)),
-    [props.pageNeighbors]
-  );
+  const isWide = useMedia('(min-width: 480px)')
+  const pageNeighbors = isWide ? 2 : 1
+
   const totalPages = useMemo(() => Math.ceil(totalRecords / pageLimit), [
     totalRecords,
     pageLimit,
@@ -155,13 +154,11 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
 
 Pagination.defaultProps = {
   pageLimit: 10,
-  pageNeighbors: 1,
 };
 
 Pagination.propTypes = {
   totalRecords: PropTypes.number.isRequired,
   pageLimit: PropTypes.number,
-  pageNeighbors: PropTypes.number,
   onPageChanged: PropTypes.func,
 };
 
