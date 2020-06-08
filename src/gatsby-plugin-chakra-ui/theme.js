@@ -130,6 +130,30 @@ const customTheme = {
       textTransform: 'uppercase',
     },
   },
+  links: {
+    font: 'Arvo',
+    standard: {
+      color: {
+        default: '#00000',
+        hover: '#F46036',
+        focus: '#F46036',
+      },
+    },
+    cta: {
+      color: {
+        default: '#F46036',
+        hover: '#BA2A2A',
+        focus: '#BA2A2A',
+      },
+    },
+    footer: {
+      color: {
+        default: '#F7F7F2B3',
+        hover: '#ffffff',
+        focus: '#ffffff',
+      },
+    },
+  },
 };
 
 export default customTheme;
