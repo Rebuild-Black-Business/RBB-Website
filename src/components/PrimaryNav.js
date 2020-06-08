@@ -83,7 +83,7 @@ const PrimaryNav = forwardRef(
           justify="flex-end"
           flexGrow={1}
           hidden={!isVisible || undefined}
-          aria-hidden={isVisible}
+          aria-hidden={isVisible && !isMedium}
           id="navigation"
         >
           {menuLinks.map((link, index, src) => (
