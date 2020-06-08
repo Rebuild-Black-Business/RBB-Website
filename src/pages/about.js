@@ -1,3 +1,4 @@
+
 import { Flex, Heading, Text, theme } from '@chakra-ui/core';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
@@ -29,16 +30,24 @@ export default function About() {
             direction="column"
             align="center"
             justify="center"
-            marginTop={['21px', '21px', '0', '0']}
-            marginBottom={['21px', '21px', '0', '0']}
+            marginTop={['16px', '16px', '0', '0']}
+            marginBottom={['18px', '18px', '0', '0']}
             marginLeft={['0', '0', '5%', '15%', '15%', '30%']}
-            marginRight={['0', '0', '5%', '20%', '20%', '35%']}
+            marginRight={['0', '0', '5%', '20%', '22%', '35%']}
           >
-            <Content heading="MISSION" message={MISSION_MESSAGE} margin="3em" />
+            <Content
+              heading="MISSION"
+              message={MISSION_MESSAGE}
+              marginTop="31px"
+              marginBottom="0"
+              dividerMargin="101px"
+            />
             <Content
               heading="WHO WE ARE"
               message={WHO_WE_ARE_MESSAGE}
-              margin="3em"
+              marginTop="48px"
+              marginBottom="31px"
+              dividerMargin="63px"
             />
           </Flex>
         </Flex>
@@ -46,6 +55,8 @@ export default function About() {
         <Flex
           align="center"
           width="100%"
+          minH="500px"
+          maxH="500px"
           justify="center"
           direction="column"
           backgroundColor="#DEDEDA"
