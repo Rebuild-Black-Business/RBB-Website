@@ -10,6 +10,7 @@ import {
   CardButton,
 } from './Card';
 import { Link, Text } from '@chakra-ui/core';
+import { zipcodeConversion } from '../utils/locationUtils';
 
 // TODO: Replace with real fallback images for each category.
 // This should all probably be defined in the database somewhere, eh?
@@ -97,6 +98,9 @@ const ResultCard = forwardRef(
     // card wrapee
     const categoryLabel =
       (categoryData[category] && categoryData[category].label) || category;
+    const zipInfo = zipcodeConversion(location);
+    const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
+
     return (
       <CardWrapper
         ref={ref}
@@ -122,7 +126,7 @@ const ResultCard = forwardRef(
           <CardHeading itemprop="name">{name}</CardHeading>
           {category && <CardText as="span">{categoryLabel}</CardText>}
           {description && <CardText as="p">{description}</CardText>}
-          <CardText as="p">{location}</CardText>
+          {formattedCity && <CardText as="p">{formattedCity}</CardText>}
           <CardButtonGroup>
             <CardButton as="a" href={websiteUrl}>
               {(category && categoryData[category]?.buttonText) || 'Learn More'}
@@ -147,7 +151,7 @@ ResultCard.propTypes = {
   category: PropTypes.string,
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
-  location: PropTypes.number.isRequired,
+  location: PropTypes.number,
   websiteUrl: PropTypes.string.isRequired,
   donationUrl: PropTypes.string,
   imageSrc: PropTypes.string,

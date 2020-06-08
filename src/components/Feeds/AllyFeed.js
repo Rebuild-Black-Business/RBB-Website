@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { Box } from '@chakra-ui/core';
+import { Box, SimpleGrid } from '@chakra-ui/core';
+import ResultCard from '../ResultCard';
 
 const AllyFeed = data => {
+  const [allAllies] = useState(data.data.allAirtableAllies.nodes);
+
   return (
-    <Box as="pre" whitespace="break-spaces">
-      {JSON.stringify(data, null, 2)}
+    <Box maxW="859px">
+      {allAllies.length > 0 ? (
+        <SimpleGrid columns={[2, 3, 4]} spacing={10}>
+          {allAllies.map((allies, index) => (
+            <ResultCard
+              key={index}
+              name={allies.data.Name}
+              email={allies.data.Email}
+              specialty={allies.data.Specialty}
+              location={allies.data.Zip_Code}
+            />
+          ))}
+        </SimpleGrid>
+      ) : (
+        <Box as="pre">No results...</Box>
+      )}
     </Box>
   );
 };
