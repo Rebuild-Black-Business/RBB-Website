@@ -1,30 +1,34 @@
 import React from 'react';
-import { Heading, Stack, useTheme } from '@chakra-ui/core';
+import { Box, Stack } from '@chakra-ui/core';
+
+import { Image, PageHeading, PageSubtitle } from '../components';
 
 const PageHero = ({ title, subtitle }) => {
-  const theme = useTheme();
-
   return (
-    <Stack
-      as="header"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      padding="1.5rem 0"
-    >
-      <Heading
-        as="h1"
-        size="2xl"
-        textTransform="uppercase"
-        fontFamily={theme.fonts['heading-slab']}
-        fontWeight={theme.fontWeights.bold}
+    <Box as="header" position="relative">
+      <Image
+        publicId="assets/business-header"
+        cloudName="rebuild-black-business"
+        zIndex={-10}
+        position="absolute"
+        top={0}
+        display="block"
+        style={{ filter: 'grayscale(100%)' }}
+        transforms={{
+          gradient_fade: '100,y_-0.1',
+        }}
+      />
+      <Stack
+        zIndex={1}
+        display="block"
+        flexDirection="column"
+        alignItems="center"
+        padding="76px 0 1.5rem 0"
       >
-        {title}
-      </Heading>
-      <Heading as="h2" size="16pt" width={['100%', '80%']}>
-        {subtitle}
-      </Heading>
-    </Stack>
+        <PageHeading>{title}</PageHeading>
+        <PageSubtitle>{subtitle}</PageSubtitle>
+      </Stack>
+    </Box>
   );
 };
 

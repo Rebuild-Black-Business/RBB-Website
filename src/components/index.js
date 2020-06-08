@@ -1,5 +1,10 @@
 export { default as BusinessFeed } from './Feeds/BusinessFeed';
+export { default as Image } from './Image';
 export { default as Layout } from './Layout';
 export { default as PageHero } from './PageHero';
 export { default as Pagination } from './Pagination/Pagination';
 export { default as SEO } from './SEO/SEO';
+
+// headings
+export { default as PageHeading } from './Headings/PageHeading';
+export { default as PageSubtitle } from './Headings/PageSubtitle';
