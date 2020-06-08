@@ -1,21 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { Button, Flex, useTheme } from '@chakra-ui/core';
+import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
 
-const LEFT_PAGE = 'LEFT';
-const RIGHT_PAGE = 'RIGHT';
-const PAGE_INFO = {
-  label(page) {
-    if (page === LEFT_PAGE) return 'Previous page';
-    else if (page === RIGHT_PAGE) return 'Next page';
-    else return `Go to page ${page}`;
-  },
-  content(page) {
-    if (page === LEFT_PAGE || page === RIGHT_PAGE) return '...';
-    else return page;
-  },
-};
+const LEFT_PAGE = 'Go to previous page';
+const RIGHT_PAGE = 'Go to next page';
+const PLACEHOLDER = '...';
 
 /**
  * @function Pagination
@@ -76,16 +66,16 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
       // handle: (1) < {5 6} [7] {8 9} (10)
       if (hasLeftSpill && !hasRightSpill) {
         const extraPages = range(startPage - spillOffset, startPage - 1);
-        pages = [LEFT_PAGE, ...extraPages, ...pages];
+        pages = [PLACEHOLDER, ...extraPages, ...pages];
       }
       // handle: (1) {2 3} [4] {5 6} > (10)
       else if (!hasLeftSpill && hasRightSpill) {
         const extraPages = range(endPage + 1, endPage + spillOffset);
-        pages = [...pages, ...extraPages, RIGHT_PAGE];
+        pages = [...pages, ...extraPages, PLACEHOLDER];
       }
       // handle: (1) < {4 5} [6] {7 8} > (10)
       else if (hasLeftSpill && hasRightSpill) {
-        pages = [LEFT_PAGE, ...pages, RIGHT_PAGE];
+        pages = [PLACEHOLDER, ...pages, PLACEHOLDER];
       }
 
       return [1, ...pages, totalPages];
@@ -111,13 +101,31 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
 
   return (
     <Flex flexWrap="nowrap" justifyContent="center">
+      {/*<PaginationArrow hidden={currentPage === 1} direction="left" onClick={handleMoveLeft} />*/}
       {pages.map((page, index) => {
-        const isActivePage = currentPage === page;
+        if (page === PLACEHOLDER) {
+          return (
+            <PseudoBox
+              key={index}
+              as="span"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              width={10}
+              height={10}
+              fontFamily={theme.fonts['heading-slab']}
+              fontSize={theme.fontSizes.lg}
+              fontWeight={theme.fontWeights.bold}
+              aria-hidden={true}
+            >
+              ...
+            </PseudoBox>
+          );
+        }
 
+        const isActivePage = currentPage === page;
         function handleClick() {
-          if (page === LEFT_PAGE) handleMoveLeft();
-          else if (page === RIGHT_PAGE) handleMoveRight();
-          else handleGoToPage(page);
+          handleGoToPage(page);
         }
 
         return (
@@ -133,15 +141,16 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
             fontSize={theme.fontSizes.lg}
             fontWeight={theme.fontWeights.bold}
             cursor="pointer"
-            _hover={{ bg: isActivePage ? theme.colors['rbb-gray'] : null }}
+            _hover={{ bg: isActivePage && theme.colors['rbb-gray'] }}
             onClick={handleClick}
-            title={PAGE_INFO.label(page)}
-            aria-label={PAGE_INFO.label(page)}
+            title={`Go to page ${page}`}
+            aria-label={`Go to page ${page}`}
           >
-            {PAGE_INFO.content(page)}
+            {page}
           </Button>
         );
       })}
+      {/*<PaginationArrow hidden={currentPage === totalPages} direction="right" onClick={handleMoveLeft} />*/}
     </Flex>
   );
 }
