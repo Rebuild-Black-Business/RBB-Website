@@ -4,12 +4,16 @@ import { Flex, Heading, useTheme, Text, Box } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import AllyFeed from '../components/Feeds/AllyFeed';
 import Pagination from '../components/Pagination/Pagination';
+import { Helmet } from 'react-helmet';
 
 export default function Allies() {
   const theme = useTheme();
 
   return (
     <Layout>
+      <Helmet htmlAttributes={{ lang: 'en' }}>
+        <title>Allies</title>
+      </Helmet>
       <Flex align="center" justify="center" direction="column">
         <Box maxW="859px">
           <Heading
