@@ -30,13 +30,14 @@ export default function About() {
             justify="center"
             marginTop={['21px', '21px', '0']}
             marginBottom={['21px', '21px', '0']}
+            marginLeft={[null, null, '30%']}
+            marginRight={[null, null, '30%']}
           >
             <Flex direction={['column', 'column', 'row', 'row']}>
               <Heading
-                display="inline-block"
                 lineHeight="1"
                 verticalAlign="top"
-                textAlign="center"
+                textAlign={['center']}
               >
                 MISSION
               </Heading>
@@ -63,10 +64,9 @@ export default function About() {
               marginTop="3em"
             >
               <Heading
-                display="inline-block"
                 lineHeight="1"
                 verticalAlign="top"
-                textAlign="center"
+                textAlign={['center']}
               >
                 WHO WE ARE
               </Heading>
