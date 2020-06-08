@@ -146,6 +146,13 @@ const customTheme = {
         focus: '#BA2A2A',
       },
     },
+    footer: {
+      color: {
+        default: '#F7F7F2B3',
+        hover: '#ffffff',
+        focus: '#ffffff',
+      },
+    },
   },
 };
 
