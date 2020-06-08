@@ -30,10 +30,9 @@ const BusinessesFeed = data => {
       })
       .filter(biz => {
         // Category filter
-        const selectedBizCategory = businessFilters.type.toLowerCase();
-        const currentBizCategory = biz.data['Category'].toLowerCase();
-        return currentBizCategory === selectedBizCategory ||
-          businessFilters.type === ''
+        if (businessFilters.type === '') return biz;
+        return biz.data['Category'].toLowerCase() ===
+          businessFilters.type.toLowerCase()
           ? biz
           : null;
       })
