@@ -3,7 +3,7 @@ import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
 import Layout from '../components/Layout';
-import { MISSION_STRING, WHO_WE_ARE_STRING } from '../constants/about';
+import { MISSION_MESSAGE, WHO_WE_ARE_MESSAGE } from '../constants/about';
 
 export default function About() {
   return (
@@ -34,10 +34,14 @@ export default function About() {
             marginLeft={['0', '0', '5%', '15%', '15%', '30%']}
             marginRight={['0', '0', '5%', '20%', '20%', '35%']}
           >
-            <Content heading="MISSION" message={MISSION_STRING}></Content>
+            <Content
+              heading="MISSION"
+              message={MISSION_MESSAGE}
+              margin="0"
+            ></Content>
             <Content
               heading="WHO WE ARE"
-              message={WHO_WE_ARE_STRING}
+              message={WHO_WE_ARE_MESSAGE}
               margin="3em"
             ></Content>
           </Flex>
