@@ -3,8 +3,6 @@ import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
 
-const LEFT_PAGE = 'Go to previous page';
-const RIGHT_PAGE = 'Go to next page';
 const PLACEHOLDER = '...';
 
 /**
@@ -118,7 +116,7 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
               fontWeight={theme.fontWeights.bold}
               aria-hidden={true}
             >
-              ...
+              {PLACEHOLDER}
             </PseudoBox>
           );
         }
@@ -156,7 +154,6 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
 }
 
 Pagination.defaultProps = {
-  totalRecords: 0,
   pageLimit: 10,
   pageNeighbors: 1,
 };
@@ -165,7 +162,7 @@ Pagination.propTypes = {
   totalRecords: PropTypes.number.isRequired,
   pageLimit: PropTypes.number,
   pageNeighbors: PropTypes.number,
-  onPageChanged: PropTypes.func.isRequired,
+  onPageChanged: PropTypes.func,
 };
 
 export default Pagination;

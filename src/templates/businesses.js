@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { graphql, navigate } from 'gatsby';
+import { graphql } from 'gatsby';
 import { Flex, Heading } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import BusinessFeed from '../components/Feeds/BusinessFeed';
@@ -12,13 +12,6 @@ export default function Businesses(data) {
       <Flex align="center" justify="center" direction="column">
         <Heading as="h1">Businesses</Heading>
         <Pagination
-          onPageChanged={pagination =>
-            navigate(
-              `/businesses/${
-                pagination.currentPage === 1 ? '' : `${pagination.currentPage}/`
-              }`
-            )
-          }
           currentPage={data.pageContext.page}
           totalRecords={data.pageContext.totalRecords}
           pageLimit={data.pageContext.itemsPerPage}
