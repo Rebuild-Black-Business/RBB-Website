@@ -1,4 +1,4 @@
-import { Divider, Flex, Heading } from '@chakra-ui/core';
+import { Divider, Flex, Heading, Text } from '@chakra-ui/core';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Layout from '../components/Layout';
@@ -10,7 +10,7 @@ export default function About() {
       <Flex align="center" justify="center" direction="column">
         <Flex
           w="100%"
-          minH="250px"
+          minH="200px"
           backgroundColor="#000"
           align="center"
           justify="center"
@@ -45,7 +45,13 @@ export default function About() {
                 borderColor="#BA2A2A"
                 orientation="vertical"
               />
-              <p style={{ whiteSpace: 'pre-wrap' }}>{MISSION_STRING}</p>
+              <Text
+                style={{ whiteSpace: 'pre-wrap' }}
+                marginLeft={['17px', '17px', '0']}
+                marginRight={['16px', '16px', '0']}
+              >
+                {MISSION_STRING}
+              </Text>
             </Flex>
 
             <Flex
@@ -69,7 +75,12 @@ export default function About() {
                 borderColor="#BA2A2A"
                 orientation="vertical"
               />
-              <p> {WHO_WE_ARE_STRING} </p>
+              <Text
+                marginLeft={['17px', '17px', '0']}
+                marginRight={['16px', '16px', '0']}
+              >
+                {WHO_WE_ARE_STRING}
+              </Text>
             </Flex>
           </Flex>
         </Flex>
