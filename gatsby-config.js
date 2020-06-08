@@ -47,9 +47,22 @@ module.exports = {
         name: 'Allies',
         slug: '/allies',
       },
+    ],
+    photoCreditLinks: [
       {
-        name: 'Resources',
-        slug: '/resources',
+        photographer: 'John Cameron',
+        url: 'https://unsplash.com/@john_cameron',
+        pagePathname: '/',
+      },
+      {
+        photographer: 'Kelly Lacy',
+        url: 'https://instagram.com/kellymlacy',
+        pagePathname: '/',
+      },
+      {
+        photographer: 'Mike Von',
+        url: 'https://thevoncomplex.com',
+        pagePathname: '/',
       },
     ],
   },

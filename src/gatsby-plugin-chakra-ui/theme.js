@@ -155,6 +155,11 @@ const customTheme = {
       textTransform: 'uppercase',
     },
   },
+  footer: {
+    iconsBackground: '#C4C4C4',
+    iconsFill: '#000000',
+    photoCreditLink: '#FFFFFF',
+  },
   links: {
     font: 'Arvo',
     standard: {
