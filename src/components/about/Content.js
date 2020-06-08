@@ -12,6 +12,7 @@ const Content = ({ heading, message, margin }) => {
         verticalAlign="top"
         textAlign={['center', 'center', 'center', 'right']}
         minW="285px"
+        paddingRight={['0', '0', '22px']}
       >
         {heading}
       </Heading>
@@ -29,6 +30,7 @@ const Content = ({ heading, message, margin }) => {
         textAlign={['center', 'center', 'center', 'left']}
         marginLeft={['17px', '17px', '0']}
         marginRight={['16px', '16px', '0']}
+        paddingLeft={['0', '0', '25px']}
       >
         {message}
       </Text>
