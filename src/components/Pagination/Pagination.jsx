@@ -19,7 +19,6 @@ const SET_PAGE_NUMBERS = 'SET_PAGE_NUMBERS';
  */
 
 const range = (from, to, step = 1) => {
-  let i = from;
   const range = [];
 
   for (let i = from; i <= to; i = i + step) {
@@ -32,6 +31,7 @@ const range = (from, to, step = 1) => {
 /**
  * @function Pagination
  *
+ * @param {number} currentPage - current page number that is being viewed
  * @param {number} totalRecords - Total records count
  * @param {number} pageLimit - Number of items to display per page
  * @param {number} pageNeighbors - Number of neighboring pages when pagination is in the middle of the list
@@ -75,21 +75,14 @@ const Pagination = props => {
   });
 
   useEffect(() => {
-    const {
-      currentPage = 1,
-      totalRecords = 0,
-      pageLimit = 10,
-      pageNeighbors = 1,
-    } = props;
-
     dispatch({
       type: SET_PAGINATION_CONFIG,
       payload: {
-        currentPage,
-        totalRecords,
-        pageLimit,
-        pageNeighbors: Math.max(0, Math.min(pageNeighbors, 2)),
-        totalPages: Math.ceil(totalRecords / pageLimit),
+        currentPage: props.currentPage,
+        totalRecords: props.totalRecords,
+        pageLimit: props.pageLimit,
+        pageNeighbors: Math.max(0, Math.min(props.pageNeighbors, 2)),
+        totalPages: Math.ceil(props.totalRecords / props.pageLimit),
       },
     });
   }, [
@@ -112,17 +105,19 @@ const Pagination = props => {
      * {...x} => represents page neighbours
      */
     const fetchPageNumbers = () => {
-      const { currentPage, pageNeighbors, totalPages } = state;
       /**
        * totalNumbers: the total page numbers to show on the control
        * totalBlocks: totalNumbers + 2 to cover for the left(<) and right(>) controls
        */
-      const totalNumbers = pageNeighbors * 2 + 3;
+      const totalNumbers = state.pageNeighbors * 2 + 3;
       const totalBlocks = totalNumbers + 2;
 
-      if (totalPages > totalBlocks) {
-        const startPage = Math.max(2, currentPage - pageNeighbors);
-        const endPage = Math.min(totalPages - 1, currentPage + pageNeighbors);
+      if (state.totalPages > totalBlocks) {
+        const startPage = Math.max(2, state.currentPage - state.pageNeighbors);
+        const endPage = Math.min(
+          state.totalPages - 1,
+          state.currentPage + state.pageNeighbors
+        );
 
         let pages = range(startPage, endPage);
 
@@ -132,7 +127,7 @@ const Pagination = props => {
          * spillOffset: number of hidden pages either to the left or to the right
          */
         const hasLeftSpill = startPage > 2;
-        const hasRightSpill = totalPages - endPage > 1;
+        const hasRightSpill = state.totalPages - endPage > 1;
         const spillOffset = totalNumbers - (pages.length + 1);
 
         switch (true) {
@@ -158,10 +153,10 @@ const Pagination = props => {
           }
         }
 
-        return [1, ...pages, totalPages];
+        return [1, ...pages, state.totalPages];
       }
 
-      return range(1, totalPages);
+      return range(1, state.totalPages);
     };
 
     const pageNumbers = fetchPageNumbers();
@@ -250,11 +245,19 @@ const Pagination = props => {
   );
 };
 
+Pagination.defaultProps = {
+  currentPage: 1,
+  totalRecords: 0,
+  pageLimit: 10,
+  pageNeighbors: 1,
+};
+
 Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
   totalRecords: PropTypes.number.isRequired,
-  onPageChanged: PropTypes.func.isRequired,
   pageLimit: PropTypes.number,
   pageNeighbors: PropTypes.number,
+  onPageChanged: PropTypes.func.isRequired,
 };
 
 export default Pagination;
