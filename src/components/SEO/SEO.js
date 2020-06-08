@@ -40,7 +40,11 @@ const SEO = ({ canonicalUrl }) => {
 
   return (
     <>
-      <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`}>
+      <Helmet
+        defaultTitle={title}
+        titleTemplate={`%s - ${title}`}
+        htmlAttributes={{ lang: 'en' }}
+      >
         {/* General tags */}
         <title>{title}</title>
         <meta name="description" content={description} />
