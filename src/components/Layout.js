@@ -14,7 +14,10 @@ export default function Layout({ children }) {
           <>
             <SEO />
             <SkipNavLink />
-            <PrimaryNav menuLinks={data.site.siteMetadata.menuLinks} />
+            <PrimaryNav
+              menuLinks={data.site.siteMetadata.menuLinks}
+              logoInformation={data.site.siteMetadata.logo}
+            />
             <SkipNavContent />
             <main id="primary-content">{children}</main>
           </>
@@ -28,6 +31,10 @@ const MenuLinks = graphql`
   query SiteTitleQuery {
     site {
       siteMetadata {
+        logo {
+          src
+          alt
+        }
         menuLinks {
           name
           slug
