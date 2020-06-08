@@ -13,18 +13,18 @@ export default function About() {
         <Flex
           w="100%"
           minH="260px"
-          backgroundColor="#000"
           align="center"
           justify="center"
-          color="#FFF"
           zIndex="-1"
+          backgroundColor="#000"
+          color="#FFF"
         >
           <Image
             publicId="assets/people-protesting-on-street-4552840_gginry"
             cloudName="rebuild-black-business"
-            zIndex="-1"
-            minW="1000px"
             position="absolute"
+            minW="1000px"
+            zIndex="-1"
           />
           <Heading>ABOUT</Heading>
         </Flex>
