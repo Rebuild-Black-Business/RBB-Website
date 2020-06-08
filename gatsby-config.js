@@ -32,6 +32,10 @@ module.exports = {
     siteUrl: BASE_SITE_URL,
     menuLinks: [
       {
+        name: 'Home',
+        slug: '/',
+      },
+      {
         name: 'About',
         slug: '/about',
       },
@@ -40,12 +44,25 @@ module.exports = {
         slug: '/businesses',
       },
       {
-        name: 'Resources',
-        slug: '/resources',
-      },
-      {
         name: 'Allies',
         slug: '/allies',
+      },
+    ],
+    photoCreditLinks: [
+      {
+        photographer: 'John Cameron',
+        url: 'https://unsplash.com/@john_cameron',
+        pagePathname: '/',
+      },
+      {
+        photographer: 'Kelly Lacy',
+        url: 'https://instagram.com/kellymlacy',
+        pagePathname: '/',
+      },
+      {
+        photographer: 'Mike Von',
+        url: 'https://thevoncomplex.com',
+        pagePathname: '/',
       },
     ],
   },

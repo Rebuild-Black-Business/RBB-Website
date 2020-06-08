@@ -60,11 +60,14 @@ const NoImage = () => (
 
 // @TODO :: Replace with new Image component
 const CardImage = ({ imageUrl, imageAlt }) => (
-  <Flex w="342px" h="220px">
+  <Flex w="100%" minH="220px" position="relative" overflow="hidden">
     <Image
       objectFit="cover"
       width="100%"
       height="100%"
+      position="absolute"
+      top="0"
+      left="0"
       src={imageUrl}
       alt={imageAlt}
     />
@@ -95,10 +98,10 @@ const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
   return (
     <>
       <Flex
+        as="a"
+        href="#"
         ref={focusRef}
-        tabIndex={-1}
-        as="button"
-        maxW="342px"
+        maxW={[null, '100%', '342px']}
         maxH="322px"
         direction="column"
         onClick={onOpen}
@@ -120,7 +123,7 @@ const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
     as="a"
     href={`mailto:${email}`}
     isExternal
-    maxW="342px"
+    maxW={[null, '100%', '342px']}
     maxH="322px"
     direction="column"
   >
@@ -138,7 +141,7 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     as={Link}
     href="https://discord.com/invite/272XMuv"
     isExternal
-    maxW="342px"
+    maxW={[null, '100%', '342px']}
     maxH="322px"
     direction="column"
   >
@@ -158,8 +161,8 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
  * @param {string} blurb - The cards blurb
  * @param {string} imageUrl - The images url
  * @param {string} imageAlt - The alt text for the image
- * @param {boolean} modalCard - If doesModal then card with modal will be displayed
- * @param {boolean} mailtoCard - If doesMailto then card with mailto link will be displayed
+ * @param {boolean} modalCard - If modalCard then card with modal will be displayed
+ * @param {boolean} mailtoCard - If mailtoCard then card with mailto link will be displayed
  * @param {string} modalTitle - The title to be displayed in the modal
  * @param {string} email - The RBB support email address
  */

@@ -4,6 +4,7 @@ import PrimaryNav from './PrimaryNav';
 import { StaticQuery, graphql } from 'gatsby';
 import ErrorBoundary from './ErrorBoundary';
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
+import Footer from './footer/Footer';
 
 export default function Layout({ children }) {
   return (
@@ -14,9 +15,13 @@ export default function Layout({ children }) {
           <>
             <SEO />
             <SkipNavLink />
-            <PrimaryNav menuLinks={data.site.siteMetadata.menuLinks} />
+            <PrimaryNav
+              menuLinks={data.site.siteMetadata.menuLinks}
+              logoInformation={data.site.siteMetadata.logo}
+            />
             <SkipNavContent />
             <main id="primary-content">{children}</main>
+            <Footer />
           </>
         )}
       />
@@ -28,6 +33,10 @@ const MenuLinks = graphql`
   query SiteTitleQuery {
     site {
       siteMetadata {
+        logo {
+          src
+          alt
+        }
         menuLinks {
           name
           slug

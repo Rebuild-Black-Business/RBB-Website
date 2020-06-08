@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, Heading, Text, theme } from '@chakra-ui/core';
-import { Helmet } from 'react-helmet';
+import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import ContentBlock from '../components/ContentBlock';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
@@ -9,11 +8,8 @@ import PrimaryButton from '../components/Buttons/PrimaryButton';
 export default () => {
   return (
     <Layout>
-      <Helmet htmlAttributes={{ lang: 'en' }}>
-        <title>Home</title>
-      </Helmet>
       <Flex direction="column" align="center" justify="center">
-        <Heading size="2xl" fontFamily="Arvo">
+        <Heading as="h1" size="2xl" fontFamily="Arvo">
           Home
         </Heading>
         <Heading>Center Content</Heading>
