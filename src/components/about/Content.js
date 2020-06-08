@@ -4,7 +4,7 @@ import React from 'react';
 const Content = ({ heading, message, margin }) => {
   return (
     <Flex
-      direction={['column', 'column', 'row', 'row', 'row']}
+      direction={['column', 'column', 'column', 'row', 'row']}
       marginTop={margin}
     >
       <Heading
@@ -19,8 +19,8 @@ const Content = ({ heading, message, margin }) => {
       <Divider
         marginLeft={['98px', '98px', '25px', '25px']}
         marginRight={['97px', '97px', '25px', '25px']}
-        marginTop={['25px', '25px', '0']}
-        marginBottom={['25px', '25px', '0']}
+        marginTop={['25px', '25px', '25px', '0']}
+        marginBottom={['25px', '25px', '25px', '0']}
         border="1px solid"
         borderColor="#BA2A2A"
         orientation="vertical"

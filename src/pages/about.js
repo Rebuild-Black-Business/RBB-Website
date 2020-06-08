@@ -22,7 +22,7 @@ export default function About() {
         </Flex>
         <Flex
           w="100%"
-          h={['605px', '605px', '405px', '377px', '377px']}
+          h={['605px', '605px', '505px', '490px', '377px']}
           backgroundColor="#F7F7F2"
         >
           <Flex
