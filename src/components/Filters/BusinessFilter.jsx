@@ -1,19 +1,12 @@
 import React, { useRef, useState } from 'react';
-import {
-  Checkbox,
-  Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  Select,
-} from '@chakra-ui/core';
+import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const businessTypes = [
   { id: 'entertainment', label: 'Entertainment' },
-  { id: 'food', label: 'Food & Beverage' },
-  { id: 'health', label: 'Health & Wellness' },
+  { id: 'food', label: 'Food and Beverage' },
+  { id: 'health', label: 'Health and Wellness' },
   { id: 'professional', label: 'Professional Services' },
   { id: 'retail', label: 'Retail' },
 ];
@@ -29,7 +22,7 @@ function BusinessFilter(props) {
     onSearch({
       type: typeRef.current.value,
       location: location,
-      need: needRef.current.checked,
+      need: needRef.current.value,
     });
   };
 
@@ -38,7 +31,7 @@ function BusinessFilter(props) {
     onSearch({
       type: typeRef.current.value,
       location: location,
-      need: needRef.current.checked,
+      need: needRef.current.value,
     });
   };
 
@@ -46,7 +39,16 @@ function BusinessFilter(props) {
     <FormControl>
       <Flex>
         <Flex direction="column">
-          <FormLabel htmlFor="type">Business</FormLabel>
+          <FormLabel htmlFor="need">Black Businesses</FormLabel>
+          <Select ref={needRef} id="need">
+            <option value="true" defaultValue>
+              In Urgent Need
+            </option>
+            <option value="false">All</option>
+          </Select>
+        </Flex>
+        <Flex direction="column">
+          <FormLabel htmlFor="type">Business Type</FormLabel>
           <Select ref={typeRef} id="type" placeholder="Select type">
             {businessTypes.map(resource => {
               return (
@@ -71,12 +73,6 @@ function BusinessFilter(props) {
               }
             }}
           />
-        </Flex>
-        <Flex direction="column">
-          <FormLabel htmlFor="need">Need</FormLabel>
-          <Checkbox ref={needRef} defaultIsChecked>
-            Affected by protests
-          </Checkbox>
         </Flex>
         <Flex direction="column">
           <PrimaryButton
