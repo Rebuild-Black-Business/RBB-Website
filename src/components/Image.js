@@ -3,7 +3,7 @@ import { useImage } from 'use-cloudinary';
 import { Image as ChakraImage } from '@chakra-ui/core';
 
 export default function Image(props) {
-  const { cloudName, transforms, publicId } = props;
+  const { cloudName, transforms, publicId, alt } = props;
 
   const { getImage, data, status, error } = useImage({ cloud_name: cloudName });
 
@@ -24,7 +24,7 @@ export default function Image(props) {
   // @TODO :: Deliver custom Error UI if needed
   if (status === 'error') return <p>{error.message}</p>;
 
-  return <ChakraImage {...props} src={data} alt="Media from Cloudinary" />;
+  return <ChakraImage {...props} src={data} alt={alt} />;
 }
 
 /*

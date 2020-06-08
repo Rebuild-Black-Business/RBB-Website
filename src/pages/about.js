@@ -46,21 +46,20 @@ export default function About() {
         <Flex
           align="center"
           width="100%"
-          // minH="500px"
-          // maxH="500px"
           justify="center"
           direction="column"
           backgroundColor="#DEDEDA"
         >
-          <Heading fontFamily={theme.fontSizes['heading-slab']}>
+          <Heading
+            fontFamily={theme.fontSizes['heading-slab']}
+            color={theme.colors['rbb-black-200']}
+            as="h2"
+            size="xl"
+            paddingTop="32px"
+          >
             CONTACT
           </Heading>
-          <Flex
-            w="100%"
-            // margin="3em"
-            justify="space-evenly"
-            direction={['column', 'column', 'row', 'row']}
-          >
+          <Flex w="80%" direction={['column', 'column', 'row', 'row']}>
             <ContactCard
               modalCard
               title="Business Owner"

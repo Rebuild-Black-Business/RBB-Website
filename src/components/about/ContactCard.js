@@ -14,6 +14,7 @@ import {
   Button,
   Text,
   useTheme,
+  Heading,
   Link,
 } from '@chakra-ui/core';
 
@@ -35,20 +36,16 @@ const CardContent = ({ title, blurb, imageUrl, imageAlt }) => {
         textAlign="center"
         backgroundColor="#001514"
       >
-        <Text
+        <Heading
           color="white"
-          fontSize={[
-            theme.fontSizes.lg,
-            theme.fontSizes.lg,
-            theme.fontSizes.xl,
-            theme.fontSizes.xl,
-          ]}
           fontFamily={theme.fonts.heading}
+          as="h5"
+          size="md"
         >
           {title}
-        </Text>
+        </Heading>
         <Text
-          p="4"
+          p="2"
           fontSize={theme.fontSizes.paragraph}
           fontFamily={theme.fonts.heading}
           color="#F7F7F2"
@@ -71,14 +68,8 @@ const NoImage = () => (
 
 // @TODO :: Replace with new Image component
 const CardImage = ({ imageUrl, imageAlt }) => (
-  <Flex maxW="342px" maxH="220px">
-    <Image
-      objectFit="cover"
-      // width="100%"
-      // height="100%"
-      src={imageUrl}
-      alt={imageAlt}
-    />
+  <Flex w="100%" minH="220px" position="relative" overflow="hidden">
+    <Image objectFit="cover" src={imageUrl} alt={imageAlt} />
   </Flex>
 );
 
@@ -106,14 +97,12 @@ const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
   return (
     <>
       <Flex
+        as="a"
+        href="#"
         ref={focusRef}
-        tabIndex={-1}
-        as="button"
         margin="2% auto"
-        maxW={['297px', '297px', '342px', '342px']}
-        maxH={['474px', '474px', '322px', '322px']}
-        // maxW="342px"
-        // maxH="322px"
+        maxW={['279px', '342px']}
+        maxH="322px"
         direction="column"
         onClick={onOpen}
       >
@@ -131,12 +120,12 @@ const ModalCard = ({ imageUrl, imageAlt, modalTitle, title, blurb }) => {
 
 const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
   <Flex
-    margin="2% auto"
     as="a"
     href={`mailto:${email}`}
     isExternal
-    maxW={['297px', '297px', '342px', '342px']}
-    maxH={['474px', '474px', '322px', '322px']}
+    margin="2% auto"
+    maxW={['279px', '342px']}
+    maxH="322px"
     direction="column"
   >
     <CardContent
@@ -154,8 +143,8 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     href="https://discord.com/invite/272XMuv"
     isExternal
     margin="2% auto"
-    maxW={['297px', '297px', '342px', '342px']}
-    maxH={['474px', '474px', '322px', '322px']}
+    maxW={['279px', '342px']}
+    maxH="322px"
     direction="column"
   >
     <CardContent

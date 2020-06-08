@@ -11,7 +11,7 @@ export default () => {
         <title>Home</title>
       </Helmet>
       <Flex direction="column" align="center" justify="center">
-        <Heading size="2xl" fontFamily="Arvo">
+        <Heading as="h1" size="2xl" fontFamily="Arvo">
           Home
         </Heading>
       </Flex>
