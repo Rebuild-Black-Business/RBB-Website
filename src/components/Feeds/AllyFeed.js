@@ -54,7 +54,6 @@ const AllyFeed = data => {
           paddingBottom={theme.spacing.lg}
         >
           {allAllies.map((allies, index) => {
-            // @TODO :: Need to add ither cloundiary image, or background image to this card, as per the designs.
             if (index === 4)
               return (
                 <>
