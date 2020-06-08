@@ -139,7 +139,7 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
             fontSize={theme.fontSizes.lg}
             fontWeight={theme.fontWeights.bold}
             cursor="pointer"
-            _hover={{ bg: isActivePage && theme.colors['rbb-gray'] }}
+            _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
             onClick={handleClick}
             title={`Go to page ${page}`}
             aria-label={`Go to page ${page}`}

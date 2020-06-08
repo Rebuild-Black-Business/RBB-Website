@@ -37,6 +37,7 @@ const customTheme = {
     'rbb-black-000': '#140303',
     'rbb-black-100': '#001514',
     'rbb-gray': '#565656',
+    'rbb-lightgray': '#757575',
     'rbb-white': '#F7F7F2',
     'rbb-red': '#BA2A2A',
     'rbb-orange': '#F46036',
