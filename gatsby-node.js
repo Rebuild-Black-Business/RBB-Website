@@ -18,9 +18,10 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   );
 
-  const itemsPerPage = 10;
-  const totalRecords = result.data.allAirtableBusinesses.edges.length + 1;
+  const itemsPerPage = 20;
+  const totalRecords = result.data.allAirtableBusinesses.edges.length;
   const numberOfBusinessPages = Math.ceil(totalRecords / itemsPerPage);
+
   for (let pageNumber = 1; pageNumber <= numberOfBusinessPages; pageNumber++) {
     createPage({
       path: `businesses/${pageNumber === 1 ? '' : `${pageNumber}/`}`, // required, we don't have frontmatter for this page hence separate if()
