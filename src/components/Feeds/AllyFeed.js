@@ -8,9 +8,9 @@ const AllyFeed = data => {
   const [allAllies] = useState(data.data.allAirtableAllies.nodes);
 
   return (
-    <Box maxW="859px">
+    <Box maxW="1220px">
       {allAllies.length > 0 ? (
-        <SimpleGrid columns={[2, 3, 4]} spacing={10}>
+        <SimpleGrid columns={[1, 1, 2, 4]} spacing={10}>
           {allAllies.map((allies, index) => (
             <ResultCard
               key={index}
