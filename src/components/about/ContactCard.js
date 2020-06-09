@@ -1,22 +1,22 @@
-import React from 'react';
-import Image from '../../components/Image.js';
 import {
-  Flex,
   Box,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   Button,
-  Text,
-  useTheme,
+  Flex,
   Heading,
   Link,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
+import React from 'react';
+import Image from '../../components/Image.js';
 
 const CardContent = ({ title, blurb, publicId }) => {
   const theme = useTheme();
@@ -30,7 +30,7 @@ const CardContent = ({ title, blurb, publicId }) => {
         align="center"
         justify="center"
         textAlign="center"
-        backgroundColor="#001514"
+        backgroundColor={theme.colors['rbb-black-100']}
       >
         <Heading
           color="white"
@@ -44,7 +44,7 @@ const CardContent = ({ title, blurb, publicId }) => {
           p="2"
           fontSize={theme.fontSizes.paragraph}
           fontFamily={theme.fonts.heading}
-          color="#F7F7F2"
+          color={theme.colors['rbb-white']}
         >
           {blurb}
         </Text>
