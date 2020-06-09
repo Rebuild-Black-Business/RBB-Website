@@ -26,6 +26,7 @@ describe('Business Screen', () => {
 
 describe('Allies Screen', () => {
   const ZIP = '29407';
+
   beforeEach(() => {
     cy.visit('/allies');
   });
