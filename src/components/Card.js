@@ -24,31 +24,21 @@ const CardWrapper = forwardRef(({ children, ...props }, ref) => {
 const CardImage = forwardRef(({ children, ...props }, ref) => {
   return (
     <AspectRatioBox ratio={3 / 2}>
-      {props.isRBBImage ? (
-        <Image
-          width="100%"
-          height="100%"
-          objectFit="cover"
-          objectPosition="50% 50%"
-          cloudName="rebuild-black-business"
-          publicId={props.publicId}
-          transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
-          }}
-          {...props}
-          ref={ref}
-        />
-      ) : (
-        <ChakraImage
-          width="100%"
-          height="100%"
-          objectFit="cover"
-          objectPosition="50% 50%"
-          {...props}
-          ref={ref}
-        />
-      )}
+      <Image
+        width="100%"
+        height="100%"
+        objectFit="cover"
+        objectPosition="50% 50%"
+        cloudName="rebuild-black-business"
+        publicId={props.publicId}
+        src={props.src}
+        transforms={{
+          fetchFormat: 'auto',
+          quality: 'auto',
+        }}
+        {...props}
+        ref={ref}
+      />
     </AspectRatioBox>
   );
 });

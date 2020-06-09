@@ -136,19 +136,6 @@ const ResultCard = forwardRef(
     const zipInfo = zipcodeConversion(location);
     const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
 
-    let img;
-    if (imageSrc) {
-      img = <CardImage src={imageSrc} alt={imageAlt} />;
-    } else {
-      img = (
-        <CardImage
-          isRBBImage
-          publicId={categoryData[catVar].image.src}
-          alt={categoryData[catVar].image.alt}
-        />
-      );
-    }
-
     return (
       <>
         <CardWrapper
@@ -159,7 +146,11 @@ const ResultCard = forwardRef(
           // category, will need to be fixed. Omitting for now.
           // itemType={`http://schema.org/${categoryLabel}`}
         >
-          {img}
+          <CardImage
+            publicId={!imageSrc ? categoryData[catVar].image.src : null}
+            src={imageSrc ? imageSrc : null}
+            alt={imageAlt || categoryData[catVar].image.alt}
+          />
           <CardContent
             // TODO: Use real theme colors per the design
             bg="#DEDEDA"
