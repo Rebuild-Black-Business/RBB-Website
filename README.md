@@ -123,7 +123,7 @@ To test locally, you're going to want to set up the [Netlify CLI](https://docs.n
   netlify dev
 ```
 
-This will allow you to consume the env variables from our Netlify account and perform hits to our serverless functions (currentl only search)
+This will allow you to consume the env variables from our Netlify account and perform hits to our serverless functions (currently only search)
 
 ## Usage
 
