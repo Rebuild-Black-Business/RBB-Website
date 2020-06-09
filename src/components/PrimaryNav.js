@@ -81,7 +81,6 @@ const PrimaryNav = forwardRef(
         >
           <Link as={GatsbyLink} to="/">
             <Image
-              cloudName="rebuild-black-business"
               publicId="assets/RBBLogoFinal_ugdskx"
               transforms={{
                 height: 0.1,

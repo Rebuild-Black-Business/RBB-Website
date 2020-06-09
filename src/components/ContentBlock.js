@@ -97,7 +97,6 @@ const LeftSideContentBlock = ({
         right="0"
       >
         <Image
-          cloudName="rebuild-black-business"
           publicId={imageSource}
           transforms={{
             fetchFormat: 'auto',
@@ -131,7 +130,6 @@ const LeftSideContentBlock = ({
         textAlign={['center', 'center', 'left']}
       >
         <Image
-          cloudName="rebuild-black-business"
           publicId={imageSource}
           transforms={{
             fetchFormat: 'auto',
@@ -193,7 +191,6 @@ const RightSideContentBlock = ({
         textAlign={['center', 'center', 'left']}
       >
         <Image
-          cloudName="rebuild-black-business"
           publicId={imageSource}
           transforms={{
             fetchFormat: 'auto',
@@ -225,7 +222,6 @@ const RightSideContentBlock = ({
         textAlign={['center', 'center', 'left']}
       >
         <Image
-          cloudName="rebuild-black-business"
           publicId={imageSource}
           transforms={{
             fetchFormat: 'auto',
@@ -269,7 +265,6 @@ const FullWidthContentBlock = ({
   return (
     <ContentBlockWrapper imageSource={imageSource}>
       <Image
-        cloudName="rebuild-black-business"
         publicId={imageSource}
         transforms={{
           fetchFormat: 'auto',
