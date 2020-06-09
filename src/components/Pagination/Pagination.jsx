@@ -18,8 +18,8 @@ const PLACEHOLDER = '...';
 function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
   const theme = useTheme();
 
-  const isWide = useMedia('(min-width: 480px)')
-  const pageNeighbors = isWide ? 2 : 1
+  const isWide = useMedia('(min-width: 480px)');
+  const pageNeighbors = isWide ? 2 : 1;
 
   const totalPages = useMemo(() => Math.ceil(totalRecords / pageLimit), [
     totalRecords,
