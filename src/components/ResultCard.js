@@ -24,18 +24,10 @@ import {
   useDisclosure,
 } from '@chakra-ui/core';
 import { zipcodeConversion } from '../utils/locationUtils';
+import { toCamelCase } from '../utils/stringUtils';
 
 import Button from './Button';
 import Link from './Link';
-
-const toCamelCase = string => {
-  string = string
-    .toLowerCase()
-    .replace(/(?:(^.)|([-_\s]+.))/g, function (match) {
-      return match.charAt(match.length - 1).toUpperCase();
-    });
-  return string.charAt(0).toLowerCase() + string.substring(1);
-};
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
