@@ -47,7 +47,6 @@ export default function About() {
             marginBottom={['1.125rem', '1.125rem', 0, 0]}
             marginLeft={[0, 0, '5%', '15%', '15%', '30%']}
             marginRight={[0, 0, '5%', '20%', '22%', '35%']}
-            maxW="1200px"
           >
             <Content
               heading="MISSION"
@@ -89,7 +88,6 @@ export default function About() {
             rowGap="24px"
             templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
             w="100%"
-            maxW="1400px"
             direction={['column', 'column', 'row', 'row']}
             paddingTop="2rem"
             paddingBottom="2rem"
