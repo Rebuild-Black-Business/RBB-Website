@@ -149,7 +149,12 @@ const Pagination = props => {
   };
 
   return (
-    <Flex flexWrap="nowrap" justifyContent="center">
+    <Flex
+      flexWrap="nowrap"
+      justifyContent="center"
+      marginTop={theme.spacing.lg}
+      marginBottom={theme.spacing.lg}
+    >
       {pages.map((page, i) => {
         return (
           <PseudoBox

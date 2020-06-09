@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
+import {
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  useTheme,
+} from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 
@@ -16,6 +23,9 @@ function BusinessFilter(props) {
   const [location, setLocation] = useState('');
   const typeRef = useRef();
   const needRef = useRef();
+  const theme = useTheme();
+
+  const rbbWhite = theme.colors['rbb-white'];
 
   const handleSearchClick = event => {
     event.preventDefault();
@@ -36,10 +46,12 @@ function BusinessFilter(props) {
   };
 
   return (
-    <FormControl>
-      <Flex>
+    <FormControl maxWidth="1000px" margin="0 auto 3rem" padding="0 24px">
+      <Flex width="100%" justifyContent="space-between">
         <Flex direction="column">
-          <FormLabel htmlFor="need">Black Businesses</FormLabel>
+          <FormLabel htmlFor="need" color={rbbWhite}>
+            Black Businesses
+          </FormLabel>
           <Select ref={needRef} id="need">
             <option value="true" defaultValue>
               In Urgent Need
@@ -48,7 +60,9 @@ function BusinessFilter(props) {
           </Select>
         </Flex>
         <Flex direction="column">
-          <FormLabel htmlFor="type">Business Type</FormLabel>
+          <FormLabel htmlFor="type" color={rbbWhite}>
+            Business Type
+          </FormLabel>
           <Select ref={typeRef} id="type" placeholder="Select type">
             {businessTypes.map(resource => {
               return (
@@ -60,7 +74,9 @@ function BusinessFilter(props) {
           </Select>
         </Flex>
         <Flex direction="column">
-          <FormLabel htmlFor="location">Location</FormLabel>
+          <FormLabel htmlFor="location" color={rbbWhite}>
+            Location
+          </FormLabel>
           <Input
             value={location}
             id="location"
@@ -74,7 +90,7 @@ function BusinessFilter(props) {
             }}
           />
         </Flex>
-        <Flex direction="column">
+        <Flex direction="column" alignSelf="flex-end">
           <PrimaryButton
             onClick={handleSearchClick}
             onKeyPress={event => {
