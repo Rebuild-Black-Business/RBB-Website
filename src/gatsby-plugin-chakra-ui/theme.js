@@ -179,9 +179,12 @@ const customTheme = {
     },
     footer: {
       color: {
-        default: '#F7F7F2B3',
-        hover: '#ffffff',
-        focus: '#ffffff',
+        default: '#F7F7F2',
+        hover: '#F7F7F2',
+        focus: '#F7F7F2',
+      },
+      opacity: {
+        default: '0.7',
       },
     },
   },
