@@ -30,9 +30,12 @@ export default function About() {
             zIndex="-1"
             transforms={{
               gravity: 'auto',
+              opacity: '50',
             }}
           />
-          <Heading>ABOUT</Heading>
+          <Heading fontFamily={theme.fonts['heading-slab']} size="xl">
+            ABOUT
+          </Heading>
         </Flex>
         <Flex w="100%" backgroundColor={theme.colors['rbb-white']}>
           <Flex
@@ -70,7 +73,12 @@ export default function About() {
           direction="column"
           backgroundColor="#DEDEDA"
         >
-          <Heading as="h2" size="xl" paddingTop={['2.5rem', '2.75rem']}>
+          <Heading
+            as="h2"
+            size="xl"
+            fontFamily={theme.fonts['heading-slab']}
+            paddingTop={['2.5rem', '2.75rem']}
+          >
             CONTACT
           </Heading>
           <Flex
