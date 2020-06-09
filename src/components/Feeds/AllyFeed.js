@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-
 import {
   Box,
   SimpleGrid,
@@ -14,6 +13,9 @@ import {
   useTheme,
   useDisclosure,
 } from '@chakra-ui/core';
+
+import { getZipcodesByRadius } from '../../utils/locationUtils';
+
 import AllyCard from '../Cards/AllyCard';
 import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
@@ -60,8 +62,13 @@ const AllyFeed = props => {
               return ally.data['Speciality'] === skillFilter;
             })
             .filter(ally => {
-              console.log('location filter', locationFilter);
-              return ally;
+              if (locationFilter === '') return ally;
+
+              const zipcodesInRadius = getZipcodesByRadius(locationFilter, 25);
+
+              if (zipcodesInRadius.length === 0) return ally;
+
+              return zipcodesInRadius.includes(ally.data['Zip_Code']);
             })
             .map((allies, index) => {
               if (index === 4)

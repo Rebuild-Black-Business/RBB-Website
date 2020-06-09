@@ -24,3 +24,8 @@ export function zipcodeConversion(zipcode) {
     console.log(error);
   }
 }
+
+export function getZipcodesByRadius(zipcode, miles) {
+  if (zipcode.length < 5) return [];
+  return zipcodes.radius(zipcode, miles);
+}
