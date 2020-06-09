@@ -1,16 +1,17 @@
-import React from 'react';
-
 import {
   Box,
+  ButtonGroup,
   Flex,
   Heading,
   Text,
   useTheme,
-  ButtonGroup,
 } from '@chakra-ui/core';
-import Layout from '../components/Layout';
-import ContentBlock from '../components/ContentBlock';
+import { graphql, StaticQuery } from 'gatsby';
+import React from 'react';
 import Button from '../components/Button';
+import ContentBlock from '../components/ContentBlock';
+import ErrorBoundary from '../components/ErrorBoundary';
+import Layout from '../components/Layout';
 
 export default () => {
   const theme = useTheme();
@@ -80,6 +81,7 @@ export default () => {
           imageSource="assets/cta1-bg" // @TODO :: Pass this to cloudinary
           backgroundColor="#fff"
           backgroundMode="fade"
+          backgroundOpacity="0.85"
         >
           <Box py={[72, 72, 190]} color={theme.colors['rbb-black-100']}>
             <Heading
@@ -111,7 +113,7 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" m={3} h="auto" px="30px">
+              <Button variant="primary" maxW="230px;" m={3} h="auto" px="30px">
                 Add Business
               </Button>
               <Button variant="secondary" m={3} h="auto" px="30px">
@@ -154,7 +156,7 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" m={3} h="auto" px="30px">
+              <Button variant="primary" maxW="230px" m={3} h="auto" px="30px">
                 Add Business
               </Button>
               <Button variant="secondary" m={3} h="auto" px="30px">
@@ -179,12 +181,36 @@ export default () => {
               designers, marketers, project managers, policy makers, and web
               professionals. Welcome!
             </Text>
-            <Button variant="cta" w="100%">
-              Contact Us
-            </Button>
+            <ErrorBoundary>
+              <StaticQuery
+                query={ContactQuery}
+                render={data => (
+                  <Button
+                    variant="cta"
+                    w="100%"
+                    as="a"
+                    href={`mailto:${data.site.siteMetadata.social.contact}`}
+                  >
+                    Contact Us
+                  </Button>
+                )}
+              />
+            </ErrorBoundary>
           </Box>
         </ContentBlock>
       </Flex>
     </Layout>
   );
 };
+
+const ContactQuery = graphql`
+  query HomeContactQuery {
+    site {
+      siteMetadata {
+        social {
+          contact
+        }
+      }
+    }
+  }
+`;
