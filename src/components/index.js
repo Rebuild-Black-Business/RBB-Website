@@ -1,4 +1,5 @@
 export { default as AllyFeed } from './Feeds/AllyFeed';
+export { default as AllyFilter } from './Filters/AllyFilter';
 export { default as BusinessFeed } from './Feeds/BusinessFeed';
 export { default as Image } from './Image';
 export { default as Layout } from './Layout';
