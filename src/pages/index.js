@@ -80,6 +80,7 @@ export default () => {
           imageSource="assets/cta1-bg" // @TODO :: Pass this to cloudinary
           backgroundColor="#fff"
           backgroundMode="fade"
+          backgroundOpacity="0.85"
         >
           <Box py={[72, 72, 190]} color={theme.colors['rbb-black-100']}>
             <Heading
