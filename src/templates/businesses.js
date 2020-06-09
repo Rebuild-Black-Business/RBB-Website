@@ -2,10 +2,13 @@ import React from 'react';
 
 import { graphql, navigate } from 'gatsby';
 import { Flex } from '@chakra-ui/core';
-
 import { PageHero, Layout, BusinessFeed, Pagination } from '../components';
+import CardSkeleton from '../components/Loading/CardSkeleton';
 
 export default function Businesses(data) {
+  // AirTable passes us and extra data...
+  const businessFeedData = data.data.allAirtableBusinesses.nodes;
+
   const pageSubtitle = (
     <p>
       These business owners have been impacted during the protests. Your support
@@ -26,7 +29,10 @@ export default function Businesses(data) {
           heroImageUrl={heroBackgroundImageUrl}
           hasFadedHeroImage
         />
-        <BusinessFeed {...data} />
+        <CardSkeleton data={businessFeedData}>
+          <BusinessFeed {...data} />
+        </CardSkeleton>
+
         <Pagination
           onPageChanged={pagination =>
             navigate(
