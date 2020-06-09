@@ -88,7 +88,7 @@ export default function Allies() {
                     variantColor="orange"
                     rightIcon="check"
                     onClick={() => {
-                      // setAcceptedTAC(true);
+                      setAcceptedTAC(true);
                       onClose();
                     }}
                   >
