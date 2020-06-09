@@ -12,6 +12,7 @@ function getButtonStyles(theme, variant) {
     fontFamily: theme.buttons[variant].fontFamily,
     fontSize: 'button',
     fontWeight: 'bold',
+    height: 'auto',
     letterSpacing: 'button',
     lineHeight: 'button',
     padding: theme.buttons[variant].padding,

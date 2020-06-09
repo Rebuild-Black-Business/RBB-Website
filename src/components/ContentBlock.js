@@ -1,7 +1,8 @@
 import React from 'react';
 import { PseudoBox, Box, Flex, theme } from '@chakra-ui/core';
+import Image from './Image';
 
-const fullWidthOverlayOpacity = 0.3;
+const fullWidthOverlayOpacity = 0.75;
 
 const formatHexCode = hexCode => {
   if (!hexCode.startsWith('#')) {
@@ -61,19 +62,6 @@ const ContentBlockWrapper = ({
       w="100%"
       pos="relative"
       textAlign="center"
-      _before={{
-        backgroundImage: imageSource,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        width: imageWidth,
-        height: '100%',
-        zIndex: -2,
-        ...imagePosition,
-      }}
       {...props}
     >
       {props.children}
@@ -106,7 +94,26 @@ const LeftSideContentBlock = ({
       <ContentBlockWrapper
         imageSource={imageSource}
         textAlign={['center', 'center', 'left']}
+        right="0"
       >
+        <Image
+          cloudName="rebuild-black-business"
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          objectPosition="right center"
+          position="absolute"
+          top="0"
+          right="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
         ></ContentBlockColorOverlay>
@@ -123,6 +130,24 @@ const LeftSideContentBlock = ({
         imagePosition={{ right: 0 }}
         textAlign={['center', 'center', 'left']}
       >
+        <Image
+          cloudName="rebuild-black-business"
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          objectPosition="right center"
+          position="absolute"
+          top="0"
+          right="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
           right={['0', '0', '45%']}
@@ -167,6 +192,23 @@ const RightSideContentBlock = ({
         imageSource={imageSource}
         textAlign={['center', 'center', 'left']}
       >
+        <Image
+          cloudName="rebuild-black-business"
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          position="absolute"
+          top="0"
+          left="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
         ></ContentBlockColorOverlay>
@@ -182,6 +224,23 @@ const RightSideContentBlock = ({
         imageWidth={['100%', '100%', '55%']}
         textAlign={['center', 'center', 'left']}
       >
+        <Image
+          cloudName="rebuild-black-business"
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          position="absolute"
+          top="0"
+          left="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
           left={['0', '0', '45%']}
@@ -209,6 +268,24 @@ const FullWidthContentBlock = ({
 }) => {
   return (
     <ContentBlockWrapper imageSource={imageSource}>
+      <Image
+        cloudName="rebuild-black-business"
+        publicId={imageSource}
+        transforms={{
+          fetchFormat: 'auto',
+          quality: 'auto',
+          h: '100%',
+          gravity: 'auto',
+        }}
+        objectFit="cover"
+        objectPosition="top center"
+        position="absolute"
+        top="0"
+        left="0"
+        w="100%"
+        height="100%"
+        zIndex="-1"
+      />
       <ContentBlockColorOverlay backgroundColor={backgroundColor} />
       <ContentBlockContent layout={layout} backgroundMode={backgroundMode}>
         {props.children}
