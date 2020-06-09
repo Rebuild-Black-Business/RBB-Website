@@ -5,6 +5,17 @@ import { Link as GatsbyLink } from 'gatsby';
 import VisuallyHidden from '@reach/visually-hidden';
 import { Nav, NavMenu, NavItem, NavLink } from './Nav';
 import Image from './Image';
+import Button from '../components/Button';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from '@chakra-ui/core';
 
 const INITIAL_TOGGLE_STATE = false;
 
@@ -15,6 +26,7 @@ const PrimaryNav = forwardRef(
     const handleToggle = () => setIsVisible(!isVisible);
     const theme = useTheme();
     const toUpperCase = text => text.toUpperCase();
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     // Layout effect prevents a flash of visibility when resizing the screen
     useLayoutEffect(() => {
@@ -32,28 +44,13 @@ const PrimaryNav = forwardRef(
         justify="space-between"
         wrap="wrap"
         aria-label="Primary site navigation"
-        backgroundColor={theme.colors['rbb-black-000']}
-        color={theme.colors['rbb-white']}
+        backgroundColor={theme.colors['rbb-white']}
+        color={theme.colors['rbb-black-000']}
         fontFamily="Arvo"
         p={[0, 0, 6]}
         {...props}
       >
-        <Flex align="center" ml={5} my={[5, 5, 0]}>
-          <Link as={GatsbyLink} to="/">
-            <Image
-              cloudName="rebuild-black-business"
-              publicId="assets/RBBLogoFinal_ugdskx"
-              transforms={{
-                height: 0.1,
-                fetchFormat: 'auto',
-                quality: 'auto',
-              }}
-              alt={logoInformation.alt}
-            />
-          </Link>
-        </Flex>
-
-        <Box display={['block', 'block', 'none']} mr={{ sm: '5' }}>
+        <Box display={['block', 'block', 'none']} ml={{ sm: '5' }}>
           <button
             onClick={handleToggle}
             aria-expanded={isVisible && !isMedium}
@@ -67,7 +64,7 @@ const PrimaryNav = forwardRef(
               width="30px"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
-              fill={theme.colors['rbb-white']}
+              fill={theme.colors['rbb-black-000']}
             >
               <title>Menu</title>
 
@@ -75,12 +72,31 @@ const PrimaryNav = forwardRef(
             </svg>
           </button>
         </Box>
+        <Flex
+          align="center"
+          ml={[0, 0, 5]}
+          mr={[8, 8, 0]}
+          my={[5, 5, 0]}
+          width={['50%', '50%', 'auto']}
+        >
+          <Link as={GatsbyLink} to="/">
+            <Image
+              publicId="assets/RBBLogoFinal_ugdskx"
+              transforms={{
+                height: 0.1,
+                fetchFormat: 'auto',
+                quality: 'auto',
+              }}
+              alt={logoInformation.alt}
+            />
+          </Link>
+        </Flex>
 
         <NavMenu
           display={['flex', 'block', 'flex']}
           width={['auto', 'full', 'auto']}
           alignItems="center"
-          justify="flex-end"
+          justify="flex-start"
           flexGrow={1}
           hidden={!isVisible || undefined}
           aria-hidden={isVisible && !isMedium}
@@ -90,20 +106,69 @@ const PrimaryNav = forwardRef(
             <NavItem
               key={link.name}
               p={[6, 6, 0]}
-              border={[
-                `1px solid ${theme.colors['rbb-gray']}`,
-                `1px solid ${theme.colors['rbb-gray']}`,
+              borderTop={[
+                `1px solid ${theme.colors['rbb-black-100']}`,
+                `1px solid ${theme.colors['rbb-black-100']}`,
                 'none',
               ]}
-              mx={[undefined, undefined, index !== src.length - 1 ? 6 : 8]}
+              borderBottom={[
+                index !== src.length - 1
+                  ? 'none'
+                  : `1px solid ${theme.colors['rbb-black-100']}`,
+                index !== src.length - 1
+                  ? 'none'
+                  : `1px solid ${theme.colors['rbb-black-100']}`,
+                'none',
+              ]}
+              ml={[undefined, undefined, 8]}
               display="block"
               fontWeight="bold"
-              textAlign="right"
+              textAlign="left"
             >
               <NavLink to={link.slug}>{toUpperCase(link.name)}</NavLink>
             </NavItem>
           ))}
+          {/* Subscribe button when user is on mobile */}
+          <NavItem
+            display={['none', 'block', 'none']}
+            p={[6, 6, 0]}
+            borderBottom={[
+              `1px solid ${theme.colors['rbb-black-100']}`,
+              `1px solid ${theme.colors['rbb-black-100']}`,
+              'none',
+            ]}
+          >
+            <Flex direction="row" justify={['center', 'center', 'flex-end']}>
+              <Button onClick={onOpen} hidden={!isVisible || undefined}>
+                Subscribe
+              </Button>
+              <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Modal Title</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>This is the modal content.</ModalBody>
+                  <ModalFooter>
+                    <Button onClick={onClose}>Close</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            </Flex>
+          </NavItem>
         </NavMenu>
+
+        {/* Subscribe button when user is on web */}
+        {isVisible ? (
+          <Flex justify={['center', 'center', 'flex-end']}>
+            <Button
+              display={['none', 'none', 'block']}
+              onClick={onOpen}
+              hidden={!isVisible || undefined}
+            >
+              Subscribe
+            </Button>
+          </Flex>
+        ) : null}
       </Nav>
     );
   }

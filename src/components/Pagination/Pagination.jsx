@@ -1,65 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
+import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
+import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
-import { Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import PaginationArrow from '../Svgs/PaginationArrow';
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
+import useMedia from 'react-use/lib/useMedia';
+
+const PLACEHOLDER = '...';
 
 /**
  * @function Pagination
  *
+ * @param {Object} props - Props object that is passed into Pagination
+ * @param {number} props.currentPage - current page number that is being viewed
  * @param {number} totalRecords - Total records count
+ * @param {number} [pageLimit=10] - Number of items to display per page
  * @param {function} onPageChanged - Callback function that passes paginated information
- * @param {number} pageLimit - Number of items to display per page
- * @param {number} pageNeighbors - Number of neighboring pages when pagination is in the middle of the list
- *
  */
-
-const Pagination = props => {
+function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
   const theme = useTheme();
-  let mq;
 
-  if (typeof window !== 'undefined') {
-    mq = window.matchMedia('(min-width: 480px)');
-  }
+  const isWide = useMedia('(min-width: 480px)');
+  const pageNeighbors = isWide ? 2 : 1;
 
-  const [totalRecords, setTotalRecords] = useState(null);
-  const [totalPages, setTotalPages] = useState(0);
-  const [pageLimit, setPageLimit] = useState(10);
-  const [pageNeighbors, setPageNeighbors] = useState(mq.matches ? 2 : 1);
+  const totalPages = useMemo(() => Math.ceil(totalRecords / pageLimit), [
+    totalRecords,
+    pageLimit,
+  ]);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [pages, setPages] = useState([]);
-
-  useEffect(() => {
-    const { totalRecords, pageLimit, pageNeighbors } = props;
-
-    if (pageLimit) {
-      setPageLimit(pageLimit);
-    }
-    if (pageNeighbors) {
-      setPageNeighbors(Math.max(0, Math.min(pageNeighbors, 2)));
-    }
-
-    const totalPages = Math.ceil(totalRecords / pageLimit);
-    setTotalRecords(totalRecords);
-    setTotalPages(totalPages);
-  }, []);
-
-  useEffect(() => {
-    setPages(fetchPageNumbers());
-  }, [totalPages, currentPage]);
-
-  const range = (from, to, step = 1) => {
-    let i = from;
-    const range = [];
-
-    while (i <= to) {
-      range.push(i);
-      i += step;
-    }
-
-    return range;
-  };
 
   /**
    * Let's say we have 10 pages and we set pageNeighbours to 2
@@ -72,159 +42,157 @@ const Pagination = props => {
    * [x] => represents current page
    * {...x} => represents page neighbours
    */
-  const fetchPageNumbers = () => {
-    /**
-     * totalNumbers: the total page numbers to show on the control
-     * totalBlocks: totalNumbers + 2 to cover for the left(<) and right(>) controls
-     */
+  const pages = useMemo(() => {
+    // the total page numbers to show on the control
     const totalNumbers = pageNeighbors * 2 + 3;
+
+    // totalNumbers + 2 to cover for the left(<) and right(>) controls
     const totalBlocks = totalNumbers + 2;
 
     if (totalPages > totalBlocks) {
       const startPage = Math.max(2, currentPage - pageNeighbors);
       const endPage = Math.min(totalPages - 1, currentPage + pageNeighbors);
-
       let pages = range(startPage, endPage);
 
-      /**
-       * hasLeftSpill: has hidden pages to the left
-       * hasRightSpill: has hidden pages to the right
-       * spillOffset: number of hidden pages either to the left or to the right
-       */
+      // has hidden pages to the left
       const hasLeftSpill = startPage > 2;
+
+      // has hidden pages to the right
       const hasRightSpill = totalPages - endPage > 1;
+
+      // number of hidden pages either to the left or to the right
       const spillOffset = totalNumbers - (pages.length + 1);
 
-      switch (true) {
-        // handle: (1) < {5 6} [7] {8 9} (10)
-        case hasLeftSpill && !hasRightSpill: {
-          const extraPages = range(startPage - spillOffset, startPage - 1);
-          pages = [LEFT_PAGE, ...extraPages, ...pages];
-          break;
-        }
-
-        // handle: (1) {2 3} [4] {5 6} > (10)
-        case !hasLeftSpill && hasRightSpill: {
-          const extraPages = range(endPage + 1, endPage + spillOffset);
-          pages = [...pages, ...extraPages, RIGHT_PAGE];
-          break;
-        }
-
-        // handle: (1) < {4 5} [6] {7 8} > (10)
-        case hasLeftSpill && hasRightSpill:
-        default: {
-          pages = [LEFT_PAGE, ...pages, RIGHT_PAGE];
-          break;
-        }
+      // handle: (1) < {5 6} [7] {8 9} (10)
+      if (hasLeftSpill && !hasRightSpill) {
+        const extraPages = range(startPage - spillOffset, startPage - 1);
+        pages = [PLACEHOLDER, ...extraPages, ...pages];
+      }
+      // handle: (1) {2 3} [4] {5 6} > (10)
+      else if (!hasLeftSpill && hasRightSpill) {
+        const extraPages = range(endPage + 1, endPage + spillOffset);
+        pages = [...pages, ...extraPages, PLACEHOLDER];
+      }
+      // handle: (1) < {4 5} [6] {7 8} > (10)
+      else if (hasLeftSpill && hasRightSpill) {
+        pages = [PLACEHOLDER, ...pages, PLACEHOLDER];
       }
 
       return [1, ...pages, totalPages];
     }
 
     return range(1, totalPages);
-  };
+  }, [currentPage, totalPages, pageNeighbors]);
 
-  const gotoPage = page => {
-    const { onPageChanged = f => f } = props;
+  function handleGoToPage(page) {
+    setCurrentPage(Math.max(0, Math.min(page, totalPages)));
 
-    const currentPage = Math.max(0, Math.min(page, totalPages));
+    if (onPageChanged)
+      onPageChanged({
+        currentPage,
+        totalPages,
+        pageLimit,
+        totalRecords,
+      });
+  }
 
-    const paginationData = {
-      currentPage,
-      totalPages,
-      pageLimit,
-      totalRecords,
-    };
-
-    setCurrentPage(currentPage);
-    onPageChanged(paginationData);
-  };
-
-  const handleClick = page => {
-    gotoPage(page);
-  };
-
-  const handleMoveLeft = () => {
-    gotoPage(currentPage - pageNeighbors * 2 - 1);
-  };
-
-  const handleMoveRight = () => {
-    gotoPage(currentPage + pageNeighbors * 2 + 1);
-  };
-
-  const handleIncrementCurrentPage = () => {
-    gotoPage(currentPage < totalPages ? currentPage + 1 : currentPage);
-  };
-
-  const handleDecrementCurrentPage = () => {
-    gotoPage(currentPage > 1 ? currentPage - 1 : currentPage);
-  };
+  const handleMoveLeft = () => handleGoToPage(currentPage - 1);
+  const handleMoveRight = () => handleGoToPage(currentPage + 1);
 
   return (
-    <Flex flexWrap="nowrap" justifyContent="center">
-      <PaginationArrow
-        hidden={currentPage === 1}
-        onClick={handleDecrementCurrentPage}
-        direction="LEFT"
-      />
-      {pages.map((page, i) => {
+    <Flex
+      flexWrap="nowrap"
+      justifyContent="center"
+      marginTop={theme.spacing.lg}
+      marginBottom={theme.spacing.lg}
+    >
+      {/*<PaginationArrow hidden={currentPage === 1} direction="left" onClick={handleMoveLeft} />*/}
+      {pages.map((page, index) => {
+        if (page === PLACEHOLDER) {
+          return (
+            <PseudoBox
+              key={index}
+              as="span"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              width={10}
+              height={10}
+              fontFamily={theme.fonts['heading-slab']}
+              fontSize={theme.fontSizes.lg}
+              fontWeight={theme.fontWeights.bold}
+              aria-hidden={true}
+            >
+              {PLACEHOLDER}
+            </PseudoBox>
+          );
+        }
+
+        const isActivePage = currentPage === page;
+        function handleClick() {
+          handleGoToPage(page);
+        }
+
+        const handleIncrementCurrentPage = () => {
+          gotoPage(currentPage < totalPages ? currentPage + 1 : currentPage);
+        };
+
+        const handleDecrementCurrentPage = () => {
+          gotoPage(currentPage > 1 ? currentPage - 1 : currentPage);
+        };
+
         return (
-          <PseudoBox
-            key={i}
-            display="flex"
-            alignItems="center"
-            backgroundColor={
-              currentPage === page ? theme.colors['rbb-orange'] : ''
-            }
-            cursor="pointer"
-            fontFamily={theme.fonts['heading-slab']}
-            fontSize={theme.fontSizes.lg}
-            fontWeight={theme.fontWeights.bold}
-            justifyContent="center"
-            height={10}
-            width={10}
-            _hover={{
-              backgroundColor:
-                currentPage !== page ? theme.colors['rbb-hover-gray'] : null,
-            }}
-            onClick={() => {
-              if (page === LEFT_PAGE) {
-                handleMoveLeft();
-              } else if (page === RIGHT_PAGE) {
-                handleMoveRight();
-              } else {
-                handleClick(page);
-              }
-            }}
-          >
-            {page === LEFT_PAGE ? (
-              <span aria-label="Previous">
-                <span aria-hidden="true">...</span>
-              </span>
-            ) : page === RIGHT_PAGE ? (
-              <span aria-label="Next">
-                <span aria-hidden="true">...</span>
-              </span>
-            ) : (
-              <span>{page}</span>
-            )}
-          </PseudoBox>
+          <Flex flexWrap="nowrap" justifyContent="center">
+            <PaginationArrow
+              hidden={currentPage === 1}
+              onClick={handleDecrementCurrentPage}
+              direction="LEFT"
+            />
+            {pages.map((page, i) => {
+              return (
+                <Button
+                  key={index}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  width={10}
+                  height={10}
+                  backgroundColor={isActivePage && theme.colors['rbb-orange']}
+                  fontFamily={theme.fonts['heading-slab']}
+                  fontSize={theme.fontSizes.lg}
+                  fontWeight={theme.fontWeights.bold}
+                  cursor="pointer"
+                  _hover={{
+                    bg: !isActivePage && theme.colors['rbb-lightgray'],
+                  }}
+                  onClick={handleClick}
+                  title={`Go to page ${page}`}
+                  aria-label={`Go to page ${page}`}
+                >
+                  {page}
+                </Button>
+              );
+            })}
+            <PaginationArrow
+              direction="RIGHT"
+              hidden={currentPage === totalPages}
+              onClick={handleIncrementCurrentPage}
+            />
+          </Flex>
         );
       })}
-      <PaginationArrow
-        direction="RIGHT"
-        hidden={currentPage === totalPages}
-        onClick={handleIncrementCurrentPage}
-      />
     </Flex>
   );
+}
+
+Pagination.defaultProps = {
+  pageLimit: 10,
 };
 
 Pagination.propTypes = {
   totalRecords: PropTypes.number.isRequired,
-  onPageChanged: PropTypes.func.isRequired,
   pageLimit: PropTypes.number,
-  pageNeighbors: PropTypes.number,
+  onPageChanged: PropTypes.func,
 };
 
 export default Pagination;
