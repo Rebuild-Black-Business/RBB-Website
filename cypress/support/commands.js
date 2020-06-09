@@ -7,6 +7,21 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
+
+// Select Nth select option
+Cypress.Commands.add(
+  'selectNth',
+  { prevSubject: 'element' },
+  (subject, pos) => {
+    cy.wrap(subject)
+      .children('option')
+      .eq(pos)
+      .then(e => {
+        cy.wrap(subject).select(e.val());
+      });
+  }
+);
+
 //
 //
 // -- This is a parent command --
