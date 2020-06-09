@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { graphql, navigate } from 'gatsby';
+import { graphql } from 'gatsby';
 import { Flex } from '@chakra-ui/core';
 
 import { PageHero, Layout, BusinessFeed, Pagination } from '../components';
@@ -28,14 +28,6 @@ export default function Businesses(data) {
         />
         <BusinessFeed {...data} />
         <Pagination
-          onPageChanged={pagination =>
-            navigate(
-              `/businesses/${
-                pagination.currentPage === 1 ? '' : `${pagination.currentPage}/`
-              }`
-            )
-          }
-          currentPage={data.pageContext.page}
           totalRecords={data.pageContext.totalRecords}
           pageLimit={data.pageContext.itemsPerPage}
         />
