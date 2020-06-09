@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Flex, Heading, useTheme, Text, Box } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import AllyFeed from '../components/Feeds/AllyFeed';
 import Pagination from '../components/Pagination/Pagination';
+import AllyFilter from '../components/Filters/AllyFilter';
 
 export default function Allies() {
   const theme = useTheme();
+  const [allyFilters, setAllyFilters] = useState({
+    skill: '',
+    location: '',
+  });
 
   return (
     <Layout>
@@ -29,7 +34,8 @@ export default function Allies() {
             fight in helping businesses survive and thrive.
           </Text>
         </Box>
-        <AllyFeed />
+        <AllyFilter onSearch={setAllyFilters} />
+        <AllyFeed filters={allyFilters} />
         <Pagination
           onPageChanged={pagination => {
             // @TODO add pagination handler
