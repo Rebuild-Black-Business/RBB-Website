@@ -1,10 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
+import PaginationArrow from '../Svgs/PaginationArrow';
 import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
-import PaginationArrow from '../Svgs/PaginationArrow';
-const LEFT_PAGE = 'LEFT';
-const RIGHT_PAGE = 'RIGHT';
 import useMedia from 'react-use/lib/useMedia';
 
 const PLACEHOLDER = '...';
@@ -96,8 +94,8 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
       });
   }
 
-  const handleMoveLeft = () => handleGoToPage(currentPage - 1);
-  const handleMoveRight = () => handleGoToPage(currentPage + 1);
+  const handleMovePrevious = () => handleGoToPage(currentPage - 1);
+  const handleMoveNext = () => handleGoToPage(currentPage + 1);
 
   return (
     <Flex
@@ -105,8 +103,13 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
       justifyContent="center"
       marginTop={theme.spacing.lg}
       marginBottom={theme.spacing.lg}
+      marginX={theme.spacing.lg}
     >
-      {/*<PaginationArrow hidden={currentPage === 1} direction="left" onClick={handleMoveLeft} />*/}
+      <PaginationArrow
+        hidden={currentPage === 1}
+        direction="PREVIOUS"
+        onClick={handleMovePrevious}
+      />
       {pages.map((page, index) => {
         if (page === PLACEHOLDER) {
           return (
@@ -116,10 +119,10 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              width={10}
-              height={10}
+              width={isWide ? 10 : ''}
+              height={isWide ? 10 : ''}
               fontFamily={theme.fonts['heading-slab']}
-              fontSize={theme.fontSizes.lg}
+              fontSize={theme.fontSizes.xl}
               fontWeight={theme.fontWeights.bold}
               aria-hidden={true}
             >
@@ -133,54 +136,33 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
           handleGoToPage(page);
         }
 
-        const handleIncrementCurrentPage = () => {
-          gotoPage(currentPage < totalPages ? currentPage + 1 : currentPage);
-        };
-
-        const handleDecrementCurrentPage = () => {
-          gotoPage(currentPage > 1 ? currentPage - 1 : currentPage);
-        };
-
         return (
-          <Flex flexWrap="nowrap" justifyContent="center">
-            <PaginationArrow
-              hidden={currentPage === 1}
-              onClick={handleDecrementCurrentPage}
-              direction="LEFT"
-            />
-            {pages.map((page, i) => {
-              return (
-                <Button
-                  key={index}
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  width={10}
-                  height={10}
-                  backgroundColor={isActivePage && theme.colors['rbb-orange']}
-                  fontFamily={theme.fonts['heading-slab']}
-                  fontSize={theme.fontSizes.lg}
-                  fontWeight={theme.fontWeights.bold}
-                  cursor="pointer"
-                  _hover={{
-                    bg: !isActivePage && theme.colors['rbb-lightgray'],
-                  }}
-                  onClick={handleClick}
-                  title={`Go to page ${page}`}
-                  aria-label={`Go to page ${page}`}
-                >
-                  {page}
-                </Button>
-              );
-            })}
-            <PaginationArrow
-              direction="RIGHT"
-              hidden={currentPage === totalPages}
-              onClick={handleIncrementCurrentPage}
-            />
-          </Flex>
+          <Button
+            key={index}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            width={10}
+            height={10}
+            backgroundColor={isActivePage && theme.colors['rbb-orange']}
+            fontFamily={theme.fonts['heading-slab']}
+            fontSize={theme.fontSizes.lg}
+            fontWeight={theme.fontWeights.bold}
+            cursor="pointer"
+            _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
+            onClick={handleClick}
+            title={`Go to page ${page}`}
+            aria-label={`Go to page ${page}`}
+          >
+            {page}
+          </Button>
         );
       })}
+      <PaginationArrow
+        hidden={currentPage === totalPages}
+        direction="NEXT"
+        onClick={handleMoveNext}
+      />
     </Flex>
   );
 }

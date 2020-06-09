@@ -1,5 +1,5 @@
 import React from 'react';
-import { PseudoBox, IconButton } from '@chakra-ui/core';
+import { PseudoBox, Box, IconButton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 
 /**
@@ -11,8 +11,10 @@ import PropTypes from 'prop-types';
  *
  */
 
-const PaginationArrow = ({ onClick, hidden, direction = 'RIGHT' }) => {
-  return hidden ? null : (
+const PaginationArrow = ({ onClick, hidden, direction }) => {
+  return hidden ? (
+    <Box width={10} height={10} />
+  ) : (
     <PseudoBox
       display="flex"
       alignItems="center"
@@ -24,19 +26,21 @@ const PaginationArrow = ({ onClick, hidden, direction = 'RIGHT' }) => {
         color: 'rbb-orange',
       }}
       _active={{
-        color: '#fff',
+        color: 'rbb-white',
       }}
       _focus={{
-        color: '#fff',
+        color: 'rbb-white',
       }}
     >
       <IconButton
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
         onClick={onClick}
-        aria-label={`Go to ${direction === 'RIGHT' ? 'next' : 'previous'} page`}
+        aria-label={`Go to ${direction === 'NEXT' ? 'next' : 'previous'} page`}
         variant="unstyled"
-        fill="rbb-black-100"
-        icon={direction === 'RIGHT' ? 'arrowRight' : 'arrowLeft'}
-        size="lg"
+        icon={direction === 'NEXT' ? 'arrowRight' : 'arrowLeft'}
+        fontSize="28px"
         minWidth={0}
       />
     </PseudoBox>
@@ -46,7 +50,7 @@ const PaginationArrow = ({ onClick, hidden, direction = 'RIGHT' }) => {
 PaginationArrow.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-  direction: PropTypes.oneOf(['RIGHT', 'LEFT']).isRequired,
+  direction: PropTypes.oneOf(['PREVIOUS', 'NEXT']).isRequired,
 };
 
 export default PaginationArrow;
