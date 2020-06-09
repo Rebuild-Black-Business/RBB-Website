@@ -22,9 +22,14 @@ export default function About() {
           <Image
             publicId="assets/people-protesting-on-street-4552840_gginry"
             cloudName="rebuild-black-business"
-            position="absolute"
-            minW="1000px"
+            pos="absolute"
+            objectFit="cover"
+            w="100%"
+            h="100%"
             zIndex="-1"
+            transforms={{
+              gravity: 'auto',
+            }}
           />
           <Heading>ABOUT</Heading>
         </Flex>
