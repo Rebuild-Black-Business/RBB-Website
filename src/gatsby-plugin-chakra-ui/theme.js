@@ -32,7 +32,7 @@ const customTheme = {
   },
   // Mobile views were not covered under default 'sm' breakpoint
   // Going to just write in mock sizes, but open to changing them
-  breakpoints: ['16em', '48em', '64em', '80em'],
+  breakpoints: ['16em', '56em', '64em', '80em'],
   fontWeights: {
     bold: 'bold',
   },
@@ -63,6 +63,7 @@ const customTheme = {
     'rbb-black-200': '#0E1111',
     'rbb-light-gray': '#E8E8E8',
     'rbb-gray': '#565656',
+    'rbb-lightgray': '#757575',
     'rbb-white': '#F7F7F2',
     'rbb-white-100-alpha90': 'rgba(222, 222, 218, 0.9);',
     'rbb-red': '#BA2A2A',
