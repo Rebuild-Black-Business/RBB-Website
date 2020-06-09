@@ -82,7 +82,7 @@ module.exports = {
             defaultValues: {
               Business_Description: '',
               Donation_Link: '',
-              Image: null,
+              Image: '',
             },
           },
           {
