@@ -84,8 +84,6 @@ const PrimaryNav = forwardRef(
               publicId="assets/RBBLogoFinal_ugdskx"
               transforms={{
                 height: 0.1,
-                fetchFormat: 'auto',
-                quality: 'auto',
               }}
               alt={logoInformation.alt}
             />

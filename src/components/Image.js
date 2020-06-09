@@ -15,6 +15,10 @@ export default function Image(props) {
       public_id: publicId,
       transform_options: {
         ...transforms,
+        quality: 'auto',
+        fetchFormat: 'auto',
+        dpr: 'auto',
+        crop: 'scale',
       },
     });
   }, []);
