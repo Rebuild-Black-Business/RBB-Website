@@ -11,95 +11,95 @@ import { MISSION_MESSAGE, WHO_WE_ARE_MESSAGE } from '../constants/about';
 export default function About() {
   const theme = useTheme();
   return (
-    <ErrorBoundary>
-      <StaticQuery
-        query={ContactQuery}
-        render={data => (
-          <Layout>
-            <Flex align="center" justify="center" direction="column">
-              <Flex
-                w="100%"
-                minH="260px"
-                align="center"
-                justify="center"
-                zIndex="-1"
-                backgroundColor="#000"
-                color="#FFF"
-              >
-                <Image
-                  publicId="assets/people-protesting-on-street-4552840_gginry"
-                  cloudName="rebuild-black-business"
-                  pos="absolute"
-                  objectFit="cover"
-                  w="100%"
-                  h="100%"
-                  zIndex="-1"
-                  transforms={{
-                    gravity: 'auto',
-                    opacity: '50',
-                  }}
-                />
-                <Heading fontFamily={theme.fonts['heading-slab']} size="xl">
-                  ABOUT
-                </Heading>
-              </Flex>
-              <Flex w="100%" backgroundColor={theme.colors['rbb-white']}>
-                <Flex
-                  direction="column"
-                  align="center"
-                  justify="center"
-                  alignItems="flex-start"
-                  marginTop={[theme.spacing.base, theme.spacing.base, 0, 0]}
-                  marginBottom={['1.125rem', '1.125rem', 0, 0]}
-                  marginLeft={[0, 0, '5%', '15%', '15%', '30%']}
-                  marginRight={[0, 0, '5%', '20%', '22%', '35%']}
-                >
-                  <Content
-                    heading="MISSION"
-                    message={MISSION_MESSAGE}
-                    marginTop="1.9375rem"
-                    marginBottom="0"
-                    dividerMargin="6.313rem"
-                  />
-                  <Content
-                    heading="WHO WE ARE"
-                    message={WHO_WE_ARE_MESSAGE}
-                    marginTop="3rem"
-                    marginBottom="1.9375rem"
-                    dividerMargin="3.9375rem"
-                  />
-                </Flex>
-              </Flex>
+    <Layout>
+      <Flex align="center" justify="center" direction="column">
+        <Flex
+          w="100%"
+          minH="260px"
+          align="center"
+          justify="center"
+          zIndex="-1"
+          backgroundColor="#000"
+          color="#FFF"
+        >
+          <Image
+            publicId="assets/people-protesting-on-street-4552840_gginry"
+            cloudName="rebuild-black-business"
+            pos="absolute"
+            objectFit="cover"
+            w="100%"
+            h="100%"
+            zIndex="-1"
+            transforms={{
+              gravity: 'auto',
+              opacity: '50',
+            }}
+          />
+          <Heading fontFamily={theme.fonts['heading-slab']} size="xl">
+            ABOUT
+          </Heading>
+        </Flex>
+        <Flex w="100%" backgroundColor={theme.colors['rbb-white']}>
+          <Flex
+            direction="column"
+            align="center"
+            justify="center"
+            alignItems="flex-start"
+            marginTop={[theme.spacing.base, theme.spacing.base, 0, 0]}
+            marginBottom={['1.125rem', '1.125rem', 0, 0]}
+            marginLeft={[0, 0, '5%', '15%', '15%', '30%']}
+            marginRight={[0, 0, '5%', '20%', '22%', '35%']}
+          >
+            <Content
+              heading="MISSION"
+              message={MISSION_MESSAGE}
+              marginTop="1.9375rem"
+              marginBottom="0"
+              dividerMargin="6.313rem"
+            />
+            <Content
+              heading="WHO WE ARE"
+              message={WHO_WE_ARE_MESSAGE}
+              marginTop="3rem"
+              marginBottom="1.9375rem"
+              dividerMargin="3.9375rem"
+            />
+          </Flex>
+        </Flex>
 
-              <Flex
-                align="center"
-                width="100%"
-                minH="500px"
-                justify="center"
-                direction="column"
-                backgroundColor="#DEDEDA"
-              >
-                <Heading
-                  as="h2"
-                  size="xl"
-                  fontFamily={theme.fonts['heading-slab']}
-                  paddingTop={['2.5rem', '2.75rem']}
-                >
-                  CONTACT
-                </Heading>
-                <Flex
-                  w="100%"
-                  direction={['column', 'column', 'row', 'row']}
-                  paddingTop="2rem"
-                  paddingBottom="2rem"
-                >
-                  <ContactCard
-                    modalCard
-                    title="Business Owner"
-                    modalTitle="This is a modal!"
-                    publicId="assets/contact-left"
-                    blurb="Add your business to our list"
-                  />
+        <Flex
+          align="center"
+          width="100%"
+          minH="500px"
+          justify="center"
+          direction="column"
+          backgroundColor="#DEDEDA"
+        >
+          <Heading
+            as="h2"
+            size="xl"
+            fontFamily={theme.fonts['heading-slab']}
+            paddingTop={['2.5rem', '2.75rem']}
+          >
+            CONTACT
+          </Heading>
+          <Flex
+            w="100%"
+            direction={['column', 'column', 'row', 'row']}
+            paddingTop="2rem"
+            paddingBottom="2rem"
+          >
+            <ContactCard
+              modalCard
+              title="Business Owner"
+              modalTitle="This is a modal!"
+              publicId="assets/contact-left"
+              blurb="Add your business to our list"
+            />
+            <ErrorBoundary>
+              <StaticQuery
+                query={ContactQuery}
+                render={data => (
                   <ContactCard
                     mailtoCard
                     title="General Inquiry"
@@ -107,18 +107,18 @@ export default function About() {
                     blurb="Send us an email and we'll be in touch"
                     publicId="assets/contact-middle"
                   />
-                  <ContactCard
-                    title="Volunteers"
-                    blurb="Join our group chat in Discord"
-                    publicId="assets/contact-right"
-                  />
-                </Flex>
-              </Flex>
-            </Flex>
-          </Layout>
-        )}
-      />
-    </ErrorBoundary>
+                )}
+              />
+            </ErrorBoundary>
+            <ContactCard
+              title="Volunteers"
+              blurb="Join our group chat in Discord"
+              publicId="assets/contact-right"
+            />
+          </Flex>
+        </Flex>
+      </Flex>
+    </Layout>
   );
 }
 
