@@ -73,8 +73,7 @@ export default function Allies() {
                 <ModalBody fontSize="lg" mt="8">
                   Please read and accept our{' '}
                   <Link
-                    // TODO: Add link to T&C
-                    href="#"
+                    href="/terms-and-conditions"
                     color="rbb-orange"
                     isExternal
                   >
