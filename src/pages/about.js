@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading, useTheme } from '@chakra-ui/core';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import { MISSION_MESSAGE, WHO_WE_ARE_MESSAGE } from '../constants/about';
 
 export default function About() {
+  const theme = useTheme();
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
@@ -33,29 +34,29 @@ export default function About() {
           />
           <Heading>ABOUT</Heading>
         </Flex>
-        <Flex w="100%" backgroundColor="#F7F7F2">
+        <Flex w="100%" backgroundColor={theme.colors['rbb-white']}>
           <Flex
             direction="column"
             align="center"
             justify="center"
-            marginTop={['16px', '16px', '0', '0']}
-            marginBottom={['18px', '18px', '0', '0']}
-            marginLeft={['0', '0', '5%', '15%', '15%', '30%']}
-            marginRight={['0', '0', '5%', '20%', '22%', '35%']}
+            marginTop={[theme.spacing.base, theme.spacing.base, 0, 0]} // 16px
+            marginBottom={['1.125rem', '1.125rem', 0, 0]} // 18px
+            marginLeft={[0, 0, '5%', '15%', '15%', '30%']}
+            marginRight={[0, 0, '5%', '20%', '22%', '35%']}
           >
             <Content
               heading="MISSION"
               message={MISSION_MESSAGE}
-              marginTop="31px"
+              marginTop="1.9375rem"
               marginBottom="0"
-              dividerMargin="101px"
+              dividerMargin="6.313rem"
             />
             <Content
               heading="WHO WE ARE"
               message={WHO_WE_ARE_MESSAGE}
-              marginTop="48px"
-              marginBottom="31px"
-              dividerMargin="63px"
+              marginTop="3rem"
+              marginBottom="1.9375rem"
+              dividerMargin="3.9375rem"
             />
           </Flex>
         </Flex>
@@ -68,14 +69,14 @@ export default function About() {
           direction="column"
           backgroundColor="#DEDEDA"
         >
-          <Heading as="h2" size="xl" paddingTop={['40px', '44px']}>
+          <Heading as="h2" size="xl" paddingTop={['2.5rem', '2.75rem']}>
             CONTACT
           </Heading>
           <Flex
             w="100%"
             direction={['column', 'column', 'row', 'row']}
-            paddingTop="32px"
-            paddingBottom="32px"
+            paddingTop="2rem"
+            paddingBottom="2rem"
           >
             <ContactCard
               modalCard

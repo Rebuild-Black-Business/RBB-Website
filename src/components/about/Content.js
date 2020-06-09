@@ -9,9 +9,9 @@ import React from 'react';
  *   <Content
  *     heading="MISSION"
  *     message="Our mission statement..."
- *     marginTop="25px"
- *     marginBottom="25px"
- *     dividerMargin="10px"
+ *     marginTop="1rem"
+ *     marginBottom="1rem"
+ *     dividerMargin="1rem"
  *   />
  * )
  */
@@ -36,15 +36,15 @@ const Content = ({
         color={theme.colors['rbb-black-200']}
         textAlign={['center', 'center', 'center', 'right']}
         minW="285px"
-        paddingRight={['0', '0', '22px']}
+        paddingRight={['0', '0', '1.375rem']}
       >
         {heading}
       </Heading>
       <Divider
-        marginLeft={[dividerMargin, dividerMargin, '3px', '3px']}
-        marginRight={[dividerMargin, dividerMargin, '28px', '28px']}
-        marginTop={['25px', '25px', '25px', '0']}
-        marginBottom={['25px', '25px', '25px', '0']}
+        marginLeft={[dividerMargin, dividerMargin, '0.1875rem', '0.1875rem']}
+        marginRight={[dividerMargin, dividerMargin, '1.75rem', '1.75rem']}
+        marginTop={['1.5625rem', '1.5625rem', '1.5625rem', 0]}
+        marginBottom={['1.5625rem', '1.5625rem', '1.5625rem', 0]}
         border="1px solid"
         borderColor="#BA2A2A"
         orientation="vertical"
@@ -52,9 +52,9 @@ const Content = ({
       <Text
         style={{ whiteSpace: 'pre-wrap' }}
         textAlign={['center', 'center', 'center', 'left']}
-        paddingLeft={['0px', '0px', '25px', '25px']}
-        marginLeft={['24px', '24px', '0']}
-        marginRight={['24px', '24px', '0']}
+        paddingLeft={[0, 0, '1.5625rem', '1.5625rem']}
+        marginLeft={['1.5rem', '24p1.5remx', 0]}
+        marginRight={['1.5rem', '1.5rem', 0]}
       >
         {message}
       </Text>
