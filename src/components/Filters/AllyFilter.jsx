@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
+import {
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  useTheme,
+} from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 
@@ -15,6 +22,9 @@ function BusinessFilter(props) {
   const { onSearch } = props;
   const [location, setLocation] = useState('');
   const skillRef = useRef('');
+  const theme = useTheme();
+
+  const rbbWhite = theme.colors['rbb-white'];
 
   const handleSearchClick = event => {
     event.preventDefault();
@@ -33,10 +43,17 @@ function BusinessFilter(props) {
   };
 
   return (
-    <FormControl>
-      <Flex>
-        <Flex direction="column">
-          <FormLabel htmlFor="skill">Skill</FormLabel>
+    <FormControl
+      width="100%"
+      maxWidth="1000px"
+      margin="0 auto 3rem"
+      padding="0 24px"
+    >
+      <Flex width="100%">
+        <Flex direction="column" marginRight={theme.spacing.base}>
+          <FormLabel htmlFor="skill" color={rbbWhite}>
+            Skill
+          </FormLabel>
           <Select ref={skillRef} id="skill" placeholder="Select type">
             {skillTypes.map(skill => {
               return (
@@ -47,8 +64,10 @@ function BusinessFilter(props) {
             })}
           </Select>
         </Flex>
-        <Flex direction="column">
-          <FormLabel htmlFor="location">Zip Code</FormLabel>
+        <Flex direction="column" marginRight={theme.spacing.base}>
+          <FormLabel htmlFor="location" color={rbbWhite}>
+            Zip Code
+          </FormLabel>
           <Input
             value={location}
             id="location"
@@ -62,7 +81,7 @@ function BusinessFilter(props) {
             }}
           />
         </Flex>
-        <Flex direction="column">
+        <Flex direction="column" alignSelf="flex-end">
           <PrimaryButton
             onClick={handleSearchClick}
             onKeyPress={event => {
