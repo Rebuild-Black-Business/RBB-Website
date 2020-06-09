@@ -32,7 +32,7 @@ const customTheme = {
   },
   // Mobile views were not covered under default 'sm' breakpoint
   // Going to just write in mock sizes, but open to changing them
-  breakpoints: ['16em', '48em', '64em', '80em'],
+  breakpoints: ['16em', '56em', '64em', '80em'],
   fontWeights: {
     bold: 'bold',
   },
@@ -60,6 +60,8 @@ const customTheme = {
     ...theme.colors,
     'rbb-black-000': '#140303',
     'rbb-black-100': '#001514',
+    'rbb-black-200': '#0E1111',
+    'rbb-light-gray': '#E8E8E8',
     'rbb-gray': '#565656',
     'rbb-white': '#F7F7F2',
     'rbb-white-100-alpha90': 'rgba(222, 222, 218, 0.9);',
@@ -98,7 +100,7 @@ const customTheme = {
         active: '#F46036',
         disabled: '#491D10',
       },
-      padding: '2px 4px',
+      padding: '0.75rem 4rem',
       fontFamily: 'Arvo',
       textTransform: 'uppercase',
     },
@@ -124,7 +126,7 @@ const customTheme = {
         active: '#565858',
         disabled: '#FFFFFF',
       },
-      padding: '2px 44px',
+      padding: '0.75rem 4rem',
       fontFamily: 'Arvo',
       textTransform: 'uppercase',
     },
@@ -150,7 +152,7 @@ const customTheme = {
         active: '#0E1111',
         disabled: '#F7F7F2',
       },
-      padding: '2px 44px',
+      padding: '0.75rem 4rem',
       fontFamily: 'Arvo',
       textTransform: 'uppercase',
     },
@@ -178,9 +180,12 @@ const customTheme = {
     },
     footer: {
       color: {
-        default: '#F7F7F2B3',
-        hover: '#ffffff',
-        focus: '#ffffff',
+        default: '#F7F7F2',
+        hover: '#F7F7F2',
+        focus: '#F7F7F2',
+      },
+      opacity: {
+        default: '0.7',
       },
     },
   },

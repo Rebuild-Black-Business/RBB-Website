@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Link, useTheme, PseudoBox } from '@chakra-ui/core';
+import { Flex, Link, useTheme } from '@chakra-ui/core';
 
 /**
  * Icon container with external link
@@ -8,20 +8,23 @@ import { Flex, Link, useTheme, PseudoBox } from '@chakra-ui/core';
 export const IconContainer = ({ children, link }) => {
   const theme = useTheme();
   return (
-    <Flex
-      as={Link}
+    <Link
       href={link}
-      isExternal
-      h={['50px', '40px']}
-      w={['50px', '40px']}
-      justify="center"
-      align="center"
       borderRadius="50%"
-      p="2"
       backgroundColor={theme.footer.iconsBackground}
+      _hover={{ transform: 'scale(1.1)' }}
+      _focus={{ transform: 'scale(1.1)' }}
+      isExternal
     >
-      <PseudoBox _hover={{ transform: 'scale(1.1)' }} />
-      {children}
-    </Flex>
+      <Flex
+        justify="center"
+        align="center"
+        p="2"
+        h={['50px', '40px']}
+        w={['50px', '40px']}
+      >
+        {children}
+      </Flex>
+    </Link>
   );
 };

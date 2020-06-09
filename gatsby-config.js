@@ -15,13 +15,17 @@ module.exports = {
     organization: {
       name: 'Rebuild Black Business',
       url: BASE_SITE_URL,
-      logo: '#',
+      logo:
+        'https://res.cloudinary.com/rebuild-black-business/image/upload/v1591562585/assets/RBBLogoFinal_ugdskx.png',
     },
     social: {
-      twitter: '',
-      fbAppID: '',
-      instagram: '',
+      twitter: 'rebuildingblack',
+      fbAppID: 'RebuildingBlack',
+      instagram: 'rebuildingblack',
       github: 'https://github.com/Rebuild-Black-Business',
+      contact: 'social@rebuildblackbusiness.com',
+      image:
+        'https://res.cloudinary.com/rebuild-black-business/image/upload/v1591726474/assets/rbb-socialimage_g7rhcj.jpg',
     },
     logo: {
       src: '#',
@@ -83,18 +87,6 @@ module.exports = {
               Business_Description: '',
               Donation_Link: '',
               Image: '',
-            },
-          },
-          {
-            baseId: process.env.AIRTABLE_BASE_ID, // note that this is not a secret, just an id
-            tableName: `Resources`,
-            tableView: `Approved`, // optional
-            queryName: `Resources`,
-            separateNodeType: true,
-            separateMapType: true,
-            defaultValues: {
-              Description: '',
-              Zip_Code: '',
             },
           },
           {
