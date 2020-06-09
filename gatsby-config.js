@@ -75,11 +75,11 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Rebuild Black Business`,
-        icon: `src/images/icon.png`,
+        icon: `src/images/favicon.png`,
         short_name: `Rebuild Black Business`,
         start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
+        background_color: `#f46036`, // theme orange
+        theme_color: `#f46036`, // theme orange
         display: `standalone`,
       },
     },
