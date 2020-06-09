@@ -11,6 +11,7 @@ export default function Businesses(data) {
     <Layout>
       <Flex align="center" justify="center" direction="column">
         <Heading as="h1">Businesses</Heading>
+        <BusinessFeed {...data} />
         <Pagination
           onPageChanged={pagination =>
             navigate(
@@ -23,7 +24,6 @@ export default function Businesses(data) {
           totalRecords={data.pageContext.totalRecords}
           pageLimit={data.pageContext.itemsPerPage}
         />
-        <BusinessFeed {...data} />
       </Flex>
     </Layout>
   );
@@ -42,6 +42,7 @@ export const query = graphql`
           Business_Description
           Website
           Donation_Link
+          Image
           In_Need
           CreatedAt
         }
