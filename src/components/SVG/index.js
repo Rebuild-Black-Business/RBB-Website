@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Link, useTheme, PseudoBox } from '@chakra-ui/core';
+import { Flex, Link, useTheme } from '@chakra-ui/core';
 
 /**
  * Icon container with external link
