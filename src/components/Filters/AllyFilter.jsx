@@ -40,7 +40,7 @@ function BusinessFilter(props) {
           <Select ref={skillRef} id="skill" placeholder="Select type">
             {skillTypes.map(skill => {
               return (
-                <option key={skill.id} value={skill.id}>
+                <option key={skill.id} value={skill.label}>
                   {skill.label}
                 </option>
               );
