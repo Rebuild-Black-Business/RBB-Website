@@ -39,13 +39,7 @@ export default function Allies() {
         />
         <AllyFilter onSearch={setAllyFilters} />
         <AllyFeed filters={allyFilters} />
-        <Pagination
-          onPageChanged={pagination => {
-            // @TODO add pagination handler
-          }}
-          totalRecords={70}
-          pageLimit={5}
-        />
+        <Pagination totalRecords={70} pageLimit={5} />
       </Flex>
     </Layout>
   );
