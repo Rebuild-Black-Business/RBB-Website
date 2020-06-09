@@ -1,16 +1,17 @@
-import React from 'react';
-
 import {
   Box,
+  ButtonGroup,
   Flex,
   Heading,
   Text,
   useTheme,
-  ButtonGroup,
 } from '@chakra-ui/core';
-import Layout from '../components/Layout';
-import ContentBlock from '../components/ContentBlock';
+import { graphql, StaticQuery } from 'gatsby';
+import React from 'react';
 import Button from '../components/Button';
+import ContentBlock from '../components/ContentBlock';
+import ErrorBoundary from '../components/ErrorBoundary';
+import Layout from '../components/Layout';
 
 export default () => {
   const theme = useTheme();
@@ -180,12 +181,36 @@ export default () => {
               designers, marketers, project managers, policy makers, and web
               professionals. Welcome!
             </Text>
-            <Button variant="cta" w="100%">
-              Contact Us
-            </Button>
+            <ErrorBoundary>
+              <StaticQuery
+                query={ContactQuery}
+                render={data => (
+                  <Button
+                    variant="cta"
+                    w="100%"
+                    as="a"
+                    href={`mailto:${data.site.siteMetadata.social.contact}`}
+                  >
+                    Contact Us
+                  </Button>
+                )}
+              />
+            </ErrorBoundary>
           </Box>
         </ContentBlock>
       </Flex>
     </Layout>
   );
 };
+
+const ContactQuery = graphql`
+  query HomeContactQuery {
+    site {
+      siteMetadata {
+        social {
+          contact
+        }
+      }
+    }
+  }
+`;
