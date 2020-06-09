@@ -17,12 +17,6 @@ describe('Navigation tests', () => {
     cy.url().should('include', '/businesses');
   });
 
-  it('Clicking "Resources" navigates user to the resources page', () => {
-    cy.get("a[href$='/resources']").click();
-
-    cy.url().should('include', '/resources');
-  });
-
   it('Clicking "Allies" navigates user to the allies page', () => {
     cy.get("a[href$='/allies']").click();
 

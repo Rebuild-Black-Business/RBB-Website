@@ -1,16 +1,8 @@
 import React from 'react';
-import { Flex, Text, useTheme, PseudoBox } from '@chakra-ui/core';
+import { Flex, Text, useTheme } from '@chakra-ui/core';
 import Link from './../Link';
 
 const DynamicYear = new Date().getFullYear();
-
-const TermsLink = () => {
-  return (
-    <Link variant="footer" to="/">
-      Terms and Conditions
-    </Link>
-  );
-};
 
 const Copyright = () => {
   const theme = useTheme();
@@ -24,8 +16,11 @@ const Copyright = () => {
           opacity={0.5}
         >
           Copyright &copy; {DynamicYear} Rebuild Black Businesses. All rights
-          reserved. <TermsLink />
+          reserved.
         </Text>
+        <Link variant="footer" to="/" fontSize="12px" ml="1">
+          Terms and Conditions
+        </Link>
       </Flex>
     </Flex>
   );

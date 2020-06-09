@@ -26,7 +26,7 @@ const FooterLinks = () => {
                   mt={[2, 2, 2, null]}
                   display="flex"
                 >
-                  <Link variant="footer" opacity={0.7} to={link.slug}>
+                  <Link variant="footer" to={link.slug}>
                     {link.name}
                   </Link>
                 </NavItem>

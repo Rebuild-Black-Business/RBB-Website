@@ -97,7 +97,10 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
   const handleMoveRight = () => handleGoToPage(currentPage + 1);
 
   return (
-    <Flex flexWrap="nowrap" justifyContent="center">
+    <Flex flexWrap="nowrap"
+          justifyContent="center"
+          marginTop={theme.spacing.lg}
+          marginBottom={theme.spacing.lg}>
       {/*<PaginationArrow hidden={currentPage === 1} direction="left" onClick={handleMoveLeft} />*/}
       {pages.map((page, index) => {
         if (page === PLACEHOLDER) {
