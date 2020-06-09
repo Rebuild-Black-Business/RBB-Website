@@ -14,10 +14,10 @@ describe('Business Screen', () => {
     cy.get('#location').click().type(`${LOCATION}{enter}`);
 
     // Check for the things we want to see
-    cy.get("h2[data-testid='heading']").contains(
+    cy.get("[data-testid='heading']").contains(
       /Sorry, no businesses matched this search/i
     );
-    cy.get("h2[data-testid='subheading']").as('subheading');
+    cy.get("[data-testid='subheading']").as('subheading');
     cy.get('@subheading').contains(LOCATION);
 
     // TODO: Look for some form and assert
@@ -36,10 +36,10 @@ describe('Allies Screen', () => {
     cy.get('#location').click().type(`${ZIP}{enter}`);
 
     // Check for the things we want to see
-    cy.get("h2[data-testid='heading']").contains(
+    cy.get("[data-testid='heading']").contains(
       /Sorry, no allies matched this search/i
     );
-    cy.get("h2[data-testid='subheading']").as('subheading');
+    cy.get("[data-testid='subheading']").as('subheading');
     cy.get('@subheading').contains(ZIP);
 
     // TODO: Look for some form and assert
