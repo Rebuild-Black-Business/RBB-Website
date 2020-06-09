@@ -46,7 +46,7 @@ const Content = ({
         marginTop={['25px', '25px', '25px', '0']}
         marginBottom={['25px', '25px', '25px', '0']}
         border="1px solid"
-        borderColor="#BA2A2A"
+        borderColor={theme.colors['rbb-red']}
         orientation="vertical"
       />
       <Text

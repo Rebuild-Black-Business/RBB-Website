@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading, theme } from '@chakra-ui/core';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
@@ -33,7 +33,7 @@ export default function About() {
           />
           <Heading>ABOUT</Heading>
         </Flex>
-        <Flex w="100%" backgroundColor="#F7F7F2">
+        <Flex w="100%" backgroundColor={theme.colors['rbb-white']}>
           <Flex
             direction="column"
             align="center"
@@ -72,6 +72,7 @@ export default function About() {
             CONTACT
           </Heading>
           <Flex
+            maxW="1074px"
             w="100%"
             direction={['column', 'column', 'row', 'row']}
             paddingTop="32px"

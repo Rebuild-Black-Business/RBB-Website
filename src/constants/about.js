@@ -2,4 +2,4 @@ export const MISSION_MESSAGE = `During the weekend of May 25, 2020, our nation w
 
 Our mission is to connect businesses to the helpers of the world.`;
 
-export const WHO_WE_ARE_MESSAGE = `This copy is meant to build trust. Blurb about founder, when this got started, team is comprised of volunteers nationwide, etc.`;
+export const WHO_WE_ARE_MESSAGE = `Blurb about founder, when this got started, team is comprised of volunteers nationwide, etc.`;
