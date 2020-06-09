@@ -7,6 +7,7 @@ const PageHeading = ({ children, ...rest }) => {
 
   return (
     <Heading
+      textAlign="center"
       as="h1"
       size="2xl"
       textTransform="uppercase"

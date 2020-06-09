@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Flex, Text } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/core';
 
 import {
   AllyFeed,
@@ -17,12 +17,12 @@ export default function Allies() {
   });
 
   const pageSubtitle = (
-    <Text paddingBottom="59px">
+    <p>
       These Allies have skills to share in assisting black-owned businesses to
       return to business, and stay afloat while operating. Reach out to those on
       this page if you know of a way to join the fight in helping businesses
       survive and thrive.
-    </Text>
+    </p>
   );
 
   const heroBackgroundImageUrl =

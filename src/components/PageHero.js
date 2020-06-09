@@ -31,7 +31,7 @@ const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
           flexDirection="column"
           alignItems="center"
           padding="70px 24px 1.5rem"
-          minHeight="15rem"
+          minHeight="240px"
         >
           <PageHeading>{title}</PageHeading>
           <PageSubtitle>{subtitle}</PageSubtitle>
