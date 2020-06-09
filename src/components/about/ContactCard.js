@@ -18,12 +18,13 @@ import {
   Link,
 } from '@chakra-ui/core';
 
-const CardContent = ({ title, blurb, publicId, cloudName }) => {
+const CardContent = ({ title, blurb, publicId, 
+                     }) => {
   const theme = useTheme();
   return (
     <>
       {publicId ? (
-        <CardImage publicId={publicId} cloudName={cloudName} />
+        <CardImage publicId={publicId}/>
       ) : (
         <NoImage />
       )}
@@ -67,7 +68,7 @@ const NoImage = () => (
 );
 
 // @TODO :: Replace with new Image component
-const CardImage = ({ publicId, cloudName }) => (
+const CardImage = ({ publicId }) => (
   <Flex w="100%" minH="220px" position="relative" overflow="hidden">
     <Image cloudName="rebuild-black-business" publicId={publicId} />
   </Flex>
@@ -92,7 +93,6 @@ const ModalForm = ({ isOpen, onClose, title }) => (
 
 const ModalCard = ({
   publicId,
-  cloudName,
   modalTitle,
   title,
   blurb,
@@ -204,7 +204,6 @@ const ContactCard = ({
         title={title}
         blurb={blurb}
         publicId={publicId}
-        cloudName={cloudName}
       />
     );
   }

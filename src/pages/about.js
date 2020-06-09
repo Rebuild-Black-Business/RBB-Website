@@ -2,6 +2,7 @@ import { Flex, Heading } from '@chakra-ui/core';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
+import Image from '../components/Image';
 import Layout from '../components/Layout';
 import { MISSION_MESSAGE, WHO_WE_ARE_MESSAGE } from '../constants/about';
 
@@ -11,13 +12,20 @@ export default function About() {
       <Flex align="center" justify="center" direction="column">
         <Flex
           w="100%"
-          minH="200px"
-          backgroundColor="#000"
+          minH="260px"
           align="center"
           justify="center"
+          zIndex="-1"
+          backgroundColor="#000"
           color="#FFF"
-          backgroundImage="url('https://source.unsplash.com/daily')"
         >
+          <Image
+            publicId="assets/people-protesting-on-street-4552840_gginry"
+            cloudName="rebuild-black-business"
+            position="absolute"
+            minW="1000px"
+            zIndex="-1"
+          />
           <Heading>ABOUT</Heading>
         </Flex>
         <Flex w="100%" backgroundColor="#F7F7F2">
@@ -81,8 +89,8 @@ export default function About() {
             <ContactCard
               title="Volunteers"
               blurb="Join our group chat in Discord"
-              publicId="assets/contact-right"
-            />
+              publicId="assets/contact-right" 
+              />
           </Flex>
         </Flex>
       </Flex>
