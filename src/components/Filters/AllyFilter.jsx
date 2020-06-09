@@ -6,7 +6,7 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 const skillTypes = [
   { id: 'business', label: 'Business' },
   { id: 'marketing', label: 'Marketing' },
-  { id: 'outreach', label: 'Outreact' },
+  { id: 'outreach', label: 'Outreach' },
   { id: 'tech', label: 'Tech' },
   { id: 'government', label: 'Government' },
 ];
