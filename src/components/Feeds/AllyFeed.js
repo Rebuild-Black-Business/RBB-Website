@@ -83,7 +83,6 @@ const AllyFeed = props => {
                     pos="relative"
                   >
                     <Image
-                      cloudName="rebuild-black-business"
                       publicId="assets/ally-sign-up"
                       transforms={{
                         fetchFormat: 'auto',

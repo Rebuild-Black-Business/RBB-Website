@@ -3,9 +3,11 @@ import { useImage } from 'use-cloudinary';
 import { Image as ChakraImage } from '@chakra-ui/core';
 
 export default function Image(props) {
-  const { cloudName, transforms, publicId, alt } = props;
+  const { transforms, publicId, alt, src } = props;
 
-  const { getImage, data, status, error } = useImage({ cloud_name: cloudName });
+  const { getImage, data, status, error } = useImage({
+    cloud_name: 'rebuild-black-business',
+  });
 
   /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
@@ -24,20 +26,5 @@ export default function Image(props) {
   // @TODO :: Deliver custom Error UI if needed
   if (status === 'error') return <p>{error.message}</p>;
 
-  return <ChakraImage {...props} src={data} alt={alt} />;
+  return <ChakraImage {...props} src={data || src} alt={alt} />;
 }
-
-/*
-  Image Component in use
-
-  <Image
-    cloudName="rebuild-black-business"
-    publicId="samples/animals/three-dogs"
-    mt={10}
-    transforms={{
-      height: 0.3,
-      fetchFormat: 'auto',
-      quality: 'auto',
-    }}
-  />
-*/
