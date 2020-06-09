@@ -15,7 +15,7 @@ describe('Business Screen', () => {
 
     // Check for the things we want to see
     cy.get("h2[data-testid='heading']").contains(
-      /Sorry, no allies matched this search/i
+      /Sorry, no businesses matched this search/i
     );
     cy.get("h2[data-testid='subheading']").as('subheading');
     cy.get('@subheading').contains(LOCATION);
