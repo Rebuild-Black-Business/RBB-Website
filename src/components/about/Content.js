@@ -46,14 +46,14 @@ const Content = ({
         marginTop={['1.5625rem', '1.5625rem', '1.5625rem', 0]}
         marginBottom={['1.5625rem', '1.5625rem', '1.5625rem', 0]}
         border="1px solid"
-        borderColor="#BA2A2A"
+        borderColor="#BA2A2A" // @TODO Chakra does not like us using a variable color for this
         orientation="vertical"
       />
       <Text
         style={{ whiteSpace: 'pre-wrap' }}
         textAlign={['center', 'center', 'center', 'left']}
         paddingLeft={[0, 0, '1.5625rem', '1.5625rem']}
-        marginLeft={['1.5rem', '24p1.5remx', 0]}
+        marginLeft={['1.5rem', '24p1.5rem', 0]}
         marginRight={['1.5rem', '1.5rem', 0]}
       >
         {message}
