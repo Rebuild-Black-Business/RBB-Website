@@ -36,10 +36,3 @@ exports.createPages = async ({ graphql, actions }) => {
   }
   return;
 };
-
-// Deletes the resource page for now.
-exports.onCreatePage = async ({ page, actions: { deletePage } }) => {
-  if (page.path.match(/^\/resources/)) {
-    deletePage(page);
-  }
-};
