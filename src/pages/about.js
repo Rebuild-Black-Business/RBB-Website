@@ -39,8 +39,8 @@ export default function About() {
             direction="column"
             align="center"
             justify="center"
-            marginTop={[theme.spacing.base, theme.spacing.base, 0, 0]} // 16px
-            marginBottom={['1.125rem', '1.125rem', 0, 0]} // 18px
+            marginTop={[theme.spacing.base, theme.spacing.base, 0, 0]}
+            marginBottom={['1.125rem', '1.125rem', 0, 0]}
             marginLeft={[0, 0, '5%', '15%', '15%', '30%']}
             marginRight={[0, 0, '5%', '20%', '22%', '35%']}
           >
