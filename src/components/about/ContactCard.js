@@ -96,8 +96,6 @@ const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
         as="a"
         href="#"
         ref={focusRef}
-        margin="1.5rem auto"
-        maxW={['279px', '342px']}
         maxH="322px"
         direction="column"
         onClick={onOpen}
@@ -115,8 +113,6 @@ const MailtoCard = ({ publicId, email, title, blurb }) => (
     as="a"
     href={`mailto:${email}`}
     isExternal
-    margin="1.5rem auto"
-    maxW={['279px', '342px']}
     maxH="322px"
     direction="column"
   >
@@ -129,8 +125,6 @@ const VolunteerCard = ({ publicId, title, blurb }) => (
     as={Link}
     href="https://discord.com/invite/272XMuv"
     isExternal
-    margin="1.5rem auto"
-    maxW={['279px', '342px']}
     maxH="322px"
     direction="column"
   >

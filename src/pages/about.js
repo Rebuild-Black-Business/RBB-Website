@@ -1,4 +1,4 @@
-import { Flex, Heading, useTheme } from '@chakra-ui/core';
+import { Flex, Grid, Heading, useTheme } from '@chakra-ui/core';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
@@ -81,9 +81,13 @@ export default function About() {
           >
             CONTACT
           </Heading>
-          <Flex
+          <Grid
+            margin="0 auto"
+            maxWidth={theme.containers.main}
+            columnGap="24px"
+            rowGap="24px"
+            templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
             w="100%"
-            direction={['column', 'column', 'row', 'row']}
             paddingTop="2rem"
             paddingBottom="2rem"
           >
@@ -106,7 +110,7 @@ export default function About() {
               blurb="Join our group chat in Discord"
               publicId="assets/contact-right"
             />
-          </Flex>
+          </Grid>
         </Flex>
       </Flex>
     </Layout>
