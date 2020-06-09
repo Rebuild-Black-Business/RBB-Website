@@ -137,7 +137,7 @@ const ResultCard = forwardRef(
               </CardButton>
             )}
           </CardButtonGroup>
-          <Text as="small" fontSize="sm" fontStyle="italic" mt={3}>
+          <Text as="small" fontSize="sm" mt={3}>
             <Link href="#">Report or update</Link>
           </Text>
         </CardContent>
