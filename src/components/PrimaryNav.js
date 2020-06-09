@@ -28,13 +28,12 @@ const PrimaryNav = forwardRef(
     const toUpperCase = text => text.toUpperCase();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    console.log(isMedium);
     // Layout effect prevents a flash of visibility when resizing the screen
     useLayoutEffect(() => {
       setIsVisible(isMedium);
     }, [isMedium]);
 
-    console.log(isVisible);
-    console.log(!isMedium);
     return (
       // Breakpoints follow a [default, 1st breakpoint, 2nd breakpoint] structure.
       // In this case, padding would be 0 by default, 0 for the 'sm' breakpoint, and 6
@@ -79,7 +78,7 @@ const PrimaryNav = forwardRef(
           ml={[0, 0, 5]}
           mr={[8, 8, 0]}
           my={[5, 5, 0]}
-          width={!isMedium ? '50%' : 'inherit'}
+          width={['50%', '50%', 'auto']}
         >
           <Link as={GatsbyLink} to="/">
             <Image
@@ -123,7 +122,7 @@ const PrimaryNav = forwardRef(
                   : `1px solid ${theme.colors['rbb-black-100']}`,
                 'none',
               ]}
-              mx={[undefined, undefined, index !== 0 ? 6 : 8]}
+              ml={[undefined, undefined, 8]}
               display="block"
               fontWeight="bold"
               textAlign="left"
