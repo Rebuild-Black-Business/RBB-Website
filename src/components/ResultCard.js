@@ -137,7 +137,7 @@ const ResultCard = forwardRef(
     const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
 
     let img;
-    if (imageSrc !== null) {
+    if (imageSrc !== '') {
       img = <CardImage src={imageSrc} alt={imageAlt} />;
     } else {
       img = (
