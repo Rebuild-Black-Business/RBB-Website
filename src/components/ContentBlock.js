@@ -2,8 +2,6 @@ import React from 'react';
 import { PseudoBox, Box, Flex, theme } from '@chakra-ui/core';
 import Image from './Image';
 
-const fullWidthOverlayOpacity = 0.75;
-
 const formatHexCode = hexCode => {
   if (!hexCode.startsWith('#')) {
     return false;
@@ -33,7 +31,11 @@ const ContentBlockContent = props => {
   );
 };
 
-const ContentBlockColorOverlay = ({ backgroundColor, ...props }) => {
+const ContentBlockColorOverlay = ({
+  backgroundColor,
+  backgroundOpacity,
+  ...props
+}) => {
   return (
     <Box
       pos="absolute"
@@ -41,7 +43,7 @@ const ContentBlockColorOverlay = ({ backgroundColor, ...props }) => {
       right="0"
       bottom="0"
       left="0"
-      opacity={fullWidthOverlayOpacity}
+      opacity={backgroundOpacity}
       backgroundColor={backgroundColor}
       zIndex="-1"
       {...props}
@@ -73,6 +75,7 @@ const LeftSideContentBlock = ({
   imageSource,
   backgroundColor,
   backgroundMode,
+  backgroundOpacity,
   ...props
 }) => {
   /**
@@ -115,6 +118,7 @@ const LeftSideContentBlock = ({
         />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
+          backgroundOpacity={backgroundOpacity}
         ></ContentBlockColorOverlay>
         <ContentBlockContent w={['100%', '100%', '50%']} mr="auto">
           {props.children}
@@ -149,7 +153,7 @@ const LeftSideContentBlock = ({
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
           right={['0', '0', '45%']}
-          opacity={[fullWidthOverlayOpacity, fullWidthOverlayOpacity, 1]}
+          opacity={[backgroundOpacity, backgroundOpacity, 1]}
           background={[
             backgroundColor,
             backgroundColor,
@@ -168,6 +172,7 @@ const RightSideContentBlock = ({
   imageSource,
   backgroundColor,
   backgroundMode,
+  backgroundOpacity,
   ...props
 }) => {
   /**
@@ -208,6 +213,7 @@ const RightSideContentBlock = ({
         />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
+          backgroundOpacity={backgroundOpacity}
         ></ContentBlockColorOverlay>
         <ContentBlockContent w={['100%', '100%', '50%']} ml="auto">
           {props.children}
@@ -240,7 +246,7 @@ const RightSideContentBlock = ({
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
           left={['0', '0', '45%']}
-          opacity={[fullWidthOverlayOpacity, fullWidthOverlayOpacity, 1]}
+          opacity={[backgroundOpacity, backgroundOpacity, 1]}
           background={[
             backgroundColor,
             backgroundColor,
@@ -260,6 +266,7 @@ const FullWidthContentBlock = ({
   imageSource,
   backgroundColor,
   backgroundMode,
+  backgroundOpacity,
   ...props
 }) => {
   return (
@@ -281,7 +288,10 @@ const FullWidthContentBlock = ({
         height="100%"
         zIndex="-1"
       />
-      <ContentBlockColorOverlay backgroundColor={backgroundColor} />
+      <ContentBlockColorOverlay
+        backgroundColor={backgroundColor}
+        backgroundOpacity={backgroundOpacity}
+      />
       <ContentBlockContent layout={layout} backgroundMode={backgroundMode}>
         {props.children}
       </ContentBlockContent>
@@ -293,6 +303,7 @@ const ContentBlock = ({
   layout = 'full',
   backgroundColor = '#000000',
   backgroundMode = 'tint',
+  backgroundOpacity = 0.75,
   ...props
 }) => {
   switch (layout) {
@@ -301,6 +312,7 @@ const ContentBlock = ({
         <LeftSideContentBlock
           backgroundColor={backgroundColor}
           backgroundMode={backgroundMode}
+          backgroundOpacity={backgroundOpacity}
           {...props}
         ></LeftSideContentBlock>
       );
@@ -309,6 +321,7 @@ const ContentBlock = ({
         <RightSideContentBlock
           backgroundColor={backgroundColor}
           backgroundMode={backgroundMode}
+          backgroundOpacity={backgroundOpacity}
           {...props}
         ></RightSideContentBlock>
       );
@@ -317,6 +330,7 @@ const ContentBlock = ({
         <FullWidthContentBlock
           backgroundColor={backgroundColor}
           backgroundMode={backgroundMode}
+          backgroundOpacity={backgroundOpacity}
           {...props}
         />
       );

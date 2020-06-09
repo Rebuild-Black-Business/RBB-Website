@@ -9,7 +9,7 @@ import {
   CardButtonGroup,
   CardButton,
 } from './Card';
-import { Link, Text } from '@chakra-ui/core';
+import { Link, Text, useTheme } from '@chakra-ui/core';
 import { zipcodeConversion } from '../utils/locationUtils';
 
 // TODO: Replace with real fallback images for each category.
@@ -92,6 +92,7 @@ const ResultCard = forwardRef(
     const hasFallbackImage =
       category && Object.keys(categoryData).includes(category);
     const hasImage = !!(imageSrc || hasFallbackImage);
+    const theme = useTheme();
 
     // I'm not sure how categories are going to work, so this probaably needs to
     // change. Also unsure how we're going to handle the schema category on the
@@ -106,7 +107,7 @@ const ResultCard = forwardRef(
         ref={ref}
         {...props}
         // TODO: Use real theme colors per the design
-        border="1px solid gray"
+        border={`1px solid ${theme.colors['rbb-gray']}`}
         itemScope
         // TODO: the category in Airtable isn't going to match the schema
         // category, will need to be fixed. Omitting for now.
@@ -119,8 +120,11 @@ const ResultCard = forwardRef(
           />
         )}
         <CardContent
-          // TODO: Use real theme colors per the design
-          bg={hasImage ? 'white' : '#555'}
+          bg={
+            hasImage
+              ? theme.colors['rbb-white']
+              : theme.colors['rbb-result-card-grey']
+          }
           color={hasImage ? undefined : 'white'}
         >
           <CardHeading itemprop="name">{name}</CardHeading>
@@ -137,7 +141,7 @@ const ResultCard = forwardRef(
               </CardButton>
             )}
           </CardButtonGroup>
-          <Text as="small" fontSize="sm" fontStyle="italic" mt={3}>
+          <Text as="small" fontSize="sm" mt={3}>
             <Link href="#">Report or update</Link>
           </Text>
         </CardContent>
