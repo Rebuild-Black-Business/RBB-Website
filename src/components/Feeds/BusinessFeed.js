@@ -45,7 +45,7 @@ export default data => {
   }, [businessFilters, allBusinesses]);
 
   return (
-    <Box maxW="859px">
+    <Box maxW="1220px">
       <BusinessFilter onSearch={filters => setBusinessFilters(filters)} />
       {businesses.length > 0 ? (
         <SimpleGrid columns={[null, 1, 2]} spacing={10}>

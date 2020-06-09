@@ -26,6 +26,7 @@ export default function Businesses(data) {
           heroImageUrl={heroBackgroundImageUrl}
           hasFadedHeroImage
         />
+        <BusinessFeed {...data} />
         <Pagination
           onPageChanged={pagination =>
             navigate(
@@ -38,7 +39,6 @@ export default function Businesses(data) {
           totalRecords={data.pageContext.totalRecords}
           pageLimit={data.pageContext.itemsPerPage}
         />
-        <BusinessFeed {...data} />
       </Flex>
     </Layout>
   );
