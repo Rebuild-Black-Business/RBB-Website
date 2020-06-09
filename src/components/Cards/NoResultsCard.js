@@ -7,6 +7,7 @@ const NoResultsCard = ({ type }) => {
   return (
     <Box bg="rbb-light-gray" padding="1.5rem 2rem">
       <Heading
+        data-testid="heading"
         fontFamily={theme.fonts['heading-slab']}
         lineHeight="1.2"
         size="lg"
@@ -15,7 +16,7 @@ const NoResultsCard = ({ type }) => {
       >
         Sorry, No {type} Matched This Search.
       </Heading>
-      <Text margin="1.5rem 0" textAlign="center">
+      <Text data-testid="subheading" margin="1.5rem 0" textAlign="center">
         {/* TODO: this copy needs to be dynamically generated based on filters */}
         We don’t have any {type} that match your search.
       </Text>
