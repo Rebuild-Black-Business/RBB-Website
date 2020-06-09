@@ -44,6 +44,7 @@ const AllyFeed = data => {
 
   return (
     <Box
+      w="100%"
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >

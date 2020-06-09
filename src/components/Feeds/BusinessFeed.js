@@ -1,12 +1,13 @@
 import React, { useMemo, useState } from 'react';
 
 import ResultCard from '../ResultCard';
-import { Box, SimpleGrid } from '@chakra-ui/core';
+import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 
 import BusinessFilter from '../Filters/BusinessFilter';
 import { getLocationZip } from '../../utils/locationUtils';
 
 export default data => {
+  const theme = useTheme();
   const [businessFilters, setBusinessFilters] = useState({
     type: '',
     location: '',
@@ -45,7 +46,11 @@ export default data => {
   }, [businessFilters, allBusinesses]);
 
   return (
-    <Box maxW="859px">
+    <Box
+      w="100%"
+      maxW={theme.containers.main}
+      paddingX={[null, theme.spacing.base, theme.spacing.lg]}
+    >
       <BusinessFilter onSearch={filters => setBusinessFilters(filters)} />
       {businesses.length > 0 ? (
         <SimpleGrid columns={[null, 1, 2]} spacing={10}>
