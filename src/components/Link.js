@@ -8,8 +8,15 @@ function getLinkStyles(theme, variant) {
     fontFamily: theme.links.font,
     textDecoration: 'underline',
     color: theme.links[variant].color.default,
-    _hover: { color: theme.links[variant].color.hover },
-    _focus: { color: theme.links[variant].color.focus },
+    opacity: theme.links[variant].opacity.default,
+    _hover: {
+      color: theme.links[variant].color.hover,
+      opacity: theme.links[variant].opacity.hover || 1,
+    },
+    _focus: {
+      color: theme.links[variant].color.focus,
+      opacity: theme.links[variant].opacity.focus || 1,
+    },
   };
 }
 
