@@ -132,5 +132,6 @@ module.exports = {
           ['production', 'staging'].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };
