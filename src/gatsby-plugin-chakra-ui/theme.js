@@ -61,6 +61,7 @@ const customTheme = {
     'rbb-black-000': '#140303',
     'rbb-black-100': '#001514',
     'rbb-black-200': '#0E1111',
+    'rbb-light-gray': '#E8E8E8',
     'rbb-gray': '#565656',
     'rbb-white': '#F7F7F2',
     'rbb-white-100-alpha90': 'rgba(222, 222, 218, 0.9);',
