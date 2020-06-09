@@ -3,26 +3,23 @@ import { Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 
-const resourceCategories = [
-  { id: 'legal', label: 'Legal' },
-  { id: 'financial', label: 'Financial' },
-  { id: 'outreach', label: 'Outreach' },
-  { id: 'health', label: 'Health' },
+const skillTypes = [
   { id: 'business', label: 'Business' },
-  { id: 'real-estate', label: 'Real Estate' },
+  { id: 'marketing', label: 'Marketing' },
+  { id: 'outreach', label: 'Outreach' },
   { id: 'tech', label: 'Tech' },
-  { id: 'other', label: 'Other' },
+  { id: 'government', label: 'Government' },
 ];
 
-function ResourceFilter(props) {
+function BusinessFilter(props) {
   const { onSearch } = props;
   const [location, setLocation] = useState('');
-  const categoryRef = useRef({});
+  const skillRef = useRef('');
 
   const handleSearchClick = event => {
     event.preventDefault();
     onSearch({
-      category: categoryRef.current.value,
+      skill: skillRef.current.value,
       location: location,
     });
   };
@@ -30,7 +27,7 @@ function ResourceFilter(props) {
   const handleSearchKeyPress = event => {
     event.preventDefault();
     onSearch({
-      category: categoryRef.current.value,
+      skill: skillRef.current.value,
       location: location,
     });
   };
@@ -39,28 +36,24 @@ function ResourceFilter(props) {
     <FormControl>
       <Flex>
         <Flex direction="column">
-          <FormLabel htmlFor="category">Category</FormLabel>
-          <Select
-            ref={categoryRef}
-            id="category"
-            placeholder="Choose a category"
-          >
-            {resourceCategories.map(resource => {
+          <FormLabel htmlFor="skill">Skill</FormLabel>
+          <Select ref={skillRef} id="skill" placeholder="Select type">
+            {skillTypes.map(skill => {
               return (
-                <option key={resource.id} value={resource.label}>
-                  {resource.label}
+                <option key={skill.id} value={skill.label}>
+                  {skill.label}
                 </option>
               );
             })}
           </Select>
         </Flex>
         <Flex direction="column">
-          <FormLabel htmlFor="location">Location</FormLabel>
+          <FormLabel htmlFor="location">Zip Code</FormLabel>
           <Input
             value={location}
             id="location"
             type="text"
-            placeholder="Enter city"
+            placeholder="e.g. 80219"
             onChange={event => setLocation(event.currentTarget.value)}
             onKeyPress={event => {
               if (event.key === 'Enter') {
@@ -86,4 +79,4 @@ function ResourceFilter(props) {
   );
 }
 
-export default ResourceFilter;
+export default BusinessFilter;

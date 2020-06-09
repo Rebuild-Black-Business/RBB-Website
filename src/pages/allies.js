@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Flex, Text } from '@chakra-ui/core';
 
-import { AllyFeed, PageHero, Layout, Pagination } from '../components';
+import {
+  AllyFeed,
+  AllyFilter,
+  PageHero,
+  Layout,
+  Pagination,
+} from '../components';
 
 export default function Allies() {
+  const [allyFilters, setAllyFilters] = useState({
+    skill: '',
+    location: '',
+  });
+
   const pageSubtitle = (
     <Text paddingBottom="59px">
       These Allies have skills to share in assisting black-owned businesses to
@@ -26,7 +37,8 @@ export default function Allies() {
           heroImageUrl={heroBackgroundImageUrl}
           hasFadedHeroImage
         />
-        <AllyFeed />
+        <AllyFilter onSearch={setAllyFilters} />
+        <AllyFeed filters={allyFilters} />
         <Pagination
           onPageChanged={pagination => {
             // @TODO add pagination handler

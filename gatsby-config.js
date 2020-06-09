@@ -47,9 +47,22 @@ module.exports = {
         name: 'Allies',
         slug: '/allies',
       },
+    ],
+    photoCreditLinks: [
       {
-        name: 'Resources',
-        slug: '/resources',
+        photographer: 'John Cameron',
+        url: 'https://unsplash.com/@john_cameron',
+        pagePathname: '/',
+      },
+      {
+        photographer: 'Kelly Lacy',
+        url: 'https://instagram.com/kellymlacy',
+        pagePathname: '/',
+      },
+      {
+        photographer: 'Mike Von',
+        url: 'https://thevoncomplex.com',
+        pagePathname: '/',
       },
     ],
   },
@@ -69,18 +82,6 @@ module.exports = {
             defaultValues: {
               Business_Description: '',
               Donation_Link: '',
-            },
-          },
-          {
-            baseId: process.env.AIRTABLE_BASE_ID, // note that this is not a secret, just an id
-            tableName: `Resources`,
-            tableView: `Approved`, // optional
-            queryName: `Resources`,
-            separateNodeType: true,
-            separateMapType: true,
-            defaultValues: {
-              Description: '',
-              Zip_Code: '',
             },
           },
           {

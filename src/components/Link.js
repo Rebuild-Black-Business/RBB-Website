@@ -4,12 +4,20 @@ import { Link as ChakraLink, useTheme } from '@chakra-ui/core';
 import { Link as GatsbyLink } from 'gatsby';
 
 function getLinkStyles(theme, variant) {
+  const linkOpacityStates = theme.links[variant].opacity || {};
   return {
     fontFamily: theme.links.font,
     textDecoration: 'underline',
     color: theme.links[variant].color.default,
-    _hover: { color: theme.links[variant].color.hover },
-    _focus: { color: theme.links[variant].color.focus },
+    opacity: linkOpacityStates.default || 1,
+    _hover: {
+      color: theme.links[variant].color.hover,
+      opacity: linkOpacityStates.hover || 1,
+    },
+    _focus: {
+      color: theme.links[variant].color.focus,
+      opacity: linkOpacityStates.focus || 1,
+    },
   };
 }
 

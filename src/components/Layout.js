@@ -4,6 +4,7 @@ import PrimaryNav from './PrimaryNav';
 import { StaticQuery, graphql } from 'gatsby';
 import ErrorBoundary from './ErrorBoundary';
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
+import Footer from './footer/Footer';
 
 export default function Layout({ children }) {
   return (
@@ -20,6 +21,7 @@ export default function Layout({ children }) {
             />
             <SkipNavContent />
             <main id="primary-content">{children}</main>
+            <Footer />
           </>
         )}
       />
