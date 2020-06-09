@@ -163,9 +163,9 @@ const Pagination = props => {
   return (
     <Flex flexWrap="nowrap" justifyContent="center">
       <PaginationArrow
-        isDisabled={currentPage === 1}
+        hidden={currentPage === 1}
         onClick={handleDecrementCurrentPage}
-        icon="arrowLeft"
+        direction="LEFT"
       />
       {pages.map((page, i) => {
         return (
@@ -212,8 +212,8 @@ const Pagination = props => {
         );
       })}
       <PaginationArrow
-        icon="arrowRight"
-        isDisabled={currentPage === totalPages}
+        direction="RIGHT"
+        hidden={currentPage === totalPages}
         onClick={handleIncrementCurrentPage}
       />
     </Flex>

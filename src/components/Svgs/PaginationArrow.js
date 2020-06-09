@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
  *
  */
 
-const PaginationArrow = ({ onClick, isDisabled, icon }) => {
-  return (
+const PaginationArrow = ({ onClick, hidden, direction = 'RIGHT' }) => {
+  return hidden ? null : (
     <PseudoBox
       display="flex"
       alignItems="center"
@@ -24,21 +24,19 @@ const PaginationArrow = ({ onClick, isDisabled, icon }) => {
         color: 'rbb-orange',
       }}
       _active={{
-        color: 'white',
+        color: '#fff',
       }}
       _focus={{
-        color: 'white',
+        color: '#fff',
       }}
     >
       <IconButton
         onClick={onClick}
-        aria-label="Next"
-        aria-labelledby={icon}
+        aria-label={`Go to ${direction === 'RIGHT' ? 'next' : 'previous'} page`}
         variant="unstyled"
-        fill="white"
-        icon={icon}
+        fill="rbb-black-100"
+        icon={direction === 'RIGHT' ? 'arrowRight' : 'arrowLeft'}
         size="lg"
-        isDisabled={isDisabled}
         minWidth={0}
       />
     </PseudoBox>
@@ -48,7 +46,7 @@ const PaginationArrow = ({ onClick, isDisabled, icon }) => {
 PaginationArrow.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-  icon: PropTypes.oneOf(['arrowRight', 'arrowLeft']).isRequired,
+  direction: PropTypes.oneOf(['RIGHT', 'LEFT']).isRequired,
 };
 
 export default PaginationArrow;
