@@ -109,7 +109,7 @@ const AllyCard = forwardRef(
               </CardButton>
             </CardButtonGroup>
             <Box marginTop="auto" paddingTop={theme.spacing.base}>
-              <Text as="small" fontSize="sm" fontStyle="italic" mt={3} isInline>
+              <Text as="small" fontSize="sm" mt={3} isInline>
                 <Icon
                   name="flag"
                   color={theme.colors['rbb-gray']}

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 
-import { graphql, navigate } from 'gatsby';
+import { graphql } from 'gatsby';
 import { Flex } from '@chakra-ui/core';
-
 import { PageHero, Layout, BusinessFeed, Pagination } from '../components';
+import CardSkeleton from '../components/Loading/CardSkeleton';
 
 const client = algoliasearch('LRWZTMM362', 'b1556413e51961cacf7dbb37f22f4094');
 const index = client.initIndex('businesses');
@@ -60,6 +60,9 @@ export default function Businesses(data) {
     totalResults,
   } = useAlgoliaSearch();
 
+  // AirTable passes us and extra data...
+  const businessFeedData = data.data.allAirtableBusinesses.nodes;
+
   const pageSubtitle = (
     <p>
       These business owners have been impacted during the protests. Your support
@@ -80,18 +83,12 @@ export default function Businesses(data) {
           heroImageUrl={heroBackgroundImageUrl}
           hasFadedHeroImage
         />
-        <BusinessFeed {...data} />
-        <Pagination
-          onPageChanged={pagination =>
-            navigate(
-              `/businesses/${
-                pagination.currentPage === 1 ? '' : `${pagination.currentPage}/`
-              }`
-            )
-          }
-          currentPage={currentPage}
-          totalPages={totalPages}
-        />
+
+        <CardSkeleton data={businessFeedData}>
+          <BusinessFeed {...data} />
+        </CardSkeleton>
+
+        <Pagination totalRecords={totalResults} pageLimit={20} />
       </Flex>
     </Layout>
   );

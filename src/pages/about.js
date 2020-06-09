@@ -1,7 +1,9 @@
-import { Flex, Heading, useTheme } from '@chakra-ui/core';
+import { Flex, Grid, Heading, useTheme } from '@chakra-ui/core';
+import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
+import ErrorBoundary from '../components/ErrorBoundary';
 import Image from '../components/Image';
 import Layout from '../components/Layout';
 import { MISSION_MESSAGE, WHO_WE_ARE_MESSAGE } from '../constants/about';
@@ -81,7 +83,12 @@ export default function About() {
           >
             CONTACT
           </Heading>
-          <Flex
+          <Grid
+            margin="0 auto"
+            maxWidth={theme.containers.main}
+            columnGap="24px"
+            rowGap="24px"
+            templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
             w="100%"
             direction={['column', 'column', 'row', 'row']}
             paddingTop="2rem"
@@ -94,21 +101,40 @@ export default function About() {
               publicId="assets/contact-left"
               blurb="Add your business to our list"
             />
-            <ContactCard
-              mailtoCard
-              title="General Inquiry"
-              email="social@rebuildblackbusiness.com"
-              blurb="Send us an email and we'll be in touch"
-              publicId="assets/contact-middle"
-            />
+            <ErrorBoundary>
+              <StaticQuery
+                query={ContactQuery}
+                render={data => (
+                  <ContactCard
+                    mailtoCard
+                    title="General Inquiry"
+                    email={data.site.siteMetadata.social.contact}
+                    blurb="Send us an email and we'll be in touch"
+                    publicId="assets/contact-middle"
+                  />
+                )}
+              />
+            </ErrorBoundary>
             <ContactCard
               title="Volunteers"
               blurb="Join our group chat in Discord"
               publicId="assets/contact-right"
             />
-          </Flex>
+          </Grid>
         </Flex>
       </Flex>
     </Layout>
   );
 }
+
+const ContactQuery = graphql`
+  query AboutContactQuery {
+    site {
+      siteMetadata {
+        social {
+          contact
+        }
+      }
+    }
+  }
+`;
