@@ -50,6 +50,11 @@ module.exports = {
     ],
     photoCreditLinks: [
       {
+        photographer: 'Clay Banks',
+        url: 'https://www.instagram.com/clay.banks',
+        pagePathname: '/',
+      },
+      {
         photographer: 'John Cameron',
         url: 'https://unsplash.com/@john_cameron',
         pagePathname: '/',
@@ -63,6 +68,46 @@ module.exports = {
         photographer: 'Mike Von',
         url: 'https://thevoncomplex.com',
         pagePathname: '/',
+      },
+      {
+        photographer: 'Kelly Lacy',
+        url: 'https://instagram.com/kellymlacy',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'WOCinTechChat.com',
+        url: 'http://www.wocintechchat.com/',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'Allison Christine',
+        url: 'https://www.instagram.com/happpyal/',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'Chris Slupski',
+        url: 'https://unsplash.com/@kslupski',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'Jason Leung',
+        url: 'https://www.instagram.com/xninjason/',
+        pagePathname: '/businesses',
+      },
+      {
+        photographer: 'Julian Myles',
+        url: 'https://julianmyles.nyc',
+        pagePathname: '/businesses',
+      },
+      {
+        photographer: 'Joe Yates',
+        url: 'https://www.instagram.com/josephyates_/',
+        pagePathname: '/allies',
+      },
+      {
+        photographer: 'Logan Weaver ',
+        url: 'https://lgnwvrphto.com',
+        pagePathname: '/allies',
       },
     ],
   },
