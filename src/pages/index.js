@@ -29,6 +29,7 @@ export default () => {
                 lineHeight="0.5"
                 fontWeight="900"
                 fontSize={['50px', '50px', '50px', '72px']}
+                fontFamily={theme.fonts['heading-slab']}
                 textTransform="uppercase"
               >
                 Rebuild
@@ -37,6 +38,7 @@ export default () => {
                 fontSize={['100px', '100px', '100px', '150px']}
                 fontWeight="900"
                 lineHeight="1"
+                fontFamily={theme.fonts['heading-slab']}
                 textTransform="uppercase"
               >
                 Black
@@ -45,6 +47,7 @@ export default () => {
                 lineHeight="0.5"
                 fontWeight="900"
                 fontSize={['50px', '50px', '50px', '72px']}
+                fontFamily={theme.fonts['heading-slab']}
                 textTransform="uppercase"
               >
                 Businesses

@@ -27,7 +27,7 @@
     "@reach/visually-hidden": "0.10.2",
     "dotenv": "^8.2.0",
     "emotion-theming": "^10.0.27",
-    "gatsby": "^2.22.20",
+    "gatsby": "^2.23.3",
     "gatsby-plugin-chakra-ui": "^0.1.4",
     "gatsby-plugin-facebook-pixel": "^1.0.3",
     "gatsby-plugin-google-tagmanager": "^2.3.4",
