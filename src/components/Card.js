@@ -4,12 +4,14 @@ import {
   AspectRatioBox,
   Box,
   Flex,
-  Image,
+  Image as ChakraImage,
   Heading,
   Text,
   Stack,
 } from '@chakra-ui/core';
 import { Button } from './Button';
+
+import Image from './Image';
 
 const CardWrapper = forwardRef(({ children, ...props }, ref) => {
   return (
@@ -22,14 +24,31 @@ const CardWrapper = forwardRef(({ children, ...props }, ref) => {
 const CardImage = forwardRef(({ children, ...props }, ref) => {
   return (
     <AspectRatioBox ratio={3 / 2}>
-      <Image
-        width="100%"
-        height="100%"
-        objectFit="cover"
-        objectPosition="50% 50%"
-        {...props}
-        ref={ref}
-      />
+      {props.isRBBImage ? (
+        <Image
+          width="100%"
+          height="100%"
+          objectFit="cover"
+          objectPosition="50% 50%"
+          cloudName="rebuild-black-business"
+          publicId={props.publicId}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+          }}
+          {...props}
+          ref={ref}
+        />
+      ) : (
+        <ChakraImage
+          width="100%"
+          height="100%"
+          objectFit="cover"
+          objectPosition="50% 50%"
+          {...props}
+          ref={ref}
+        />
+      )}
     </AspectRatioBox>
   );
 });
@@ -63,12 +82,7 @@ const CardHeading = forwardRef(({ children, ...props }, ref) => {
 
 const CardText = forwardRef(({ children, ...props }, ref) => {
   return (
-    <Box
-      as={props => <Text {...props} as="p" />}
-      fontSize="md"
-      {...props}
-      ref={ref}
-    >
+    <Box as={props => <Text {...props} as="p" />} {...props} ref={ref}>
       {children}
     </Box>
   );
