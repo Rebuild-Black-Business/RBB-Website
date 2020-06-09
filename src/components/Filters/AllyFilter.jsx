@@ -49,8 +49,8 @@ function BusinessFilter(props) {
       margin="0 auto 3rem"
       padding="0 24px"
     >
-      <Flex width="100%" justifyContent="space-between">
-        <Flex direction="column">
+      <Flex width="100%">
+        <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="skill" color={rbbWhite}>
             Skill
           </FormLabel>
@@ -64,7 +64,7 @@ function BusinessFilter(props) {
             })}
           </Select>
         </Flex>
-        <Flex direction="column">
+        <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="location" color={rbbWhite}>
             Zip Code
           </FormLabel>
