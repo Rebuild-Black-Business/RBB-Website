@@ -117,6 +117,18 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Rebuild Black Business`,
+        icon: `src/images/favicon.png`,
+        short_name: `Rebuild Black Business`,
+        start_url: `/`,
+        background_color: `#f46036`, // theme orange
+        theme_color: `#f46036`, // theme orange
+        display: `standalone`,
+      },
+    },
+    {
       resolve: `gatsby-source-airtable`,
       options: {
         apiKey: process.env.AIRTABLE_API_KEY, // pulls in from your .env file
