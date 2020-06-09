@@ -6,6 +6,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://www.rebuildblackbusiness.com/',
     title: `Rebuild Black Business`,
     // eslint-disable-next-line max-len
     description: ``,
@@ -128,5 +129,6 @@ module.exports = {
           ['production', 'staging'].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };
