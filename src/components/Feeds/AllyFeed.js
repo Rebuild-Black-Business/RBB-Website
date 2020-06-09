@@ -36,11 +36,12 @@ const ModalForm = ({ isOpen, onClose, title }) => (
   </Modal>
 );
 
-const AllyFeed = data => {
-  const [allAllies] = useState(data.data.allAirtableAllies.nodes);
+const AllyFeed = props => {
+  const [allAllies] = useState(props.data.allAirtableAllies.nodes);
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = useRef();
   const theme = useTheme();
+  const { skill: skillFilter, location: locationFilter } = props.filters;
 
   return (
     <Box
