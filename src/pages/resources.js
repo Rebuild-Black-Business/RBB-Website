@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Flex, Heading } from '@chakra-ui/core';
 import Layout from '../components/Layout';
-import ResourceFeed from '../components/Feeds/ResourceFeed';
+// import ResourceFeed from '../components/Feeds/ResourceFeed';
 import Pagination from '../components/Pagination/Pagination';
 
 export default function Resources() {
@@ -17,7 +17,7 @@ export default function Resources() {
           totalRecords={70}
           pageLimit={5}
         />
-        <ResourceFeed />
+        {/* <ResourceFeed /> */}
       </Flex>
     </Layout>
   );

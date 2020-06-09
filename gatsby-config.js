@@ -84,18 +84,19 @@ module.exports = {
               Donation_Link: '',
             },
           },
-          {
-            baseId: process.env.AIRTABLE_BASE_ID, // note that this is not a secret, just an id
-            tableName: `Resources`,
-            tableView: `Approved`, // optional
-            queryName: `Resources`,
-            separateNodeType: true,
-            separateMapType: true,
-            defaultValues: {
-              Description: '',
-              Zip_Code: '',
-            },
-          },
+          // Resources will be a v1 feature, excluding the query for now.
+          // {
+          //   baseId: process.env.AIRTABLE_BASE_ID, // note that this is not a secret, just an id
+          //   tableName: `Resources`,
+          //   tableView: `Approved`, // optional
+          //   queryName: `Resources`,
+          //   separateNodeType: true,
+          //   separateMapType: true,
+          //   defaultValues: {
+          //     Description: '',
+          //     Zip_Code: '',
+          //   },
+          // },
           {
             baseId: process.env.AIRTABLE_BASE_ID, // note that this is not a secret, just an id
             tableName: `Allies`,
