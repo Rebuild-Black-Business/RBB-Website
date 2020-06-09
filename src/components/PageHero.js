@@ -3,40 +3,40 @@ import { Box, Stack, useTheme } from '@chakra-ui/core';
 
 import { Image, PageHeading, PageSubtitle } from '../components';
 
-const PageHero = ({ title, subtitle }) => {
+const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
   const theme = useTheme();
+
+  const gradientFade =
+    'linear-gradient(180deg, rgba(0, 0, 0, 0.76) 42.26%, rgba(151, 151, 151, 0.58) 58.6%, rgba(213, 214, 212, 0.81) 70.71%, rgba(247, 247, 242, 0.96) 86.19%, #FFFFFF 101%), ';
   return (
-    <Box as="header" position="relative" color={theme.colors['rbb-white']}>
-      <Image
-        publicId="assets/business-header"
-        cloudName="rebuild-black-business"
-        zIndex={-10}
-        position="absolute"
-        top={0}
-        display="block"
-        style={{ filter: 'grayscale(100%)' }}
-        transforms={{
-          transformation: [
-            { effect: 'gradient_fade:100,y_-0.4', gravity: 'north' },
-            {
-              effect: 'gradient_fade:10,y_0.4',
-              gravity: 'south',
-              background: 'rgb:000000',
-            },
-          ],
-        }}
-      />
-      <Stack
-        zIndex={1}
-        display="block"
-        flexDirection="column"
-        alignItems="center"
-        padding="76px 24px 1.5rem"
-      >
-        <PageHeading>{title}</PageHeading>
-        <PageSubtitle>{subtitle}</PageSubtitle>
-      </Stack>
-    </Box>
+    <>
+      {heroImageUrl && (
+        <Box
+          position="absolute"
+          zIndex={-9}
+          top={0}
+          width="100%"
+          height="100vh"
+          backgroundRepeat="no-repeat"
+          background={`${
+            hasFadedHeroImage ? gradientFade : ''
+          } url(${heroImageUrl})`}
+        />
+      )}
+      <Box as="header" position="relative" color={theme.colors['rbb-white']}>
+        <Stack
+          zIndex={2}
+          display="block"
+          flexDirection="column"
+          alignItems="center"
+          padding="70px 24px 1.5rem"
+          minHeight="15rem"
+        >
+          <PageHeading>{title}</PageHeading>
+          <PageSubtitle>{subtitle}</PageSubtitle>
+        </Stack>
+      </Box>
+    </>
   );
 };
 

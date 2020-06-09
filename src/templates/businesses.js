@@ -14,10 +14,18 @@ export default function Businesses(data) {
     </p>
   );
 
+  const heroBackgroundImageUrl =
+    'http://res.cloudinary.com/rebuild-black-business/image/upload/f_auto/v1/assets/business-header';
+
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <PageHero title="Businesses" subtitle={pageSubtitle} />
+        <PageHero
+          title="Businesses"
+          subtitle={pageSubtitle}
+          heroImageUrl={heroBackgroundImageUrl}
+          hasFadedHeroImage
+        />
         <Pagination
           onPageChanged={pagination =>
             navigate(
