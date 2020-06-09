@@ -76,23 +76,20 @@ export default function About() {
               modalCard
               title="Business Owner"
               modalTitle="This is a modal!"
+              publicId="assets/contact-left"
               blurb="Add your business to our list"
-              imageUrl="https://source.unsplash.com/daily"
-              imageAlt="Random image from unsplash"
             />
             <ContactCard
               mailtoCard
               title="General Inquiry"
               email="test@test.com"
               blurb="Send us an email and we'll be in touch"
-              imageUrl="https://source.unsplash.com/daily"
-              imageAlt="Random image from unsplash"
+              publicId="assets/contact-middle"
             />
             <ContactCard
               title="Volunteers"
               blurb="Join our group chat in Discord"
-              imageUrl="https://source.unsplash.com/daily"
-              imageAlt="Random image from unsplash"
+              publicId="assets/contact-right"
             />
           </Flex>
         </Flex>

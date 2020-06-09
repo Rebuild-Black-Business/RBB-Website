@@ -1,7 +1,7 @@
 import React from 'react';
+import Image from '../../components/Image.js';
 import {
   Flex,
-  Image,
   Box,
   useDisclosure,
   Modal,
@@ -18,15 +18,11 @@ import {
   Link,
 } from '@chakra-ui/core';
 
-const CardContent = ({ title, blurb, imageUrl, imageAlt }) => {
+const CardContent = ({ title, blurb, publicId }) => {
   const theme = useTheme();
   return (
     <>
-      {imageUrl ? (
-        <CardImage imageUrl={imageUrl} imageAlt={imageAlt} />
-      ) : (
-        <NoImage />
-      )}
+      {publicId ? <CardImage publicId={publicId} /> : <NoImage />}
       <Flex
         w="100%"
         direction="column"
@@ -67,9 +63,9 @@ const NoImage = () => (
 );
 
 // @TODO :: Replace with new Image component
-const CardImage = ({ imageUrl, imageAlt }) => (
+const CardImage = ({ publicId }) => (
   <Flex w="100%" minH="220px" position="relative" overflow="hidden">
-    <Image objectFit="cover" src={imageUrl} alt={imageAlt} />
+    <Image cloudName="rebuild-black-business" publicId={publicId} />
   </Flex>
 );
 
@@ -90,14 +86,7 @@ const ModalForm = ({ isOpen, onClose, title }) => (
   </Modal>
 );
 
-const ModalCard = ({
-  imageUrl,
-  imageAlt,
-  modalTitle,
-  title,
-  blurb,
-  margin,
-}) => {
+const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
 
@@ -114,19 +103,14 @@ const ModalCard = ({
         onClick={onOpen}
         marginBottom={margin}
       >
-        <CardContent
-          title={title}
-          blurb={blurb}
-          imageUrl={imageUrl}
-          imageAlt={imageAlt}
-        />
+        <CardContent title={title} blurb={blurb} publicId={publicId} />
       </Flex>
       <ModalForm isOpen={isOpen} title={modalTitle} onClose={onClose} />
     </>
   );
 };
 
-const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
+const MailtoCard = ({ publicId, email, title, blurb }) => (
   <Flex
     as="a"
     href={`mailto:${email}`}
@@ -136,16 +120,11 @@ const MailtoCard = ({ imageUrl, imageAlt, email, title, blurb }) => (
     maxH="322px"
     direction="column"
   >
-    <CardContent
-      title={title}
-      blurb={blurb}
-      imageUrl={imageUrl}
-      imageAlt={imageAlt}
-    />
+    <CardContent title={title} blurb={blurb} publicId={publicId} />
   </Flex>
 );
 
-const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
+const VolunteerCard = ({ publicId, title, blurb }) => (
   <Flex
     as={Link}
     href="https://discord.com/invite/272XMuv"
@@ -155,12 +134,7 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
     maxH="322px"
     direction="column"
   >
-    <CardContent
-      title={title}
-      blurb={blurb}
-      imageUrl={imageUrl}
-      imageAlt={imageAlt}
-    />
+    <CardContent title={title} blurb={blurb} publicId={publicId} />
   </Flex>
 );
 
@@ -169,18 +143,17 @@ const VolunteerCard = ({ imageUrl, imageAlt, title, blurb }) => (
  *
  * @param {string} title - The cards title
  * @param {string} blurb - The cards blurb
- * @param {string} imageUrl - The images url
- * @param {string} imageAlt - The alt text for the image
- * @param {boolean} modalCard - If modalCard then card with modal will be displayed
- * @param {boolean} mailtoCard - If mailtoCard then card with mailto link will be displayed
+ * @param {string} publicId - The images url
+ * @param {string} cloudName - The alt text for the image
+ * @param {boolean} modalCard - If doesModal then card with modal will be displayed
+ * @param {boolean} mailtoCard - If doesMailto then card with mailto link will be displayed
  * @param {string} modalTitle - The title to be displayed in the modal
  * @param {string} email - The RBB support email address
  */
 const ContactCard = ({
   title,
   blurb,
-  imageUrl,
-  imageAlt,
+  publicId,
   modalCard,
   mailtoCard,
   modalTitle,
@@ -192,8 +165,7 @@ const ContactCard = ({
         modalTitle={modalTitle}
         title={title}
         blurb={blurb}
-        imageUrl={imageUrl}
-        imageAlt={imageAlt}
+        publicId={publicId}
       />
     );
   }
@@ -203,12 +175,11 @@ const ContactCard = ({
         email={email}
         title={title}
         blurb={blurb}
-        imageUrl={imageUrl}
-        imageAlt={imageAlt}
+        publicId={publicId}
       />
     );
   }
-  return <VolunteerCard title={title} blurb={blurb} imageUrl={imageUrl} />;
+  return <VolunteerCard title={title} blurb={blurb} publicId={publicId} />;
 };
 
 export default ContactCard;

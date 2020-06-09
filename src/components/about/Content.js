@@ -10,7 +10,7 @@ import React from 'react';
  *     heading="MISSION"
  *     message="Our mission statement..."
  *     marginTop="25px"
- *     marginBottom="25px
+ *     marginBottom="25px"
  *     dividerMargin="10px"
  *   />
  * )

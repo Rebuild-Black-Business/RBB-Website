@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-
 import {
   Box,
   SimpleGrid,
@@ -14,6 +13,9 @@ import {
   useTheme,
   useDisclosure,
 } from '@chakra-ui/core';
+
+import { getZipcodesByRadius } from '../../utils/locationUtils';
+
 import AllyCard from '../Cards/AllyCard';
 import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
@@ -36,11 +38,33 @@ const ModalForm = ({ isOpen, onClose, title }) => (
   </Modal>
 );
 
-const AllyFeed = data => {
-  const [allAllies] = useState(data.data.allAirtableAllies.nodes);
+const AllyFeed = props => {
+  const [allAllies] = useState(props.data.allAirtableAllies.nodes);
+  const [allies, setAllies] = useState(allAllies);
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = useRef();
   const theme = useTheme();
+  const { skill: skillFilter, location: locationFilter } = props.filters;
+
+  useMemo(() => {
+    console.log(skillFilter);
+    const filteredAllies = allAllies
+      .filter(ally => {
+        if (skillFilter === '' || skillFilter === null) return ally;
+        return ally.data['Speciality'] === skillFilter;
+      })
+      .filter(ally => {
+        if (locationFilter === '') return ally;
+
+        const zipcodesInRadius = getZipcodesByRadius(locationFilter, 25);
+
+        if (zipcodesInRadius.length === 0) return ally;
+
+        return zipcodesInRadius.includes(ally.data['Zip_Code']);
+      });
+
+    setAllies(filteredAllies);
+  }, [locationFilter, skillFilter, allAllies]);
 
   return (
     <Box
@@ -53,10 +77,10 @@ const AllyFeed = data => {
           spacing={theme.spacing.med}
           paddingBottom={theme.spacing.lg}
         >
-          {allAllies.map((allies, index) => {
+          {allies.map((allies, index) => {
             if (index === 4)
               return (
-                <>
+                <React.Fragment key={index}>
                   <CardWrapper
                     gridColumn={[null, null, 'span 2']}
                     pr={theme.spacing.lg}
@@ -122,7 +146,7 @@ const AllyFeed = data => {
                     specialty={allies.data.Speciality}
                     location={allies.data.Zip_Code}
                   />
-                </>
+                </React.Fragment>
               );
             return (
               <AllyCard
