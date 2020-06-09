@@ -14,8 +14,8 @@ describe('Business Screen', () => {
     cy.get('#location').click().type(`${LOCATION}{enter}`);
 
     // Check for the things we want to see
-    cy.get("[data-testid='heading']");
-    cy.get("[data-testid='subheading']").as('subheading');
+    cy.findByTestId('heading');
+    cy.findByTestId('subheading').as('subheading');
 
     // TODO check for location in message
     // cy.get('@subheading').should('contain', LOCATION);
@@ -36,8 +36,8 @@ describe('Allies Screen', () => {
     cy.get('#location').click().type(`${ZIP}{enter}`);
 
     // Check for the things we want to see
-    cy.get("[data-testid='heading']");
-    cy.get("[data-testid='subheading']").as('subheading');
+    cy.findByTestId('heading');
+    cy.findByTestId('subheading').as('subheading');
 
     // TODO check for location in message
     // cy.get('@subheading').should('contain', ZIP);
