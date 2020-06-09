@@ -35,7 +35,7 @@ export default function Allies() {
           </Text>
         </Box>
         <AllyFilter onSearch={setAllyFilters} />
-        <AllyFeed />
+        <AllyFeed filters={allyFilters} />
         <Pagination totalRecords={70} pageLimit={5} />
       </Flex>
     </Layout>
