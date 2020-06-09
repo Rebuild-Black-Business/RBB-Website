@@ -99,10 +99,6 @@ export default function Allies() {
             </Modal>
           </>
         )}
-        <Pagination
-          onPageChanged={pagination => {
-            // @TODO add pagination handler
-          }}
         <Pagination totalRecords={70} pageLimit={5} />
       </Flex>
     </Layout>
