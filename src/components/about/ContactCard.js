@@ -69,7 +69,7 @@ const NoImage = () => (
 // @TODO :: Replace with new Image component
 const CardImage = ({ publicId, cloudName }) => (
   <Flex w="100%" minH="220px" position="relative" overflow="hidden">
-    <Image cloudName={cloudName} publicId={publicId} />
+    <Image cloudName="rebuild-black-business" publicId={publicId} />
   </Flex>
 );
 

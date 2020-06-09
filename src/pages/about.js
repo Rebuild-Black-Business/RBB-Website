@@ -68,8 +68,8 @@ export default function About() {
               modalCard
               title="Business Owner"
               modalTitle="This is a modal!"
-              cloudName="rebuild-black-business"
               publicId="assets/contact-left"
+              blurb="Add your business to our list"
             />
             <ContactCard
               mailtoCard
@@ -77,13 +77,11 @@ export default function About() {
               email="test@test.com"
               blurb="Send us an email and we'll be in touch"
               publicId="assets/contact-middle"
-              cloudName="rebuild-black-business"
             />
             <ContactCard
               title="Volunteers"
               blurb="Join our group chat in Discord"
               publicId="assets/contact-right"
-              cloudName="rebuild-black-business"
             />
           </Flex>
         </Flex>
