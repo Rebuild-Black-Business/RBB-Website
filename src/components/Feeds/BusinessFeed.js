@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 
 import ResultCard from '../ResultCard';
+import NoResultsCard from '../Cards/NoResultsCard';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 
 import BusinessFilter from '../Filters/BusinessFilter';
@@ -65,7 +66,7 @@ export default data => {
           ))}
         </SimpleGrid>
       ) : (
-        <Box as="pre">No results...</Box>
+        <NoResultsCard type="businesses" />
       )}
     </Box>
   );
