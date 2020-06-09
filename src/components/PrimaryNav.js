@@ -28,7 +28,6 @@ const PrimaryNav = forwardRef(
     const toUpperCase = text => text.toUpperCase();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    console.log(isMedium);
     // Layout effect prevents a flash of visibility when resizing the screen
     useLayoutEffect(() => {
       setIsVisible(isMedium);

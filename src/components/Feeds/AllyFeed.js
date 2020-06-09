@@ -47,7 +47,6 @@ const AllyFeed = props => {
   const { skill: skillFilter, location: locationFilter } = props.filters;
 
   useMemo(() => {
-    console.log(skillFilter);
     const filteredAllies = allAllies
       .filter(ally => {
         if (skillFilter === '' || skillFilter === null) return ally;
