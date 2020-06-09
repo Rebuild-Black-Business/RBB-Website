@@ -22,7 +22,12 @@ const Copyright = () => {
           Copyright &copy; {DynamicYear} Rebuild Black Businesses. All rights
           reserved.
         </Text>
-        <Link variant="footer" to="/" fontSize="12px" ml="1">
+        <Link
+          variant="footer"
+          to="/terms-and-conditions"
+          fontSize="12px"
+          ml="1"
+        >
           Terms and Conditions
         </Link>
       </Flex>
