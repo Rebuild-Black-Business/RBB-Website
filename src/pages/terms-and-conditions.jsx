@@ -1,11 +1,7 @@
-import { Box, Flex, Heading, Text, useTheme } from '@chakra-ui/core';
-
+import { Flex, Heading, Text, useTheme } from '@chakra-ui/core';
 import React from 'react';
 
-// import ContentBlock from '../components/ContentBlock';
-
 import Layout from '../components/Layout';
-
 import Image from '../components/Image';
 
 export default () => {
