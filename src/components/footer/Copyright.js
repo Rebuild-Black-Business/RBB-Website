@@ -8,7 +8,11 @@ const Copyright = () => {
   const theme = useTheme();
   return (
     <Flex w="full" justify="center" align="center">
-      <Flex w={['80%', '80%', '80%', 'full']} textAlign="center">
+      <Flex
+        w={['80%', '80%', '80%', 'full']}
+        textAlign="center"
+        direction={['column', 'column', 'column', 'row']}
+      >
         <Text
           fontSize="12px"
           fontFamily={theme.fonts.heading}
