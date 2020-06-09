@@ -11,7 +11,7 @@
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
-    "prettier": "prettier --write \"src/**/*.js\"",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,d.ts}\"",
     "lint": "eslint . --ext .jsx,.js,.tsx,.ts",
     "cy:open": "cypress open",
     "cy:run": "cypress run"
@@ -34,6 +34,7 @@
     "gatsby-plugin-netlify": "^2.3.4",
     "gatsby-plugin-react-helmet": "^3.3.3",
     "gatsby-plugin-sentry": "^1.0.1",
+    "gatsby-plugin-sitemap": "^2.4.5",
     "gatsby-source-airtable": "^2.1.1",
     "gatsby-source-filesystem": "^2.3.10",
     "react": "^16.13.1",
@@ -82,6 +83,6 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,jsx,ts,tsx,d.ts,css,md}": "prettier --write"
   }
 }

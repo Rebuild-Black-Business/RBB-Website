@@ -103,9 +103,7 @@ export default function Allies() {
           onPageChanged={pagination => {
             // @TODO add pagination handler
           }}
-          totalRecords={70}
-          pageLimit={5}
-        />
+        <Pagination totalRecords={70} pageLimit={5} />
       </Flex>
     </Layout>
   );
