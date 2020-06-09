@@ -90,6 +90,7 @@ export default function About() {
             rowGap="24px"
             templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
             w="100%"
+            direction={['column', 'column', 'row', 'row']}
             paddingTop="2rem"
             paddingBottom="2rem"
           >
