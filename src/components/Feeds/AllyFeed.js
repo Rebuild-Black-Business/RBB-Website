@@ -47,9 +47,10 @@ const AllyFeed = props => {
   const { skill: skillFilter, location: locationFilter } = props.filters;
 
   useMemo(() => {
+    console.log(skillFilter);
     const filteredAllies = allAllies
       .filter(ally => {
-        if (skillFilter === '') return ally;
+        if (skillFilter === '' || skillFilter === null) return ally;
         return ally.data['Speciality'] === skillFilter;
       })
       .filter(ally => {
@@ -79,7 +80,7 @@ const AllyFeed = props => {
           {allies.map((allies, index) => {
             if (index === 4)
               return (
-                <>
+                <React.Fragment key={index}>
                   <CardWrapper
                     gridColumn={[null, null, 'span 2']}
                     pr={theme.spacing.lg}
@@ -145,7 +146,7 @@ const AllyFeed = props => {
                     specialty={allies.data.Speciality}
                     location={allies.data.Zip_Code}
                   />
-                </>
+                </React.Fragment>
               );
             return (
               <AllyCard
