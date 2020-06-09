@@ -53,6 +53,7 @@ export default data => {
             <ResultCard
               key={index}
               name={business.data.Business_Name}
+              imageSrc={business.data.Image}
               category={business.data.Category}
               description={business.data.Business_Description}
               location={business.data.Zip_Code}
