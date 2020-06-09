@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  *
  * @param {function} onClick - Callback function that runs when icon is clicked
  * @param {boolean} isDisabled - Boolean that determines whether the icon is disabled
- * @param {string} icon - Name of the svg icon from the theme.js file
+ * @param {string} direction - Direction the arrow points
  *
  */
 
