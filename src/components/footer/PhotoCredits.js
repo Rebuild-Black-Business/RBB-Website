@@ -29,7 +29,7 @@ const CreditLink = () => {
                       mr="1"
                       color={theme.footer.photoCreditLink}
                       isExternal
-                      kery={index}
+                      key={index}
                     >
                       {link.photographer}
                     </Link>
