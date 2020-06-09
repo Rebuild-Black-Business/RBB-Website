@@ -24,8 +24,11 @@ const Copyright = () => {
           opacity={0.5}
         >
           Copyright &copy; {DynamicYear} Rebuild Black Businesses. All rights
-          reserved. <TermsLink />
+          reserved.
         </Text>
+        <Link variant="footer" to="/" fontSize="12px" ml="1">
+          Terms and Conditions
+        </Link>
       </Flex>
     </Flex>
   );
