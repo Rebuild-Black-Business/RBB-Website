@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Stack, useTheme } from '@chakra-ui/core';
 
-import { Image, PageHeading, PageSubtitle } from '../components';
+import { PageHeading, PageSubtitle } from '../components';
 
 const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
   const theme = useTheme();
