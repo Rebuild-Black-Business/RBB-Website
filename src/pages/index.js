@@ -111,7 +111,7 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" m={3} h="auto" px="30px">
+              <Button variant="primary" maxW="230px;" m={3} h="auto" px="30px">
                 Add Business
               </Button>
               <Button variant="secondary" m={3} h="auto" px="30px">
@@ -154,7 +154,7 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" m={3} h="auto" px="30px">
+              <Button variant="primary" maxW="230px" m={3} h="auto" px="30px">
                 Add Business
               </Button>
               <Button variant="secondary" m={3} h="auto" px="30px">
