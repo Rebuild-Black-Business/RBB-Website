@@ -102,8 +102,6 @@ const LeftSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
             h: '100%',
             gravity: 'auto',
           }}
@@ -136,8 +134,6 @@ const LeftSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
             h: '100%',
             gravity: 'auto',
           }}
@@ -198,8 +194,6 @@ const RightSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
             h: '100%',
             gravity: 'auto',
           }}
@@ -230,8 +224,6 @@ const RightSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
             h: '100%',
             gravity: 'auto',
           }}
@@ -274,8 +266,6 @@ const FullWidthContentBlock = ({
       <Image
         publicId={imageSource}
         transforms={{
-          fetchFormat: 'auto',
-          quality: 'auto',
           h: '100%',
           gravity: 'auto',
         }}
