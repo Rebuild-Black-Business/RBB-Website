@@ -151,7 +151,7 @@ AllyCard.displayName = 'AllyCard';
 AllyCard.propTypes = {
   specialty: PropTypes.string,
   name: PropTypes.string.isRequired,
-  location: PropTypes.number,
+  location: PropTypes.string,
   email: PropTypes.string.isRequired,
 };
 export { AllyCard };

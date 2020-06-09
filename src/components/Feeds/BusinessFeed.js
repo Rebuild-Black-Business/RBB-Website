@@ -16,6 +16,7 @@ export default data => {
 
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
   const [businesses, setBusinesses] = useState(allBusinesses);
+  const theme = useTheme();
 
   useMemo(() => {
     const associatedZipCodes = getLocationZip(businessFilters.location);
