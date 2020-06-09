@@ -101,7 +101,7 @@ export default function About() {
             <ContactCard
               mailtoCard
               title="General Inquiry"
-              email="test@test.com"
+              email="social@rebuildblackbusiness.com"
               blurb="Send us an email and we'll be in touch"
               publicId="assets/contact-middle"
             />
