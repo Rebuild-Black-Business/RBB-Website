@@ -32,7 +32,7 @@ const customTheme = {
   },
   // Mobile views were not covered under default 'sm' breakpoint
   // Going to just write in mock sizes, but open to changing them
-  breakpoints: ['16em', '48em', '64em', '80em'],
+  breakpoints: ['16em', '56em', '64em', '80em'],
   fontWeights: {
     bold: 'bold',
   },
