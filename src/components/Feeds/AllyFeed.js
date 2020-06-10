@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import {
   Box,
@@ -46,6 +46,13 @@ const AllyFeed = props => {
   const focusRef = useRef();
   const theme = useTheme();
   const { skill: skillFilter, location: locationFilter } = props.filters;
+  const [loaded, setLoaded] = useState(false);
+
+  // This fixes an SSR bug with Chakra SimpleGrid
+  //   https://github.com/Rebuild-Black-Business/RBB-Website/issues/129
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   useMemo(() => {
     const filteredAllies = allAllies
@@ -71,7 +78,7 @@ const AllyFeed = props => {
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      {allies.length > 0 ? (
+      {loaded && allies.length > 0 ? (
         <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
           {allies.map((allies, index) => {
             if (index === 4)
