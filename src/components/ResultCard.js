@@ -1,13 +1,12 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { Icon, Link, Text, useTheme } from '@chakra-ui/core';
+import { Box, Heading, Icon, Link, Text, useTheme } from '@chakra-ui/core';
 
 import {
   CardWrapper,
   CardImage,
   CardContent,
-  CardHeading,
   CardText,
   CardButtonGroup,
   CardButton,
@@ -111,8 +110,6 @@ const ResultCard = forwardRef(
       <CardWrapper
         ref={ref}
         {...props}
-        // TODO: Use real theme colors per the design
-        border={`1px solid ${theme.colors['rbb-gray']}`}
         itemScope
         // TODO: the category in Airtable isn't going to match the schema
         // category, will need to be fixed. Omitting for now.
@@ -126,35 +123,49 @@ const ResultCard = forwardRef(
           />
         )}
         <CardContent
-          bg={
-            hasImage
-              ? theme.colors['rbb-white']
-              : theme.colors['rbb-result-card-grey']
-          }
+          bg={theme.colors['rbb-result-card-grey']}
           color={hasImage ? undefined : theme.colors['rbb-black-200']}
         >
-          <CardHeading itemprop="name">{name}</CardHeading>
-          {category && <CardText as="span">{categoryLabel}</CardText>}
+          <Heading as="h2" itemprop="name" size="md" fontWeight="normal">
+            {name}
+          </Heading>
+          {category && (
+            <CardText as="span" margin="1rem 0">
+              {categoryLabel}
+            </CardText>
+          )}
           {description && <CardText as="p">{description}</CardText>}
           {formattedCity && <CardText as="p">{formattedCity}</CardText>}
-          <CardButtonGroup>
+          <CardButtonGroup mt={theme.spacing.base} mb={theme.spacing.base}>
             <CardButton as="a" href={websiteUrl}>
               {(category && categoryData[category]?.buttonText) || 'Learn More'}
             </CardButton>
             {donationUrl && (
-              <CardButton href={donationUrl} as="a">
+              <CardButton
+                color={theme.colors['rbb-white']}
+                href={donationUrl}
+                as="a"
+              >
                 Donate
               </CardButton>
             )}
           </CardButtonGroup>
-          <Text as="small" fontSize="sm" mt={3}>
-            <Icon
-              name="flag"
-              color={theme.colors['rbb-gray']}
-              mr={theme.spacing.xs}
-            />
-            <Link href="#">Report or update</Link>
-          </Text>
+          <Box>
+            <Text as="small" fontSize="sm" isInline>
+              <Icon
+                name="flag"
+                color={theme.colors['rbb-gray']}
+                mr={theme.spacing.xs}
+              />
+              <Link color={theme.colors['rbb-orange']} href="#">
+                Report
+              </Link>
+              <span> or </span>
+              <Link color={theme.colors['rbb-orange']} href="#">
+                update
+              </Link>
+            </Text>
+          </Box>
         </CardContent>
       </CardWrapper>
     );
