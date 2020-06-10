@@ -27,10 +27,6 @@ function Pagination({ location, currentPage, totalPages }) {
   const isWide = useMedia('(min-width: 480px)');
   const pageNeighbors = isWide ? 2 : 1;
 
-  // check to make sure pagination doesn't crash out pages that accidentally include it
-  if (!location) return null;
-  const pathname = location.pathname;
-
   /**
    * Let's say we have 10 pages and we set pageNeighbours to 2
    * Given that the current page is 6
@@ -83,6 +79,10 @@ function Pagination({ location, currentPage, totalPages }) {
 
     return range(1, totalPages);
   }, [currentPage, totalPages, pageNeighbors]);
+
+  // check to make sure pagination doesn't crash out pages that accidentally include it
+  if (!location) return null;
+  const pathname = location.pathname;
 
   /**
    * Create the correct page link
