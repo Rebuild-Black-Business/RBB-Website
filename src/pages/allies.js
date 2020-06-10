@@ -33,7 +33,7 @@ export default function Allies() {
   );
 
   const heroBackgroundImageUrl =
-    'http://res.cloudinary.com/rebuild-black-business/image/upload/c_scale,f_auto,h_0.6,q_auto/v1/assets/ally-background';
+    '//res.cloudinary.com/rebuild-black-business/image/upload/c_scale,f_auto,h_0.6,q_auto/v1/assets/ally-background';
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
