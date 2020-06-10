@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FormControl, FormLabel, Input, Stack } from '@chakra-ui/core';
+import { FormControl, FormLabel, Input, Stack, Text } from '@chakra-ui/core';
 import Button from './Button';
 
 const SubscribeForm = () => {
@@ -40,6 +40,11 @@ const SubscribeForm = () => {
         <Button type="submit" name="subscribe">
           Subscribe
         </Button>
+
+        <Text fontSize="xs">
+          We won't sell your email address or personal info. You can unsubscribe
+          at any time using the link in our emails
+        </Text>
       </Stack>
     </form>
   );
