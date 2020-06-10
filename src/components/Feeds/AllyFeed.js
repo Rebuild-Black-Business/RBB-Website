@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import {
   Box,
@@ -46,6 +46,13 @@ const AllyFeed = props => {
   const focusRef = useRef();
   const theme = useTheme();
   const { skill: skillFilter, location: locationFilter } = props.filters;
+  const [loaded, setLoaded] = useState(false);
+
+  // This fixes an SSR bug with Chakra SimpleGrid
+  //   https://github.com/Rebuild-Black-Business/RBB-Website/issues/129
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   useMemo(() => {
     const filteredAllies = allAllies
@@ -72,8 +79,8 @@ const AllyFeed = props => {
         maxW={theme.containers.main}
         paddingX={[null, theme.spacing.base, theme.spacing.lg]}
       >
-        {allies.length > 0 ? (
-          <SimpleGrid columns={[null, 1, 2, 4]} spacing={theme.spacing.med}>
+        {loaded && allies.length > 0 ? (
+          <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
             {allies.map((allies, index) => {
               if (index === 4)
                 return (
@@ -83,6 +90,16 @@ const AllyFeed = props => {
                       pr={theme.spacing.lg}
                       pos="relative"
                     >
+                      <Image
+                        publicId="assets/ally-sign-up"
+                        objectFit="cover"
+                        pos="absolute"
+                        zIndex="-1"
+                        w="100%"
+                        h="100%"
+                        top="0"
+                        left="0"
+                      />
                       <Image
                         publicId="assets/ally-sign-up"
                         transforms={{
@@ -134,7 +151,6 @@ const AllyFeed = props => {
                         </Button>
                       </CardContent>
                     </CardWrapper>
-
                     <AllyCard
                       key={index}
                       name={allies.data.Name}
