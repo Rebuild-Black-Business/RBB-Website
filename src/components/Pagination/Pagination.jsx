@@ -26,6 +26,9 @@ function Pagination({ location, currentPage, totalPages }) {
 
   const isWide = useMedia('(min-width: 480px)');
   const pageNeighbors = isWide ? 2 : 1;
+
+  // check to make sure pagination doesn't crash out pages that accidentally include it
+  if (!location) return null;
   const pathname = location.pathname;
 
   /**
