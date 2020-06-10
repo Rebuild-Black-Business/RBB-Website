@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Text, useTheme } from '@chakra-ui/core';
+
+import { Icon, Link, Text, useTheme } from '@chakra-ui/core';
 
 import {
   CardWrapper,
@@ -147,6 +148,11 @@ const ResultCard = forwardRef(
             )}
           </CardButtonGroup>
           <Text as="small" fontSize="sm" mt={3}>
+            <Icon
+              name="flag"
+              color={theme.colors['rbb-gray']}
+              mr={theme.spacing.xs}
+            />
             <Link href="#">Report or update</Link>
           </Text>
         </CardContent>
