@@ -31,12 +31,12 @@ const SEO = ({ canonicalUrl }) => {
     `
   );
 
-  const { siteMetadata: seo, social, siteUrl } = site;
+  const { siteMetadata: seo, social } = site;
 
-  const title = seo.title;
-  const description = seo.description;
-  const image = seo.image;
-  const url = siteUrl;
+  const title = seo?.title;
+  const description = seo?.description;
+  const image = seo?.image;
+  const url = seo?.siteUrl;
 
   return (
     <>
