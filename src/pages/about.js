@@ -1,12 +1,4 @@
-import {
-  Flex,
-  Grid,
-  Heading,
-  Link,
-  useTheme,
-  List,
-  ListItem,
-} from '@chakra-ui/core';
+import { Flex, Grid, Heading, List, ListItem, useTheme } from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
@@ -14,11 +6,12 @@ import Content from '../components/about/Content';
 import ErrorBoundary from '../components/ErrorBoundary';
 import Image from '../components/Image';
 import Layout from '../components/Layout';
+import Link from '../components/Link';
 import {
-  MISSION_MESSAGE,
-  WHO_WE_ARE_MESSAGE,
-  VALUES_MESSAGE,
   FOUNDER_MESSAGE,
+  MISSION_MESSAGE,
+  VALUES_MESSAGE,
+  WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
 
 export default function About() {
@@ -97,6 +90,7 @@ export default function About() {
                   <List>
                     <ListItem>
                       <Link
+                        variant="cta"
                         href="https://twitter.com/ThugDebugger"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -106,6 +100,7 @@ export default function About() {
                     </ListItem>
                     <ListItem>
                       <Link
+                        variant="cta"
                         href="https://www.instagram.com/thugdebugger/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -115,6 +110,7 @@ export default function About() {
                     </ListItem>
                     <ListItem>
                       <Link
+                        variant="cta"
                         href="https://www.facebook.com/thugdebugger-109112997164763/"
                         target="_blank"
                         rel="noopener noreferrer"
