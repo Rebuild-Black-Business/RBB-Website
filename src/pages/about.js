@@ -34,7 +34,7 @@ export default function About() {
           zIndex="-1"
           backgroundColor="#000"
           color="#FFF"
-          position='relative'
+          position="relative"
         >
           <Heading
             fontFamily={theme.fonts['heading-slab']}
