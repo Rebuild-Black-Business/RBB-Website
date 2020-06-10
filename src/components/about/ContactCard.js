@@ -92,7 +92,14 @@ const ModalForm = ({ isOpen, onClose, title }) => (
   </Modal>
 );
 
-const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
+const ModalCard = ({
+  publicId,
+  modalTitle,
+  title,
+  blurb,
+  margin,
+  transforms = {},
+}) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
   const theme = useTheme();
@@ -108,14 +115,19 @@ const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
         onClick={onOpen}
         marginBottom={margin}
       >
-        <CardContent title={title} blurb={blurb} publicId={publicId} />
+        <CardContent
+          title={title}
+          blurb={blurb}
+          publicId={publicId}
+          transforms={transforms}
+        />
       </Flex>
       <ModalForm isOpen={isOpen} title={modalTitle} onClose={onClose} />
     </>
   );
 };
 
-const MailtoCard = ({ publicId, email, title, blurb }) => (
+const MailtoCard = ({ publicId, email, title, blurb, transforms = {} }) => (
   <Flex
     as="a"
     href={`mailto:${email}`}
@@ -123,11 +135,16 @@ const MailtoCard = ({ publicId, email, title, blurb }) => (
     maxH="322px"
     direction="column"
   >
-    <CardContent title={title} blurb={blurb} publicId={publicId} />
+    <CardContent
+      title={title}
+      blurb={blurb}
+      publicId={publicId}
+      transforms={transforms}
+    />
   </Flex>
 );
 
-const VolunteerCard = ({ publicId, title, blurb }) => (
+const VolunteerCard = ({ publicId, title, blurb, transforms = {} }) => (
   <Flex
     as={Link}
     href="https://discord.com/invite/272XMuv"
@@ -135,7 +152,12 @@ const VolunteerCard = ({ publicId, title, blurb }) => (
     maxH="322px"
     direction="column"
   >
-    <CardContent title={title} blurb={blurb} publicId={publicId} />
+    <CardContent
+      title={title}
+      blurb={blurb}
+      publicId={publicId}
+      transforms={transforms}
+    />
   </Flex>
 );
 
@@ -150,6 +172,7 @@ const VolunteerCard = ({ publicId, title, blurb }) => (
  * @param {boolean} mailtoCard - If doesMailto then card with mailto link will be displayed
  * @param {string} modalTitle - The title to be displayed in the modal
  * @param {string} email - The RBB support email address
+ * @param {object} transforms - Image transformations
  */
 const ContactCard = ({
   title,
@@ -159,6 +182,7 @@ const ContactCard = ({
   mailtoCard,
   modalTitle,
   email,
+  transforms = {},
 }) => {
   if (modalCard) {
     return (
@@ -167,6 +191,7 @@ const ContactCard = ({
         title={title}
         blurb={blurb}
         publicId={publicId}
+        transforms={transforms}
       />
     );
   }
@@ -177,10 +202,18 @@ const ContactCard = ({
         title={title}
         blurb={blurb}
         publicId={publicId}
+        transforms={transforms}
       />
     );
   }
-  return <VolunteerCard title={title} blurb={blurb} publicId={publicId} />;
+  return (
+    <VolunteerCard
+      title={title}
+      blurb={blurb}
+      publicId={publicId}
+      transforms={transforms}
+    />
+  );
 };
 
 export default ContactCard;
