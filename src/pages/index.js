@@ -15,11 +15,9 @@ import {
   useDisclosure,
   useTheme,
 } from '@chakra-ui/core';
-import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 import Button from '../components/Button';
 import ContentBlock from '../components/ContentBlock';
-import ErrorBoundary from '../components/ErrorBoundary';
 import Layout from '../components/Layout';
 import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import SubmitAlly from '../components/Forms/SubmitAlly';
