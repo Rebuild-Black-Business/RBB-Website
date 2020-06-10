@@ -183,7 +183,7 @@ export default function About() {
             </ErrorBoundary>
             <ContactCard
               title="Volunteers"
-              blurb="Submit Information"
+              blurb="Join us"
               publicId="assets/contact-right"
             />
           </Grid>
