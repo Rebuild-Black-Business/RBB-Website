@@ -5,6 +5,14 @@ import {
   Heading,
   Link,
   Text,
+  Modal,
+  ModalOverlay,
+  ModalHeader,
+  ModalContent,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
   useTheme,
 } from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
@@ -13,9 +21,11 @@ import Button from '../components/Button';
 import ContentBlock from '../components/ContentBlock';
 import ErrorBoundary from '../components/ErrorBoundary';
 import Layout from '../components/Layout';
+import SubmitBusiness from '../components/Forms/SubmitBusiness';
 
 export default () => {
   const theme = useTheme();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Layout>
       <Flex direction="column" align="center" justify="center">
@@ -67,7 +77,14 @@ export default () => {
               Let’s Do our Part.
             </Text>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="cta" m={3} h="auto" px="30px">
+              <Button
+                variant="cta"
+                m={3}
+                h="auto"
+                px="30px"
+                onClick={onOpen}
+                onClose={onClose}
+              >
                 I need help
               </Button>
               <Button
@@ -122,7 +139,15 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" maxW="230px;" m={3} h="auto" px="30px">
+              <Button
+                variant="primary"
+                maxW="230px;"
+                m={3}
+                h="auto"
+                px="30px"
+                onClick={onOpen}
+                onClose={onClose}
+              >
                 Add Business
               </Button>
               <Button
@@ -172,7 +197,15 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" maxW="230px" m={3} h="auto" px="30px">
+              <Button
+                variant="primary"
+                maxW="230px"
+                m={3}
+                h="auto"
+                px="30px"
+                onClick={onOpen}
+                onClose={onClose}
+              >
                 Add Business
               </Button>
               <Button
@@ -232,6 +265,19 @@ export default () => {
           </Box>
         </ContentBlock>
       </Flex>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalBody>
+            <SubmitBusiness />
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Layout>
   );
 };
