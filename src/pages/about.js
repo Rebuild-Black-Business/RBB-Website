@@ -34,6 +34,7 @@ export default function About() {
           zIndex="-1"
           backgroundColor="#000"
           color="#FFF"
+          position="relative"
         >
           <Heading
             fontFamily={theme.fonts['heading-slab']}
@@ -46,6 +47,9 @@ export default function About() {
             publicId="assets/people-protesting-on-street-4552840_gginry"
             cloudName="rebuild-black-business"
             pos="absolute"
+            left={0}
+            top="50%"
+            transform="translateY(-50%)"
             objectFit="cover"
             w="100%"
             h="100%"
