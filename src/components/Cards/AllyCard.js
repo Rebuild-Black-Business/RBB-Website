@@ -1,4 +1,5 @@
 import React, { forwardRef, useRef } from 'react';
+import { graphql, StaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 import {
   CardWrapper,
@@ -25,6 +26,7 @@ import {
 import { zipcodeConversion } from '../../utils/locationUtils';
 import Link from '../Link';
 import Button from '../Button';
+import ErrorBoundary from '../ErrorBoundary';
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
@@ -33,7 +35,23 @@ const ModalForm = ({ isOpen, onClose, title }) => (
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
-      <ModalBody>Message for reporting or updating here</ModalBody>
+      <ErrorBoundary>
+        <StaticQuery
+          query={ContactQuery}
+          render={data => (
+            <ModalBody>
+              Please send an email to{' '}
+              <Link
+                variant="standard"
+                href={`mailto:${data.site.siteMetadata.social.contact}`}
+              >
+                {data.site.siteMetadata.social.contact}
+              </Link>{' '}
+              to report or remove this listing.
+            </ModalBody>
+          )}
+        />
+      </ErrorBoundary>
       <ModalFooter>
         <Button variantColor="blue" m={3} onClick={onClose}>
           Close
@@ -42,6 +60,18 @@ const ModalForm = ({ isOpen, onClose, title }) => (
     </ModalContent>
   </Modal>
 );
+
+const ContactQuery = graphql`
+  query ReportRemoveContactQuery {
+    site {
+      siteMetadata {
+        social {
+          contact
+        }
+      }
+    }
+  }
+`;
 
 /**
  * @component

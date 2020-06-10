@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/core';
 import React from 'react';
 import Image from '../../components/Image.js';
+import SubmitBusiness from '../Forms/SubmitBusiness.js';
 
 const CardContent = ({ title, blurb, publicId, transforms = {} }) => {
   const theme = useTheme();
@@ -82,7 +83,9 @@ const ModalForm = ({ isOpen, onClose, title }) => (
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
-      <ModalBody>Some text here</ModalBody>
+      <ModalBody>
+        <SubmitBusiness />
+      </ModalBody>
       <ModalFooter>
         <Button variantColor="blue" m={3} onClick={onClose}>
           Close
