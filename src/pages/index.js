@@ -5,17 +5,48 @@ import {
   Heading,
   Link,
   Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
   useTheme,
 } from '@chakra-ui/core';
-import { graphql, StaticQuery } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../components/Button';
 import ContentBlock from '../components/ContentBlock';
-import ErrorBoundary from '../components/ErrorBoundary';
 import Layout from '../components/Layout';
+import SubmitBusiness from '../components/Forms/SubmitBusiness';
+import SubmitAlly from '../components/Forms/SubmitAlly';
+
+const InfoModal = ({ isOpen, onClose, modalType }) => (
+  <Modal isOpen={isOpen} onClose={onClose}>
+    <ModalOverlay />
+    <ModalContent>
+      <ModalCloseButton />
+      <ModalBody>
+        {modalType === 'ally' && <SubmitAlly />}
+        {modalType === 'business' && <SubmitBusiness />}
+      </ModalBody>
+      <ModalFooter>
+        <Button onClick={onClose}>Close</Button>
+      </ModalFooter>
+    </ModalContent>
+  </Modal>
+);
 
 export default () => {
   const theme = useTheme();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [modalType, setModalType] = useState(null);
+
+  const handleType = newType => {
+    setModalType(newType);
+    onOpen();
+  };
+
   return (
     <Layout>
       <Flex direction="column" align="center" justify="center">
@@ -67,7 +98,14 @@ export default () => {
               Let’s Do our Part.
             </Text>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="cta" m={3} h="auto" px="30px">
+              <Button
+                variant="cta"
+                m={3}
+                h="auto"
+                px="30px"
+                onClose={onClose}
+                onClick={() => handleType('business')}
+              >
                 I need help
               </Button>
               <Button
@@ -122,7 +160,15 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" maxW="230px;" m={3} h="auto" px="30px">
+              <Button
+                variant="primary"
+                maxW="230px;"
+                m={3}
+                h="auto"
+                px="30px"
+                onClose={onClose}
+                onClick={() => handleType('business')}
+              >
                 Add Business
               </Button>
               <Button
@@ -172,7 +218,15 @@ export default () => {
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
-              <Button variant="primary" maxW="230px" m={3} h="auto" px="30px">
+              <Button
+                variant="primary"
+                maxW="230px"
+                m={3}
+                h="auto"
+                px="30px"
+                onClose={onClose}
+                onClick={() => handleType('business')}
+              >
                 Add Business
               </Button>
               <Button
@@ -214,36 +268,18 @@ export default () => {
               marketers, project managers, policy makers, and web professionals.
               Welcome!
             </Text>
-            <ErrorBoundary>
-              <StaticQuery
-                query={ContactQuery}
-                render={data => (
-                  <Button
-                    variant="cta"
-                    w="100%"
-                    as="a"
-                    href={`mailto:${data.site.siteMetadata.social.contact}`}
-                  >
-                    Submit Information
-                  </Button>
-                )}
-              />
-            </ErrorBoundary>
+            <Button
+              variant="cta"
+              w="100%"
+              onClose={onClose}
+              onClick={() => handleType('ally')}
+            >
+              Submit Information
+            </Button>
           </Box>
         </ContentBlock>
       </Flex>
+      <InfoModal isOpen={isOpen} modalType={modalType} onClose={onClose} />
     </Layout>
   );
 };
-
-const ContactQuery = graphql`
-  query HomeContactQuery {
-    site {
-      siteMetadata {
-        social {
-          contact
-        }
-      }
-    }
-  }
-`;

@@ -56,7 +56,6 @@ const CreditLink = () => {
 };
 
 const PhotoCredit = () => {
-  const theme = useTheme();
   return (
     <Flex w="100%" justify="center" align="center" pb="3">
       <Flex
