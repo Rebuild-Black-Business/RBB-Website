@@ -157,7 +157,8 @@ const AllyFeed = props => {
                     </CardWrapper>
                     <AllyCard
                       key={index}
-                      name={allies.data.Name}
+                      first={allies.data.First_Name}
+                      last={allies.data.Last_Name}
                       email={allies.data.Email}
                       specialty={allies.data.Speciality}
                       location={allies.data.Zip_Code}
@@ -167,7 +168,8 @@ const AllyFeed = props => {
               return (
                 <AllyCard
                   key={index}
-                  name={allies.data.Name}
+                  first={allies.data.First_Name}
+                  last={allies.data.Last_Name}
                   email={allies.data.Email}
                   specialty={allies.data.Speciality}
                   location={allies.data.Zip_Code}
@@ -197,7 +199,8 @@ export default props => (
           nodes {
             data {
               Email
-              Name
+              First_Name
+              Last_Name
               Speciality
               Zip_Code
               CreatedAt
