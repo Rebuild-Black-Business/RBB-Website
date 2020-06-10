@@ -95,7 +95,6 @@ const ModalForm = ({ isOpen, onClose, title }) => (
 const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
-  const theme = useTheme();
 
   return (
     <>
