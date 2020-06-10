@@ -79,7 +79,7 @@ export default function Businesses({ location }) {
   );
 
   const heroBackgroundImageUrl =
-    'http://res.cloudinary.com/rebuild-black-business/image/upload/f_auto/v1/assets/business-header';
+    'http://res.cloudinary.com/rebuild-black-business/image/upload/c_scale,f_auto,h_0.6,q_auto/v1/assets/business-header';
 
   return (
     <Layout>

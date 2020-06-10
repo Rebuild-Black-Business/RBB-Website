@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import Geocode from 'react-geocode';
+
 import {
   Flex,
   FormControl,
@@ -28,6 +30,7 @@ function BusinessFilter(props) {
 
   const handleSearchClick = event => {
     event.preventDefault();
+    handleLocationToCoords(location);
     onSearch({
       skill: skillRef.current.value,
       location: location,
@@ -36,10 +39,26 @@ function BusinessFilter(props) {
 
   const handleSearchKeyPress = event => {
     event.preventDefault();
+    handleLocationToCoords(location);
     onSearch({
       skill: skillRef.current.value,
       location: location,
     });
+  };
+
+  const handleLocationToCoords = location => {
+    Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
+    Geocode.fromAddress(location).then(
+      res => {
+        const { lat, lng } = res.results[0].geometry.location;
+
+        //@TODO :: Need to pass this lat / lng to Algolia.
+        console.log(lat, lng);
+      },
+      error => {
+        console.error(error);
+      }
+    );
   };
 
   return (
