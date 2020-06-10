@@ -4,7 +4,7 @@ import { Image as ChakraImage } from '@chakra-ui/core';
 import ImageSkeleton from './Loading/ImageSkeleton';
 
 export default function Image(props) {
-  const { transforms, publicId, alt, src } = props;
+  const { transforms, publicId, alt, src, ...remainingProps } = props;
 
   const { getImage, data, status, error } = useImage({
     cloud_name: 'rebuild-black-business',
@@ -29,5 +29,7 @@ export default function Image(props) {
   // @TODO :: Deliver custom Error UI if needed
   if (status === 'error') return <p>{error.message}</p>;
 
-  return <ChakraImage {...props} src={data || src} alt={alt} />;
+  return (
+    <ChakraImage {...props} src={data || src} alt={alt} {...remainingProps} />
+  );
 }
