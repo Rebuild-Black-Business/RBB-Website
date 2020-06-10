@@ -227,7 +227,7 @@ export default () => {
                 onClose={onClose}
                 onClick={() => handleType('business')}
               >
-                Add Business
+                View Directory
               </Button>
               <Button
                 variant="secondary"
@@ -237,7 +237,7 @@ export default () => {
                 as={Link}
                 href="/allies"
               >
-                See Allies
+                Sign up as an Ally
               </Button>
             </ButtonGroup>
           </Box>
@@ -257,7 +257,7 @@ export default () => {
               lineHeight="1.2"
               textTransform="uppercase"
             >
-              Do you want to help Rebuild Black Business?
+              Volunteer with us!
             </Heading>
             <Text
               fontFamily={theme.fonts.heading}
