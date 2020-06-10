@@ -107,8 +107,8 @@ const Card = forwardRef(({ children, ...props }, ref) => {
 });
 
 CardImage.propTypes = {
-  alt: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  src: PropTypes.string,
 };
 
 CardWrapper.displayName = 'CardWrapper';
