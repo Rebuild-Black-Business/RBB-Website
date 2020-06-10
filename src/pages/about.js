@@ -163,7 +163,6 @@ export default function About() {
             <ContactCard
               modalCard
               title="Business Owner"
-              modalTitle="This is a modal!"
               publicId="assets/contact-left"
               blurb="Add your business to our list"
             />
