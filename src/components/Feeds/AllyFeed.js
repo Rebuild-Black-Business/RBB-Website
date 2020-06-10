@@ -129,17 +129,18 @@ const AllyFeed = props => {
                           wordBreak="break-word"
                           hyphens="auto"
                         >
-                          Sign up to be an Ally
+                          Sign up as an ally
                         </CardHeading>
                         <CardText
                           as="p"
                           fontFamily={theme.fonts.heading}
                           fontSize={theme.fontSizes.base}
                         >
-                          Use your skills to assist Black-owned businesses to
-                          return to business and stay afloat while operating.
-                          Sign added to a private directory of Allies shared
-                          with Black business owners.
+                          Offer your skills to Black-Owned businesses. You can
+                          help rebuild or keep a business afloat. When you sign
+                          up as an Ally, we'll add you to our directory. Then,
+                          Black business owners will be able to contact you for
+                          help.
                         </CardText>
                         <Button
                           variant="cta"
