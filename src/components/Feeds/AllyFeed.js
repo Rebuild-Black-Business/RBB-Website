@@ -72,7 +72,7 @@ const AllyFeed = props => {
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
       {allies.length > 0 ? (
-        <SimpleGrid columns={[null, 1, 2, 4]} spacing={theme.spacing.med}>
+        <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
           {allies.map((allies, index) => {
             if (index === 4)
               return (

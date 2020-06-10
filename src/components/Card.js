@@ -81,7 +81,6 @@ const CardButtonGroup = forwardRef(({ children, ...props }, ref) => {
       spacing={3}
       // as={props => <Sta {...props} spacing={4} />}
       alignItems="center"
-      mt={3}
       width="100%"
       {...props}
       ref={ref}
