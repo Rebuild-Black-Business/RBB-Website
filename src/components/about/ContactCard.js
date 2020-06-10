@@ -105,7 +105,6 @@ const ModalCard = ({
 }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
-  const theme = useTheme();
 
   return (
     <>
