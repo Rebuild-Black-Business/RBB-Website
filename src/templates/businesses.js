@@ -32,11 +32,6 @@ export default function Businesses(data) {
         <CardSkeleton data={businessFeedData}>
           <BusinessFeed {...data} />
         </CardSkeleton>
-
-        {/* <Pagination
-          totalRecords={data.pageContext.totalRecords}
-          pageLimit={data.pageContext.itemsPerPage}
-        /> */}
       </Flex>
     </Layout>
   );
