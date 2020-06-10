@@ -137,7 +137,14 @@ const ResultCard = forwardRef(
           {description && <CardText as="p">{description}</CardText>}
           {formattedCity && <CardText as="p">{formattedCity}</CardText>}
           <CardButtonGroup mt={theme.spacing.base} mb={theme.spacing.base}>
-            <CardButton as="a" href={websiteUrl}>
+            <CardButton
+              as="a"
+              href={websiteUrl}
+              style={{
+                /* @TODO: primary buttons should be white! */
+                color: theme.colors['rbb-white'],
+              }}
+            >
               {(category && categoryData[category]?.buttonText) || 'Learn More'}
             </CardButton>
             {donationUrl && (
