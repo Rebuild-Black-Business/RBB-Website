@@ -16,6 +16,9 @@ export default function Image(props) {
       public_id: publicId,
       transform_options: {
         ...transforms,
+        // fetch: 'auto' is applied internally
+        // crop: 'scale' is applied automatically when a width or height is supplied
+        quality: 'auto',
       },
     });
   }, []);
