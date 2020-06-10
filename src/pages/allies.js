@@ -72,7 +72,10 @@ export default function Allies() {
               <ModalOverlay />
               <ModalContent>
                 <ModalHeader padding={0} margin={0}>
-                  <Image alt="" publicId="assets/ally-sign-up" />
+                  <Image
+                    alt="Person with a bandana over their mouth, holding one arm in the air"
+                    publicId="assets/ally-sign-up"
+                  />
                 </ModalHeader>
                 <ModalBody fontSize="lg" mt="8">
                   Please read and accept our{' '}
