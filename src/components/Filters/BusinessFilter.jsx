@@ -50,7 +50,6 @@ function BusinessFilter(props) {
   };
 
   const handleLocationToCoords = location => {
-    console.log(process.env);
     Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
     Geocode.fromAddress(location).then(
       res => {
