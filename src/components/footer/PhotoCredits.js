@@ -16,9 +16,9 @@ const CreditLink = () => {
         render={data => {
           return (
             <Flex justify="center">
-              {data.site.siteMetadata.photoCreditLinks.map((link, index) => {
-                // We check the current pages pathname against the credits pathname to render the correct photographers for each page
-                if (link.pagePathname === location.pathname) {
+              {data.site.siteMetadata.photoCreditLinks
+                .filter(link => link.pagePathname === location.pathname) // We check the current pages pathname against the credits pathname to render the correct photographers for each page
+                .map((link, index) => {
                   return (
                     <Link
                       variant="footer"
@@ -34,8 +34,7 @@ const CreditLink = () => {
                       {link.photographer}
                     </Link>
                   );
-                }
-              })}
+                })}
             </Flex>
           );
         }}

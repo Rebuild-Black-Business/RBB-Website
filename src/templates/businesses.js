@@ -1,29 +1,42 @@
 import React from 'react';
 
-import { graphql, navigate } from 'gatsby';
-import { Flex, Heading } from '@chakra-ui/core';
-import Layout from '../components/Layout';
-import BusinessFeed from '../components/Feeds/BusinessFeed';
-import Pagination from '../components/Pagination/Pagination';
+import { graphql } from 'gatsby';
+import { Flex } from '@chakra-ui/core';
+import { PageHero, Layout, BusinessFeed, Pagination } from '../components';
+import CardSkeleton from '../components/Loading/CardSkeleton';
 
 export default function Businesses(data) {
+  // AirTable passes us and extra data...
+  const businessFeedData = data.data.allAirtableBusinesses.nodes;
+
+  const pageSubtitle = (
+    <p>
+      These business owners have been impacted during the protests. Your support
+      will assist their rebuilding efforts. If you are a business owner in need,
+      please <a href="#temp">sign up to be added to our list</a>
+    </p>
+  );
+
+  const heroBackgroundImageUrl =
+    'http://res.cloudinary.com/rebuild-black-business/image/upload/f_auto/v1/assets/business-header';
+
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
-        <Heading as="h1">Businesses</Heading>
+        <PageHero
+          title="Businesses"
+          subtitle={pageSubtitle}
+          heroImageUrl={heroBackgroundImageUrl}
+          hasFadedHeroImage
+        />
+        <CardSkeleton data={businessFeedData}>
+          <BusinessFeed {...data} />
+        </CardSkeleton>
+
         <Pagination
-          onPageChanged={pagination =>
-            navigate(
-              `/businesses/${
-                pagination.currentPage === 1 ? '' : `${pagination.currentPage}/`
-              }`
-            )
-          }
-          currentPage={data.pageContext.page}
           totalRecords={data.pageContext.totalRecords}
           pageLimit={data.pageContext.itemsPerPage}
         />
-        <BusinessFeed {...data} />
       </Flex>
     </Layout>
   );

@@ -15,13 +15,17 @@ module.exports = {
     organization: {
       name: 'Rebuild Black Business',
       url: BASE_SITE_URL,
-      logo: '#',
+      logo:
+        'https://res.cloudinary.com/rebuild-black-business/image/upload/v1591562585/assets/RBBLogoFinal_ugdskx.png',
     },
     social: {
-      twitter: '',
-      fbAppID: '',
-      instagram: '',
+      twitter: 'rebuildingblack',
+      fbAppID: 'RebuildingBlack',
+      instagram: 'rebuildingblack',
       github: 'https://github.com/Rebuild-Black-Business',
+      contact: 'social@rebuildblackbusiness.com',
+      image:
+        'https://res.cloudinary.com/rebuild-black-business/image/upload/v1591726474/assets/rbb-socialimage_g7rhcj.jpg',
     },
     logo: {
       src: '#',
@@ -50,6 +54,11 @@ module.exports = {
     ],
     photoCreditLinks: [
       {
+        photographer: 'Clay Banks',
+        url: 'https://www.instagram.com/clay.banks',
+        pagePathname: '/',
+      },
+      {
         photographer: 'John Cameron',
         url: 'https://unsplash.com/@john_cameron',
         pagePathname: '/',
@@ -64,9 +73,61 @@ module.exports = {
         url: 'https://thevoncomplex.com',
         pagePathname: '/',
       },
+      {
+        photographer: 'Kelly Lacy',
+        url: 'https://instagram.com/kellymlacy',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'WOCinTechChat.com',
+        url: 'http://www.wocintechchat.com/',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'Allison Christine',
+        url: 'https://www.instagram.com/happpyal/',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'Chris Slupski',
+        url: 'https://unsplash.com/@kslupski',
+        pagePathname: '/about',
+      },
+      {
+        photographer: 'Jason Leung',
+        url: 'https://www.instagram.com/xninjason/',
+        pagePathname: '/businesses',
+      },
+      {
+        photographer: 'Julian Myles',
+        url: 'https://julianmyles.nyc',
+        pagePathname: '/businesses',
+      },
+      {
+        photographer: 'Joe Yates',
+        url: 'https://www.instagram.com/josephyates_/',
+        pagePathname: '/allies',
+      },
+      {
+        photographer: 'Logan Weaver ',
+        url: 'https://lgnwvrphto.com',
+        pagePathname: '/allies',
+      },
     ],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Rebuild Black Business`,
+        icon: `src/images/favicon.png`,
+        short_name: `Rebuild Black Business`,
+        start_url: `/`,
+        background_color: `#f46036`, // theme orange
+        theme_color: `#f46036`, // theme orange
+        display: `standalone`,
+      },
+    },
     {
       resolve: `gatsby-source-airtable`,
       options: {
@@ -128,5 +189,6 @@ module.exports = {
           ['production', 'staging'].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };

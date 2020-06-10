@@ -1,7 +1,6 @@
 import React from 'react';
 import { PseudoBox, Box, Flex, theme } from '@chakra-ui/core';
-
-const fullWidthOverlayOpacity = 0.3;
+import Image from './Image';
 
 const formatHexCode = hexCode => {
   if (!hexCode.startsWith('#')) {
@@ -32,7 +31,11 @@ const ContentBlockContent = props => {
   );
 };
 
-const ContentBlockColorOverlay = ({ backgroundColor, ...props }) => {
+const ContentBlockColorOverlay = ({
+  backgroundColor,
+  backgroundOpacity,
+  ...props
+}) => {
   return (
     <Box
       pos="absolute"
@@ -40,7 +43,7 @@ const ContentBlockColorOverlay = ({ backgroundColor, ...props }) => {
       right="0"
       bottom="0"
       left="0"
-      opacity={fullWidthOverlayOpacity}
+      opacity={backgroundOpacity}
       backgroundColor={backgroundColor}
       zIndex="-1"
       {...props}
@@ -61,19 +64,6 @@ const ContentBlockWrapper = ({
       w="100%"
       pos="relative"
       textAlign="center"
-      _before={{
-        backgroundImage: imageSource,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        width: imageWidth,
-        height: '100%',
-        zIndex: -2,
-        ...imagePosition,
-      }}
       {...props}
     >
       {props.children}
@@ -85,6 +75,7 @@ const LeftSideContentBlock = ({
   imageSource,
   backgroundColor,
   backgroundMode,
+  backgroundOpacity,
   ...props
 }) => {
   /**
@@ -106,9 +97,28 @@ const LeftSideContentBlock = ({
       <ContentBlockWrapper
         imageSource={imageSource}
         textAlign={['center', 'center', 'left']}
+        right="0"
       >
+        <Image
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          objectPosition="right center"
+          position="absolute"
+          top="0"
+          right="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
+          backgroundOpacity={backgroundOpacity}
         ></ContentBlockColorOverlay>
         <ContentBlockContent w={['100%', '100%', '50%']} mr="auto">
           {props.children}
@@ -123,10 +133,27 @@ const LeftSideContentBlock = ({
         imagePosition={{ right: 0 }}
         textAlign={['center', 'center', 'left']}
       >
+        <Image
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          objectPosition="right center"
+          position="absolute"
+          top="0"
+          right="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
           right={['0', '0', '45%']}
-          opacity={[fullWidthOverlayOpacity, fullWidthOverlayOpacity, 1]}
+          opacity={[backgroundOpacity, backgroundOpacity, 1]}
           background={[
             backgroundColor,
             backgroundColor,
@@ -145,6 +172,7 @@ const RightSideContentBlock = ({
   imageSource,
   backgroundColor,
   backgroundMode,
+  backgroundOpacity,
   ...props
 }) => {
   /**
@@ -167,8 +195,25 @@ const RightSideContentBlock = ({
         imageSource={imageSource}
         textAlign={['center', 'center', 'left']}
       >
+        <Image
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          position="absolute"
+          top="0"
+          left="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
+          backgroundOpacity={backgroundOpacity}
         ></ContentBlockColorOverlay>
         <ContentBlockContent w={['100%', '100%', '50%']} ml="auto">
           {props.children}
@@ -182,10 +227,26 @@ const RightSideContentBlock = ({
         imageWidth={['100%', '100%', '55%']}
         textAlign={['center', 'center', 'left']}
       >
+        <Image
+          publicId={imageSource}
+          transforms={{
+            fetchFormat: 'auto',
+            quality: 'auto',
+            h: '100%',
+            gravity: 'auto',
+          }}
+          objectFit="cover"
+          position="absolute"
+          top="0"
+          left="0"
+          w={['100%', '100%', '52%']}
+          height="100%"
+          zIndex="-1"
+        />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
           left={['0', '0', '45%']}
-          opacity={[fullWidthOverlayOpacity, fullWidthOverlayOpacity, 1]}
+          opacity={[backgroundOpacity, backgroundOpacity, 1]}
           background={[
             backgroundColor,
             backgroundColor,
@@ -205,11 +266,32 @@ const FullWidthContentBlock = ({
   imageSource,
   backgroundColor,
   backgroundMode,
+  backgroundOpacity,
   ...props
 }) => {
   return (
     <ContentBlockWrapper imageSource={imageSource}>
-      <ContentBlockColorOverlay backgroundColor={backgroundColor} />
+      <Image
+        publicId={imageSource}
+        transforms={{
+          fetchFormat: 'auto',
+          quality: 'auto',
+          h: '100%',
+          gravity: 'auto',
+        }}
+        objectFit="cover"
+        objectPosition="top center"
+        position="absolute"
+        top="0"
+        left="0"
+        w="100%"
+        height="100%"
+        zIndex="-1"
+      />
+      <ContentBlockColorOverlay
+        backgroundColor={backgroundColor}
+        backgroundOpacity={backgroundOpacity}
+      />
       <ContentBlockContent layout={layout} backgroundMode={backgroundMode}>
         {props.children}
       </ContentBlockContent>
@@ -221,6 +303,7 @@ const ContentBlock = ({
   layout = 'full',
   backgroundColor = '#000000',
   backgroundMode = 'tint',
+  backgroundOpacity = 0.75,
   ...props
 }) => {
   switch (layout) {
@@ -229,6 +312,7 @@ const ContentBlock = ({
         <LeftSideContentBlock
           backgroundColor={backgroundColor}
           backgroundMode={backgroundMode}
+          backgroundOpacity={backgroundOpacity}
           {...props}
         ></LeftSideContentBlock>
       );
@@ -237,6 +321,7 @@ const ContentBlock = ({
         <RightSideContentBlock
           backgroundColor={backgroundColor}
           backgroundMode={backgroundMode}
+          backgroundOpacity={backgroundOpacity}
           {...props}
         ></RightSideContentBlock>
       );
@@ -245,6 +330,7 @@ const ContentBlock = ({
         <FullWidthContentBlock
           backgroundColor={backgroundColor}
           backgroundMode={backgroundMode}
+          backgroundOpacity={backgroundOpacity}
           {...props}
         />
       );

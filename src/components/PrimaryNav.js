@@ -28,7 +28,6 @@ const PrimaryNav = forwardRef(
     const toUpperCase = text => text.toUpperCase();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    console.log(isMedium);
     // Layout effect prevents a flash of visibility when resizing the screen
     useLayoutEffect(() => {
       setIsVisible(isMedium);
@@ -82,7 +81,6 @@ const PrimaryNav = forwardRef(
         >
           <Link as={GatsbyLink} to="/">
             <Image
-              cloudName="rebuild-black-business"
               publicId="assets/RBBLogoFinal_ugdskx"
               transforms={{
                 height: 0.1,

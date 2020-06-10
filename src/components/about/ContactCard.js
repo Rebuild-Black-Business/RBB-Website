@@ -1,23 +1,22 @@
-import React from 'react';
-import Image from '../../components/Image.js';
 import {
-  Flex,
   Box,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   Button,
-  Text,
-  useTheme,
+  Flex,
   Heading,
   Link,
-  theme,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
+import React from 'react';
+import Image from '../../components/Image.js';
 
 const CardContent = ({ title, blurb, publicId }) => {
   const theme = useTheme();
@@ -98,8 +97,6 @@ const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
         as="a"
         href="#"
         ref={focusRef}
-        margin="5% auto"
-        maxW={['279px', '342px']}
         maxH="322px"
         direction="column"
         onClick={onOpen}
@@ -117,8 +114,6 @@ const MailtoCard = ({ publicId, email, title, blurb }) => (
     as="a"
     href={`mailto:${email}`}
     isExternal
-    margin="5% auto"
-    maxW={['279px', '342px']}
     maxH="322px"
     direction="column"
   >
@@ -126,24 +121,17 @@ const MailtoCard = ({ publicId, email, title, blurb }) => (
   </Flex>
 );
 
-const VolunteerCard = ({ publicId, title, blurb }) => {
-  const theme = useTheme();
-
-  return (
-    <Flex
-      as={Link}
-      href="https://discord.com/invite/272XMuv"
-      isExternal
-      // margin={`${theme.spacing.base} auto`}
-      margin="5% auto"
-      maxW={['279px', '342px']}
-      maxH="322px"
-      direction="column"
-    >
-      <CardContent title={title} blurb={blurb} publicId={publicId} />
-    </Flex>
-  );
-};
+const VolunteerCard = ({ publicId, title, blurb }) => (
+  <Flex
+    as={Link}
+    href="https://discord.com/invite/272XMuv"
+    isExternal
+    maxH="322px"
+    direction="column"
+  >
+    <CardContent title={title} blurb={blurb} publicId={publicId} />
+  </Flex>
+);
 
 /**
  * Contact Card for Business Owner - General Inquiry - Volunteers. Default renders the VolunteerCard

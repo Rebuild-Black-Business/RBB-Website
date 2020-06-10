@@ -17,6 +17,7 @@ import {
 import { getZipcodesByRadius } from '../../utils/locationUtils';
 
 import AllyCard from '../Cards/AllyCard';
+import NoResultsCard from '../Cards/NoResultsCard';
 import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
 import Image from '../Image';
@@ -47,7 +48,6 @@ const AllyFeed = props => {
   const { skill: skillFilter, location: locationFilter } = props.filters;
 
   useMemo(() => {
-    console.log(skillFilter);
     const filteredAllies = allAllies
       .filter(ally => {
         if (skillFilter === '' || skillFilter === null) return ally;
@@ -71,12 +71,8 @@ const AllyFeed = props => {
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      {allAllies.length > 0 ? (
-        <SimpleGrid
-          columns={[null, 1, 2, 4]}
-          spacing={theme.spacing.med}
-          paddingBottom={theme.spacing.lg}
-        >
+      {allies.length > 0 ? (
+        <SimpleGrid columns={[null, 1, 2, 4]} spacing={theme.spacing.med}>
           {allies.map((allies, index) => {
             if (index === 4)
               return (
@@ -87,7 +83,6 @@ const AllyFeed = props => {
                     pos="relative"
                   >
                     <Image
-                      cloudName="rebuild-black-business"
                       publicId="assets/ally-sign-up"
                       transforms={{
                         fetchFormat: 'auto',
@@ -160,7 +155,7 @@ const AllyFeed = props => {
           })}
         </SimpleGrid>
       ) : (
-        <Box as="pre">No results...</Box>
+        <NoResultsCard type="allies" />
       )}
       <ModalForm
         isOpen={isOpen}
