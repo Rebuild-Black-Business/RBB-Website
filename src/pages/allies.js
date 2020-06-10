@@ -26,10 +26,9 @@ export default function Allies() {
 
   const pageSubtitle = (
     <p>
-      These Allies have skills to share in assisting black-owned businesses to
-      return to business, and stay afloat while operating. Reach out to those on
-      this page if you know of a way to join the fight in helping businesses
-      survive and thrive.
+      These Allies are offering their skills to help Black-Owned businesses.
+      Whether you need to rebuild or stay afloat, an Ally can help. Search for
+      Allies by skill or location and contact them directly.
     </p>
   );
 
