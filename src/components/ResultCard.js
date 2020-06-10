@@ -125,7 +125,7 @@ const ResultCard = forwardRef(
               ? theme.colors['rbb-white']
               : theme.colors['rbb-result-card-grey']
           }
-          color={hasImage ? undefined : 'white'}
+          color={hasImage ? undefined : theme.colors['rbb-black-200']}
         >
           <CardHeading itemprop="name">{name}</CardHeading>
           {category && <CardText as="span">{categoryLabel}</CardText>}
