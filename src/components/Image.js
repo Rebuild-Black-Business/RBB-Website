@@ -21,7 +21,7 @@ export default function Image(props) {
         quality: 'auto',
       },
     });
-  }, []);
+  }, [publicId]);
   /* eslint-disable react-hooks/exhaustive-deps */
 
   if (status === 'loading') return <ImageSkeleton />;
