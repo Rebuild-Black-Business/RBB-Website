@@ -3,6 +3,7 @@ import {
   ButtonGroup,
   Flex,
   Heading,
+  Link,
   Text,
   useTheme,
 } from '@chakra-ui/core';
@@ -69,7 +70,15 @@ export default () => {
               <Button variant="cta" m={3} h="auto" px="30px">
                 I need help
               </Button>
-              <Button variant="primary" m={3} h="auto" px="30px">
+              <Button
+                as={Link}
+                href="/allies"
+                variant="primary"
+                style={{ textDecoration: 'none' }}
+                m={3}
+                h="auto"
+                px="30px"
+              >
                 I can help
               </Button>
             </ButtonGroup>
@@ -94,7 +103,7 @@ export default () => {
             >
               Business Owners,
               <br />
-              We’re here for you.
+              We&rsquo;re here for you.
             </Heading>
             <Box fontSize={theme.fontSizes.lg} maxW="540px">
               <Text
@@ -102,12 +111,12 @@ export default () => {
                 lineHeight="1.25"
                 pb={theme.spacing.base}
               >
-                We want to restore wealth to black communities by supporting you
-                and your business. Whether your business is doing well or you
-                have an urgent need, we're here to help.
+                We want to restore wealth to Black communities by supporting you
+                and your business. Whether your business is in urgent need or
+                you are doing well, we're here to help.
               </Text>
               <Text fontFamily={theme.fonts.heading} lineHeight="1.25">
-                You can add your business to our online directory of black-owned
+                You can add your business to our online directory of Black-Owned
                 businesses. You can also contact one of our registered Allies
                 directly for help. <strong>We are all in this together.</strong>
               </Text>
@@ -116,7 +125,14 @@ export default () => {
               <Button variant="primary" maxW="230px;" m={3} h="auto" px="30px">
                 Add Business
               </Button>
-              <Button variant="secondary" m={3} h="auto" px="30px">
+              <Button
+                variant="secondary"
+                m={3}
+                h="auto"
+                px="30px"
+                as={Link}
+                href="/allies"
+              >
                 See Allies
               </Button>
             </ButtonGroup>
@@ -146,12 +162,12 @@ export default () => {
                 lineHeight="1.25"
                 pb={theme.spacing.base}
               >
-                Click for our growing list of Black-owned businesses across the
-                nation! You can search for black-owned businesses in your area,
-                as well as register any business that is missing from our list.
+                View our growing list of Black-Owned businesses across the
+                nation! Find Black-Owned businesses in your area or register any
+                that we’re missing.
               </Text>
               <Text fontFamily={theme.fonts.heading} lineHeight="1.25">
-                If you have specific skills you'd like to offer, you can
+                If you have specific skills you&rsquo;d like to offer, you can
                 register as an Ally.
               </Text>
             </Box>
@@ -159,7 +175,14 @@ export default () => {
               <Button variant="primary" maxW="230px" m={3} h="auto" px="30px">
                 Add Business
               </Button>
-              <Button variant="secondary" m={3} h="auto" px="30px">
+              <Button
+                variant="secondary"
+                m={3}
+                h="auto"
+                px="30px"
+                as={Link}
+                href="/allies"
+              >
                 See Allies
               </Button>
             </ButtonGroup>
@@ -172,14 +195,24 @@ export default () => {
           backgroundColor={theme.colors['rbb-white']}
         >
           <Box py={[140, 140, 200]} maxW="574px">
+            <Heading
+              mb={theme.spacing.lg}
+              fontFamily={theme.fonts['heading-slab']}
+              fontWeight="900"
+              fontSize="40px"
+              lineHeight="1.2"
+              textTransform="uppercase"
+            >
+              Do you want to help Rebuild Black Business?
+            </Heading>
             <Text
               fontFamily={theme.fonts.heading}
               lineHeight="1.25"
               pb={theme.spacing.base}
             >
-              Join our group of over 250 volunteers. We’re developers,
-              designers, marketers, project managers, policy makers, and web
-              professionals. Welcome!
+              Join our group of volunteers. We’re developers, designers,
+              marketers, project managers, policy makers, and web professionals.
+              Welcome!
             </Text>
             <ErrorBoundary>
               <StaticQuery
@@ -191,7 +224,7 @@ export default () => {
                     as="a"
                     href={`mailto:${data.site.siteMetadata.social.contact}`}
                   >
-                    Contact Us
+                    Submit Information
                   </Button>
                 )}
               />

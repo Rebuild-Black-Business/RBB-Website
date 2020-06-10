@@ -18,11 +18,15 @@ import {
 import React from 'react';
 import Image from '../../components/Image.js';
 
-const CardContent = ({ title, blurb, publicId }) => {
+const CardContent = ({ title, blurb, publicId, transforms = {} }) => {
   const theme = useTheme();
   return (
     <>
-      {publicId ? <CardImage publicId={publicId} /> : <NoImage />}
+      {publicId ? (
+        <CardImage publicId={publicId} transforms={transforms} />
+      ) : (
+        <NoImage />
+      )}
       <Flex
         w="100%"
         direction="column"
@@ -63,11 +67,13 @@ const NoImage = () => (
 );
 
 // @TODO :: Replace with new Image component
-const CardImage = ({ publicId }) => (
-  <Flex w="100%" minH="220px" position="relative" overflow="hidden">
-    <Image cloudName="rebuild-black-business" publicId={publicId} />
-  </Flex>
-);
+const CardImage = ({ publicId, transforms }) => {
+  return (
+    <Flex w="100%" minH="220px" position="relative" overflow="hidden">
+      <Image publicId={publicId} transforms={{ ...transforms }} />
+    </Flex>
+  );
+};
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
@@ -89,6 +95,7 @@ const ModalForm = ({ isOpen, onClose, title }) => (
 const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
+  const theme = useTheme();
 
   return (
     <>
