@@ -103,12 +103,12 @@ const AllyCard = forwardRef(
                 {specialty}
               </CardText>
             )}
-            <CardButtonGroup>
-              <CardButton as="a" href={`mailto:${email}`}>
-                Email
-              </CardButton>
-            </CardButtonGroup>
             <Box marginTop="auto" paddingTop={theme.spacing.base}>
+              <CardButtonGroup pb={3}>
+                <CardButton as="a" href={`mailto:${email}`}>
+                  Email
+                </CardButton>
+              </CardButtonGroup>
               <Text as="small" fontSize="sm" mt={3} isInline>
                 <Icon
                   name="flag"
@@ -130,7 +130,7 @@ const AllyCard = forwardRef(
                   onClick={onOpen}
                   ref={updateRef}
                 >
-                  update
+                  unlist
                 </Link>
               </Text>
             </Box>
