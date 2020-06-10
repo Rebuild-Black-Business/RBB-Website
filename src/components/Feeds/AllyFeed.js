@@ -84,10 +84,6 @@ const AllyFeed = props => {
                   >
                     <Image
                       publicId="assets/ally-sign-up"
-                      transforms={{
-                        fetchFormat: 'auto',
-                        quality: 'auto',
-                      }}
                       objectFit="cover"
                       pos="absolute"
                       zIndex="-1"
