@@ -33,7 +33,6 @@ const SocialLinks = () => {
             <Envelope
               link={`mailto:${data.site.siteMetadata.social.contact}`}
             />
-            <Paypal link="#" />
           </Flex>
         )}
       />
