@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Text,
+  Link,
   useTheme,
 } from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
@@ -69,7 +70,15 @@ export default () => {
               <Button variant="cta" m={3} h="auto" px="30px">
                 I need help
               </Button>
-              <Button variant="primary" m={3} h="auto" px="30px">
+              <Button
+                as={Link}
+                href="/allies"
+                variant="primary"
+                style={{ textDecoration: 'none' }}
+                m={3}
+                h="auto"
+                px="30px"
+              >
                 I can help
               </Button>
             </ButtonGroup>
