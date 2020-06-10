@@ -3,6 +3,7 @@ import React from 'react';
 const SubmitAlly = () => (
   <>
     <iframe
+      title="Sign up as an ally"
       className="airtable-embed"
       src="https://airtable.com/embed/shrK2rdboepJgcuFu?backgroundColor=greenLight"
       frameBorder="0"
