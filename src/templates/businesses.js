@@ -1,80 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import algoliasearch from 'algoliasearch/lite';
+import React from 'react';
 
 import { Flex } from '@chakra-ui/core';
 import { PageHero, BusinessFeed, Pagination } from '../components';
 import CardSkeleton from '../components/Loading/CardSkeleton';
 
-const client = algoliasearch(ALGOLIA_APPLICATION_ID, ALGOLIA_API_KEY);
-const index = client.initIndex(ALGOLIA_INDEX);
-
-const LOADING_STATE = {
-  NONE: 'none',
-  INITIAL: 'intial',
-  SEARCHING: 'searching',
-};
-
-function useAlgoliaSearch({ page = 1 } = {}) {
-  const [results, setResults] = useState([]);
-  const [loadingState, setLoadingState] = useState(LOADING_STATE.INITIAL);
-  const [totalPages, setTotalPages] = useState(0);
-  const [totalResults, setTotalResults] = useState(0);
-  const [currentPage, setCurrentPage] = useState(page);
-
-  useEffect(() => {
-    async function getBusinesses() {
-      try {
-        const algoliaResponse = await index.search('', {
-          page: currentPage,
-        });
-
-        setResults(algoliaResponse.hits);
-        setTotalPages(algoliaResponse.nbPages);
-        setTotalResults(algoliaResponse.nbHits);
-        setLoadingState(LOADING_STATE.NONE);
-      } catch (e) {
-        console.log('error searching', e);
-      }
-    }
-
-    getBusinesses();
-  }, [currentPage]);
-
-  return {
-    results,
-    totalPages,
-    totalResults,
-    loadingState,
-    setSearchPage: setCurrentPage,
-  };
-}
-
-function usePagination(location, onChange) {
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    const pageParam = new URLSearchParams(location.search).get('page');
-
-    if (pageParam) {
-      setPage(pageParam);
-      onChange(pageParam);
-    } else {
-      setPage(1);
-      onChange(1);
-    }
-  }, [location.search, onChange]);
-
-  return page;
-}
+import useAlgoliaSearch from '../hooks/useAlgoliaSearch';
+import usePagination from '../hooks/usePagination';
 
 export default function Businesses(props) {
-  const {
-    loadingState,
-    results,
-    totalPages,
-    setSearchPage,
-  } = useAlgoliaSearch();
-
+  const { results, totalPages, setSearchPage } = useAlgoliaSearch();
   const page = usePagination(props.location, page => setSearchPage(page));
 
   const pageSubtitle = (
