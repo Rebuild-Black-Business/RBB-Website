@@ -1,22 +1,23 @@
-import React, { useState, useLayoutEffect, forwardRef } from 'react';
-import { useTheme } from '@chakra-ui/core';
-import { Flex, Link, Box } from '@chakra-ui/core';
-import { Link as GatsbyLink } from 'gatsby';
-import VisuallyHidden from '@reach/visually-hidden';
-import { Nav, NavMenu, NavItem, NavLink } from './Nav';
-import Image from './Image';
-import Button from '../components/Button';
 import {
+  Box,
+  Flex,
+  Link,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
   useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
+import VisuallyHidden from '@reach/visually-hidden';
+import { Link as GatsbyLink } from 'gatsby';
+import React, { forwardRef, useLayoutEffect, useState } from 'react';
+import Button from '../components/Button';
 import SubscribeForm from '../components/SubscribeForm';
-
+import Image from './Image';
+import { Nav, NavItem, NavLink, NavMenu } from './Nav';
 const INITIAL_TOGGLE_STATE = false;
 
 const PrimaryNav = forwardRef(
@@ -114,6 +115,14 @@ const PrimaryNav = forwardRef(
           hidden={!isVisible || undefined}
           aria-hidden={isVisible && !isMedium}
           id="navigation"
+          position={['absolute', 'absolute', 'static']}
+          top={['100px', '100px', 'auto']}
+          backgroundColor={[
+            theme.colors['rbb-white'],
+            theme.colors['rbb-white'],
+            'transparent',
+          ]}
+          zIndex={['1', '1', 'auto']}
         >
           {menuLinks.map((link, index, src) => (
             <NavItem
@@ -141,6 +150,21 @@ const PrimaryNav = forwardRef(
               <NavLink to={link.slug}>{toUpperCase(link.name)}</NavLink>
             </NavItem>
           ))}
+          <NavItem marginLeft="auto">
+            {/* Subscribe button when user is on web */}
+            {isVisible ? (
+              <Flex justify={['center', 'center', 'flex-end']}>
+                <Button
+                  display={['none', 'none', 'block']}
+                  onClick={onOpen}
+                  hidden={!isVisible || undefined}
+                >
+                  Subscribe
+                </Button>
+              </Flex>
+            ) : null}
+          </NavItem>
+
           {/* Subscribe button when user is on mobile */}
           <NavItem
             display={['none', 'block', 'none']}
@@ -168,19 +192,6 @@ const PrimaryNav = forwardRef(
             </Flex>
           </NavItem>
         </NavMenu>
-
-        {/* Subscribe button when user is on web */}
-        {isVisible ? (
-          <Flex justify={['center', 'center', 'flex-end']}>
-            <Button
-              display={['none', 'none', 'block']}
-              onClick={onOpen}
-              hidden={!isVisible || undefined}
-            >
-              Subscribe
-            </Button>
-          </Flex>
-        ) : null}
       </Nav>
     );
   }
