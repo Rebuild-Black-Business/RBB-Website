@@ -1,5 +1,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Text, useTheme } from '@chakra-ui/core';
+
 import {
   CardWrapper,
   CardImage,
@@ -9,7 +11,7 @@ import {
   CardButtonGroup,
   CardButton,
 } from './Card';
-import { Link, Text, useTheme } from '@chakra-ui/core';
+
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
 
