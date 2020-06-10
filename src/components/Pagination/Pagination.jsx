@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
+import PaginationArrow from '../Svgs/PaginationArrow';
 import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
 import useMedia from 'react-use/lib/useMedia';
@@ -84,8 +85,16 @@ function Pagination({ currentPage, totalRecords, pageLimit }) {
       justifyContent="center"
       marginTop={theme.spacing.lg}
       marginBottom={theme.spacing.lg}
+      marginX={theme.spacing.lg}
     >
-      {/*<PaginationArrow hidden={currentPage === 1} direction="left" onClick={handleMoveLeft} />*/}
+      <PaginationArrow
+        hidden={currentPage === 1}
+        direction="PREVIOUS"
+        onClick={() => {
+          // Turn these into link buttons instead of goTo functions?
+          console.log('previous');
+        }}
+      />
       {pages.map((page, index) => {
         if (page === PLACEHOLDER) {
           return (
@@ -95,10 +104,10 @@ function Pagination({ currentPage, totalRecords, pageLimit }) {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              width={10}
-              height={10}
+              width={isWide ? 10 : ''}
+              height={isWide ? 10 : ''}
               fontFamily={theme.fonts['heading-slab']}
-              fontSize={theme.fontSizes.lg}
+              fontSize={theme.fontSizes.xl}
               fontWeight={theme.fontWeights.bold}
               aria-hidden={true}
             >
@@ -132,7 +141,14 @@ function Pagination({ currentPage, totalRecords, pageLimit }) {
           </Button>
         );
       })}
-      {/*<PaginationArrow hidden={currentPage === totalPages} direction="right" onClick={handleMoveLeft} />*/}
+      <PaginationArrow
+        hidden={currentPage === totalPages}
+        direction="NEXT"
+        onClick={() => {
+          // Turn these into link buttons instead of goTo functions?
+          console.log('next');
+        }}
+      />
     </Flex>
   );
 }
