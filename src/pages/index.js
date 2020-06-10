@@ -93,7 +93,7 @@ export default () => {
               py={8}
               maxW="540px"
             >
-              Black-Owned businesses need <strong>us</strong>. In a time of
+              Black-owned businesses need <strong>us</strong>. In a time of
               social unrest and economic uncertainty, we are called to Action!
               Let’s Do our Part.
             </Text>
@@ -154,7 +154,7 @@ export default () => {
                 you are doing well, we're here to help.
               </Text>
               <Text fontFamily={theme.fonts.heading} lineHeight="1.25">
-                You can add your business to our online directory of Black-Owned
+                You can add your business to our online directory of Black-owned
                 businesses. You can also contact one of our registered Allies
                 directly for help. <strong>We are all in this together.</strong>
               </Text>
@@ -208,8 +208,8 @@ export default () => {
                 lineHeight="1.25"
                 pb={theme.spacing.base}
               >
-                View our growing list of Black-Owned businesses across the
-                nation! Find Black-Owned businesses in your area or register any
+                View our growing list of Black-owned businesses across the
+                nation! Find Black-owned businesses in your area or register any
                 that we’re missing.
               </Text>
               <Text fontFamily={theme.fonts.heading} lineHeight="1.25">
