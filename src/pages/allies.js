@@ -23,7 +23,7 @@ import {
   Pagination,
 } from '../components';
 
-export default function Allies() {
+export default function Allies(props) {
   const [allyFilters, setAllyFilters] = useState({
     skill: '',
     location: '',
@@ -102,7 +102,7 @@ export default function Allies() {
             </Modal>
           </>
         )}
-        <Pagination totalRecords={70} pageLimit={5} />
+        <Pagination location={props.location} currentPage={1} totalPages={14} />
       </Flex>
     </Layout>
   );

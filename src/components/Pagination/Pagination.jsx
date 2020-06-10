@@ -8,6 +8,12 @@ import { Link } from 'gatsby';
 
 const PLACEHOLDER = '...';
 
+function getUpdatedSearchParams(searchString, { page }) {
+  const searchParams = new URLSearchParams(searchString);
+  searchParams.set('page', page);
+  return searchParams.toString();
+}
+
 /**
  * @function Pagination
  *
@@ -15,16 +21,12 @@ const PLACEHOLDER = '...';
  * @param {number} totalRecords - Total records count
  * @param {number} [pageLimit=10] - Number of items to display per page
  */
-function Pagination({ currentPage, totalRecords, pageLimit }) {
+function Pagination({ location, currentPage, totalPages }) {
   const theme = useTheme();
 
   const isWide = useMedia('(min-width: 480px)');
   const pageNeighbors = isWide ? 2 : 1;
-
-  const totalPages = useMemo(() => Math.ceil(totalRecords / pageLimit), [
-    totalRecords,
-    pageLimit,
-  ]);
+  const pathname = location.pathname;
 
   /**
    * Let's say we have 10 pages and we set pageNeighbours to 2
@@ -79,6 +81,18 @@ function Pagination({ currentPage, totalRecords, pageLimit }) {
     return range(1, totalPages);
   }, [currentPage, totalPages, pageNeighbors]);
 
+  /**
+   * Create the correct page link
+   * @param {integer} page - new page number
+   */
+  function getPageLink(page) {
+    if (page === 1) return pathname;
+    return `${pathname}?${getUpdatedSearchParams(location.search, { page })}`;
+  }
+
+  const prevPageLink = getPageLink(currentPage - 1);
+  const nextPageLink = getPageLink(currentPage + 1);
+
   return (
     <Flex
       flexWrap="nowrap"
@@ -90,10 +104,7 @@ function Pagination({ currentPage, totalRecords, pageLimit }) {
       <PaginationArrow
         hidden={currentPage === 1}
         direction="PREVIOUS"
-        onClick={() => {
-          // Turn these into link buttons instead of goTo functions?
-          console.log('previous');
-        }}
+        linkTo={prevPageLink}
       />
       {pages.map((page, index) => {
         if (page === PLACEHOLDER) {
@@ -119,48 +130,46 @@ function Pagination({ currentPage, totalRecords, pageLimit }) {
         const isActivePage = currentPage === page;
 
         return (
-          <Button
-            key={index}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            width={10}
-            height={10}
-            backgroundColor={isActivePage && theme.colors['rbb-orange']}
-            fontFamily={theme.fonts['heading-slab']}
-            fontSize={theme.fontSizes.lg}
-            fontWeight={theme.fontWeights.bold}
-            cursor="pointer"
-            _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
-            title={`Go to page ${page}`}
-            aria-label={`Go to page ${page}`}
-          >
-            <Link to={page === 1 ? `/businesses` : `/businesses/${page}`}>
+          <Link to={getPageLink(page)}>
+            <Button
+              key={index}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              width={10}
+              height={10}
+              backgroundColor={isActivePage && theme.colors['rbb-orange']}
+              fontFamily={theme.fonts['heading-slab']}
+              fontSize={theme.fontSizes.lg}
+              fontWeight={theme.fontWeights.bold}
+              cursor="pointer"
+              _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
+              title={`Go to page ${page}`}
+              aria-label={`Go to page ${page}`}
+            >
               {page}
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         );
       })}
       <PaginationArrow
         hidden={currentPage === totalPages}
         direction="NEXT"
-        onClick={() => {
-          // Turn these into link buttons instead of goTo functions?
-          console.log('next');
-        }}
+        linkTo={nextPageLink}
       />
     </Flex>
   );
 }
 
 Pagination.defaultProps = {
-  pageLimit: 10,
+  totalPages: 1,
+  currentPage: 1,
 };
 
 Pagination.propTypes = {
+  location: PropTypes.object.isRequired,
   currentPage: PropTypes.number.isRequired,
-  totalRecords: PropTypes.number.isRequired,
-  pageLimit: PropTypes.number,
+  totalPages: PropTypes.number.isRequired,
 };
 
 export default Pagination;

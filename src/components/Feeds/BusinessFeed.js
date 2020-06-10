@@ -25,7 +25,7 @@ function BusinessFeed({ businesses }) {
         <SimpleGrid columns={[null, 1, 2]} spacing={10}>
           {businesses.map(business => (
             <ResultCard
-              key={business.id}
+              key={business.objectID}
               name={business.business_name}
               category={business.category}
               description={business.business_description}

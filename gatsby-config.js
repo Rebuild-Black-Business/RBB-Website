@@ -117,10 +117,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/businesses/*`] },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Rebuild Black Business`,
