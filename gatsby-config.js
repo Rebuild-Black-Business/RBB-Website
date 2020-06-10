@@ -152,6 +152,11 @@ module.exports = {
             queryName: `Allies`,
             separateNodeType: true,
             separateMapType: true,
+            Last_Name: '',
+            defaultValues: {
+              First_Name: '',
+              Last_Name: '',
+            },
           },
         ],
       },

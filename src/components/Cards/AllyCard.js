@@ -86,11 +86,12 @@ const ContactQuery = graphql`
  * )
  */
 const AllyCard = forwardRef(
-  ({ name, email, specialty, location, ...props }, ref) => {
+  ({ first, last, email, specialty, location, ...props }, ref) => {
     const { onOpen, isOpen, onClose } = useDisclosure();
     const { reportRef, updateRef } = useRef();
     const theme = useTheme();
 
+    const name = `${first} ${last}`;
     const zipInfo = zipcodeConversion(location);
     const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
 
