@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 
 const client = algoliasearch(
-  process.env.GATSBY_ALGOLIA_APPLICATION_ID,
-  process.env.GATSBY_ALGOLIA_API_KEY
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_SEARCH_KEY
 );
 const index = client.initIndex(process.env.GATSBY_ALGOLIA_INDEX);
 
