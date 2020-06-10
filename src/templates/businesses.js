@@ -2,7 +2,7 @@ import React from 'react';
 
 import { graphql } from 'gatsby';
 import { Flex } from '@chakra-ui/core';
-import { PageHero, Layout, BusinessFeed, Pagination } from '../components';
+import { PageHero, Layout, BusinessFeed } from '../components';
 import CardSkeleton from '../components/Loading/CardSkeleton';
 
 export default function Businesses(data) {
@@ -32,11 +32,6 @@ export default function Businesses(data) {
         <CardSkeleton data={businessFeedData}>
           <BusinessFeed {...data} />
         </CardSkeleton>
-
-        <Pagination
-          totalRecords={data.pageContext.totalRecords}
-          pageLimit={data.pageContext.itemsPerPage}
-        />
       </Flex>
     </Layout>
   );

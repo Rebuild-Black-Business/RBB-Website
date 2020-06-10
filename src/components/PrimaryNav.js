@@ -6,7 +6,6 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   useDisclosure,
@@ -16,9 +15,9 @@ import VisuallyHidden from '@reach/visually-hidden';
 import { Link as GatsbyLink } from 'gatsby';
 import React, { forwardRef, useLayoutEffect, useState } from 'react';
 import Button from '../components/Button';
+import SubscribeForm from '../components/SubscribeForm';
 import Image from './Image';
 import { Nav, NavItem, NavLink, NavMenu } from './Nav';
-
 const INITIAL_TOGGLE_STATE = false;
 
 const PrimaryNav = forwardRef(
@@ -34,8 +33,6 @@ const PrimaryNav = forwardRef(
     useLayoutEffect(() => {
       setIsVisible(isMedium);
     }, [isMedium]);
-
-    console.log('vis', isVisible);
 
     return (
       // Breakpoints follow a [default, 1st breakpoint, 2nd breakpoint] structure.
@@ -185,12 +182,11 @@ const PrimaryNav = forwardRef(
               <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                  <ModalHeader>Modal Title</ModalHeader>
+                  <ModalHeader>Subscribe</ModalHeader>
                   <ModalCloseButton />
-                  <ModalBody>This is the modal content.</ModalBody>
-                  <ModalFooter>
-                    <Button onClick={onClose}>Close</Button>
-                  </ModalFooter>
+                  <ModalBody paddingBottom="1.5rem">
+                    <SubscribeForm />
+                  </ModalBody>
                 </ModalContent>
               </Modal>
             </Flex>

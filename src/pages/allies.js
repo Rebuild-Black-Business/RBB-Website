@@ -14,14 +14,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/core';
 
-import {
-  AllyFeed,
-  AllyFilter,
-  PageHero,
-  Image,
-  Layout,
-  Pagination,
-} from '../components';
+import { AllyFeed, AllyFilter, PageHero, Image, Layout } from '../components';
 
 export default function Allies() {
   const [allyFilters, setAllyFilters] = useState({
@@ -102,7 +95,6 @@ export default function Allies() {
             </Modal>
           </>
         )}
-        <Pagination totalRecords={70} pageLimit={5} />
       </Flex>
     </Layout>
   );

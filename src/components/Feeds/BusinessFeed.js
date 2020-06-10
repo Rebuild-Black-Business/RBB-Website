@@ -6,6 +6,7 @@ import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 
 import BusinessFilter from '../Filters/BusinessFilter';
 import { getLocationZip } from '../../utils/locationUtils';
+import Pagination from '../Pagination/Pagination.jsx';
 
 export default data => {
   const [businessFilters, setBusinessFilters] = useState({
@@ -14,6 +15,7 @@ export default data => {
     need: 'true',
   });
 
+  console.log(data.pageContext);
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
   const [businesses, setBusinesses] = useState(allBusinesses);
   const theme = useTheme();
@@ -67,6 +69,12 @@ export default data => {
         </SimpleGrid>
       ) : (
         <NoResultsCard type="businesses" />
+      )}
+      {businesses.length > 0 && (
+        <Pagination
+          totalRecords={data.pageContext.totalRecords}
+          pageLimit={data.pageContext.itemsPerPage}
+        />
       )}
     </Box>
   );
