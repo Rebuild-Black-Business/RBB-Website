@@ -5,7 +5,11 @@ const NoResultsCard = ({ type }) => {
   const theme = useTheme();
 
   return (
-    <Box bg="rbb-light-gray" padding={[theme.spacing.base, theme.spacing.lg]}>
+    <Box
+      bg="rbb-light-gray"
+      padding={[theme.spacing.base, theme.spacing.lg]}
+      marginBottom={[theme.spacing.base, theme.spacing.lg]}
+    >
       <Heading
         data-testid="heading"
         fontFamily={theme.fonts['heading-slab']}
