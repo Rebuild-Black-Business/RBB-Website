@@ -55,21 +55,36 @@ const PrimaryNav = forwardRef(
             onClick={handleToggle}
             aria-expanded={isVisible && !isMedium}
             aria-controls="navigation"
+            outline="transparent"
           >
             <VisuallyHidden>
               {`${isVisible ? 'Hide' : 'Show'} the navigation menu`}
             </VisuallyHidden>
-            <svg
-              aria-hidden
-              width="30px"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-              fill={theme.colors['rbb-black-000']}
-            >
-              <title>Menu</title>
-
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
+            <Flex h="40px" w="40px" justify="center" align="center">
+              <svg
+                width="28"
+                height="27"
+                viewBox="0 0 28 27"
+                fill="#001514"
+                stroke="#001514"
+                strokeWidth="2"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {isVisible ? (
+                  <>
+                    <title>Close</title>
+                    <line x1="2.70711" y1="1.29289" x2="26.7487" y2="25.3345" />
+                    <line x1="1.29289" y1="25.2929" x2="25.3345" y2="1.25123" />
+                  </>
+                ) : (
+                  <>
+                    <title>Menu</title>
+                    <line y1="8" x2="34" y2="8" />
+                    <line y1="19" x2="34" y2="19" />
+                  </>
+                )}
+              </svg>
+            </Flex>
           </button>
         </Box>
         <Flex
@@ -84,8 +99,6 @@ const PrimaryNav = forwardRef(
               publicId="assets/RBBLogoFinal_ugdskx"
               transforms={{
                 height: 0.1,
-                fetchFormat: 'auto',
-                quality: 'auto',
               }}
               alt={logoInformation.alt}
             />

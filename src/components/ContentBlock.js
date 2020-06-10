@@ -101,11 +101,9 @@ const LeftSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
-            h: '100%',
-            gravity: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           objectPosition="right center"
@@ -135,11 +133,9 @@ const LeftSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
-            h: '100%',
-            gravity: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           objectPosition="right center"
@@ -197,11 +193,9 @@ const RightSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
-            h: '100%',
-            gravity: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           position="absolute"
@@ -229,11 +223,9 @@ const RightSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
-            fetchFormat: 'auto',
-            quality: 'auto',
-            h: '100%',
-            gravity: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           position="absolute"
@@ -273,11 +265,9 @@ const FullWidthContentBlock = ({
     <ContentBlockWrapper imageSource={imageSource}>
       <Image
         publicId={imageSource}
+        role="presentation"
         transforms={{
-          fetchFormat: 'auto',
-          quality: 'auto',
-          h: '100%',
-          gravity: 'auto',
+          height: 0.6,
         }}
         objectFit="cover"
         objectPosition="top center"

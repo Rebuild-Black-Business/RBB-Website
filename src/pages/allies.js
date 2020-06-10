@@ -2,22 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
 
 import {
-  Flex,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalBody,
   Button,
-  ModalFooter,
+  Flex,
   Link,
-  Icon,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
 } from '@chakra-ui/core';
 
 import {
   AllyFeed,
   AllyFilter,
   PageHero,
+  Image,
   Layout,
   Pagination,
 } from '../components';
@@ -40,7 +41,7 @@ export default function Allies() {
   );
 
   const heroBackgroundImageUrl =
-    'http://res.cloudinary.com/rebuild-black-business/image/upload/f_auto/v1/assets/ally-background';
+    'http://res.cloudinary.com/rebuild-black-business/image/upload/c_scale,f_auto,h_0.6,q_auto/v1/assets/ally-background';
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -70,6 +71,12 @@ export default function Allies() {
             >
               <ModalOverlay />
               <ModalContent>
+                <ModalHeader padding={0} margin={0}>
+                  <Image
+                    alt="Person with a bandana over their mouth, holding one arm in the air"
+                    publicId="assets/ally-sign-up"
+                  />
+                </ModalHeader>
                 <ModalBody fontSize="lg" mt="8">
                   Please read and accept our{' '}
                   <Link href="/legal#terms" color="rbb-orange" target="_blank">
@@ -80,6 +87,7 @@ export default function Allies() {
 
                 <ModalFooter>
                   <Button
+                    margin="0 auto"
                     variantColor="orange"
                     rightIcon="check"
                     onClick={() => {
