@@ -101,7 +101,7 @@ const customTheme = {
     'rbb-white-100-alpha90': 'rgba(222, 222, 218, 0.9);',
     'rbb-red': '#BA2A2A',
     'rbb-orange': '#F46036',
-    'rbb-result-card-grey': '#555',
+    'rbb-result-card-grey': '#DEDEDA',
   },
   letterSpacings: {
     button: '0.05em',

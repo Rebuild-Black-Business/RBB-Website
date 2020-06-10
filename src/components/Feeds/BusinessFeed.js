@@ -15,7 +15,6 @@ export default data => {
     need: 'true',
   });
 
-  console.log(data.pageContext);
   const [allBusinesses] = useState(data.data.allAirtableBusinesses.nodes);
   const [businesses, setBusinesses] = useState(allBusinesses);
   const theme = useTheme();
@@ -56,16 +55,19 @@ export default data => {
       <BusinessFilter onSearch={filters => setBusinessFilters(filters)} />
       {businesses.length > 0 ? (
         <SimpleGrid columns={[null, 1, 2]} spacing={10}>
-          {businesses.map((business, index) => (
-            <ResultCard
-              key={index}
-              name={business.data.Business_Name}
-              category={business.data.Category}
-              description={business.data.Business_Description}
-              location={business.data.Zip_Code}
-              websiteUrl={business.data.Website}
-            />
-          ))}
+          {businesses.map((business, index) => {
+            return (
+              <ResultCard
+                key={index}
+                imageSrc={business.data.Image}
+                name={business.data.Business_Name}
+                category={business.data.Category}
+                description={business.data.Business_Description}
+                location={business.data.Zip_Code}
+                websiteUrl={business.data.Website}
+              />
+            );
+          })}
         </SimpleGrid>
       ) : (
         <NoResultsCard type="businesses" />
