@@ -181,7 +181,8 @@ const AllyCard = forwardRef(
 AllyCard.displayName = 'AllyCard';
 AllyCard.propTypes = {
   specialty: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  first: PropTypes.string,
+  last: PropTypes.string,
   location: PropTypes.string,
   email: PropTypes.string.isRequired,
 };
