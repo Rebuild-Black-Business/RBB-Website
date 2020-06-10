@@ -11,6 +11,7 @@ import {
 } from './Card';
 import { Link, Text, useTheme } from '@chakra-ui/core';
 import { zipcodeConversion } from '../utils/locationUtils';
+import { toCamelCase } from '../utils/stringUtils';
 
 // TODO: Replace with real fallback images for each category.
 // This should all probably be defined in the database somewhere, eh?
@@ -18,7 +19,7 @@ const categoryData = {
   entertainment: {
     label: 'Entertainment',
     image: {
-      src: 'https://source.unsplash.com/random',
+      src: 'assets/business-entertainment-option',
       alt: 'Id facilisis dictum consequat sit orci.',
     },
     buttonText: 'Learn more',
@@ -26,7 +27,7 @@ const categoryData = {
   foodAndBeverage: {
     label: 'Food and Beverage',
     image: {
-      src: 'https://source.unsplash.com/random',
+      src: 'assets/business-food-beverage',
       alt: 'Id facilisis dictum consequat sit orci.',
     },
     buttonText: 'Order',
@@ -34,7 +35,7 @@ const categoryData = {
   healthAndWellness: {
     label: 'Health and Wellness',
     image: {
-      src: 'https://source.unsplash.com/random',
+      src: 'assets/business-health',
       alt: 'Id facilisis dictum consequat sit orci.',
     },
     buttonText: 'Learn more',
@@ -42,7 +43,7 @@ const categoryData = {
   professionalServices: {
     label: 'Professional Services',
     image: {
-      src: 'https://source.unsplash.com/random',
+      src: 'assets/business-services',
       alt: 'Id facilisis dictum consequat sit orci.',
     },
     buttonText: 'Contact',
@@ -50,7 +51,7 @@ const categoryData = {
   retail: {
     label: 'Retail',
     image: {
-      src: 'https://source.unsplash.com/random',
+      src: 'assets/business-retail',
       alt: 'Id facilisis dictum consequat sit orci.',
     },
     buttonText: 'Shop',
@@ -89,8 +90,9 @@ const ResultCard = forwardRef(
     },
     ref
   ) => {
+    const catVar = toCamelCase(category);
     const hasFallbackImage =
-      category && Object.keys(categoryData).includes(category);
+      category && Object.keys(categoryData).includes(catVar);
     const hasImage = !!(imageSrc || hasFallbackImage);
     const theme = useTheme();
 
@@ -98,7 +100,7 @@ const ResultCard = forwardRef(
     // change. Also unsure how we're going to handle the schema category on the
     // card wrapee
     const categoryLabel =
-      (categoryData[category] && categoryData[category].label) || category;
+      (categoryData[catVar] && categoryData[catVar].label) || category;
     const zipInfo = zipcodeConversion(location);
     const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
 
@@ -115,8 +117,9 @@ const ResultCard = forwardRef(
       >
         {hasImage && (
           <CardImage
-            src={imageSrc || categoryData[category].image.src}
-            alt={imageSrc ? imageAlt : categoryData[category].image.alt}
+            publicId={!imageSrc ? categoryData[catVar].image.src : null}
+            src={imageSrc ? imageSrc : null}
+            alt={imageAlt || categoryData[catVar].image.alt}
           />
         )}
         <CardContent
