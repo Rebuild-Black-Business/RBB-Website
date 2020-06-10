@@ -102,10 +102,7 @@ const LeftSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            h: '100%',
-            gravity: 'auto',
-            width: 'auto',
-            dpr: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           objectPosition="right center"
@@ -136,10 +133,7 @@ const LeftSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            h: '100%',
-            width: 'auto',
-            dpr: 'auto',
-            gravity: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           objectPosition="right center"
@@ -198,10 +192,7 @@ const RightSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            h: '100%',
-            gravity: 'auto',
-            width: 'auto',
-            dpr: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           position="absolute"
@@ -230,10 +221,7 @@ const RightSideContentBlock = ({
         <Image
           publicId={imageSource}
           transforms={{
-            h: '100%',
-            gravity: 'auto',
-            width: 'auto',
-            dpr: 'auto',
+            height: 0.6,
           }}
           objectFit="cover"
           position="absolute"
@@ -274,10 +262,7 @@ const FullWidthContentBlock = ({
       <Image
         publicId={imageSource}
         transforms={{
-          h: '100%',
-          gravity: 'auto',
-          width: 'auto',
-          dpr: 'auto',
+          height: 0.6,
         }}
         objectFit="cover"
         objectPosition="top center"

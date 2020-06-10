@@ -16,7 +16,6 @@ export default function Image(props) {
       public_id: publicId,
       transform_options: {
         ...transforms,
-        fetchFormat: 'auto',
         quality: 'auto',
       },
     });

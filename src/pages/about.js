@@ -31,9 +31,7 @@ export default function About() {
             h="100%"
             zIndex="-1"
             transforms={{
-              gravity: 'auto',
-              width: 'auto',
-              dpr: 'auto',
+              height: 0.6,
               opacity: '50',
             }}
           />

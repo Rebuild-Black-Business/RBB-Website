@@ -67,7 +67,7 @@ const PrimaryNav = forwardRef(
                 viewBox="0 0 28 27"
                 fill="#001514"
                 stroke="#001514"
-                stroke-width="2"
+                strokeWidth="2"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 {isVisible ? (
