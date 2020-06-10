@@ -21,6 +21,7 @@ import NoResultsCard from '../Cards/NoResultsCard';
 import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
 import Image from '../Image';
+import AllySignUpForm from '../AllySignUpForm';
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
@@ -29,7 +30,9 @@ const ModalForm = ({ isOpen, onClose, title }) => (
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
-      <ModalBody>Ally Form here</ModalBody>
+      <ModalBody>
+        <AllySignUpForm />
+      </ModalBody>
       <ModalFooter>
         <Button variantColor="blue" m={3} onClick={onClose}>
           Close
