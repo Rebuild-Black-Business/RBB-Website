@@ -6,7 +6,10 @@ import { Flex } from '@chakra-ui/core';
 import { PageHero, Layout, BusinessFeed, Pagination } from '../components';
 import CardSkeleton from '../components/Loading/CardSkeleton';
 
-const client = algoliasearch('LRWZTMM362', 'b1556413e51961cacf7dbb37f22f4094');
+const client = algoliasearch(
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_SEARCH_KEY
+);
 const index = client.initIndex('businesses');
 
 const LOADING_STATE = {
