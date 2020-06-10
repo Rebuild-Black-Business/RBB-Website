@@ -55,9 +55,6 @@ const PrimaryNav = forwardRef(
       >
         <Box display={['block', 'block', 'none']} ml={{ sm: '5' }}>
           {isVisible ? (
-            // <VisuallyHidden>
-            //   {`${isVisible ? 'Hide' : 'Show'} the navigation menu`}
-            // </VisuallyHidden>
             <IconButton
               aria-label="Close"
               icon="close"
@@ -88,7 +85,7 @@ const PrimaryNav = forwardRef(
               </svg>
             </button>
           )}
-          {/* <button
+          <button
             onClick={handleToggle}
             aria-expanded={isVisible && !isMedium}
             aria-controls="navigation"
@@ -117,8 +114,8 @@ const PrimaryNav = forwardRef(
                   <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
                 </svg>
               )}
-            </Flex> */}
-          {/* </button> */}
+            </Flex>{' '}
+          </button>
         </Box>
         <Flex
           align="center"

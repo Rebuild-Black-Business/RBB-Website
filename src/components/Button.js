@@ -42,7 +42,6 @@ function getButtonStyles(theme, variant) {
 
 const Button = forwardRef(({ variant = 'primary', ...props }, ref) => {
   const theme = useTheme();
-  console.log(variant, props.children);
 
   if (!['cta', 'primary', 'secondary'].includes(variant))
     throw new Error(`Invalid <Button> variant: "${variant}"`);
