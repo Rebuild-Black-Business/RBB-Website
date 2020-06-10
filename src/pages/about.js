@@ -61,9 +61,19 @@ export default function About() {
             direction="column"
             align="center"
             justify="center"
-            alignItems="flex-start"
-            marginTop={[theme.spacing.base, theme.spacing.base, 0, 0]}
-            marginBottom={['1.125rem', '1.125rem', 0, 0]}
+            // alignItems="flex-start"
+            marginTop={[
+              theme.spacing.base,
+              theme.spacing.base,
+              theme.spacing.md,
+              theme.spacing.md,
+            ]}
+            marginBottom={[
+              '1.125rem',
+              '1.125rem',
+              theme.spacing.md,
+              theme.spacing.md,
+            ]}
             marginLeft={[0, 0, '5%', '15%', '15%', '30%']}
             marginRight={[0, 0, '5%', '20%', '22%', '35%']}
           >
