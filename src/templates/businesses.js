@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { Flex } from '@chakra-ui/core';
-import { PageHero, BusinessFeed, Pagination } from '../components';
+import { PageHero, BusinessFeed } from '../components';
 import CardSkeleton from '../components/Loading/CardSkeleton';
+import Pagination from '../components/Pagination';
 
 import useAlgoliaSearch from '../hooks/useAlgoliaSearch';
 import usePagination from '../hooks/usePagination';
@@ -20,7 +21,7 @@ export default function Businesses(props) {
   );
 
   const heroBackgroundImageUrl =
-    'http://res.cloudinary.com/rebuild-black-business/image/upload/c_scale,f_auto,h_0.6,q_auto/v1/assets/business-header';
+    '//res.cloudinary.com/rebuild-black-business/image/upload/c_scale,f_auto,h_0.6,q_auto/v1/assets/business-header';
 
   return (
     <>

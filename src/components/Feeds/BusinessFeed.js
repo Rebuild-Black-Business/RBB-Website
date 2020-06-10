@@ -6,6 +6,7 @@ import NoResultsCard from '../Cards/NoResultsCard';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 
 import BusinessFilter from '../Filters/BusinessFilter';
+import { getLocationZip } from '../../utils/locationUtils';
 
 function BusinessFeed({ businesses }) {
   const theme = useTheme();
@@ -23,16 +24,18 @@ function BusinessFeed({ businesses }) {
       <BusinessFilter onSearch={filters => setBusinessFilters(filters)} />
       {businesses.length > 0 ? (
         <SimpleGrid columns={[null, 1, 2]} spacing={10}>
-          {businesses.map(business => (
-            <ResultCard
-              key={business.objectID}
-              name={business.business_name}
-              category={business.category}
-              description={business.business_description}
-              location={business.zip_Code}
-              websiteUrl={business.website}
-            />
-          ))}
+          {businesses.map(business => {
+            return (
+              <ResultCard
+                key={business.objectID}
+                name={business.business_name}
+                category={business.category}
+                description={business.business_description}
+                location={business.zip_code}
+                websiteUrl={business.website}
+              />
+            );
+          })}
         </SimpleGrid>
       ) : (
         <NoResultsCard type="businesses" />

@@ -101,6 +101,7 @@ const LeftSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -132,6 +133,7 @@ const LeftSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -146,12 +148,11 @@ const LeftSideContentBlock = ({
         />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
-          right={['0', '0', '45%']}
           opacity={[backgroundOpacity, backgroundOpacity, 1]}
           background={[
             backgroundColor,
             backgroundColor,
-            `linear-gradient(90deg, ${hexbackgroundColor}ff 90%, ${hexbackgroundColor}00 100%)`,
+            `linear-gradient(90deg, ${hexbackgroundColor}ff 50%, ${hexbackgroundColor}00 65%)`,
           ]}
         ></ContentBlockColorOverlay>
         <ContentBlockContent w={['100%', '100%', '50%']} mr="auto">
@@ -191,6 +192,7 @@ const RightSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -220,6 +222,7 @@ const RightSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -233,12 +236,11 @@ const RightSideContentBlock = ({
         />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
-          left={['0', '0', '45%']}
           opacity={[backgroundOpacity, backgroundOpacity, 1]}
           background={[
             backgroundColor,
             backgroundColor,
-            `linear-gradient(270deg, ${hexbackgroundColor}ff 90%, ${hexbackgroundColor}00 100%)`,
+            `linear-gradient(270deg, ${hexbackgroundColor}ff 50%, ${hexbackgroundColor}00 65%)`,
           ]}
         ></ContentBlockColorOverlay>
         <ContentBlockContent w={['100%', '100%', '50%']} ml="auto">
@@ -261,6 +263,7 @@ const FullWidthContentBlock = ({
     <ContentBlockWrapper imageSource={imageSource}>
       <Image
         publicId={imageSource}
+        role="presentation"
         transforms={{
           height: 0.6,
         }}

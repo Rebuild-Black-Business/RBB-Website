@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
-import PaginationArrow from '../Svgs/PaginationArrow';
-import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
 import useMedia from 'react-use/lib/useMedia';
 import { Link } from 'gatsby';
+import { range } from '../../utils/common';
+import PaginationArrow from '../Svgs/PaginationArrow';
 
 const PLACEHOLDER = '...';
 
@@ -143,6 +143,7 @@ function Pagination({ location, currentPage, totalPages }) {
               fontSize={theme.fontSizes.lg}
               fontWeight={theme.fontWeights.bold}
               cursor="pointer"
+              _focus={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
               _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
               title={`Go to page ${page}`}
               aria-label={`Go to page ${page}`}
