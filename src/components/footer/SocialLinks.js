@@ -5,7 +5,6 @@ import ErrorBoundary from '../ErrorBoundary';
 import { Envelope } from './../SVG/Envelope';
 import { Facebook } from './../SVG/Facebook';
 import { Instagram } from './../SVG/Instagram';
-import { Paypal } from './../SVG/Paypal';
 import { Twitter } from './../SVG/Twitter';
 
 const SocialLinks = () => {
