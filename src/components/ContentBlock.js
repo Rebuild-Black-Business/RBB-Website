@@ -101,6 +101,7 @@ const LeftSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -132,6 +133,7 @@ const LeftSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -191,6 +193,7 @@ const RightSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -220,6 +223,7 @@ const RightSideContentBlock = ({
       >
         <Image
           publicId={imageSource}
+          role="presentation"
           transforms={{
             height: 0.6,
           }}
@@ -261,6 +265,7 @@ const FullWidthContentBlock = ({
     <ContentBlockWrapper imageSource={imageSource}>
       <Image
         publicId={imageSource}
+        role="presentation"
         transforms={{
           height: 0.6,
         }}
