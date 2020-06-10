@@ -1,37 +1,37 @@
-import React, { forwardRef, useRef } from 'react';
-import PropTypes from 'prop-types';
 import {
-  CardWrapper,
-  CardContent,
-  CardHeading,
-  CardText,
-  CardButton,
-  CardButtonGroup,
-} from '../Card';
-import {
-  Text,
   Box,
   Icon,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useTheme,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
   useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
+import PropTypes from 'prop-types';
+import React, { forwardRef, useRef } from 'react';
 import { zipcodeConversion } from '../../utils/locationUtils';
-import Link from '../Link';
 import Button from '../Button';
+import {
+  CardButton,
+  CardButtonGroup,
+  CardContent,
+  CardHeading,
+  CardText,
+  CardWrapper,
+} from '../Card';
+import Link from '../Link';
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
     <ModalContent>
-      <ModalHeader>{title}</ModalHeader>
+      <ModalHeader maxWidth="97%">{title}</ModalHeader>
       <ModalCloseButton />
       <ModalBody>Message for reporting or updating here</ModalBody>
       <ModalFooter>
