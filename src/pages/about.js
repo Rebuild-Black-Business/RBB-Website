@@ -33,13 +33,13 @@ export default function About() {
           />
           <Heading>ABOUT</Heading>
         </Flex>
-        <Flex w="100%" backgroundColor={theme.colors['rbb-white']}>
+        <Flex w="100%" h="auto" backgroundColor={theme.colors['rbb-white']}>
           <Flex
             direction="column"
             align="center"
             justify="center"
-            marginTop={['16px', '16px', '0', '0']}
-            marginBottom={['18px', '18px', '0', '0']}
+            marginTop={[theme.spacing.base, theme.spacing.base, '0', '0']}
+            marginBottom={[theme.spacing.base, theme.spacing.base, '0', '0']}
             marginLeft={['0', '0', '5%', '15%', '15%', '30%']}
             marginRight={['0', '0', '5%', '20%', '22%', '35%']}
           >

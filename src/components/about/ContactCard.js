@@ -16,6 +16,7 @@ import {
   useTheme,
   Heading,
   Link,
+  theme,
 } from '@chakra-ui/core';
 
 const CardContent = ({ title, blurb, publicId }) => {
@@ -89,6 +90,7 @@ const ModalForm = ({ isOpen, onClose, title }) => (
 const ModalCard = ({ publicId, modalTitle, title, blurb, margin }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
+  const theme = useTheme();
 
   return (
     <>
@@ -124,19 +126,24 @@ const MailtoCard = ({ publicId, email, title, blurb }) => (
   </Flex>
 );
 
-const VolunteerCard = ({ publicId, title, blurb }) => (
-  <Flex
-    as={Link}
-    href="https://discord.com/invite/272XMuv"
-    isExternal
-    margin="5% auto"
-    maxW={['279px', '342px']}
-    maxH="322px"
-    direction="column"
-  >
-    <CardContent title={title} blurb={blurb} publicId={publicId} />
-  </Flex>
-);
+const VolunteerCard = ({ publicId, title, blurb }) => {
+  const theme = useTheme();
+
+  return (
+    <Flex
+      as={Link}
+      href="https://discord.com/invite/272XMuv"
+      isExternal
+      // margin={`${theme.spacing.base} auto`}
+      margin="5% auto"
+      maxW={['279px', '342px']}
+      maxH="322px"
+      direction="column"
+    >
+      <CardContent title={title} blurb={blurb} publicId={publicId} />
+    </Flex>
+  );
+};
 
 /**
  * Contact Card for Business Owner - General Inquiry - Volunteers. Default renders the VolunteerCard
