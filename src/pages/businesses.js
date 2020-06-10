@@ -20,19 +20,18 @@ function useAlgoliaSearch() {
   const [loadingState, setLoadingState] = useState(LOADING_STATE.INITIAL);
   const [totalPages, setTotalPages] = useState(0);
   const [totalResults, setTotalResults] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     async function getBusinesses() {
       try {
         const algoliaResponse = await index.search('', {
-          page: 1,
+          page: currentPage,
         });
 
         setResults(algoliaResponse.hits);
         setTotalPages(algoliaResponse.nbPages);
         setTotalResults(algoliaResponse.nbHits);
-        setCurrentPage(algoliaResponse.page);
         setLoadingState(LOADING_STATE.NONE);
       } catch (e) {
         console.log('error searching', e);
@@ -40,7 +39,7 @@ function useAlgoliaSearch() {
     }
 
     getBusinesses();
-  }, []);
+  }, [currentPage]);
 
   return {
     results,
@@ -48,20 +47,28 @@ function useAlgoliaSearch() {
     totalResults,
     currentPage,
     loadingState,
+    setCurrentPage,
   };
 }
 
-export default function Businesses(data) {
+export default function Businesses({ location }) {
   const {
     currentPage,
     loadingState,
     results,
     totalPages,
     totalResults,
+    setPage,
+    goToPage,
+    setCurrentPage,
   } = useAlgoliaSearch();
 
-  // AirTable passes us and extra data...
-  const businessFeedData = data.data.allAirtableBusinesses.nodes;
+  useEffect(() => {
+    // Not the best, would normally use defined params, but will do.
+    const pageNum = location.pathname.split('/').pop();
+
+    setCurrentPage(pageNum);
+  }, [location, setCurrentPage]);
 
   const pageSubtitle = (
     <p>
@@ -84,11 +91,15 @@ export default function Businesses(data) {
           hasFadedHeroImage
         />
 
-        <CardSkeleton data={businessFeedData}>
-          <BusinessFeed {...data} />
+        <CardSkeleton data={results}>
+          <BusinessFeed businesses={results} />
         </CardSkeleton>
 
-        <Pagination totalRecords={totalResults} pageLimit={20} />
+        <Pagination
+          currentPage={currentPage}
+          totalRecords={totalResults}
+          pageLimit={20}
+        />
       </Flex>
     </Layout>
   );

@@ -1,21 +1,20 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import { range } from '../../utils/common';
 import PropTypes from 'prop-types';
 import useMedia from 'react-use/lib/useMedia';
+import { Link } from 'gatsby';
 
 const PLACEHOLDER = '...';
 
 /**
  * @function Pagination
  *
- * @param {Object} props - Props object that is passed into Pagination
- * @param {number} props.currentPage - current page number that is being viewed
+ * @param {number} currentPage - current page number that is being viewed
  * @param {number} totalRecords - Total records count
  * @param {number} [pageLimit=10] - Number of items to display per page
- * @param {function} onPageChanged - Callback function that passes paginated information
  */
-function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
+function Pagination({ currentPage, totalRecords, pageLimit }) {
   const theme = useTheme();
 
   const isWide = useMedia('(min-width: 480px)');
@@ -25,8 +24,6 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
     totalRecords,
     pageLimit,
   ]);
-
-  const [currentPage, setCurrentPage] = useState(1);
 
   /**
    * Let's say we have 10 pages and we set pageNeighbours to 2
@@ -81,21 +78,6 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
     return range(1, totalPages);
   }, [currentPage, totalPages, pageNeighbors]);
 
-  function handleGoToPage(page) {
-    setCurrentPage(Math.max(0, Math.min(page, totalPages)));
-
-    if (onPageChanged)
-      onPageChanged({
-        currentPage,
-        totalPages,
-        pageLimit,
-        totalRecords,
-      });
-  }
-
-  const handleMoveLeft = () => handleGoToPage(currentPage - 1);
-  const handleMoveRight = () => handleGoToPage(currentPage + 1);
-
   return (
     <Flex
       flexWrap="nowrap"
@@ -126,9 +108,6 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
         }
 
         const isActivePage = currentPage === page;
-        function handleClick() {
-          handleGoToPage(page);
-        }
 
         return (
           <Button
@@ -144,11 +123,12 @@ function Pagination({ onPageChanged, totalRecords, pageLimit, ...props }) {
             fontWeight={theme.fontWeights.bold}
             cursor="pointer"
             _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
-            onClick={handleClick}
             title={`Go to page ${page}`}
             aria-label={`Go to page ${page}`}
           >
-            {page}
+            <Link to={page === 1 ? `/businesses` : `/businesses/${page}`}>
+              {page}
+            </Link>
           </Button>
         );
       })}
@@ -162,9 +142,9 @@ Pagination.defaultProps = {
 };
 
 Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
   totalRecords: PropTypes.number.isRequired,
   pageLimit: PropTypes.number,
-  onPageChanged: PropTypes.func,
 };
 
 export default Pagination;
