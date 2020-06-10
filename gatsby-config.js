@@ -4,8 +4,6 @@ require('dotenv').config({
   path: `.env`,
 });
 
-const queries = require('./src/utils/algolia');
-
 module.exports = {
   siteMetadata: {
     title: `Rebuild Black Business`,
@@ -132,15 +130,6 @@ module.exports = {
         background_color: `#f46036`, // theme orange
         theme_color: `#f46036`, // theme orange
         display: `standalone`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        queries,
-        chunkSize: 10000, // default: 1000
       },
     },
     {

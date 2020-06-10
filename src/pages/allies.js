@@ -72,8 +72,12 @@ export default function Allies() {
               <ModalContent>
                 <ModalBody fontSize="lg" mt="8">
                   Please read and accept our{' '}
-                  <Link href="/legal#terms" color="rbb-orange" target="_blank">
-                    terms and conditions
+                  <Link
+                    href="/terms-and-conditions"
+                    color="rbb-orange"
+                    isExternal
+                  >
+                    terms and conditions <Icon name="external-link" mx="2px" />
                   </Link>{' '}
                   to access our Ally list and contacts.
                 </ModalBody>
