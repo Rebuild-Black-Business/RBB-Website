@@ -1,12 +1,14 @@
 import React, { useState, useLayoutEffect, forwardRef } from 'react';
-import { useTheme } from '@chakra-ui/core';
-import { Flex, Link, Box } from '@chakra-ui/core';
 import { Link as GatsbyLink } from 'gatsby';
 import VisuallyHidden from '@reach/visually-hidden';
 import { Nav, NavMenu, NavItem, NavLink } from './Nav';
 import Image from './Image';
 import Button from '../components/Button';
 import {
+  Box,
+  Flex,
+  Link,
+  IconButton,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -15,6 +17,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
 
 const INITIAL_TOGGLE_STATE = false;
@@ -51,7 +54,41 @@ const PrimaryNav = forwardRef(
         {...props}
       >
         <Box display={['block', 'block', 'none']} ml={{ sm: '5' }}>
-          <button
+          {isVisible ? (
+            // <VisuallyHidden>
+            //   {`${isVisible ? 'Hide' : 'Show'} the navigation menu`}
+            // </VisuallyHidden>
+            <IconButton
+              aria-label="Close"
+              icon="close"
+              size="lg"
+              title="close"
+              onClick={handleToggle}
+              background="transparent"
+            ></IconButton>
+          ) : (
+            <button
+              onClick={handleToggle}
+              aria-expanded={isVisible && !isMedium}
+              aria-controls="navigation"
+            >
+              <VisuallyHidden>
+                {`${isVisible ? 'Hide' : 'Show'} the navigation menu`}
+              </VisuallyHidden>
+              <svg
+                aria-hidden
+                width="32px"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                fill={theme.colors['rbb-black-000']}
+              >
+                <title>Menu</title>
+
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
+            </button>
+          )}
+          {/* <button
             onClick={handleToggle}
             aria-expanded={isVisible && !isMedium}
             aria-controls="navigation"
@@ -59,18 +96,29 @@ const PrimaryNav = forwardRef(
             <VisuallyHidden>
               {`${isVisible ? 'Hide' : 'Show'} the navigation menu`}
             </VisuallyHidden>
-            <svg
-              aria-hidden
-              width="30px"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-              fill={theme.colors['rbb-black-000']}
-            >
-              <title>Menu</title>
+            <Flex width="32px" height="32px" justify="center" align="center">
+              {isVisible ? (
+                <IconButton
+                  aria-label="Close"
+                  icon="close"
+                  size="30px"
+                  title="close"
+                />
+              ) : (
+                <svg
+                  aria-hidden
+                  width="32px"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill={theme.colors['rbb-black-000']}
+                >
+                  <title>Menu</title>
 
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+              )}
+            </Flex> */}
+          {/* </button> */}
         </Box>
         <Flex
           align="center"
