@@ -1,6 +1,7 @@
 import React from 'react';
 import { useImage } from 'use-cloudinary';
 import { Image as ChakraImage } from '@chakra-ui/core';
+import ImageSkeleton from './Loading/ImageSkeleton';
 
 export default function Image(props) {
   const { transforms, publicId, alt, src } = props;
@@ -15,17 +16,14 @@ export default function Image(props) {
       public_id: publicId,
       transform_options: {
         ...transforms,
-        quality: 'auto',
         fetchFormat: 'auto',
-        dpr: 'auto',
-        crop: 'scale',
+        quality: 'auto',
       },
     });
   }, []);
   /* eslint-disable react-hooks/exhaustive-deps */
 
-  // @TODO :: Use`Spinner` or`Skeleton` component from Chakra UI here
-  if (status === 'loading') return <p>Loading...</p>;
+  if (status === 'loading') return <ImageSkeleton />;
 
   // @TODO :: Deliver custom Error UI if needed
   if (status === 'error') return <p>{error.message}</p>;

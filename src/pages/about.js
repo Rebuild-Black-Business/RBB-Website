@@ -32,6 +32,8 @@ export default function About() {
             zIndex="-1"
             transforms={{
               gravity: 'auto',
+              width: 'auto',
+              dpr: 'auto',
               opacity: '50',
             }}
           />

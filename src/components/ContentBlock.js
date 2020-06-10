@@ -104,6 +104,8 @@ const LeftSideContentBlock = ({
           transforms={{
             h: '100%',
             gravity: 'auto',
+            width: 'auto',
+            dpr: 'auto',
           }}
           objectFit="cover"
           objectPosition="right center"
@@ -135,6 +137,8 @@ const LeftSideContentBlock = ({
           publicId={imageSource}
           transforms={{
             h: '100%',
+            width: 'auto',
+            dpr: 'auto',
             gravity: 'auto',
           }}
           objectFit="cover"
@@ -196,6 +200,8 @@ const RightSideContentBlock = ({
           transforms={{
             h: '100%',
             gravity: 'auto',
+            width: 'auto',
+            dpr: 'auto',
           }}
           objectFit="cover"
           position="absolute"
@@ -226,6 +232,8 @@ const RightSideContentBlock = ({
           transforms={{
             h: '100%',
             gravity: 'auto',
+            width: 'auto',
+            dpr: 'auto',
           }}
           objectFit="cover"
           position="absolute"
@@ -268,6 +276,8 @@ const FullWidthContentBlock = ({
         transforms={{
           h: '100%',
           gravity: 'auto',
+          width: 'auto',
+          dpr: 'auto',
         }}
         objectFit="cover"
         objectPosition="top center"
