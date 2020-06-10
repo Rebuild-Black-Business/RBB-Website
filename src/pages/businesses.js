@@ -134,25 +134,72 @@
 // _______________________ LLEXICALS WORK ____________________ \\
 // _______________________ LLEXICALS WORK ____________________ \\
 
-// _______________________ MAGNIFICODES WORK ____________________ \\
-// _______________________ MAGNIFICODES WORK ____________________ \\
+// _______________________ Attempt to use gatsby-algolia plugin with react-instantsearch-dom ____________________ \\
+// _______________________ Attempt to use gatsby-algolia plugin with react-instantsearch-dom ____________________ \\
 
 import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 
-import { Flex, Input, FormControl, useTheme, FormLabel } from '@chakra-ui/core';
+import {
+  Flex,
+  Input,
+  FormControl,
+  useTheme,
+  FormLabel,
+  SimpleGrid,
+  Box,
+} from '@chakra-ui/core';
 import { PageHero, Layout, BusinessFeed } from '../components';
 import CardSkeleton from '../components/Loading/CardSkeleton';
 import {
   InstantSearch,
   SearchBox,
-  Hits,
   Pagination,
   RefinementList,
   MenuSelect,
+  connectHits,
   PoweredBy,
+  Highlight,
 } from 'react-instantsearch-dom';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
+import NoResultsCard from '../components/Cards/NoResultsCard';
+import ResultCard from '../components/ResultCard';
+
+const Hits = connectHits(({ hits }) => {
+  const theme = useTheme();
+
+  return (
+    <div css={{ display: 'flex', flexWrap: 'wrap' }}>
+      {/* Always use a ternary when coercing an array length */}
+      {/* otherwise you might print out "0" to your UI */}
+      {hits.length ? (
+        <Box
+          w="100%"
+          maxW={theme.containers.main}
+          paddingX={[null, theme.spacing.base, theme.spacing.lg]}
+        >
+          <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+            {hits.map(hit => {
+              return (
+                <ResultCard
+                  key={hit.objectID}
+                  name={hit.business_name}
+                  imageSrc={hit.image}
+                  category={hit.category}
+                  description={hit.description}
+                  // location={business.data.Zip_Code}
+                  websiteUrl={hit.website}
+                />
+              );
+            })}
+          </SimpleGrid>
+        </Box>
+      ) : (
+        <NoResultsCard type="businesses" />
+      )}
+    </div>
+  );
+});
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -208,6 +255,7 @@ export default function Businesses() {
                   Zip Code
                 </FormLabel>
                 {/* <SearchBox submit={<PrimaryButton>Search</PrimaryButton>} /> */}
+                <SearchBox />
               </Flex>
               <Flex direction="column">
                 <FormLabel htmlFor="type" color={theme.colors['rbb-white']}>
@@ -247,5 +295,5 @@ export default function Businesses() {
   );
 }
 
-// _______________________ MAGNIFICODES WORK ____________________ \\
-// _______________________ MAGNIFICODES WORK ____________________ \\
+// _______________________ Attempt to use gatsby-algolia plugin with react-instantsearch-dom ____________________ \\
+// _______________________ Attempt to use gatsby-algolia plugin with react-instantsearch-dom ____________________ \\
