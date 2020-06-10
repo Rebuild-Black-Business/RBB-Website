@@ -26,7 +26,7 @@ export default function About() {
             publicId="assets/people-protesting-on-street-4552840_gginry"
             cloudName="rebuild-black-business"
             pos="absolute"
-            top={0}
+            top="-27%"
             left={0}
             objectFit="cover"
             w="100%"
