@@ -1,19 +1,16 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-
 import { Box, Heading, Icon, Link, Text, useTheme } from '@chakra-ui/core';
-
-import {
-  CardWrapper,
-  CardImage,
-  CardContent,
-  CardText,
-  CardButtonGroup,
-  CardButton,
-} from './Card';
-
+import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
+import {
+  CardButton,
+  CardButtonGroup,
+  CardContent,
+  CardImage,
+  CardText,
+  CardWrapper,
+} from './Card';
 
 // TODO: Replace with real fallback images for each category.
 // This should all probably be defined in the database somewhere, eh?
@@ -164,12 +161,8 @@ const ResultCard = forwardRef(
                 color={theme.colors['rbb-gray']}
                 mr={theme.spacing.xs}
               />
-              <Link color={theme.colors['rbb-orange']} href="#">
-                Report
-              </Link>
-              <span> or </span>
-              <Link color={theme.colors['rbb-orange']} href="#">
-                update
+              <Link color={theme.colors['rbb-orange']} href="mailto:">
+                Report or update
               </Link>
             </Text>
           </Box>
