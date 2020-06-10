@@ -165,6 +165,7 @@ export default function About() {
               title="Business Owner"
               modalTitle="This is a modal!"
               publicId="assets/contact-left"
+              transforms={{ width: 800, height: 450, crop: 'crop' }}
               blurb="Add your business to our list"
             />
             <ErrorBoundary>
