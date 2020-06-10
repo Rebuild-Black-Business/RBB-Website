@@ -22,6 +22,7 @@ import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
 import Image from '../Image';
 import Pagination from '../Pagination/Pagination.jsx';
+import SubmitAlly from '../Forms/SubmitAlly';
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -29,7 +30,9 @@ const ModalForm = ({ isOpen, onClose, title }) => (
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
-      <ModalBody>Ally Form here</ModalBody>
+      <ModalBody>
+        <SubmitAlly />
+      </ModalBody>
       <ModalFooter>
         <Button variantColor="blue" m={3} onClick={onClose}>
           Close
