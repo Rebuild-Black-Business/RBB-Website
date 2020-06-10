@@ -35,6 +35,13 @@ export default function About() {
           backgroundColor="#000"
           color="#FFF"
         >
+          <Heading
+            fontFamily={theme.fonts['heading-slab']}
+            size="xl"
+            textTransform="uppercase"
+          >
+            About
+          </Heading>
           <Image
             publicId="assets/people-protesting-on-street-4552840_gginry"
             cloudName="rebuild-black-business"
@@ -48,13 +55,6 @@ export default function About() {
               opacity: '50',
             }}
           />
-          <Heading
-            fontFamily={theme.fonts['heading-slab']}
-            size="xl"
-            textTransform="uppercase"
-          >
-            About
-          </Heading>
         </Flex>
         <Flex w="100%" backgroundColor={theme.colors['rbb-white']}>
           <Flex
