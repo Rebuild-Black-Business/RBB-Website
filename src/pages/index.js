@@ -3,8 +3,8 @@ import {
   ButtonGroup,
   Flex,
   Heading,
-  Text,
   Link,
+  Text,
   useTheme,
 } from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
@@ -125,7 +125,14 @@ export default () => {
               <Button variant="primary" maxW="230px;" m={3} h="auto" px="30px">
                 Add Business
               </Button>
-              <Button variant="secondary" m={3} h="auto" px="30px">
+              <Button
+                variant="secondary"
+                m={3}
+                h="auto"
+                px="30px"
+                as={Link}
+                href="/allies"
+              >
                 See Allies
               </Button>
             </ButtonGroup>
@@ -168,7 +175,14 @@ export default () => {
               <Button variant="primary" maxW="230px" m={3} h="auto" px="30px">
                 Add Business
               </Button>
-              <Button variant="secondary" m={3} h="auto" px="30px">
+              <Button
+                variant="secondary"
+                m={3}
+                h="auto"
+                px="30px"
+                as={Link}
+                href="/allies"
+              >
                 See Allies
               </Button>
             </ButtonGroup>
