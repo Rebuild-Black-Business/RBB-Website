@@ -33,10 +33,10 @@ export default function Businesses(data) {
           <BusinessFeed {...data} />
         </CardSkeleton>
 
-        <Pagination
+        {/* <Pagination
           totalRecords={data.pageContext.totalRecords}
           pageLimit={data.pageContext.itemsPerPage}
-        />
+        /> */}
       </Flex>
     </Layout>
   );

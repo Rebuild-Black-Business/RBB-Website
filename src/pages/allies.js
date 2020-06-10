@@ -98,7 +98,6 @@ export default function Allies() {
             </Modal>
           </>
         )}
-        <Pagination totalRecords={70} pageLimit={5} />
       </Flex>
     </Layout>
   );
