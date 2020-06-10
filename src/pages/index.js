@@ -106,7 +106,6 @@ export default () => {
                 m={3}
                 h="auto"
                 px="30px"
-                onClick={onOpen}
                 onClose={onClose}
                 onClick={() => handleType('business')}
               >
@@ -170,7 +169,6 @@ export default () => {
                 m={3}
                 h="auto"
                 px="30px"
-                onClick={onOpen}
                 onClose={onClose}
                 onClick={() => handleType('business')}
               >
@@ -229,7 +227,6 @@ export default () => {
                 m={3}
                 h="auto"
                 px="30px"
-                onClick={onOpen}
                 onClose={onClose}
                 onClick={() => handleType('business')}
               >
@@ -277,7 +274,6 @@ export default () => {
             <Button
               variant="cta"
               w="100%"
-              onClick={onOpen}
               onClose={onClose}
               onClick={() => handleType('ally')}
             >
