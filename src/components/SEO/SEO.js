@@ -31,12 +31,12 @@ const SEO = ({ canonicalUrl }) => {
     `
   );
 
-  const { siteMetadata: seo } = site;
+  const { siteMetadata: seo, social, siteUrl } = site;
 
-  const title = seo?.title;
-  const description = seo?.description;
-  const image = seo?.image;
-  const url = seo?.siteUrl;
+  const title = seo.title;
+  const description = seo.description;
+  const image = seo.image;
+  const url = siteUrl;
 
   return (
     <>
@@ -56,11 +56,11 @@ const SEO = ({ canonicalUrl }) => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <meta property="fb:app_id" content={seo?.social?.fbAppID} />
+        <meta property="fb:app_id" content={social?.fbAppID} />
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content={seo?.social?.twitter} />
+        <meta name="twitter:creator" content={social?.twitter} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
