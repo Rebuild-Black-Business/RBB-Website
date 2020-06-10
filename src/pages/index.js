@@ -7,7 +7,6 @@ import {
   Text,
   Modal,
   ModalOverlay,
-  ModalHeader,
   ModalContent,
   ModalFooter,
   ModalBody,

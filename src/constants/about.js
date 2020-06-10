@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const MISSION_MESSAGE = `Restore wealth to Black communities through economic empowerment and resource allocation.`;
 export const VALUES_MESSAGE = `Empathy, Trustworthiness, Fecund (ETF)`;
 export const WHO_WE_ARE_MESSAGE = `The REBUILD Black Business team consists of volunteers nationwide. We're developers, designers, marketers, project managers, policy makers, and web professionals. We came together with the collective goal of driving change and playing a part in restoring wealth to Black communities.`;
