@@ -6,7 +6,7 @@ import Image from '../components/Image';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
 
-export default function About() {
+export default function NotFound() {
   const theme = useTheme();
   return (
     <Layout>
