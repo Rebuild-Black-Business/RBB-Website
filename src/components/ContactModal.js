@@ -37,11 +37,6 @@ const ContactModal = ({ isOpen, onClose, title }) => (
           )}
         />
       </ErrorBoundary>
-      <ModalFooter>
-        <Button variantColor="blue" m={3} onClick={onClose}>
-          Close
-        </Button>
-      </ModalFooter>
     </ModalContent>
   </Modal>
 );

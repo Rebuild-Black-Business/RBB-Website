@@ -31,9 +31,6 @@ const InfoModal = ({ isOpen, onClose, modalType }) => (
         {modalType === 'ally' && <SubmitAlly />}
         {modalType === 'business' && <SubmitBusiness />}
       </ModalBody>
-      <ModalFooter>
-        <Button onClick={onClose}>Close</Button>
-      </ModalFooter>
     </ModalContent>
   </Modal>
 );
