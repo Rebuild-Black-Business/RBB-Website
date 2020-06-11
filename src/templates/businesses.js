@@ -32,11 +32,6 @@ const ModalForm = ({ isOpen, onClose }) => (
       <ModalBody>
         <SubmitBusiness />
       </ModalBody>
-      <ModalFooter>
-        <Button variantColor="blue" m={3} onClick={onClose}>
-          Close
-        </Button>
-      </ModalFooter>
     </ModalContent>
   </Modal>
 );
