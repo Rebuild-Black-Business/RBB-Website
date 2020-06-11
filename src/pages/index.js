@@ -20,6 +20,7 @@ import ContentBlock from '../components/ContentBlock';
 import SubmitAlly from '../components/Forms/SubmitAlly';
 import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import Layout from '../components/Layout';
+import { VOLUNTEER_URL } from '../constants/about';
 
 const InfoModal = ({ isOpen, onClose, modalType }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -268,13 +269,8 @@ export default () => {
               marketers, project managers, policy makers, and web professionals.
               Welcome!
             </Text>
-            <Button
-              variant="cta"
-              w="100%"
-              onClose={onClose}
-              onClick={() => handleType('ally')}
-            >
-              Join us
+            <Button variant="cta" as={Link} href={VOLUNTEER_URL}>
+              Submit Information
             </Button>
           </Box>
         </ContentBlock>
