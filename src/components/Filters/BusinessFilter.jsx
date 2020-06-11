@@ -59,6 +59,7 @@ function BusinessFilter(props) {
       maxWidth="1000px"
       margin="0 auto 3rem"
       padding={['24px', '24px', '0 24px']}
+      fontFamily="Arvo"
     >
       <Flex
         width="100%"
@@ -67,7 +68,7 @@ function BusinessFilter(props) {
       >
         <Flex
           direction="column"
-          marginRight={theme.spacing.base}
+          marginRight={[0, 0, theme.spacing.base]}
           marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
         >
           <FormLabel htmlFor="type" color={[rbbBlack, rbbBlack, rbbWhite]}>
@@ -89,7 +90,7 @@ function BusinessFilter(props) {
         </Flex>
         <Flex
           direction="column"
-          marginRight={theme.spacing.base}
+          marginRight={[0, 0, theme.spacing.base]}
           marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
         >
           <FormLabel htmlFor="location" color={[rbbBlack, rbbBlack, rbbWhite]}>
@@ -110,7 +111,7 @@ function BusinessFilter(props) {
         </Flex>
         <Flex
           direction="column"
-          marginRight={theme.spacing.base}
+          marginRight={[0, 0, theme.spacing.base]}
           marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
         >
           <FormLabel htmlFor="need" color={[rbbBlack, rbbBlack, rbbWhite]}>
@@ -132,7 +133,7 @@ function BusinessFilter(props) {
         <Flex
           direction="column"
           alignSelf={['center', 'center', 'flex-end']}
-          pt={['2rem', '2rem', 0, 0]}
+          pt={['1rem', '1rem', 0, 0]}
         >
           <PrimaryButton
             onClick={handleSearchClick}
