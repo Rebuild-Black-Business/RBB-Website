@@ -68,7 +68,11 @@ function BusinessFilter(props) {
       margin="0 auto 3rem"
       padding="0 24px"
     >
-      <Flex width="100%">
+      <Flex
+        width="100%"
+        direction={['column', 'column', 'row', 'row']}
+        justify="center"
+      >
         <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="skill" color={rbbWhite}>
             Skill
@@ -100,7 +104,11 @@ function BusinessFilter(props) {
             }}
           />
         </Flex>
-        <Flex direction="column" alignSelf="flex-end">
+        <Flex
+          direction="column"
+          alignSelf={['center', 'center', 'flex-end']}
+          pt={['2rem', '2rem', 0, 0]}
+        >
           <PrimaryButton
             onClick={handleSearchClick}
             onKeyPress={event => {
