@@ -1,6 +1,6 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import ResultCard from '../ResultCard';
@@ -34,6 +34,7 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
                   description={business.business_description}
                   location={business.zip_code}
                   websiteUrl={business.website}
+                  donationUrl={business.donation_link}
                 />
               );
             })}
