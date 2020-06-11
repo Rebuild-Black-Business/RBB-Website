@@ -26,7 +26,7 @@ export default function Allies(props) {
 
   const pageSubtitle = (
     <p>
-      These Allies are offering their skills to help Black-Owned businesses.
+      These Allies are offering their skills to help Black-owned businesses.
       Whether you need to rebuild or stay afloat, an Ally can help. Search for
       Allies by skill or location and contact them directly.
     </p>

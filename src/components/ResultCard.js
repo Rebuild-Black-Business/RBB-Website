@@ -1,15 +1,16 @@
-import React, { forwardRef } from 'react';
+import { Box, Heading, Icon, Text, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-
-import { Box, Heading, Icon, Link, Text, useTheme } from '@chakra-ui/core';
-
+import React, { forwardRef } from 'react';
+import Link from '../components/Link';
+import { zipcodeConversion } from '../utils/locationUtils';
+import { toCamelCase } from '../utils/stringUtils';
 import {
-  CardWrapper,
-  CardImage,
-  CardContent,
-  CardText,
-  CardButtonGroup,
   CardButton,
+  CardButtonGroup,
+  CardContent,
+  CardImage,
+  CardText,
+  CardWrapper,
 } from './Card';
 
 import { zipcodeConversion } from '../utils/locationUtils';
@@ -179,12 +180,8 @@ const ResultCard = forwardRef(
                 color={theme.colors['rbb-gray']}
                 mr={theme.spacing.xs}
               />
-              <Link color={theme.colors['rbb-orange']} href="#">
-                Report
-              </Link>
-              <span> or </span>
-              <Link color={theme.colors['rbb-orange']} href="#">
-                update
+              <Link variant="cta" href="mailto:">
+                Report or update
               </Link>
             </Text>
           </Box>

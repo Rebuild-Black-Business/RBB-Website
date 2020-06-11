@@ -20,7 +20,9 @@ export default function Layout({ children }) {
               logoInformation={data.site.siteMetadata.logo}
             />
             <SkipNavContent />
-            <main id="primary-content">{children}</main>
+            <main id="primary-content" style={{ maxWidth: '100vw' }}>
+              {children}
+            </main>
             <Footer />
           </>
         )}

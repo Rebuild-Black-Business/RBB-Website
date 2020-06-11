@@ -11,6 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  PseudoBox,
   Text,
   useDisclosure,
   useTheme,
@@ -18,6 +19,7 @@ import {
 import React from 'react';
 import Image from '../../components/Image.js';
 import SubmitBusiness from '../Forms/SubmitBusiness.js';
+import { VOLUNTEER_URL } from '../../constants/about';
 
 const CardContent = ({ title, blurb, publicId, transforms = {} }) => {
   const theme = useTheme();
@@ -149,7 +151,7 @@ const MailtoCard = ({ publicId, email, title, blurb, transforms = {} }) => (
 const VolunteerCard = ({ publicId, title, blurb, transforms = {} }) => (
   <Flex
     as={Link}
-    href="https://discord.com/invite/272XMuv"
+    href={VOLUNTEER_URL}
     isExternal
     maxH="322px"
     direction="column"
@@ -186,35 +188,51 @@ const ContactCard = ({
   email,
   transforms = {},
 }) => {
+  const cardStyle = {
+    hover: {
+      transform: 'scale(1.03)',
+      transition: 'all .25s ease-in',
+    },
+    focus: {
+      transform: 'scale(1.03)',
+    },
+  };
+
   if (modalCard) {
     return (
-      <ModalCard
-        modalTitle={modalTitle}
-        title={title}
-        blurb={blurb}
-        publicId={publicId}
-        transforms={transforms}
-      />
+      <PseudoBox _hover={cardStyle.hover} _focus={cardStyle.focus}>
+        <ModalCard
+          modalTitle={modalTitle}
+          title={title}
+          blurb={blurb}
+          publicId={publicId}
+          transforms={transforms}
+        />
+      </PseudoBox>
     );
   }
   if (mailtoCard) {
     return (
-      <MailtoCard
-        email={email}
+      <PseudoBox _hover={cardStyle.hover} _focus={cardStyle.focus}>
+        <MailtoCard
+          email={email}
+          title={title}
+          blurb={blurb}
+          publicId={publicId}
+          transforms={transforms}
+        />
+      </PseudoBox>
+    );
+  }
+  return (
+    <PseudoBox _hover={cardStyle.hover} _focus={cardStyle.focus}>
+      <VolunteerCard
         title={title}
         blurb={blurb}
         publicId={publicId}
         transforms={transforms}
       />
-    );
-  }
-  return (
-    <VolunteerCard
-      title={title}
-      blurb={blurb}
-      publicId={publicId}
-      transforms={transforms}
-    />
+    </PseudoBox>
   );
 };
 
