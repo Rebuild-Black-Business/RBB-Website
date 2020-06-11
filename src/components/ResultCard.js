@@ -22,7 +22,7 @@ const categoryData = {
   other: {
     label: 'Other',
     image: {
-      src: 'assets/business-entertainment-option',
+      src: 'assets/business-entertainment',
       alt: 'Other',
     },
     buttonText: 'Learn More',
@@ -30,7 +30,7 @@ const categoryData = {
   entertainment: {
     label: 'Entertainment',
     image: {
-      src: 'assets/business-entertainment',
+      src: 'assets/business-entertainment-option',
       alt: 'Entertainment business',
     },
     buttonText: 'Learn more',
