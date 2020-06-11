@@ -1,22 +1,7 @@
-import {
-  Box,
-  Icon,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Text,
-  useDisclosure,
-  useTheme,
-} from '@chakra-ui/core';
-import { graphql, StaticQuery } from 'gatsby';
+import { Box, Icon, Text, useDisclosure, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef, useRef } from 'react';
 import { zipcodeConversion } from '../../utils/locationUtils';
-import Button from '../Button';
 import {
   CardButton,
   CardButtonGroup,
@@ -25,53 +10,8 @@ import {
   CardText,
   CardWrapper,
 } from '../Card';
-import ErrorBoundary from '../ErrorBoundary';
 import Link from '../Link';
-
-// @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
-const ModalForm = ({ isOpen, onClose, title }) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
-    <ModalOverlay />
-    <ModalContent>
-      <ModalHeader maxWidth="97%">{title}</ModalHeader>
-      <ModalCloseButton />
-      <ErrorBoundary>
-        <StaticQuery
-          query={ContactQuery}
-          render={data => (
-            <ModalBody>
-              Please send an email to{' '}
-              <Link
-                variant="standard"
-                href={`mailto:${data.site.siteMetadata.social.contact}`}
-              >
-                {data.site.siteMetadata.social.contact}
-              </Link>{' '}
-              to report or remove this listing.
-            </ModalBody>
-          )}
-        />
-      </ErrorBoundary>
-      <ModalFooter>
-        <Button variantColor="blue" m={3} onClick={onClose}>
-          Close
-        </Button>
-      </ModalFooter>
-    </ModalContent>
-  </Modal>
-);
-
-const ContactQuery = graphql`
-  query ReportRemoveContactQuery {
-    site {
-      siteMetadata {
-        social {
-          contact
-        }
-      }
-    }
-  }
-`;
+import ContactModal from '../ContactModal';
 
 /**
  * @component
@@ -159,7 +99,7 @@ const AllyCard = forwardRef(
           </CardContent>
         </CardWrapper>
 
-        <ModalForm
+        <ContactModal
           isOpen={isOpen}
           title={`Report or Update the listing for "${name}"`}
           onClose={onClose}
