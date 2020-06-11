@@ -30,6 +30,7 @@ module.exports = {
       instagram: 'rebuildingblack',
       github: 'https://github.com/Rebuild-Black-Business',
       contact: 'social@rebuildblackbusiness.com',
+      bugs: 'engineering@rebuildblackbusiness.com',
       image:
         'https://res.cloudinary.com/rebuild-black-business/image/upload/v1591726474/assets/rbb-socialimage_g7rhcj.jpg',
     },

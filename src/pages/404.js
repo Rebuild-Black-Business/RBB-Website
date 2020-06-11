@@ -52,7 +52,7 @@ export default function NotFound() {
                   If this problem continues,{' '}
                   <Link
                     variant="cta"
-                    href={`mailto:${data.site.siteMetadata.social.contact}`}
+                    href={`mailto:${data.site.siteMetadata.social.bugs}`}
                   >
                     please let us know.
                   </Link>
@@ -126,6 +126,7 @@ const NotFoundLinks = graphql`
         }
         social {
           contact
+          bugs
         }
       }
     }
