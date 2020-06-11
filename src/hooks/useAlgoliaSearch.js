@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 
 const client = algoliasearch(
@@ -13,18 +13,38 @@ const LOADING_STATE = {
   SEARCHING: 'searching',
 };
 
-function useAlgoliaSearch({ page = 1 } = {}) {
+function createFilterString(filters) {
+  const filterArr = [];
+
+  if (filters.need !== 'false') {
+    filterArr.push(`in_need=1`);
+  }
+
+  if (filters.type) {
+    filterArr.push(`category:"${filters.type}"`);
+  }
+
+  return filterArr.join(' AND ');
+}
+
+function useAlgoliaSearch(filters) {
   const [results, setResults] = useState([]);
   const [loadingState, setLoadingState] = useState(LOADING_STATE.INITIAL);
   const [totalPages, setTotalPages] = useState(0);
   const [totalResults, setTotalResults] = useState(0);
-  const [currentPage, setCurrentPage] = useState(page);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchFilters, setSearchFilters] = useState(filters);
+
+  useMemo(() => {
+    setSearchFilters(filters);
+  }, [filters]);
 
   useEffect(() => {
     async function getBusinesses() {
       try {
         const algoliaResponse = await index.search('', {
           page: currentPage,
+          filters: createFilterString(searchFilters),
         });
 
         setResults(algoliaResponse.hits);
@@ -37,7 +57,7 @@ function useAlgoliaSearch({ page = 1 } = {}) {
     }
 
     getBusinesses();
-  }, [currentPage]);
+  }, [currentPage, searchFilters]);
 
   return {
     results,

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { navigate } from 'gatsby';
 
 import { Flex } from '@chakra-ui/core';
 import { PageHero, BusinessFeed } from '../components';
@@ -8,9 +9,44 @@ import Pagination from '../components/Pagination';
 import useAlgoliaSearch from '../hooks/useAlgoliaSearch';
 import usePagination from '../hooks/usePagination';
 
+function generateURL(filters) {
+  let newPath = '/businesses';
+
+  if (filters.need === 'false') {
+    newPath += '/all';
+  }
+
+  if (filters.type) {
+    newPath += `/${filters.type.replace(/ /g, '-')}`;
+  }
+
+  navigate(newPath);
+}
+
+function searchingInNeed(location) {
+  return location.pathname.match(/\/all/) ? 'false' : true;
+}
+
+function searchCategory(category) {
+  return category ? category.replace(/-/g, ' ') : '';
+}
+
 export default function Businesses(props) {
-  const { results, totalPages, setSearchPage } = useAlgoliaSearch();
+  const [searchFilters, setSearchFilters] = useState({
+    location: '',
+    need: searchingInNeed(props.location),
+    type: searchCategory(props.category),
+  });
+
+  const { results, totalPages, setSearchPage } = useAlgoliaSearch(
+    searchFilters
+  );
   const page = usePagination(props.location, page => setSearchPage(page));
+
+  function onSearch(filters) {
+    setSearchFilters(filters);
+    generateURL(filters);
+  }
 
   const pageSubtitle = (
     <p>
@@ -34,7 +70,11 @@ export default function Businesses(props) {
         />
 
         <CardSkeleton data={results}>
-          <BusinessFeed businesses={results} />
+          <BusinessFeed
+            businesses={results}
+            onSearch={onSearch}
+            selectedFilters={searchFilters}
+          />
         </CardSkeleton>
 
         <Pagination
