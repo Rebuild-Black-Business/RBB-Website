@@ -29,7 +29,8 @@ const PrimaryNav = forwardRef(
     const toUpperCase = text => text.toUpperCase();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const handleToggle = () => {
-      document.body.style.position = isVisible ? 'unset' : 'fixed';
+      // TODO: Prevent scrolling while the slideout is open. The below logic works, but if a user clicks a link they'll keep the fixed position
+      // document.body.style.position = isVisible ? 'unset' : 'fixed';
       setIsVisible(!isVisible);
     };
 
