@@ -7,7 +7,8 @@ const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
   const theme = useTheme();
 
   const gradientFade =
-    'linear-gradient(180deg, rgba(0, 0, 0, 0.76) 42.26%, rgba(151, 151, 151, 0.58) 58.6%, rgba(213, 214, 212, 0.81) 70.71%, rgba(247, 247, 242, 0.96) 86.19%, #FFFFFF 101%), ';
+    'linear-gradient(180deg,rgba(0,0,0,0.81) 42.26%,rgba(121,121,121,0.58) 69.6%,rgba(213,214,212,0.81) 81.71%,rgba(247,247,242,0.96) 93.19%,#FFFFFF 101%), ';
+
   return (
     <>
       {heroImageUrl && (
@@ -17,7 +18,7 @@ const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
           top={0}
           left={0}
           width="100%"
-          height="100vh"
+          height="130vh"
           backgroundSize="cover"
           backgroundRepeat="no-repeat"
           backgroundPosition="top center"
