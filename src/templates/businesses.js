@@ -28,7 +28,7 @@ function searchingInNeed(location) {
 }
 
 function searchCategory(category) {
-  return category.replace(/-/g, ' ');
+  return category ? category.replace(/-/g, ' ') : '';
 }
 
 export default function Businesses(props) {
