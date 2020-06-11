@@ -114,11 +114,7 @@ export default function Businesses(props) {
       >
         Register a Business
       </Button>
-      <ModalForm
-        isOpen={isOpen}
-        title={`Report or Update the listing for "${name}"`}
-        onClose={onClose}
-      />
+      <ModalForm isOpen={isOpen} onClose={onClose} />
     </>
   );
 
