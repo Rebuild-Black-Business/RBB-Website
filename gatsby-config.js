@@ -175,13 +175,14 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-tagmanager',
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        id: process.env.GOOGLE_TAGMANAGER_ID, // pulls in from your .env file
-
-        // Include GTM in development.
-        // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: false,
+        // The property ID; the tracking code won't be generated without it
+        trackingId: process.env.GOOGLE_ANALYTICS_PROPERTY_ID,
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Defers execution of google analytics script after page load
+        defer: false,
       },
     },
     {
