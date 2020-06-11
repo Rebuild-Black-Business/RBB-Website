@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
 
 import {
+  Text,
   Button,
   Flex,
   Link,
@@ -12,6 +13,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
 
 import { AllyFeed, AllyFilter, PageHero, Image, Layout } from '../components';
@@ -21,15 +23,21 @@ export default function Allies(props) {
     skill: '',
     location: '',
   });
+  const theme = useTheme();
 
   const [acceptedTAC, setAcceptedTAC] = useLocalStorage('acceptedTAC', false);
 
   const pageSubtitle = (
-    <p>
+    <Text
+      fontFamily={theme.fonts.heading}
+      lineHeight="1.25"
+      pb={theme.spacing.base}
+      textAlign="center"
+    >
       These Allies are offering their skills to help Black-owned businesses.
       Whether you need to rebuild or stay afloat, an Ally can help. Search for
       Allies by skill or location and contact them directly.
-    </p>
+    </Text>
   );
 
   const heroBackgroundImageUrl =
