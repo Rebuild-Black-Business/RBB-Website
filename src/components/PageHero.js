@@ -3,7 +3,13 @@ import { Box, Stack, useTheme } from '@chakra-ui/core';
 
 import { PageHeading, PageSubtitle } from '../components';
 
-const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
+const PageHero = ({
+  title,
+  subtitle,
+  heroImageUrl,
+  hasFadedHeroImage,
+  height,
+}) => {
   const theme = useTheme();
 
   const gradientFade =
@@ -18,7 +24,7 @@ const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
           top={0}
           left={0}
           width="100%"
-          height="130vh"
+          height={height ? height : '130vh'}
           backgroundSize="cover"
           backgroundRepeat="no-repeat"
           backgroundPosition="top center"
