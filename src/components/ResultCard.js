@@ -21,7 +21,7 @@ const categoryData = {
   other: {
     label: 'Other',
     image: {
-      src: 'assets/rbb-socialimage_g7rhcj',
+      src: 'assets/business-entertainment-option',
       alt: 'Other',
     },
     buttonText: 'Learn More',
