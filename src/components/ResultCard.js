@@ -2,6 +2,7 @@ import { Box, Heading, Icon, Text, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 import Link from '../components/Link';
+
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
 import {
@@ -12,9 +13,6 @@ import {
   CardText,
   CardWrapper,
 } from './Card';
-
-import { zipcodeConversion } from '../utils/locationUtils';
-import { toCamelCase } from '../utils/stringUtils';
 
 const DESCRIPTION_MAX_LENGTH = 250; // length in characters after which we'll trim descriptions
 
