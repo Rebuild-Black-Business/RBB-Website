@@ -30,7 +30,7 @@ const categoryData = {
   entertainment: {
     label: 'Entertainment',
     image: {
-      src: 'assets/business-entertainment-option',
+      src: 'assets/business-entertainment',
       alt: 'Entertainment business',
     },
     buttonText: 'Learn more',
