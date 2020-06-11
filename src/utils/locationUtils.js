@@ -10,8 +10,3 @@ export function getLocationZip(locationString) {
     return [parseInt(locationString)];
   }
 }
-
-export function getZipcodesByRadius(zipcode, miles) {
-  if (zipcode.length < 5) return [];
-  return zipcodes.radius(zipcode, miles);
-}
