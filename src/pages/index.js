@@ -266,7 +266,12 @@ export default () => {
               marketers, project managers, policy makers, and web professionals.
               Welcome!
             </Text>
-            <Button variant="cta" as={Link} href={VOLUNTEER_URL}>
+            <Button
+              variant="cta"
+              as={Link}
+              href={VOLUNTEER_URL}
+              mt={theme.spacing.base}
+            >
               Join Us
             </Button>
           </Box>
