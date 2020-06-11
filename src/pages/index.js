@@ -70,6 +70,7 @@ export default () => {
                 lineHeight="1"
                 fontFamily={theme.fonts['heading-slab']}
                 textTransform="uppercase"
+                ml={[0, 0, -1]}
               >
                 Black
               </Text>
