@@ -7,7 +7,9 @@ const BusinessesRouter = () => (
   <Layout>
     <Router>
       <Businesses path="/businesses" />
-      <Businesses path="/businesses/:page" />
+      <Businesses path="/businesses/:category" />
+      <Businesses path="/businesses/all" />
+      <Businesses path="/businesses/all/:category" />
     </Router>
   </Layout>
 );
