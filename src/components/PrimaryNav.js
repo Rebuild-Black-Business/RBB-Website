@@ -29,9 +29,7 @@ const PrimaryNav = forwardRef(
     const toUpperCase = text => text.toUpperCase();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const handleToggle = () => {
-      isVisible
-        ? (document.body.style.position = 'unset')
-        : (document.body.style.position = 'fixed');
+      document.body.style.position = isVisible ? 'unset' : 'fixed';
       setIsVisible(!isVisible);
     };
 
