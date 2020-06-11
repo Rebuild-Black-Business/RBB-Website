@@ -13,13 +13,14 @@ import {
 } from '@chakra-ui/core';
 import VisuallyHidden from '@reach/visually-hidden';
 import { Link as GatsbyLink } from 'gatsby';
-import React, { forwardRef, useLayoutEffect, useState } from 'react';
+import React, { forwardRef, useLayoutEffect, useState, useEffect } from 'react';
 import Button from '../components/Button';
 import SubscribeForm from '../components/SubscribeForm';
 import Image from './Image';
 import { Nav, NavItem, NavLink, NavMenu } from './Nav';
 const INITIAL_TOGGLE_STATE = false;
 const NAV_HEIGHT = '100px';
+import { useLocation } from '@reach/router';
 
 const PrimaryNav = forwardRef(
   ({ menuLinks, logoInformation, ...props }, ref) => {
@@ -28,11 +29,19 @@ const PrimaryNav = forwardRef(
     const theme = useTheme();
     const toUpperCase = text => text.toUpperCase();
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const location = useLocation();
     const handleToggle = () => {
-      // TODO: Prevent scrolling while the slideout is open. The below logic works, but if a user clicks a link they'll keep the fixed position
-      // document.body.style.position = isVisible ? 'unset' : 'fixed';
+      // If the sidenav is open then on its toggle we set the body position: fixed
+      document.body.style.position = 'fixed';
       setIsVisible(!isVisible);
     };
+
+    useEffect(() => {
+      // if the sidenav is open and the pages path does not match the previous path then we unset the position: fixed on the body
+      if (!isVisible && location.pathname !== location.state.referrer) {
+        document.body.style.position = 'unset';
+      }
+    }, [isVisible]);
 
     // Layout effect prevents a flash of visibility when resizing the screen
     useLayoutEffect(() => {
@@ -129,7 +138,11 @@ const PrimaryNav = forwardRef(
             my={[5, 5, 0]}
             width={['50%', '50%', 'auto']}
           >
-            <Link as={GatsbyLink} to="/">
+            <Link
+              as={GatsbyLink}
+              to="/"
+              state={{ prevLocation: location.pathname }}
+            >
               <Image
                 publicId="assets/RBBLogoFinal_ugdskx"
                 transforms={{
@@ -181,7 +194,12 @@ const PrimaryNav = forwardRef(
                 fontWeight="bold"
                 textAlign="left"
               >
-                <NavLink to={link.slug}>{toUpperCase(link.name)}</NavLink>
+                <NavLink
+                  state={{ prevLocation: location.pathname }}
+                  to={link.slug}
+                >
+                  {toUpperCase(link.name)}
+                </NavLink>
               </NavItem>
             ))}
             <NavItem marginLeft="auto">
