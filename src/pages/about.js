@@ -80,6 +80,10 @@ export default function About() {
               heading="OUR FOUNDER'S STORY"
               message={
                 <>
+                  When I started {''}
+                  <Link variant="cta" href="https://www.renderatl.com/">
+                    Render-Atlanta
+                  </Link>{' '}
                   {FOUNDER_MESSAGE}
                   <br />
                   <List>

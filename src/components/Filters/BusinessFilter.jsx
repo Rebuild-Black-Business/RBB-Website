@@ -96,7 +96,7 @@ function BusinessFilter(props) {
         </Flex>
         <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="need" color={rbbWhite}>
-            Black Businesses
+            Show me
           </FormLabel>
           <Select ref={needRef} id="need">
             <option
@@ -104,7 +104,7 @@ function BusinessFilter(props) {
               defaultValue
               selected={selectedFilters.need === 'true'}
             >
-              In Urgent Need
+              Businesses in need
             </option>
             <option value="false" selected={selectedFilters.need === 'false'}>
               All
