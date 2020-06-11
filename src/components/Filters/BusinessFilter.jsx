@@ -18,14 +18,19 @@ const businessTypes = [
   { id: 'health', label: 'Health and Wellness' },
   { id: 'professional', label: 'Professional Services' },
   { id: 'retail', label: 'Retail' },
+  { id: 'other', label: 'Other' },
 ];
 
 function BusinessFilter(props) {
-  const { onSearch } = props;
+  const { onSearch, selectedFilters } = props;
   const [location, setLocation] = useState('');
   const typeRef = useRef();
   const needRef = useRef();
   const theme = useTheme();
+
+  console.log(props.selectedFilters);
+
+  const typeToLabel = selectedFilters.type.replace(/-/g, ' ');
 
   const rbbWhite = theme.colors['rbb-white'];
 
@@ -72,10 +77,16 @@ function BusinessFilter(props) {
             Black Businesses
           </FormLabel>
           <Select ref={needRef} id="need">
-            <option value="true" defaultValue>
+            <option
+              value="true"
+              defaultValue
+              selected={selectedFilters.need === 'true'}
+            >
               In Urgent Need
             </option>
-            <option value="false">All</option>
+            <option value="false" selected={selectedFilters.need === 'false'}>
+              All
+            </option>
           </Select>
         </Flex>
         <Flex direction="column">
@@ -85,7 +96,11 @@ function BusinessFilter(props) {
           <Select ref={typeRef} id="type" placeholder="Select type">
             {businessTypes.map(resource => {
               return (
-                <option key={resource.id} value={resource.label}>
+                <option
+                  key={resource.id}
+                  value={resource.label}
+                  selected={resource.label === typeToLabel}
+                >
                   {resource.label}
                 </option>
               );

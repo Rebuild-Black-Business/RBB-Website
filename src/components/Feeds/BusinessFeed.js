@@ -16,12 +16,21 @@ function BusinessFeed({ businesses }) {
     need: 'true',
   });
 
+  const selectedFilters = {
+    type: 'Professional-Services', //Food-and-Beverage || Health-and-Wellness || Entertainment || Retail || Other
+    location: '',
+    need: 'false',
+  };
+
   return (
     <Box
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      <BusinessFilter onSearch={filters => setBusinessFilters(filters)} />
+      <BusinessFilter
+        onSearch={filters => setBusinessFilters(filters)}
+        selectedFilters={selectedFilters}
+      />
       {businesses.length > 0 ? (
         <SimpleGrid columns={[null, 1, 2]} spacing={10}>
           {businesses.map(business => {
