@@ -254,10 +254,7 @@ function Privacy() {
       <br />
       <br />
       Email Address: social@rebuildblackbusiness.com
-      <br />
-      Telephone number:
-      <br />
-      _________________
+      <br /> _________________
       <br />
       Effective as of June 10, 2020
       <br />
