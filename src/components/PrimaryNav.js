@@ -59,7 +59,7 @@ const PrimaryNav = forwardRef(
         <Nav
           zIndex={1}
           position="absolute"
-          width="100vw"
+          width="100%"
           height={NAV_HEIGHT}
           ref={ref}
           align="center"
