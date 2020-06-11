@@ -16,7 +16,7 @@ import { Link as GatsbyLink } from 'gatsby';
 import React, { forwardRef, useLayoutEffect, useState } from 'react';
 import Button from '../components/Button';
 import SubscribeForm from '../components/SubscribeForm';
-import Image from './Image';
+import { Logo } from './SVG/Logo';
 import { Nav, NavItem, NavLink, NavMenu } from './Nav';
 const INITIAL_TOGGLE_STATE = false;
 const NAV_HEIGHT = '100px';
@@ -130,13 +130,7 @@ const PrimaryNav = forwardRef(
             width={['50%', '50%', 'auto']}
           >
             <Link as={GatsbyLink} to="/">
-              <Image
-                publicId="assets/RBBLogoFinal_ugdskx"
-                transforms={{
-                  height: 0.1,
-                }}
-                alt={logoInformation.alt}
-              />
+              <Logo />
             </Link>
           </Flex>
 
