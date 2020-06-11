@@ -2,13 +2,14 @@ import React from 'react';
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 import Layout from '../components/Layout';
+import Terms from '../constants/terms-and-conditions';
 
 export default function About() {
   const legalData = [
     {
       id: 'terms',
       title: 'Terms and Conditions',
-      body: `Cupcake jelly beans chocolate apple pie cheesecake chupa chups cake. Jujubes bear claw cake sweet roll wafer gummi bears cotton candy. Marshmallow halvah jelly-o cotton candy halvah lollipop biscuit dragée. Topping biscuit gingerbread pastry lemon drops. Gingerbread chocolate bar caramels cookie powder soufflé cake. Chocolate cake dragée sugar plum gummies cheesecake chupa chups. Bear claw cotton candy powder gummies cheesecake. Macaroon marshmallow sweet lollipop chocolate bar toffee. Chocolate cake topping wafer chupa chups. Macaroon pastry cookie dessert chocolate cake. Cake oat cake soufflé muffin cotton candy carrot cake cheesecake liquorice. Ice cream dessert sugar plum topping pie pie jelly-o. Jelly candy tootsie roll brownie cookie topping pudding wafer.`,
+      body: <Terms />,
     },
     {
       id: 'privacy',
@@ -34,9 +35,7 @@ export default function About() {
               >
                 {entry.title}
               </Heading>
-              <Text fontSize="0.75rem" pt="1em" pb="2em">
-                {entry.body}
-              </Text>
+              {entry.body}
             </>
           ))}
         </Box>
