@@ -19,7 +19,10 @@ const CreditLink = () => {
             link => link.pagePathname === location.pathname
           );
           return (
-            <Flex justify="center">
+            <Flex
+              justify="center"
+              direction={['column', 'column', 'column', 'row']}
+            >
               {pagePhotoCreditLinks.length > 0 && (
                 <Text
                   fontSize="12px"
