@@ -3,11 +3,12 @@ import {
   Heading,
   Icon,
   Text,
-  useTheme,
   useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
+import ContactModal from '../components/ContactModal';
 import Link from '../components/Link';
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
@@ -19,7 +20,6 @@ import {
   CardText,
   CardWrapper,
 } from './Card';
-import ContactModal from '../components/ContactModal';
 
 const DESCRIPTION_MAX_LENGTH = 250; // length in characters after which we'll trim descriptions
 
@@ -163,21 +163,27 @@ const ResultCard = forwardRef(
           )}
           {formattedCity && <CardText as="p">{formattedCity}</CardText>}
           <CardButtonGroup mt={theme.spacing.base} mb={theme.spacing.base}>
-            <CardButton
-              as="a"
-              href={websiteUrl}
-              style={{
-                /* @TODO: primary buttons should be white! */
-                color: theme.colors['rbb-white'],
-              }}
-            >
-              {(category && categoryData[category]?.buttonText) || 'Learn More'}
-            </CardButton>
+            {websiteUrl && (
+              <CardButton
+                as="a"
+                href={websiteUrl}
+                style={{
+                  /* @TODO: primary buttons should be white! */
+                  color: theme.colors['rbb-white'],
+                }}
+              >
+                {(category && categoryData[category]?.buttonText) ||
+                  'Learn More'}
+              </CardButton>
+            )}
             {donationUrl && (
               <CardButton
-                color={theme.colors['rbb-white']}
                 href={donationUrl}
                 as="a"
+                style={{
+                  /* @TODO: primary buttons should be white! */
+                  color: theme.colors['rbb-white'],
+                }}
               >
                 Donate
               </CardButton>
@@ -213,7 +219,7 @@ ResultCard.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
   location: PropTypes.number,
-  websiteUrl: PropTypes.string.isRequired,
+  websiteUrl: PropTypes.string,
   donationUrl: PropTypes.string,
   imageSrc: PropTypes.string,
   imageAlt: (props, name, compName, _, propName) => {
