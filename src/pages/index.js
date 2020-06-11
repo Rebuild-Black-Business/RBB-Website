@@ -4,22 +4,22 @@ import {
   Flex,
   Heading,
   Link,
-  Text,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+  Text,
   useDisclosure,
   useTheme,
 } from '@chakra-ui/core';
 import React, { useState } from 'react';
 import Button from '../components/Button';
 import ContentBlock from '../components/ContentBlock';
-import Layout from '../components/Layout';
-import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import SubmitAlly from '../components/Forms/SubmitAlly';
+import SubmitBusiness from '../components/Forms/SubmitBusiness';
+import Layout from '../components/Layout';
 
 const InfoModal = ({ isOpen, onClose, modalType }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -274,7 +274,7 @@ export default () => {
               onClose={onClose}
               onClick={() => handleType('ally')}
             >
-              Submit Information
+              Join us
             </Button>
           </Box>
         </ContentBlock>
