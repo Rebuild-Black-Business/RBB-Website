@@ -2,7 +2,8 @@ import React from 'react';
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 import Layout from '../components/Layout';
-import Terms from '../constants/terms-and-conditions';
+import Terms from '../docs/terms-and-conditions';
+import Privacy from '../docs/privacy-policy';
 
 export default function About() {
   const legalData = [
@@ -14,7 +15,7 @@ export default function About() {
     {
       id: 'privacy',
       title: 'Privacy Policy',
-      body: `Pudding sweet roll candy canes cheesecake lollipop soufflé. Candy sesame snaps pastry halvah liquorice macaroon. Gummi bears cake sweet caramels bonbon. Jelly liquorice toffee ice cream sweet oat cake biscuit cotton candy cheesecake. Gingerbread tiramisu tootsie roll topping sweet pudding carrot cake chupa chups. Gummi bears halvah gingerbread oat cake pudding chocolate bar. Muffin bear claw chocolate bar. Sugar plum powder cheesecake toffee dessert biscuit cake chupa chups halvah. Candy canes jelly-o toffee candy danish pudding. Lemon drops cake fruitcake. Pastry marshmallow tiramisu. Pastry topping tart dragée gummi bears cotton candy. Sweet roll cheesecake donut marshmallow. Sugar plum jelly-o chocolate cake.`,
+      body: <Privacy />,
     },
   ];
   return (
