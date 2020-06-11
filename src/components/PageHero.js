@@ -12,8 +12,9 @@ const PageHero = ({
 }) => {
   const theme = useTheme();
 
+  const baseHeight = height ? height : '130vh';
   const gradientFade =
-    'linear-gradient(180deg,rgba(0,0,0,0.81) 42.26%,rgba(121,121,121,0.58) 69.6%,rgba(213,214,212,0.81) 81.71%,rgba(247,247,242,0.96) 93.19%,#FFFFFF 101%), ';
+    'linear-gradient(180deg,rgba(0,0,0,0.81) 42.26%,rgba(121,121,121,0.58) 69.6%,rgba(213,214,212,0.61) 81.71%,rgba(247,247,242,0.96) 93.19%,#FFFFFF 101%), ';
 
   return (
     <>
@@ -24,7 +25,7 @@ const PageHero = ({
           top={0}
           left={0}
           width="100%"
-          height={height ? height : '130vh'}
+          height={[baseHeight, baseHeight, '100vh']}
           backgroundSize="cover"
           backgroundRepeat="no-repeat"
           backgroundPosition="top center"
