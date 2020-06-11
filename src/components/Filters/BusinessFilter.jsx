@@ -54,8 +54,12 @@ function BusinessFilter(props) {
 
   return (
     <FormControl maxWidth="1000px" margin="0 auto 3rem" padding="0 24px">
-      <Flex width="100%" justifyContent="space-between">
-        <Flex direction="column">
+      <Flex
+        width="100%"
+        justifyContent="center"
+        direction={['column', 'column', 'row', 'row']}
+      >
+        <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="type" color={rbbWhite}>
             Business Type
           </FormLabel>
@@ -73,7 +77,7 @@ function BusinessFilter(props) {
             })}
           </Select>
         </Flex>
-        <Flex direction="column">
+        <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="location" color={rbbWhite}>
             Location
           </FormLabel>
@@ -90,7 +94,7 @@ function BusinessFilter(props) {
             }}
           />
         </Flex>
-        <Flex direction="column">
+        <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="need" color={rbbWhite}>
             Black Businesses
           </FormLabel>
@@ -107,7 +111,11 @@ function BusinessFilter(props) {
             </option>
           </Select>
         </Flex>
-        <Flex direction="column" alignSelf="flex-end">
+        <Flex
+          direction="column"
+          alignSelf={['center', 'center', 'flex-end']}
+          pt={['2rem', '2rem', 0, 0]}
+        >
           <PrimaryButton
             onClick={handleSearchClick}
             onKeyPress={event => {
