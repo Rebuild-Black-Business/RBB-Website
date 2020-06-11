@@ -1,28 +1,34 @@
-import React, { forwardRef } from 'react';
+import { Box, Heading, Icon, Text, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-
-import { Box, Heading, Icon, Link, Text, useTheme } from '@chakra-ui/core';
-
-import {
-  CardWrapper,
-  CardImage,
-  CardContent,
-  CardText,
-  CardButtonGroup,
-  CardButton,
-} from './Card';
-
+import React, { forwardRef } from 'react';
+import Link from '../components/Link';
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
+import {
+  CardButton,
+  CardButtonGroup,
+  CardContent,
+  CardImage,
+  CardText,
+  CardWrapper,
+} from './Card';
 
 // TODO: Replace with real fallback images for each category.
 // This should all probably be defined in the database somewhere, eh?
 const categoryData = {
+  other: {
+    label: 'Other',
+    image: {
+      src: 'assets/rbb-socialimage_g7rhcj',
+      alt: 'Other',
+    },
+    buttonText: 'Learn More',
+  },
   entertainment: {
     label: 'Entertainment',
     image: {
       src: 'assets/business-entertainment-option',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Entertainment business',
     },
     buttonText: 'Learn more',
   },
@@ -30,7 +36,7 @@ const categoryData = {
     label: 'Food and Beverage',
     image: {
       src: 'assets/business-food-beverage',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Food and beverage business',
     },
     buttonText: 'Order',
   },
@@ -38,7 +44,7 @@ const categoryData = {
     label: 'Health and Wellness',
     image: {
       src: 'assets/business-health',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Health and wellness business',
     },
     buttonText: 'Learn more',
   },
@@ -46,7 +52,7 @@ const categoryData = {
     label: 'Professional Services',
     image: {
       src: 'assets/business-services',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Professional servicess business',
     },
     buttonText: 'Contact',
   },
@@ -54,7 +60,7 @@ const categoryData = {
     label: 'Retail',
     image: {
       src: 'assets/business-retail',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Retail business',
     },
     buttonText: 'Shop',
   },
@@ -92,7 +98,7 @@ const ResultCard = forwardRef(
     },
     ref
   ) => {
-    const catVar = toCamelCase(category);
+    const catVar = toCamelCase(category || 'other');
     const hasFallbackImage =
       category && Object.keys(categoryData).includes(catVar);
     const hasImage = !!(imageSrc || hasFallbackImage);
@@ -117,9 +123,9 @@ const ResultCard = forwardRef(
       >
         {hasImage && (
           <CardImage
-            publicId={!imageSrc ? categoryData[catVar].image.src : null}
+            publicId={!imageSrc ? categoryData[catVar]?.image.src : null}
             src={imageSrc ? imageSrc : null}
-            alt={imageAlt || categoryData[catVar].image.alt}
+            alt={imageAlt || categoryData[catVar]?.image.alt}
           />
         )}
         <CardContent
@@ -164,12 +170,8 @@ const ResultCard = forwardRef(
                 color={theme.colors['rbb-gray']}
                 mr={theme.spacing.xs}
               />
-              <Link color={theme.colors['rbb-orange']} href="#">
-                Report
-              </Link>
-              <span> or </span>
-              <Link color={theme.colors['rbb-orange']} href="#">
-                update
+              <Link variant="cta" href="mailto:">
+                Report or update
               </Link>
             </Text>
           </Box>
