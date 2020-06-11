@@ -15,6 +15,8 @@ import {
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
 
+const DESCRIPTION_MAX_LENGTH = 250; // length in characters after which we'll trim descriptions
+
 // TODO: Replace with real fallback images for each category.
 // This should all probably be defined in the database somewhere, eh?
 const categoryData = {
@@ -142,7 +144,12 @@ const ResultCard = forwardRef(
               {categoryLabel}
             </CardText>
           )}
-          {description && <CardText as="p">{description}</CardText>}
+          {description && (
+            <CardText as="p">
+              {description.substr(0, DESCRIPTION_MAX_LENGTH)}
+              {description.length > DESCRIPTION_MAX_LENGTH && '…'}{' '}
+            </CardText>
+          )}
           {formattedCity && <CardText as="p">{formattedCity}</CardText>}
           <CardButtonGroup mt={theme.spacing.base} mb={theme.spacing.base}>
             <CardButton
