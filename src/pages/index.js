@@ -94,9 +94,9 @@ export default () => {
               py={8}
               maxW="540px"
             >
-              Black-owned businesses need <strong>us</strong>. In a time of
-              social unrest and economic uncertainty, we are called to Action!
-              Let’s Do our Part.
+              Black-Owned businesses need us. In a time of social unrest and
+              economic uncertainty, we are called to action!{' '}
+              <strong>Let’s do our part</strong>.
             </Text>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
               <Button
@@ -225,8 +225,8 @@ export default () => {
                 m={3}
                 h="auto"
                 px="30px"
-                onClose={onClose}
-                onClick={() => handleType('business')}
+                as={Link}
+                href="/allies"
               >
                 View Directory
               </Button>
@@ -235,8 +235,8 @@ export default () => {
                 m={3}
                 h="auto"
                 px="30px"
-                as={Link}
-                href="/allies"
+                onClose={onClose}
+                onClick={() => handleType('ally')}
               >
                 Sign up as an Ally
               </Button>

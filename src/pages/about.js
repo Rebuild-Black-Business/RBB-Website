@@ -153,7 +153,7 @@ export default function About() {
           >
             <ContactCard
               modalCard
-              title="Business Owner"
+              title="Business Owners"
               publicId="assets/contact-left"
               transforms={{ width: 800, height: 450, crop: 'crop' }}
               blurb="Add your business to our list"
@@ -164,9 +164,9 @@ export default function About() {
                 render={data => (
                   <ContactCard
                     mailtoCard
-                    title="Business/General Inquiry"
+                    title="General Inquiry"
                     email={data.site.siteMetadata.social.contact}
-                    blurb="Send us an email and we will be in touch."
+                    blurb="Send us an email and we will be in touch"
                     publicId="assets/contact-middle"
                   />
                 )}
