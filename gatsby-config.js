@@ -162,6 +162,8 @@ module.exports = {
             defaultValues: {
               First_Name: '',
               Last_Name: '',
+              City: '',
+              State: '',
             },
           },
         ],
