@@ -225,8 +225,8 @@ export default () => {
                 m={3}
                 h="auto"
                 px="30px"
-                onClose={onClose}
-                onClick={() => handleType('business')}
+                as={Link}
+                href="/allies"
               >
                 View Directory
               </Button>
@@ -235,8 +235,8 @@ export default () => {
                 m={3}
                 h="auto"
                 px="30px"
-                as={Link}
-                href="/allies"
+                onClose={onClose}
+                onClick={() => handleType('ally')}
               >
                 Sign up as an Ally
               </Button>
