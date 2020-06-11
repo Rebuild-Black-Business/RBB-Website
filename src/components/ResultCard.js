@@ -1,6 +1,7 @@
-import { Box, Heading, Icon, Link, Text, useTheme } from '@chakra-ui/core';
+import { Box, Heading, Icon, Text, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
+import Link from '../components/Link';
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
 import {
@@ -161,7 +162,7 @@ const ResultCard = forwardRef(
                 color={theme.colors['rbb-gray']}
                 mr={theme.spacing.xs}
               />
-              <Link color={theme.colors['rbb-orange']} href="mailto:">
+              <Link variant="cta" href="mailto:">
                 Report or update
               </Link>
             </Text>
