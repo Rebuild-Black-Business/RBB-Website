@@ -1,8 +1,15 @@
-import { Box, Heading, Icon, Text, useTheme } from '@chakra-ui/core';
+import {
+  Box,
+  Heading,
+  Icon,
+  Text,
+  useDisclosure,
+  useTheme,
+} from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
+import ContactModal from '../components/ContactModal';
 import Link from '../components/Link';
-
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
 import {
@@ -22,7 +29,7 @@ const categoryData = {
   other: {
     label: 'Other',
     image: {
-      src: 'assets/business-entertainment-option',
+      src: 'assets/business-entertainment',
       alt: 'Other',
     },
     buttonText: 'Learn More',
@@ -106,6 +113,7 @@ const ResultCard = forwardRef(
       category && Object.keys(categoryData).includes(catVar);
     const hasImage = !!(imageSrc || hasFallbackImage);
     const theme = useTheme();
+    const { onOpen, isOpen, onClose } = useDisclosure();
 
     // I'm not sure how categories are going to work, so this probaably needs to
     // change. Also unsure how we're going to handle the schema category on the
@@ -139,7 +147,11 @@ const ResultCard = forwardRef(
             {name}
           </Heading>
           {category && (
-            <CardText as="span" margin="1rem 0">
+            <CardText
+              as="span"
+              margin="1rem 0"
+              color={theme.colors['rbb-gray']}
+            >
               {categoryLabel}
             </CardText>
           )}
@@ -151,21 +163,27 @@ const ResultCard = forwardRef(
           )}
           {formattedCity && <CardText as="p">{formattedCity}</CardText>}
           <CardButtonGroup mt={theme.spacing.base} mb={theme.spacing.base}>
-            <CardButton
-              as="a"
-              href={websiteUrl}
-              style={{
-                /* @TODO: primary buttons should be white! */
-                color: theme.colors['rbb-white'],
-              }}
-            >
-              {(category && categoryData[category]?.buttonText) || 'Learn More'}
-            </CardButton>
+            {websiteUrl && (
+              <CardButton
+                as="a"
+                href={websiteUrl}
+                style={{
+                  /* @TODO: primary buttons should be white! */
+                  color: theme.colors['rbb-white'],
+                }}
+              >
+                {(category && categoryData[category]?.buttonText) ||
+                  'Learn More'}
+              </CardButton>
+            )}
             {donationUrl && (
               <CardButton
-                color={theme.colors['rbb-white']}
                 href={donationUrl}
                 as="a"
+                style={{
+                  /* @TODO: primary buttons should be white! */
+                  color: theme.colors['rbb-white'],
+                }}
               >
                 Donate
               </CardButton>
@@ -178,12 +196,18 @@ const ResultCard = forwardRef(
                 color={theme.colors['rbb-gray']}
                 mr={theme.spacing.xs}
               />
-              <Link variant="cta" href="mailto:">
+              <Link as="button" variant="cta" onClick={onOpen}>
                 Report or update
               </Link>
             </Text>
           </Box>
         </CardContent>
+
+        <ContactModal
+          isOpen={isOpen}
+          title={`Report or Update the listing for "${name}"`}
+          onClose={onClose}
+        />
       </CardWrapper>
     );
   }
@@ -195,7 +219,7 @@ ResultCard.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
   location: PropTypes.number,
-  websiteUrl: PropTypes.string.isRequired,
+  websiteUrl: PropTypes.string,
   donationUrl: PropTypes.string,
   imageSrc: PropTypes.string,
   imageAlt: (props, name, compName, _, propName) => {
