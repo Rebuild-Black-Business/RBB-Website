@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useLocalStorage } from 'react-use';
-
 import {
-  Text,
-  Button,
+  Box,
   Flex,
-  Link,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
   useDisclosure,
   useTheme,
 } from '@chakra-ui/core';
-
-import { AllyFeed, AllyFilter, PageHero, Image, Layout } from '../components';
+import React, { useEffect, useState } from 'react';
+import { useLocalStorage } from 'react-use';
+import { AllyFeed, AllyFilter, Image, Layout, PageHero } from '../components';
+import Button from '../components/Button';
+import Link from '../components/Link';
 
 export default function Allies(props) {
   const [allyFilters, setAllyFilters] = useState({
@@ -66,6 +65,7 @@ export default function Allies(props) {
             <Modal
               isOpen={isOpen}
               onClose={onClose}
+              closeOnEsc={false}
               size="lg"
               closeOnOverlayClick={false}
             >
@@ -78,26 +78,32 @@ export default function Allies(props) {
                   />
                 </ModalHeader>
                 <ModalBody fontSize="lg" mt="8">
-                  Please read and accept our{' '}
-                  <Link href="/legal#terms" color="rbb-orange" target="_blank">
+                  Please read and agree to our{' '}
+                  <Link variant="cta" href="/legal#terms">
                     terms and conditions
                   </Link>{' '}
                   to access our Ally list and contacts.
                 </ModalBody>
-
                 <ModalFooter>
                   <Button
                     margin="0 auto"
-                    variantColor="orange"
+                    variant="primary"
                     rightIcon="check"
                     onClick={() => {
                       setAcceptedTAC(true);
                       onClose();
                     }}
                   >
-                    I accept the Terms and Conditions
+                    I agree
                   </Button>
                 </ModalFooter>
+
+                <Box textAlign="center" marginBottom="0.625rem">
+                  or, {''}
+                  <Link variant="cta" href="/">
+                    back to the homepage
+                  </Link>
+                </Box>
               </ModalContent>
             </Modal>
           </>
