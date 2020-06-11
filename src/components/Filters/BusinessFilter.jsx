@@ -28,8 +28,6 @@ function BusinessFilter(props) {
   const needRef = useRef();
   const theme = useTheme();
 
-  console.log(props.selectedFilters);
-
   const typeToLabel = selectedFilters.type.replace(/-/g, ' ');
 
   const rbbWhite = theme.colors['rbb-white'];
