@@ -140,6 +140,8 @@ const ResultCard = forwardRef(
           />
         )}
         <CardContent
+          d="flex"
+          flexDirection="column"
           bg={theme.colors['rbb-result-card-grey']}
           color={hasImage ? undefined : theme.colors['rbb-black-200']}
         >
@@ -162,7 +164,11 @@ const ResultCard = forwardRef(
             </CardText>
           )}
           {formattedCity && <CardText as="p">{formattedCity}</CardText>}
-          <CardButtonGroup mt={theme.spacing.base} mb={theme.spacing.base}>
+          <CardButtonGroup
+            mt="auto"
+            mb={theme.spacing.base}
+            pt={theme.spacing.base}
+          >
             {websiteUrl && (
               <CardButton
                 as="a"
