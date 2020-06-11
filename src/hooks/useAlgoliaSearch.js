@@ -49,7 +49,7 @@ function useAlgoliaSearch(filters) {
     async function getBusinesses() {
       try {
         const algoliaResponse = await index.search('', {
-          page: currentPage,
+          page: currentPage - 1,
           filters: createFilterString(defaultFilters, searchFilters),
           aroundLatLng: Object.keys(searchFilters.coordinates).length
             ? `${searchFilters.coordinates.lat}, ${searchFilters.coordinates.lng}`
