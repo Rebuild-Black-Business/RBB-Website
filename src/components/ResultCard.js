@@ -16,11 +16,19 @@ import {
 // TODO: Replace with real fallback images for each category.
 // This should all probably be defined in the database somewhere, eh?
 const categoryData = {
+  other: {
+    label: 'Other',
+    image: {
+      src: 'assets/rbb-socialimage_g7rhcj',
+      alt: 'Other',
+    },
+    buttonText: 'Learn More',
+  },
   entertainment: {
     label: 'Entertainment',
     image: {
       src: 'assets/business-entertainment-option',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Entertainment business',
     },
     buttonText: 'Learn more',
   },
@@ -28,7 +36,7 @@ const categoryData = {
     label: 'Food and Beverage',
     image: {
       src: 'assets/business-food-beverage',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Food and beverage business',
     },
     buttonText: 'Order',
   },
@@ -36,7 +44,7 @@ const categoryData = {
     label: 'Health and Wellness',
     image: {
       src: 'assets/business-health',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Health and wellness business',
     },
     buttonText: 'Learn more',
   },
@@ -44,7 +52,7 @@ const categoryData = {
     label: 'Professional Services',
     image: {
       src: 'assets/business-services',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Professional servicess business',
     },
     buttonText: 'Contact',
   },
@@ -52,7 +60,7 @@ const categoryData = {
     label: 'Retail',
     image: {
       src: 'assets/business-retail',
-      alt: 'Id facilisis dictum consequat sit orci.',
+      alt: 'Retail business',
     },
     buttonText: 'Shop',
   },
@@ -90,7 +98,7 @@ const ResultCard = forwardRef(
     },
     ref
   ) => {
-    const catVar = toCamelCase(category);
+    const catVar = toCamelCase(category || 'other');
     const hasFallbackImage =
       category && Object.keys(categoryData).includes(catVar);
     const hasImage = !!(imageSrc || hasFallbackImage);
@@ -115,9 +123,9 @@ const ResultCard = forwardRef(
       >
         {hasImage && (
           <CardImage
-            publicId={!imageSrc ? categoryData[catVar].image.src : null}
+            publicId={!imageSrc ? categoryData[catVar]?.image.src : null}
             src={imageSrc ? imageSrc : null}
-            alt={imageAlt || categoryData[catVar].image.alt}
+            alt={imageAlt || categoryData[catVar]?.image.alt}
           />
         )}
         <CardContent
