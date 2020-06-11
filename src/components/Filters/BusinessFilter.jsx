@@ -7,7 +7,7 @@ import {
   useTheme,
 } from '@chakra-ui/core';
 import React, { useRef, useState } from 'react';
-import Geocode from 'react-geocode';
+import { handleLocationToCoords } from '../../api/geocode';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const businessTypes = [
@@ -21,7 +21,7 @@ const businessTypes = [
 
 function BusinessFilter(props) {
   const { onSearch, selectedFilters } = props;
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(selectedFilters.location || '');
   const typeRef = useRef();
   const needRef = useRef();
   const theme = useTheme();
@@ -30,39 +30,26 @@ function BusinessFilter(props) {
 
   const rbbWhite = theme.colors['rbb-white'];
 
-  const handleSearchClick = event => {
+  const handleSearchClick = async event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    const coordinates = await handleLocationToCoords(location);
     onSearch({
       type: typeRef.current.value,
       location: location,
       need: needRef.current.value,
+      coordinates,
     });
   };
 
-  const handleSearchKeyPress = event => {
+  const handleSearchKeyPress = async event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    const coordinates = await handleLocationToCoords(location);
     onSearch({
       type: typeRef.current.value,
-      location: location,
+      location,
       need: needRef.current.value,
+      coordinates,
     });
-  };
-
-  const handleLocationToCoords = location => {
-    Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
-    Geocode.fromAddress(location).then(
-      res => {
-        const { lat, lng } = res.results[0].geometry.location;
-
-        //@TODO :: Need to pass this lat / lng to Algolia.
-        console.log(lat, lng);
-      },
-      error => {
-        console.error(error);
-      }
-    );
   };
 
   return (
