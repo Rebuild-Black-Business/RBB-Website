@@ -1,4 +1,5 @@
 export const toCamelCase = string => {
+  if (!string) return null;
   string = string
     .toLowerCase()
     .replace(/(?:(^.)|([-_\s]+.))/g, function (match) {
