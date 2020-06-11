@@ -7,8 +7,8 @@ function PrimaryButton(props) {
   return (
     <Button
       {...props}
-      bg={theme.buttons.primary.backgroundColor}
-      color={theme.buttons.primary.color}
+      bg={theme.buttons.primary.backgroundColor.default}
+      color={theme.buttons.primary.color.default}
       borderRadius="button"
       border="primaryButton"
       borderWidth="button"
@@ -20,18 +20,18 @@ function PrimaryButton(props) {
       padding={theme.buttons.primary.padding}
       textTransform={theme.buttons.primary.textTransform}
       _active={{
-        bg: theme.buttons.primary.activeBackgroundColor,
-        borderColor: theme.buttons.primary.activeColor,
-        color: theme.buttons.primary.activeColor,
+        bg: theme.buttons.primary.backgroundColor.active,
+        borderColor: theme.buttons.primary.borderColor.active,
+        color: theme.buttons.primary.color.active,
       }}
       _disabled={{
-        color: theme.buttons.primary.disabledColor,
+        color: theme.buttons.primary.color.disabled,
       }}
       _focus={{
-        bg: theme.buttons.primary.hoverBackgroundColor,
+        bg: theme.buttons.primary.backgroundColor.focus,
       }}
       _hover={{
-        bg: theme.buttons.primary.hoverBackgroundColor,
+        bg: theme.buttons.primary.backgroundColor.hover,
       }}
     >
       {props.children}
