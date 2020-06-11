@@ -26,7 +26,6 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
           />
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
             {businesses.map(business => {
-              console.log('HEY', business);
               return (
                 <ResultCard
                   key={business.objectID}
