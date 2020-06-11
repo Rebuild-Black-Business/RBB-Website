@@ -77,7 +77,7 @@ function BusinessFilter(props) {
           <FormLabel htmlFor="skill" color={rbbWhite}>
             Skill
           </FormLabel>
-          <Select ref={skillRef} id="skill" placeholder="Select type">
+          <Select ref={skillRef} id="skill" placeholder="All">
             {skillTypes.map(skill => {
               return (
                 <option key={skill.id} value={skill.label}>
