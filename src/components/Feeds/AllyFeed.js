@@ -13,8 +13,6 @@ import {
   useDisclosure,
 } from '@chakra-ui/core';
 
-import { getZipcodesByRadius } from '../../utils/locationUtils';
-
 import AllyCard from '../Cards/AllyCard';
 import NoResultsCard from '../Cards/NoResultsCard';
 import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
@@ -51,20 +49,10 @@ const AllyFeed = props => {
   }, []);
 
   useMemo(() => {
-    const filteredAllies = allAllies
-      .filter(ally => {
-        if (skillFilter === '' || skillFilter === null) return ally;
-        return ally.data['Speciality'] === skillFilter;
-      })
-      .filter(ally => {
-        if (locationFilter === '') return ally;
-
-        const zipcodesInRadius = getZipcodesByRadius(locationFilter, 25);
-
-        if (zipcodesInRadius.length === 0) return ally;
-
-        return zipcodesInRadius.includes(ally.data['Zip_Code']);
-      });
+    const filteredAllies = allAllies.filter(ally => {
+      if (skillFilter === '' || skillFilter === null) return ally;
+      return ally.data['Speciality'] === skillFilter;
+    });
 
     setAllies(filteredAllies);
   }, [locationFilter, skillFilter, allAllies]);
