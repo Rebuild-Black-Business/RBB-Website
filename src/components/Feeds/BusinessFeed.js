@@ -26,7 +26,7 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
             return (
               <ResultCard
                 key={business.objectID}
-                name={business.business_name}
+                name={business.name}
                 category={business.category}
                 description={business.business_description}
                 location={business.zip_code}
