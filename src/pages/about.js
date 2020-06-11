@@ -10,7 +10,6 @@ import Link from '../components/Link';
 import {
   FOUNDER_MESSAGE,
   MISSION_MESSAGE,
-  VALUES_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
 
@@ -69,13 +68,6 @@ export default function About() {
               marginTop="1.9375rem"
               marginBottom="0"
               dividerMargin="6.313rem"
-            />
-            <Content
-              heading="VALUES"
-              message={VALUES_MESSAGE}
-              marginTop="3rem"
-              marginBottom="1.9375rem"
-              dividerMargin="3.9375rem"
             />
             <Content
               heading="OUR TEAM"
