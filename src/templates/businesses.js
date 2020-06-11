@@ -159,7 +159,6 @@ export default function Businesses(props) {
           subtitle={pageSubtitle}
           heroImageUrl={heroBackgroundImageUrl}
           hasFadedHeroImage
-          height="150vh"
         />
 
         <BusinessFeed
