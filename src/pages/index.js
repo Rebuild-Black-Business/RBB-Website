@@ -94,9 +94,9 @@ export default () => {
               py={8}
               maxW="540px"
             >
-              Black-owned businesses need <strong>us</strong>. In a time of
-              social unrest and economic uncertainty, we are called to Action!
-              Let’s Do our Part.
+              Black-Owned businesses need us. In a time of social unrest and
+              economic uncertainty, we are called to action!{' '}
+              <strong>Let’s do our part</strong>.
             </Text>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
               <Button
