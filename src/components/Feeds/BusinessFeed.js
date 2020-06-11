@@ -34,7 +34,7 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
                   name={business.business_name || business.name}
                   category={business.category}
                   description={business.business_description}
-                  location={business.zip_code}
+                  location={`${business.city}, ${business.state}`}
                   websiteUrl={business.website}
                   donationUrl={business.donation_link}
                 />

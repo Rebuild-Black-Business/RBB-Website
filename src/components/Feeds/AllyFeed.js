@@ -154,7 +154,7 @@ const AllyFeed = props => {
                       last={allies.data.Last_Name}
                       email={allies.data.Email}
                       specialty={allies.data.Speciality}
-                      location={allies.data.Zip_Code}
+                      location={`${allies.data.City}, ${allies.data.State}`}
                     />
                   </React.Fragment>
                 );
@@ -165,7 +165,7 @@ const AllyFeed = props => {
                   last={allies.data.Last_Name}
                   email={allies.data.Email}
                   specialty={allies.data.Speciality}
-                  location={allies.data.Zip_Code}
+                  location={`${allies.data.City}, ${allies.data.State}`}
                 />
               );
             })}
@@ -194,7 +194,8 @@ export default props => (
               First_Name
               Last_Name
               Speciality
-              Zip_Code
+              City
+              State
               CreatedAt
             }
           }
