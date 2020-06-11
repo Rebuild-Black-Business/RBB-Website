@@ -270,7 +270,7 @@ export default () => {
               Welcome!
             </Text>
             <Button variant="cta" as={Link} href={VOLUNTEER_URL}>
-              Submit Information
+              Join Us
             </Button>
           </Box>
         </ContentBlock>
