@@ -78,6 +78,11 @@ const AllyFeed = props => {
         {loaded && allies.length > 0 ? (
           <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
             {allies.map((allies, index) => {
+              const formattedLocation = `${
+                allies.data.City ? allies.data.City : ''
+              }${allies.data.City && allies.data.State ? ', ' : ''}${
+                allies.data.State ? allies.data.State : ''
+              }`;
               if (index === 4)
                 return (
                   <React.Fragment key={index}>
@@ -154,7 +159,7 @@ const AllyFeed = props => {
                       last={allies.data.Last_Name}
                       email={allies.data.Email}
                       specialty={allies.data.Speciality}
-                      location={`${allies.data.City}, ${allies.data.State}`}
+                      location={formattedLocation}
                     />
                   </React.Fragment>
                 );
@@ -165,7 +170,7 @@ const AllyFeed = props => {
                   last={allies.data.Last_Name}
                   email={allies.data.Email}
                   specialty={allies.data.Speciality}
-                  location={`${allies.data.City}, ${allies.data.State}`}
+                  location={formattedLocation}
                 />
               );
             })}

@@ -28,13 +28,16 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
         <>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
             {businesses.map(business => {
+              const formattedLocation = `${business.city ? business.city : ''}${
+                business.city && business.state ? ', ' : ''
+              }${business.state ? business.state : ''}`;
               return (
                 <ResultCard
                   key={business.objectID}
                   name={business.business_name || business.name}
                   category={business.category}
                   description={business.business_description}
-                  location={`${business.city}, ${business.state}`}
+                  location={formattedLocation}
                   websiteUrl={business.website}
                   donationUrl={business.donation_link}
                 />
