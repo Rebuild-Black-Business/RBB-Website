@@ -8,7 +8,7 @@ import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 import BusinessFilter from '../Filters/BusinessFilter';
 import { getLocationZip } from '../../utils/locationUtils';
 
-function BusinessFeed({ businesses, onSearch }) {
+function BusinessFeed({ businesses, onSearch, selectedFilters }) {
   const theme = useTheme();
 
   return (
@@ -16,7 +16,10 @@ function BusinessFeed({ businesses, onSearch }) {
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      <BusinessFilter onSearch={onSearch} />
+      <BusinessFilter
+        onSearch={filters => onSearch(filters)}
+        selectedFilters={selectedFilters}
+      />
       {businesses.length > 0 ? (
         <SimpleGrid columns={[null, 1, 2]} spacing={10}>
           {businesses.map(business => {
@@ -42,6 +45,7 @@ function BusinessFeed({ businesses, onSearch }) {
 BusinessFeed.propTypes = {
   businesses: PropTypes.arrayOf(PropTypes.object),
   onSearch: PropTypes.func.isRequired,
+  selectedFilters: PropTypes.object.isRequired,
 };
 
 export default BusinessFeed;

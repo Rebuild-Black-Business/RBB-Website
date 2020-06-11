@@ -24,7 +24,7 @@ function generateURL(filters) {
 }
 
 function searchingInNeed(location) {
-  return !location.pathname.match(/\/all/);
+  return location.pathname.match(/\/all/) ? 'false' : true;
 }
 
 function searchCategory(category) {
@@ -70,7 +70,11 @@ export default function Businesses(props) {
         />
 
         <CardSkeleton data={results}>
-          <BusinessFeed businesses={results} onSearch={onSearch} />
+          <BusinessFeed
+            businesses={results}
+            onSearch={onSearch}
+            selectedFilters={searchFilters}
+          />
         </CardSkeleton>
 
         <Pagination
