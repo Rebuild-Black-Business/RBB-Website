@@ -88,7 +88,7 @@ const ContactQuery = graphql`
 const AllyCard = forwardRef(
   ({ first, last, email, specialty, location, ...props }, ref) => {
     const { onOpen, isOpen, onClose } = useDisclosure();
-    const { reportRef, updateRef } = useRef();
+    const { updateRef } = useRef();
     const theme = useTheme();
 
     const name = `${first} ${last}`;
@@ -150,18 +150,9 @@ const AllyCard = forwardRef(
                   as="button"
                   variant="cta"
                   onClick={onOpen}
-                  ref={reportRef}
-                >
-                  Report
-                </Link>{' '}
-                or{' '}
-                <Link
-                  as="button"
-                  variant="cta"
-                  onClick={onOpen}
                   ref={updateRef}
                 >
-                  unlist
+                  Report or update
                 </Link>
               </Text>
             </Box>
