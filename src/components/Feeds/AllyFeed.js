@@ -138,7 +138,7 @@ const AllyFeed = props => {
                           fontFamily={theme.fonts.heading}
                           fontSize={theme.fontSizes.base}
                         >
-                          Offer your skills to Black-Owned businesses. You can
+                          Offer your skills to Black-owned businesses. You can
                           help rebuild or keep a business afloat. When you sign
                           up as an Ally, we'll add you to our directory. Then,
                           Black business owners will be able to contact you for
