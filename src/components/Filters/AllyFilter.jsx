@@ -6,7 +6,6 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  Input,
   Select,
   useTheme,
 } from '@chakra-ui/core';
@@ -23,7 +22,7 @@ const skillTypes = [
 
 function BusinessFilter(props) {
   const { onSearch } = props;
-  const [location, setLocation] = useState('');
+  const [location] = useState('');
   const skillRef = useRef('');
   const theme = useTheme();
 

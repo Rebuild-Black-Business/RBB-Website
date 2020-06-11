@@ -55,7 +55,7 @@ const AllyFeed = props => {
     });
 
     setAllies(filteredAllies);
-  }, [locationFilter, skillFilter, allAllies]);
+  }, [skillFilter, allAllies]);
 
   return (
     <>
