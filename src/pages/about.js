@@ -12,7 +12,7 @@ import {
   MISSION_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
-import PageHeading from '../components/headings/PageHeading';
+import PageHeading from '../components/Headings/PageHeading';
 
 export default function About() {
   const theme = useTheme();
