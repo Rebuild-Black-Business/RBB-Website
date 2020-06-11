@@ -63,7 +63,7 @@ function BusinessFilter(props) {
           <FormLabel htmlFor="type" color={rbbWhite}>
             Business Type
           </FormLabel>
-          <Select ref={typeRef} id="type" placeholder="Select type">
+          <Select ref={typeRef} id="type" placeholder="All">
             {businessTypes.map(resource => {
               return (
                 <option
@@ -85,7 +85,7 @@ function BusinessFilter(props) {
             value={location}
             id="location"
             type="text"
-            placeholder="Denver or 80219"
+            placeholder="Atlanta or 30308"
             onChange={event => setLocation(event.currentTarget.value)}
             onKeyPress={event => {
               if (event.key === 'Enter') {
