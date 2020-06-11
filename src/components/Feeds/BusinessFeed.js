@@ -1,37 +1,44 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import ResultCard from '../ResultCard';
 
 function BusinessFeed({ businesses, onSearch, selectedFilters }) {
   const theme = useTheme();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   return (
     <Box
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      <BusinessFilter
-        onSearch={filters => onSearch(filters)}
-        selectedFilters={selectedFilters}
-      />
-      {businesses.length > 0 ? (
-        <SimpleGrid columns={[null, 1, 2]} spacing={10}>
-          {businesses.map(business => {
-            return (
-              <ResultCard
-                key={business.objectID}
-                name={business.name}
-                category={business.category}
-                description={business.business_description}
-                location={business.zip_code}
-                websiteUrl={business.website}
-              />
-            );
-          })}
-        </SimpleGrid>
+      {loaded && businesses.length > 0 ? (
+        <>
+          <BusinessFilter
+            onSearch={filters => onSearch(filters)}
+            selectedFilters={selectedFilters}
+          />
+          <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+            {businesses.map(business => {
+              return (
+                <ResultCard
+                  key={business.objectID}
+                  name={business.name}
+                  category={business.category}
+                  description={business.business_description}
+                  location={business.zip_code}
+                  websiteUrl={business.website}
+                />
+              );
+            })}
+          </SimpleGrid>
+        </>
       ) : (
         <NoResultsCard type="businesses" />
       )}
