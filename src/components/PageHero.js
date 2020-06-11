@@ -8,6 +8,7 @@ const PageHero = ({ title, subtitle, heroImageUrl, hasFadedHeroImage }) => {
 
   const gradientFade =
     'linear-gradient(180deg, rgba(0, 0, 0, 0.76) 42.26%, rgba(151, 151, 151, 0.58) 58.6%, rgba(213, 214, 212, 0.81) 70.71%, rgba(247, 247, 242, 0.96) 86.19%, #FFFFFF 101%), ';
+
   return (
     <>
       {heroImageUrl && (
