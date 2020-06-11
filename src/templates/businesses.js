@@ -167,11 +167,13 @@ export default function Businesses(props) {
           selectedFilters={searchFilters}
         />
 
-        <Pagination
-          location={props.location}
-          currentPage={parseInt(page)}
-          totalPages={parseInt(totalPages)}
-        />
+        {results.length ? (
+          <Pagination
+            location={props.location}
+            currentPage={parseInt(page)}
+            totalPages={parseInt(totalPages)}
+          />
+        ) : null}
       </Flex>
     </>
   );
