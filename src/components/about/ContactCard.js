@@ -19,6 +19,7 @@ import {
 import React from 'react';
 import Image from '../../components/Image.js';
 import SubmitBusiness from '../Forms/SubmitBusiness.js';
+import { VOLUNTEER_URL } from '../../constants/about';
 
 const CardContent = ({ title, blurb, publicId, transforms = {} }) => {
   const theme = useTheme();
@@ -150,7 +151,7 @@ const MailtoCard = ({ publicId, email, title, blurb, transforms = {} }) => (
 const VolunteerCard = ({ publicId, title, blurb, transforms = {} }) => (
   <Flex
     as={Link}
-    href="https://discord.com/invite/272XMuv"
+    href={VOLUNTEER_URL}
     isExternal
     maxH="322px"
     direction="column"
