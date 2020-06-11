@@ -92,6 +92,7 @@ function Privacy() {
       <br />
       <strong>Automatically Collected Information</strong>
       <br />
+      <br />
       Information about your computer hardware and software may be automatically
       collected by RBB. This information can include: your IP address, browser
       type, domain names, access times and referring website addresses. This
@@ -102,6 +103,7 @@ function Privacy() {
       <br />
       <strong>Links</strong>
       <br />
+      <br />
       This website contains links to other sites. Please be aware that we are
       not responsible for the content or privacy practices of such other sites.
       We encourage our users to be aware when they leave our site and to read
@@ -110,6 +112,7 @@ function Privacy() {
       <br />
       <br />
       <strong>Security of your Personal Information</strong>
+      <br />
       <br />
       RBB secures your personal information from unauthorized access, use, or
       disclosure. RBB uses the following methods for this purpose:
@@ -135,6 +138,7 @@ function Privacy() {
       <br />
       <br />
       <strong>Right to Deletion</strong>
+      <br />
       <br />
       Subject to certain exceptions set out below, on receipt of a verifiable
       request from you, we will:
@@ -186,12 +190,14 @@ function Privacy() {
       <br />
       <strong>Children Under Thirteen</strong>
       <br />
+      <br />
       RBB does not knowingly collect personally identifiable information from
       children under the age of thirteen. If you are under the age of thirteen,
       you must ask your parent or guardian for permission to use this website.
       <br />
       <br />
       <strong>Disconnecting your RBB Account from Third Party Websites</strong>
+      <br />
       <br />
       You will be able to connect your RBB account to third party accounts. BY
       CONNECTING YOUR RBB ACCOUNT TO YOUR THIRD PARTY ACCOUNT, YOU ACKNOWLEDGE
@@ -221,6 +227,7 @@ function Privacy() {
       <br />
       <strong>Changes to this Statement</strong>
       <br />
+      <br />
       RBB reserves the right to change this Privacy Policy from time to time. We
       will notify you about significant changes in the way we treat personal
       information by sending a notice to the primary email address specified in
@@ -232,6 +239,7 @@ function Privacy() {
       <br />
       <br />
       <strong>Contact Information</strong>
+      <br />
       <br />
       RBB welcomes your questions or comments regarding this Statement of
       Privacy. If you believe that RBB has not adhered to this Statement, please
