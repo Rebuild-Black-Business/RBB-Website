@@ -5,13 +5,11 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
 } from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
 import ErrorBoundary from './ErrorBoundary';
-import Button from './Button';
 import Link from './Link';
 
 const ContactModal = ({ isOpen, onClose, title }) => (
