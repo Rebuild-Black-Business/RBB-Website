@@ -12,6 +12,7 @@ import {
   MISSION_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
+import PageHeading from '../components/headings/PageHeading';
 
 export default function About() {
   const theme = useTheme();
@@ -28,13 +29,7 @@ export default function About() {
           color="#FFF"
           position="relative"
         >
-          <Heading
-            fontFamily={theme.fonts['heading-slab']}
-            size="xl"
-            textTransform="uppercase"
-          >
-            About
-          </Heading>
+          <PageHeading>About</PageHeading>
           <Image
             publicId="assets/people-protesting-on-street-4552840_gginry"
             cloudName="rebuild-black-business"
