@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Geocode from 'react-geocode';
 
 import {
+  Box,
   Flex,
   FormControl,
   FormLabel,
@@ -63,76 +64,85 @@ function BusinessFilter(props) {
   };
 
   return (
-    <FormControl
-      bg={[rbbWhite, rbbWhite, 'rgba(0,0,0,0)']}
-      width="100%"
-      maxWidth="1000px"
-      margin="0 auto 3rem"
-      padding={['24px', '24px', '0 24px']}
-      fontFamily="Arvo"
+    <Box
+      w="100%"
+      maxW={theme.containers.main}
+      paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      <Flex
+      <FormControl
+        bg={[rbbWhite, rbbWhite, 'rgba(0,0,0,0)']}
         width="100%"
-        direction={['column', 'column', 'row', 'row']}
-        justify="center"
+        maxWidth="1000px"
+        margin="0 auto 3rem"
+        padding={['24px', '24px', '0 24px']}
+        fontFamily="Arvo"
       >
         <Flex
-          direction="column"
-          marginRight={[0, 0, theme.spacing.base]}
-          marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+          width="100%"
+          direction={['column', 'column', 'row', 'row']}
+          justify="center"
         >
-          <FormLabel htmlFor="skill" color={[rbbBlack, rbbBlack, rbbWhite]}>
-            Skill
-          </FormLabel>
-          <Select ref={skillRef} id="skill" placeholder="All">
-            {skillTypes.map(skill => {
-              return (
-                <option key={skill.id} value={skill.label}>
-                  {skill.label}
-                </option>
-              );
-            })}
-          </Select>
-        </Flex>
-        <Flex
-          direction="column"
-          marginRight={[0, 0, theme.spacing.base]}
-          marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
-        >
-          <FormLabel htmlFor="location" color={[rbbBlack, rbbBlack, rbbWhite]}>
-            Zip Code
-          </FormLabel>
-          <Input
-            value={location}
-            id="location"
-            type="text"
-            placeholder="30308"
-            onChange={event => setLocation(event.currentTarget.value)}
-            onKeyPress={event => {
-              if (event.key === 'Enter') {
-                handleSearchKeyPress(event);
-              }
-            }}
-          />
-        </Flex>
-        <Flex
-          direction="column"
-          alignSelf={['center', 'center', 'flex-end']}
-          pt={['1rem', '1rem', 0, 0]}
-        >
-          <PrimaryButton
-            onClick={handleSearchClick}
-            onKeyPress={event => {
-              if (event.key === 'Enter') {
-                handleSearchKeyPress(event);
-              }
-            }}
+          <Flex
+            direction="column"
+            marginRight={[0, 0, theme.spacing.base]}
+            marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
           >
-            Search
-          </PrimaryButton>
+            <FormLabel htmlFor="skill" color={[rbbBlack, rbbBlack, rbbWhite]}>
+              Skill
+            </FormLabel>
+            <Select ref={skillRef} id="skill" placeholder="All">
+              {skillTypes.map(skill => {
+                return (
+                  <option key={skill.id} value={skill.label}>
+                    {skill.label}
+                  </option>
+                );
+              })}
+            </Select>
+          </Flex>
+          <Flex
+            direction="column"
+            marginRight={[0, 0, theme.spacing.base]}
+            marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+          >
+            <FormLabel
+              htmlFor="location"
+              color={[rbbBlack, rbbBlack, rbbWhite]}
+            >
+              Zip Code
+            </FormLabel>
+            <Input
+              value={location}
+              id="location"
+              type="text"
+              placeholder="30308"
+              onChange={event => setLocation(event.currentTarget.value)}
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  handleSearchKeyPress(event);
+                }
+              }}
+            />
+          </Flex>
+          <Flex
+            direction="column"
+            alignSelf={['center', 'center', 'flex-end']}
+            pt={['1rem', '1rem', 0, 0]}
+          >
+            <PrimaryButton
+              onClick={handleSearchClick}
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  handleSearchKeyPress(event);
+                }
+              }}
+            >
+              Search
+            </PrimaryButton>
+          </Flex>
         </Flex>
-      </Flex>
-    </FormControl>
+      </FormControl>
+    </Box>
   );
 }
 
