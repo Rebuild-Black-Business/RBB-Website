@@ -1,6 +1,3 @@
-import React, { useRef, useState } from 'react';
-import Geocode from 'react-geocode';
-
 import {
   Flex,
   FormControl,
@@ -9,7 +6,8 @@ import {
   Select,
   useTheme,
 } from '@chakra-ui/core';
-
+import React, { useRef, useState } from 'react';
+import { handleLocationToCoords } from '../../api/geocode';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const businessTypes = [
@@ -23,7 +21,7 @@ const businessTypes = [
 
 function BusinessFilter(props) {
   const { onSearch, selectedFilters } = props;
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(selectedFilters.location || '');
   const typeRef = useRef();
   const needRef = useRef();
   const theme = useTheme();
@@ -32,61 +30,31 @@ function BusinessFilter(props) {
 
   const rbbWhite = theme.colors['rbb-white'];
 
-  const handleSearchClick = event => {
+  const handleSearchClick = async event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    const coordinates = await handleLocationToCoords(location);
     onSearch({
       type: typeRef.current.value,
       location: location,
       need: needRef.current.value,
+      coordinates,
     });
   };
 
-  const handleSearchKeyPress = event => {
+  const handleSearchKeyPress = async event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    const coordinates = await handleLocationToCoords(location);
     onSearch({
       type: typeRef.current.value,
-      location: location,
+      location,
       need: needRef.current.value,
+      coordinates,
     });
-  };
-
-  const handleLocationToCoords = location => {
-    Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
-    Geocode.fromAddress(location).then(
-      res => {
-        const { lat, lng } = res.results[0].geometry.location;
-
-        //@TODO :: Need to pass this lat / lng to Algolia.
-        console.log(lat, lng);
-      },
-      error => {
-        console.error(error);
-      }
-    );
   };
 
   return (
     <FormControl maxWidth="1000px" margin="0 auto 3rem" padding="0 24px">
       <Flex width="100%" justifyContent="space-between">
-        <Flex direction="column">
-          <FormLabel htmlFor="need" color={rbbWhite}>
-            Black Businesses
-          </FormLabel>
-          <Select ref={needRef} id="need">
-            <option
-              value="true"
-              defaultValue
-              selected={selectedFilters.need === 'true'}
-            >
-              In Urgent Need
-            </option>
-            <option value="false" selected={selectedFilters.need === 'false'}>
-              All
-            </option>
-          </Select>
-        </Flex>
         <Flex direction="column">
           <FormLabel htmlFor="type" color={rbbWhite}>
             Business Type
@@ -121,6 +89,23 @@ function BusinessFilter(props) {
               }
             }}
           />
+        </Flex>
+        <Flex direction="column">
+          <FormLabel htmlFor="need" color={rbbWhite}>
+            Black Businesses
+          </FormLabel>
+          <Select ref={needRef} id="need">
+            <option
+              value="true"
+              defaultValue
+              selected={selectedFilters.need === 'true'}
+            >
+              In Urgent Need
+            </option>
+            <option value="false" selected={selectedFilters.need === 'false'}>
+              All
+            </option>
+          </Select>
         </Flex>
         <Flex direction="column" alignSelf="flex-end">
           <PrimaryButton

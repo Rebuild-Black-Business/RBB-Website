@@ -2,7 +2,6 @@ import { Box, Heading, Icon, Text, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 import Link from '../components/Link';
-
 import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
 import {
@@ -22,7 +21,7 @@ const categoryData = {
   other: {
     label: 'Other',
     image: {
-      src: 'assets/rbb-socialimage_g7rhcj',
+      src: 'assets/business-entertainment',
       alt: 'Other',
     },
     buttonText: 'Learn More',
@@ -139,7 +138,11 @@ const ResultCard = forwardRef(
             {name}
           </Heading>
           {category && (
-            <CardText as="span" margin="1rem 0">
+            <CardText
+              as="span"
+              margin="1rem 0"
+              color={theme.colors['rbb-gray']}
+            >
               {categoryLabel}
             </CardText>
           )}
