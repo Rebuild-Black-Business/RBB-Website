@@ -45,6 +45,10 @@ function useAlgoliaSearch(filters) {
         const algoliaResponse = await index.search('', {
           page: currentPage,
           filters: createFilterString(searchFilters),
+          aroundLatLng: Object.keys(searchFilters.coordinates).length
+            ? `${searchFilters.coordinates.lat}, ${searchFilters.coordinates.lng}`
+            : '',
+          aroundRadius: 6344973, // 6344.973 km -- Note: Please change this I didn't know how far to search!
         });
 
         setResults(algoliaResponse.hits);

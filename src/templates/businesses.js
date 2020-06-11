@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 
 import { Flex } from '@chakra-ui/core';
@@ -6,10 +6,12 @@ import { PageHero, BusinessFeed } from '../components';
 import CardSkeleton from '../components/Loading/CardSkeleton';
 import Pagination from '../components/Pagination';
 
+import { handleLocationToCoords } from '../api/geocode';
+
 import useAlgoliaSearch from '../hooks/useAlgoliaSearch';
 import usePagination from '../hooks/usePagination';
 
-function generateURL(filters) {
+function generateURL(filters, location) {
   let newPath = '/businesses';
 
   if (filters.need === 'false') {
@@ -18,6 +20,10 @@ function generateURL(filters) {
 
   if (filters.type) {
     newPath += `/${filters.type.replace(/ /g, '-')}`;
+  }
+
+  if (filters.location) {
+    newPath += `?location=${filters.location}`;
   }
 
   navigate(newPath);
@@ -31,11 +37,25 @@ function searchCategory(category) {
   return category ? category.replace(/-/g, ' ') : '';
 }
 
+function searchLocation(location) {
+  const searchParams = new URLSearchParams(location.search);
+  return searchParams.get('location');
+}
+
+async function searchCoordinates(location) {
+  const searchParams = new URLSearchParams(location.search);
+  const coordinates = await handleLocationToCoords(
+    searchParams.get('location') || ''
+  );
+  return coordinates;
+}
+
 export default function Businesses(props) {
   const [searchFilters, setSearchFilters] = useState({
-    location: '',
+    location: searchLocation(props.location),
     need: searchingInNeed(props.location),
     type: searchCategory(props.category),
+    coordinates: {},
   });
 
   const { results, totalPages, setSearchPage } = useAlgoliaSearch(
@@ -43,9 +63,20 @@ export default function Businesses(props) {
   );
   const page = usePagination(props.location, page => setSearchPage(page));
 
+  useEffect(() => {
+    async function setLocationCoordinatesFromURL() {
+      const coordinates = await searchCoordinates(props.location);
+      setSearchFilters(current => ({
+        ...current,
+        coordinates,
+      }));
+    }
+    setLocationCoordinatesFromURL();
+  }, [props.location]);
+
   function onSearch(filters) {
     setSearchFilters(filters);
-    generateURL(filters);
+    generateURL(filters, props.location);
   }
 
   const pageSubtitle = (
