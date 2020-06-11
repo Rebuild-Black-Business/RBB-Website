@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 import ContactModal from '../components/ContactModal';
 import Link from '../components/Link';
-import { zipcodeConversion } from '../utils/locationUtils';
 import { toCamelCase } from '../utils/stringUtils';
 import {
   CardButton,
@@ -120,8 +119,6 @@ const ResultCard = forwardRef(
     // card wrapee
     const categoryLabel =
       (categoryData[catVar] && categoryData[catVar].label) || category;
-    const zipInfo = zipcodeConversion(location);
-    const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
 
     return (
       <CardWrapper
@@ -163,7 +160,7 @@ const ResultCard = forwardRef(
               {description.length > DESCRIPTION_MAX_LENGTH && '…'}{' '}
             </CardText>
           )}
-          {formattedCity && <CardText as="p">{formattedCity}</CardText>}
+          {location && <CardText as="p">{location}</CardText>}
           <CardButtonGroup
             mt="auto"
             mb={theme.spacing.base}
