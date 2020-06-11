@@ -170,7 +170,7 @@ export default function Businesses(props) {
         <Pagination
           location={props.location}
           currentPage={parseInt(page)}
-          totalPages={parseInt(totalPages) - 1}
+          totalPages={parseInt(totalPages)}
         />
       </Flex>
     </>
