@@ -1,4 +1,11 @@
-import { Box, Heading, Icon, Text, useTheme } from '@chakra-ui/core';
+import {
+  Box,
+  Heading,
+  Icon,
+  Text,
+  useTheme,
+  useDisclosure,
+} from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 import Link from '../components/Link';
@@ -12,6 +19,7 @@ import {
   CardText,
   CardWrapper,
 } from './Card';
+import ContactModal from '../components/ContactModal';
 
 const DESCRIPTION_MAX_LENGTH = 250; // length in characters after which we'll trim descriptions
 
@@ -105,6 +113,7 @@ const ResultCard = forwardRef(
       category && Object.keys(categoryData).includes(catVar);
     const hasImage = !!(imageSrc || hasFallbackImage);
     const theme = useTheme();
+    const { onOpen, isOpen, onClose } = useDisclosure();
 
     // I'm not sure how categories are going to work, so this probaably needs to
     // change. Also unsure how we're going to handle the schema category on the
@@ -181,12 +190,18 @@ const ResultCard = forwardRef(
                 color={theme.colors['rbb-gray']}
                 mr={theme.spacing.xs}
               />
-              <Link variant="cta" href="mailto:">
+              <Link as="button" variant="cta" onClick={onOpen}>
                 Report or update
               </Link>
             </Text>
           </Box>
         </CardContent>
+
+        <ContactModal
+          isOpen={isOpen}
+          title={`Report or Update the listing for "${name}"`}
+          onClose={onClose}
+        />
       </CardWrapper>
     );
   }
