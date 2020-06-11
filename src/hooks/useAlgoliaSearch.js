@@ -13,8 +13,12 @@ const LOADING_STATE = {
   SEARCHING: 'searching',
 };
 
-function createFilterString(filters) {
+function createFilterString(defaultFilters = '', filters) {
   const filterArr = [];
+
+  if (defaultFilters) {
+    filterArr.push(defaultFilters);
+  }
 
   if (filters.need !== 'false') {
     filterArr.push(`in_need=1`);
@@ -35,6 +39,8 @@ function useAlgoliaSearch(filters) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilters, setSearchFilters] = useState(filters);
 
+  const defaultFilters = `approved=1`;
+
   useMemo(() => {
     setSearchFilters(filters);
   }, [filters]);
@@ -43,8 +49,8 @@ function useAlgoliaSearch(filters) {
     async function getBusinesses() {
       try {
         const algoliaResponse = await index.search('', {
-          page: currentPage,
-          filters: createFilterString(searchFilters),
+          page: currentPage - 1,
+          filters: createFilterString(defaultFilters, searchFilters),
           aroundLatLng: Object.keys(searchFilters.coordinates).length
             ? `${searchFilters.coordinates.lat}, ${searchFilters.coordinates.lng}`
             : '',
@@ -61,7 +67,7 @@ function useAlgoliaSearch(filters) {
     }
 
     getBusinesses();
-  }, [currentPage, searchFilters]);
+  }, [currentPage, defaultFilters, searchFilters]);
 
   return {
     results,

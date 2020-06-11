@@ -14,7 +14,6 @@ import {
   useTheme,
 } from '@chakra-ui/core';
 import { PageHero, BusinessFeed } from '../components';
-import CardSkeleton from '../components/Loading/CardSkeleton';
 import Pagination from '../components/Pagination';
 
 import { handleLocationToCoords } from '../api/geocode';
@@ -157,19 +156,19 @@ export default function Businesses(props) {
           hasFadedHeroImage
         />
 
-        <CardSkeleton data={results}>
-          <BusinessFeed
-            businesses={results}
-            onSearch={onSearch}
-            selectedFilters={searchFilters}
-          />
-        </CardSkeleton>
-
-        <Pagination
-          location={props.location}
-          currentPage={parseInt(page)}
-          totalPages={parseInt(totalPages) - 1}
+        <BusinessFeed
+          businesses={results}
+          onSearch={onSearch}
+          selectedFilters={searchFilters}
         />
+
+        {results.length ? (
+          <Pagination
+            location={props.location}
+            currentPage={parseInt(page)}
+            totalPages={parseInt(totalPages)}
+          />
+        ) : null}
       </Flex>
     </>
   );

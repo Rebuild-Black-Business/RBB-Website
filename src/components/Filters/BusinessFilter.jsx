@@ -63,7 +63,7 @@ function BusinessFilter(props) {
           <FormLabel htmlFor="type" color={rbbWhite}>
             Business Type
           </FormLabel>
-          <Select ref={typeRef} id="type" placeholder="Select type">
+          <Select ref={typeRef} id="type" placeholder="All">
             {businessTypes.map(resource => {
               return (
                 <option
@@ -85,7 +85,7 @@ function BusinessFilter(props) {
             value={location}
             id="location"
             type="text"
-            placeholder="Denver or 80219"
+            placeholder="Atlanta or 30308"
             onChange={event => setLocation(event.currentTarget.value)}
             onKeyPress={event => {
               if (event.key === 'Enter') {
@@ -96,7 +96,7 @@ function BusinessFilter(props) {
         </Flex>
         <Flex direction="column" marginRight={theme.spacing.base}>
           <FormLabel htmlFor="need" color={rbbWhite}>
-            Black Businesses
+            Show me
           </FormLabel>
           <Select ref={needRef} id="need">
             <option
@@ -104,7 +104,7 @@ function BusinessFilter(props) {
               defaultValue
               selected={selectedFilters.need === 'true'}
             >
-              In Urgent Need
+              Businesses in need
             </option>
             <option value="false" selected={selectedFilters.need === 'false'}>
               All
