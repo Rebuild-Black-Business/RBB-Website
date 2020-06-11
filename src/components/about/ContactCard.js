@@ -11,6 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  PseudoBox,
   Text,
   useDisclosure,
   useTheme,
@@ -186,35 +187,51 @@ const ContactCard = ({
   email,
   transforms = {},
 }) => {
+  const cardStyle = {
+    hover: {
+      transform: 'scale(1.03)',
+      transition: 'all .25s ease-in',
+    },
+    focus: {
+      transform: 'scale(1.03)',
+    },
+  };
+
   if (modalCard) {
     return (
-      <ModalCard
-        modalTitle={modalTitle}
-        title={title}
-        blurb={blurb}
-        publicId={publicId}
-        transforms={transforms}
-      />
+      <PseudoBox _hover={cardStyle.hover} _focus={cardStyle.focus}>
+        <ModalCard
+          modalTitle={modalTitle}
+          title={title}
+          blurb={blurb}
+          publicId={publicId}
+          transforms={transforms}
+        />
+      </PseudoBox>
     );
   }
   if (mailtoCard) {
     return (
-      <MailtoCard
-        email={email}
+      <PseudoBox _hover={cardStyle.hover} _focus={cardStyle.focus}>
+        <MailtoCard
+          email={email}
+          title={title}
+          blurb={blurb}
+          publicId={publicId}
+          transforms={transforms}
+        />
+      </PseudoBox>
+    );
+  }
+  return (
+    <PseudoBox _hover={cardStyle.hover} _focus={cardStyle.focus}>
+      <VolunteerCard
         title={title}
         blurb={blurb}
         publicId={publicId}
         transforms={transforms}
       />
-    );
-  }
-  return (
-    <VolunteerCard
-      title={title}
-      blurb={blurb}
-      publicId={publicId}
-      transforms={transforms}
-    />
+    </PseudoBox>
   );
 };
 
