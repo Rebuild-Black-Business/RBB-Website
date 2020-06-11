@@ -48,7 +48,7 @@ function useAlgoliaSearch(filters) {
           aroundLatLng: Object.keys(searchFilters.coordinates).length
             ? `${searchFilters.coordinates.lat}, ${searchFilters.coordinates.lng}`
             : '',
-          aroundRadius: 6344973, // 6344.973 km -- Note: Please change this I didn't know how far to search!
+          aroundRadius: 40000, // 40 km -- Note: Please change this I didn't know how far to search!
         });
 
         setResults(algoliaResponse.hits);

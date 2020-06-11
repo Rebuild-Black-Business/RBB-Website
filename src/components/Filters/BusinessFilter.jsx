@@ -21,7 +21,7 @@ const businessTypes = [
 
 function BusinessFilter(props) {
   const { onSearch, selectedFilters } = props;
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(selectedFilters.location || '');
   const typeRef = useRef();
   const needRef = useRef();
   const theme = useTheme();
