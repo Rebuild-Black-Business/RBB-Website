@@ -39,7 +39,7 @@ const AllyFeed = props => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = useRef();
   const theme = useTheme();
-  const { skill: skillFilter, location: locationFilter } = props.filters;
+  const { skill: skillFilter } = props.filters;
   const [loaded, setLoaded] = useState(false);
 
   // This fixes an SSR bug with Chakra SimpleGrid
