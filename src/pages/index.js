@@ -223,7 +223,7 @@ export default () => {
                 h="auto"
                 px="30px"
                 as={Link}
-                href="/allies"
+                href="/businesses"
               >
                 View Directory
               </Button>
