@@ -79,7 +79,7 @@ export default function Allies(props) {
                 </ModalHeader>
                 <ModalBody fontSize="lg" mt="8">
                   Please read and agree to our{' '}
-                  <Link variant="cta" href="/legal#terms">
+                  <Link variant="cta" href="/legal#terms" target="_blank">
                     terms and conditions
                   </Link>{' '}
                   to access our Ally list and contacts.

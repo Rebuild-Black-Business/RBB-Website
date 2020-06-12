@@ -4,16 +4,17 @@ import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
 import ErrorBoundary from '../components/ErrorBoundary';
+import ExternalLink from '../components/ExternalLink';
+import PageHeading from '../components/Headings/PageHeading';
 import Image from '../components/Image';
 import Layout from '../components/Layout';
-import ExternalLink from '../components/ExternalLink';
-
+import { JustinLogo } from '../components/SVG/JustinLogo';
 import {
   FOUNDER_MESSAGE,
+  JUSTIN_PERSONAL_SITE,
   MISSION_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
-import PageHeading from '../components/Headings/PageHeading';
 
 export default function About() {
   const theme = useTheme();
@@ -81,7 +82,18 @@ export default function About() {
                     Render-Atlanta
                   </ExternalLink>{' '}
                   {FOUNDER_MESSAGE}
-                  <br />
+                  <Flex
+                    marginBottom="1rem"
+                    marginTop="0.3125rem"
+                    justifyContent={[
+                      'center',
+                      'center',
+                      'center',
+                      'flex-start',
+                    ]}
+                  >
+                    <JustinLogo link={JUSTIN_PERSONAL_SITE}></JustinLogo>
+                  </Flex>
                   <List>
                     <ListItem>
                       <ExternalLink
