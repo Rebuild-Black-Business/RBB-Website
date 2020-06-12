@@ -36,12 +36,14 @@ const PrimaryNav = forwardRef(
       setIsVisible(!isVisible);
     };
 
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
       // Handle the first render when the location state will be null.
       if (!isVisible && location.state === null) {
         document.body.style.position = 'unset';
       }
     }, []);
+    /* eslint-enable react-hooks/exhaustive-deps */
 
     useEffect(() => {
       // if the sidenav is open and the pages path does not match the previous path then we unset the position: fixed on the body
@@ -52,7 +54,7 @@ const PrimaryNav = forwardRef(
       ) {
         document.body.style.position = 'unset';
       }
-    }, [isVisible]);
+    }, [isVisible, location.pathname, location.state]);
 
     // Layout effect prevents a flash of visibility when resizing the screen
     useLayoutEffect(() => {
