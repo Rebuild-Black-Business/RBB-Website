@@ -1,7 +1,6 @@
 import { Box, Icon, Text, useDisclosure, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef, useRef } from 'react';
-import { zipcodeConversion } from '../../utils/locationUtils';
 import {
   CardButton,
   CardButtonGroup,
@@ -10,8 +9,8 @@ import {
   CardText,
   CardWrapper,
 } from '../Card';
-import Link from '../Link';
 import ContactModal from '../ContactModal';
+import Link from '../Link';
 
 /**
  * @component
@@ -32,8 +31,6 @@ const AllyCard = forwardRef(
     const theme = useTheme();
 
     const name = `${first} ${last}`;
-    const zipInfo = zipcodeConversion(location);
-    const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
 
     return (
       <>
@@ -56,13 +53,13 @@ const AllyCard = forwardRef(
             >
               {name}
             </CardHeading>
-            {formattedCity && (
+            {location && (
               <CardText
                 as="p"
                 fontFamily={theme.fonts.heading}
                 fontSize={theme.fontSizes.lg}
               >
-                {formattedCity}
+                {location}
               </CardText>
             )}
             {specialty && (
@@ -92,7 +89,7 @@ const AllyCard = forwardRef(
                   onClick={onOpen}
                   ref={updateRef}
                 >
-                  Report or update
+                  Report or unlist
                 </Link>
               </Text>
             </Box>
@@ -101,7 +98,7 @@ const AllyCard = forwardRef(
 
         <ContactModal
           isOpen={isOpen}
-          title={`Report or Update the listing for "${name}"`}
+          title={`Report or Unlist the listing for "${name}"`}
           onClose={onClose}
         />
       </>

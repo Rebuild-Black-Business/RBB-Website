@@ -4,11 +4,14 @@ import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
 import ErrorBoundary from '../components/ErrorBoundary';
+import ExternalLink from '../components/ExternalLink';
+import PageHeading from '../components/Headings/PageHeading';
 import Image from '../components/Image';
 import Layout from '../components/Layout';
-import Link from '../components/Link';
+import { JustinLogo } from '../components/SVG/JustinLogo';
 import {
   FOUNDER_MESSAGE,
+  JUSTIN_PERSONAL_SITE,
   MISSION_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
@@ -28,13 +31,7 @@ export default function About() {
           color="#FFF"
           position="relative"
         >
-          <Heading
-            fontFamily={theme.fonts['heading-slab']}
-            size="xl"
-            textTransform="uppercase"
-          >
-            About
-          </Heading>
+          <PageHeading>About</PageHeading>
           <Image
             publicId="assets/people-protesting-on-street-4552840_gginry"
             cloudName="rebuild-black-business"
@@ -81,41 +78,52 @@ export default function About() {
               message={
                 <>
                   When I started {''}
-                  <Link variant="cta" href="https://www.renderatl.com/">
+                  <ExternalLink variant="cta" href="https://www.renderatl.com/">
                     Render-Atlanta
-                  </Link>{' '}
+                  </ExternalLink>{' '}
                   {FOUNDER_MESSAGE}
-                  <br />
+                  <Flex
+                    marginBottom="1rem"
+                    marginTop="0.3125rem"
+                    justifyContent={[
+                      'center',
+                      'center',
+                      'center',
+                      'flex-start',
+                    ]}
+                  >
+                    <JustinLogo link={JUSTIN_PERSONAL_SITE}></JustinLogo>
+                  </Flex>
                   <List>
                     <ListItem>
-                      <Link
+                      <ExternalLink
                         variant="cta"
                         href="https://twitter.com/ThugDebugger"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Twitter
-                      </Link>
+                      </ExternalLink>
                     </ListItem>
                     <ListItem>
-                      <Link
+                      <ExternalLink
                         variant="cta"
                         href="https://www.instagram.com/thugdebugger/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Instagram
-                      </Link>
+                      </ExternalLink>
                     </ListItem>
                     <ListItem>
-                      <Link
+                      <ExternalLink
                         variant="cta"
                         href="https://www.facebook.com/thugdebugger-109112997164763/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Facebook
-                      </Link>
+                      </ExternalLink>
                     </ListItem>
                   </List>
                 </>

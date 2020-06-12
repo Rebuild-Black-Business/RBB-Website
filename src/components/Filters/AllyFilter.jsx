@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-import Geocode from 'react-geocode';
+// import Geocode from 'react-geocode';
 
 import {
+  Box,
   Flex,
   FormControl,
   FormLabel,
-  Input,
   Select,
   useTheme,
 } from '@chakra-ui/core';
@@ -22,15 +22,16 @@ const skillTypes = [
 
 function BusinessFilter(props) {
   const { onSearch } = props;
-  const [location, setLocation] = useState('');
+  const [location] = useState('');
   const skillRef = useRef('');
   const theme = useTheme();
 
   const rbbWhite = theme.colors['rbb-white'];
+  const rbbBlack = theme.colors['rbb-black-000'];
 
   const handleSearchClick = event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    // handleLocationToCoords(location);
     onSearch({
       skill: skillRef.current.value,
       location: location,
@@ -39,89 +40,110 @@ function BusinessFilter(props) {
 
   const handleSearchKeyPress = event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    // handleLocationToCoords(location);
     onSearch({
       skill: skillRef.current.value,
       location: location,
     });
   };
 
-  const handleLocationToCoords = location => {
-    Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
-    Geocode.fromAddress(location).then(
-      res => {
-        const { lat, lng } = res.results[0].geometry.location;
+  // const handleLocationToCoords = location => {
+  //   Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
+  //   Geocode.fromAddress(location).then(
+  //     res => {
+  //       const { lat, lng } = res.results[0].geometry.location;
 
-        //@TODO :: Need to pass this lat / lng to Algolia.
-        console.log(lat, lng);
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  };
+  //       //@TODO :: Need to pass this lat / lng to Algolia.
+  //       console.log(lat, lng);
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   );
+  // };
 
   return (
-    <FormControl
-      width="100%"
-      maxWidth="1000px"
-      margin="0 auto 3rem"
-      padding="0 24px"
+    <Box
+      w="100%"
+      maxW={theme.containers.main}
+      paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      <Flex
+      <FormControl
+        bg={[rbbWhite, rbbWhite, 'rgba(0,0,0,0)']}
         width="100%"
-        direction={['column', 'column', 'row', 'row']}
-        justify="center"
+        maxWidth="1000px"
+        margin="0 auto 3rem"
+        padding={['24px', '24px', '0 24px']}
+        fontFamily="Arvo"
       >
-        <Flex direction="column" marginRight={theme.spacing.base}>
-          <FormLabel htmlFor="skill" color={rbbWhite}>
-            Skill
-          </FormLabel>
-          <Select ref={skillRef} id="skill" placeholder="All">
-            {skillTypes.map(skill => {
-              return (
-                <option key={skill.id} value={skill.label}>
-                  {skill.label}
-                </option>
-              );
-            })}
-          </Select>
-        </Flex>
-        <Flex direction="column" marginRight={theme.spacing.base}>
-          <FormLabel htmlFor="location" color={rbbWhite}>
-            Zip Code
-          </FormLabel>
-          <Input
-            value={location}
-            id="location"
-            type="text"
-            placeholder="30308"
-            onChange={event => setLocation(event.currentTarget.value)}
-            onKeyPress={event => {
-              if (event.key === 'Enter') {
-                handleSearchKeyPress(event);
-              }
-            }}
-          />
-        </Flex>
         <Flex
-          direction="column"
-          alignSelf={['center', 'center', 'flex-end']}
-          pt={['2rem', '2rem', 0, 0]}
+          width="100%"
+          direction={['column', 'column', 'row', 'row']}
+          justify="center"
         >
-          <PrimaryButton
-            onClick={handleSearchClick}
-            onKeyPress={event => {
-              if (event.key === 'Enter') {
-                handleSearchKeyPress(event);
-              }
-            }}
+          <Flex
+            direction="column"
+            marginRight={[0, 0, theme.spacing.base]}
+            marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
           >
-            Search
-          </PrimaryButton>
+            <FormLabel htmlFor="skill" color={[rbbBlack, rbbBlack, rbbWhite]}>
+              Skill
+            </FormLabel>
+            <Select ref={skillRef} id="skill" placeholder="All">
+              {skillTypes.map(skill => {
+                return (
+                  <option key={skill.id} value={skill.label}>
+                    {skill.label}
+                  </option>
+                );
+              })}
+            </Select>
+          </Flex>
+          {/*
+          This markup is left here intentionally, we will leverage zip code search once Allies are indexed in Algolia
+          <Flex
+            direction="column"
+            marginRight={[0, 0, theme.spacing.base]}
+            marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+          >
+            <FormLabel
+              htmlFor="location"
+              color={[rbbBlack, rbbBlack, rbbWhite]}
+            >
+              Zip Code
+            </FormLabel>
+            <Input
+              value={location}
+              id="location"
+              type="text"
+              placeholder="e.g. 30308"
+              onChange={event => setLocation(event.currentTarget.value)}
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  handleSearchKeyPress(event);
+                }
+              }}
+            />
+          </Flex> */}
+          <Flex
+            direction="column"
+            alignSelf={['center', 'center', 'flex-end']}
+            pt={['1rem', '1rem', 0, 0]}
+          >
+            <PrimaryButton
+              onClick={handleSearchClick}
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  handleSearchKeyPress(event);
+                }
+              }}
+            >
+              Search
+            </PrimaryButton>
+          </Flex>
         </Flex>
-      </Flex>
-    </FormControl>
+      </FormControl>
+    </Box>
   );
 }
 
