@@ -6,6 +6,7 @@ describe('Accessibility tests', () => {
     cy.fixture('endpoints').then(pages => {
       pages.forEach(page => {
         cy.visit(page);
+        cy.get('nav');
         cy.injectAxe();
         [[1920, 1080], 'macbook-11', 'iphone-6', 'ipad-mini'].forEach(size => {
           if (Cypress._.isArray(size)) {
