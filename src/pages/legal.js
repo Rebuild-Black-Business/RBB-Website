@@ -1,9 +1,8 @@
+import { Box, Flex, Heading } from '@chakra-ui/core';
 import React from 'react';
-
-import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 import Layout from '../components/Layout';
-import Terms from '../docs/terms-and-conditions';
 import Privacy from '../docs/privacy-policy';
+import Terms from '../docs/terms-and-conditions';
 
 export default function About() {
   const legalData = [

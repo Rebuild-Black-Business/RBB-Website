@@ -29,6 +29,7 @@ function BusinessFilter(props) {
   const typeToLabel = selectedFilters.type.replace(/-/g, ' ');
 
   const rbbWhite = theme.colors['rbb-white'];
+  const rbbBlack = theme.colors['rbb-black-000'];
 
   const handleSearchClick = async event => {
     event.preventDefault();
@@ -53,14 +54,24 @@ function BusinessFilter(props) {
   };
 
   return (
-    <FormControl maxWidth="1000px" margin="0 auto 3rem" padding="0 24px">
+    <FormControl
+      bg={[rbbWhite, rbbWhite, 'rgba(0,0,0,0)']}
+      maxWidth="1000px"
+      margin="0 auto 3rem"
+      padding={['24px', '24px', '0 24px']}
+      fontFamily="Arvo"
+    >
       <Flex
         width="100%"
         justifyContent="center"
         direction={['column', 'column', 'row', 'row']}
       >
-        <Flex direction="column" marginRight={theme.spacing.base}>
-          <FormLabel htmlFor="type" color={rbbWhite}>
+        <Flex
+          direction="column"
+          marginRight={[0, 0, theme.spacing.base]}
+          marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+        >
+          <FormLabel htmlFor="type" color={[rbbBlack, rbbBlack, rbbWhite]}>
             Business Type
           </FormLabel>
           <Select ref={typeRef} id="type" placeholder="All">
@@ -77,15 +88,19 @@ function BusinessFilter(props) {
             })}
           </Select>
         </Flex>
-        <Flex direction="column" marginRight={theme.spacing.base}>
-          <FormLabel htmlFor="location" color={rbbWhite}>
+        <Flex
+          direction="column"
+          marginRight={[0, 0, theme.spacing.base]}
+          marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+        >
+          <FormLabel htmlFor="location" color={[rbbBlack, rbbBlack, rbbWhite]}>
             Location
           </FormLabel>
           <Input
             value={location}
             id="location"
             type="text"
-            placeholder="Atlanta or 30308"
+            placeholder="e.g. Atlanta or 30308"
             onChange={event => setLocation(event.currentTarget.value)}
             onKeyPress={event => {
               if (event.key === 'Enter') {
@@ -94,8 +109,12 @@ function BusinessFilter(props) {
             }}
           />
         </Flex>
-        <Flex direction="column" marginRight={theme.spacing.base}>
-          <FormLabel htmlFor="need" color={rbbWhite}>
+        <Flex
+          direction="column"
+          marginRight={[0, 0, theme.spacing.base]}
+          marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+        >
+          <FormLabel htmlFor="need" color={[rbbBlack, rbbBlack, rbbWhite]}>
             Show me
           </FormLabel>
           <Select ref={needRef} id="need">
@@ -114,7 +133,7 @@ function BusinessFilter(props) {
         <Flex
           direction="column"
           alignSelf={['center', 'center', 'flex-end']}
-          pt={['2rem', '2rem', 0, 0]}
+          pt={['1rem', '1rem', 0, 0]}
         >
           <PrimaryButton
             onClick={handleSearchClick}

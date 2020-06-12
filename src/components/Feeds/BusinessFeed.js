@@ -19,22 +19,27 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      <BusinessFilter
-        onSearch={filters => onSearch(filters)}
-        selectedFilters={selectedFilters}
-      />
       {!loaded && <CardSkeleton data={businesses}></CardSkeleton>}
+      {loaded && (
+        <BusinessFilter
+          onSearch={filters => onSearch(filters)}
+          selectedFilters={selectedFilters}
+        />
+      )}
       {loaded && businesses.length > 0 ? (
         <>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
             {businesses.map(business => {
+              const formattedLocation = `${business.city ? business.city : ''}${
+                business.city && business.state ? ', ' : ''
+              }${business.state ? business.state : ''}`;
               return (
                 <ResultCard
                   key={business.objectID}
                   name={business.business_name || business.name}
                   category={business.category}
                   description={business.business_description}
-                  location={business.zip_code}
+                  location={formattedLocation}
                   websiteUrl={business.website}
                   donationUrl={business.donation_link}
                 />
