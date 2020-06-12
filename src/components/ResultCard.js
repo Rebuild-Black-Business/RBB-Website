@@ -134,6 +134,7 @@ const ResultCard = forwardRef(
             publicId={!imageSrc ? categoryData[catVar]?.image.src : null}
             src={imageSrc ? imageSrc : null}
             alt={imageAlt || categoryData[catVar]?.image.alt}
+            transforms={{ width: 500, height: 350, crop: 'fit', dpr: 2 }}
           />
         )}
         <CardContent

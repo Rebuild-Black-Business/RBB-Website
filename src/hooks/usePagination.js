@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function usePagination(location, onChange) {
+function usePagination(location) {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -8,14 +8,12 @@ function usePagination(location, onChange) {
 
     if (pageParam) {
       setPage(pageParam);
-      onChange(pageParam);
     } else {
       setPage(1);
-      onChange(1);
     }
-  }, [location.search, onChange]);
+  }, [location]);
 
-  return page;
+  return { page };
 }
 
 export default usePagination;

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 
 const client = algoliasearch(
@@ -31,35 +31,27 @@ function createFilterString(defaultFilters = '', filters) {
   return filterArr.join(' AND ');
 }
 
-function useAlgoliaSearch(filters) {
+function useAlgoliaSearch(filters, page) {
   const [results, setResults] = useState([]);
   const [loadingState, setLoadingState] = useState(LOADING_STATE.INITIAL);
   const [totalPages, setTotalPages] = useState(0);
-  const [totalResults, setTotalResults] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchFilters, setSearchFilters] = useState(filters);
 
   const defaultFilters = `approved=1`;
-
-  useMemo(() => {
-    setSearchFilters(filters);
-  }, [filters]);
 
   useEffect(() => {
     async function getBusinesses() {
       try {
         const algoliaResponse = await index.search('', {
-          page: currentPage - 1,
-          filters: createFilterString(defaultFilters, searchFilters),
-          aroundLatLng: Object.keys(searchFilters.coordinates).length
-            ? `${searchFilters.coordinates.lat}, ${searchFilters.coordinates.lng}`
+          page: page - 1,
+          filters: createFilterString(defaultFilters, filters),
+          aroundLatLng: Object.keys(filters.coordinates).length
+            ? `${filters.coordinates.lat}, ${filters.coordinates.lng}`
             : '',
           aroundRadius: 40000, // 40 km -- Note: Please change this I didn't know how far to search!
         });
 
         setResults(algoliaResponse.hits);
         setTotalPages(algoliaResponse.nbPages);
-        setTotalResults(algoliaResponse.nbHits);
         setLoadingState(LOADING_STATE.NONE);
       } catch (e) {
         console.log('error searching', e);
@@ -67,14 +59,13 @@ function useAlgoliaSearch(filters) {
     }
 
     getBusinesses();
-  }, [currentPage, defaultFilters, searchFilters]);
+  }, [page, defaultFilters, filters]);
 
   return {
     results,
     totalPages,
-    totalResults,
     loadingState,
-    setSearchPage: setCurrentPage,
+    setLoadingState,
   };
 }
 
