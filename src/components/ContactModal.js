@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
 import ErrorBoundary from './ErrorBoundary';
-import Link from './Link';
+import ExternalLink from './ExternalLink';
 
 const ContactModal = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -24,12 +24,12 @@ const ContactModal = ({ isOpen, onClose, title }) => (
           render={data => (
             <ModalBody>
               Please send an email to{' '}
-              <Link
+              <ExternalLink
                 variant="standard"
                 href={`mailto:${data.site.siteMetadata.social.contact}`}
               >
                 {data.site.siteMetadata.social.contact}
-              </Link>{' '}
+              </ExternalLink>{' '}
               to report or remove this listing.
             </ModalBody>
           )}
