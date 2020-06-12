@@ -132,9 +132,8 @@ function Pagination({ location, currentPage, totalPages }) {
         const isActivePage = currentPage === page;
 
         return (
-          <Link to={getPageLink(page)}>
+          <Link to={getPageLink(page)} key={index}>
             <Button
-              key={index}
               display="flex"
               justifyContent="center"
               alignItems="center"

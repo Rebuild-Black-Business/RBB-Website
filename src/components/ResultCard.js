@@ -155,12 +155,27 @@ const ResultCard = forwardRef(
             </CardText>
           )}
           {description && (
-            <CardText as="p">
+            <CardText
+              as="p"
+              fontSize="1em"
+              lineHeight="1.25rem"
+              fontFamily="Arvo"
+            >
               {description.substr(0, DESCRIPTION_MAX_LENGTH)}
-              {description.length > DESCRIPTION_MAX_LENGTH && '…'}{' '}
+              {description.length === DESCRIPTION_MAX_LENGTH && '...'}
+              {''}
             </CardText>
           )}
-          {location && <CardText as="p">{location}</CardText>}
+          {location && (
+            <CardText
+              as="p"
+              fontSize="1em"
+              lineHeight="1.25rem"
+              fontFamily="Arvo"
+            >
+              {location}
+            </CardText>
+          )}
           <CardButtonGroup
             mt="auto"
             mb={theme.spacing.base}

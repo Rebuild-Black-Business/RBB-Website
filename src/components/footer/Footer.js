@@ -9,6 +9,7 @@ const Footer = () => {
   const theme = useTheme();
   return (
     <Flex
+      as="footer"
       w="100%"
       align="center"
       justify="center"
