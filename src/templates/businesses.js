@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { navigate } from 'gatsby';
+import React, { useState, useEffect, useMemo } from 'react';
 
 import {
   Flex,
@@ -34,8 +33,9 @@ const ModalForm = ({ isOpen, onClose }) => (
   </Modal>
 );
 
-function generateURL(filters, location) {
+function generateURL(filters, setPageLocation) {
   let newPath = '/businesses';
+  let queryString = '';
 
   if (filters.need === 'false') {
     newPath += '/all';
@@ -46,10 +46,18 @@ function generateURL(filters, location) {
   }
 
   if (filters.location) {
-    newPath += `?location=${filters.location}`;
+    queryString += `?location=${filters.location}`;
   }
 
-  navigate(newPath);
+  // Update the page location state so pagination works
+  // This imitates what navigation should do without a refresh.
+  setPageLocation(location => ({
+    ...location,
+    pathname: newPath,
+    search: queryString,
+  }));
+  // Decided not to use nagivate here as it was causing a DOM refresh.
+  window.history.replaceState({}, undefined, newPath + queryString);
 }
 
 function searchingInNeed(location) {
@@ -104,8 +112,8 @@ export default function Businesses(props) {
   const { results, totalPages } = useAlgoliaSearch(searchFilters, page);
 
   function onSearch(filters) {
+    generateURL(filters, setPageLocation);
     setSearchFilters(filters);
-    generateURL(filters, props.location);
   }
 
   const pageSubtitle = (
@@ -167,7 +175,7 @@ export default function Businesses(props) {
 
         {results.length ? (
           <Pagination
-            location={props.location}
+            location={pageLocation}
             currentPage={parseInt(page)}
             totalPages={parseInt(totalPages)}
           />
