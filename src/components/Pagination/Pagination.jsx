@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import useMedia from 'react-use/lib/useMedia';
@@ -85,6 +85,22 @@ function Pagination({ location, currentPage, totalPages }) {
     return range(1, totalPages);
   }, [currentPage, totalPages, pageNeighbors]);
 
+  /**
+   * Need to store a ref of each pagination link to handle removing focused styles when hovering
+   */
+  const refs = useRef(
+    [...new Array(pages.length)].map(() => React.createRef())
+  );
+  const [refWithFocus, setRefWithFocus] = useState();
+
+  // Blurres currently focused elem and then resets the state
+  function removeFocus() {
+    if (refWithFocus) {
+      refWithFocus.blur();
+      setRefWithFocus(null);
+    }
+  }
+
   // check to make sure pagination doesn't crash out pages that accidentally include it
   if (!location) return null;
   const pathname = location.pathname;
@@ -139,6 +155,7 @@ function Pagination({ location, currentPage, totalPages }) {
         return (
           <Link to={getPageLink(page)} key={index}>
             <Button
+              ref={el => (refs.current[index] = el)}
               display="flex"
               justifyContent="center"
               alignItems="center"
@@ -153,6 +170,8 @@ function Pagination({ location, currentPage, totalPages }) {
               _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
               title={`Go to page ${page}`}
               aria-label={`Go to page ${page}`}
+              onFocus={() => setRefWithFocus(refs.current[index])}
+              onMouseEnter={removeFocus}
             >
               {page}
             </Button>
