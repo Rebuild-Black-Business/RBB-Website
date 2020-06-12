@@ -1,8 +1,9 @@
 import { Box, Flex, Heading } from '@chakra-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../components/Layout';
 import Privacy from '../docs/privacy-policy';
 import Terms from '../docs/terms-and-conditions';
+import { scrollToId } from '../utils/scrollToId';
 
 export default function About() {
   const legalData = [
@@ -17,6 +18,13 @@ export default function About() {
       body: <Privacy />,
     },
   ];
+
+  useEffect(() => {
+    if (window && window.location.hash) {
+      scrollToId(window.location.hash);
+    }
+  }, []);
+
   return (
     <Layout p="4">
       <Flex justify="center" direction="column" align="center">
