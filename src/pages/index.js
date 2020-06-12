@@ -14,11 +14,15 @@ import {
   useTheme,
 } from '@chakra-ui/core';
 import React, { useState } from 'react';
-import Button from '../components/Button';
-import ContentBlock from '../components/ContentBlock';
-import SubmitAlly from '../components/Forms/SubmitAlly';
-import SubmitBusiness from '../components/Forms/SubmitBusiness';
-import Layout from '../components/Layout';
+
+import {
+  Button,
+  ContentBlock,
+  Layout,
+  SubmitAlly,
+  SubmitBusiness,
+} from '../components';
+
 import { VOLUNTEER_URL } from '../constants/about';
 
 const InfoModal = ({ isOpen, onClose, modalType }) => (
@@ -42,6 +46,18 @@ export default () => {
   const handleType = newType => {
     setModalType(newType);
     onOpen();
+  };
+
+  const ctaButtonStyle = {
+    backgroundColor: theme.colors['rbb-orange'],
+    borderColor: '#C34D2B',
+    textDecoration: 'none',
+  };
+
+  const secondaryButtonStyle = {
+    backgroundColor: theme.colors['rbb-white'],
+    color: theme.colors['rbb-black-200'],
+    textDecoration: 'none',
   };
 
   return (
@@ -97,12 +113,13 @@ export default () => {
             </Text>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
               <Button
+                as={Link}
+                href={'/businesses'}
+                style={ctaButtonStyle}
                 variant="cta"
                 m={3}
                 h="auto"
                 px="30px"
-                onClose={onClose}
-                onClick={() => handleType('business')}
               >
                 I need help
               </Button>
@@ -159,13 +176,14 @@ export default () => {
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
               <Button
+                as={Link}
+                href={'/businesses'}
+                style={{ textDecoration: 'none' }}
                 variant="primary"
                 maxW="230px;"
                 m={3}
                 h="auto"
                 px="30px"
-                onClose={onClose}
-                onClick={() => handleType('business')}
               >
                 Add Business
               </Button>
@@ -176,6 +194,7 @@ export default () => {
                 px="30px"
                 as={Link}
                 href="/allies"
+                style={secondaryButtonStyle}
               >
                 See Allies
               </Button>
@@ -228,13 +247,14 @@ export default () => {
                 View Directory
               </Button>
               <Button
+                as={Link}
+                href="/allies"
+                style={{ textDecoration: 'none' }}
                 variant="secondary"
                 maxW="230px"
                 m={3}
                 h="auto"
                 px="30px"
-                onClose={onClose}
-                onClick={() => handleType('ally')}
               >
                 Sign up as an Ally
               </Button>
@@ -269,6 +289,7 @@ export default () => {
             </Text>
             <Button
               variant="cta"
+              style={ctaButtonStyle}
               as={Link}
               href={VOLUNTEER_URL}
               mt={theme.spacing.base}
