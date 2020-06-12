@@ -1,24 +1,24 @@
+import React, { useState, useRef, useMemo, useEffect } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import {
   Box,
+  SimpleGrid,
   Modal,
-  ModalBody,
-  ModalCloseButton,
+  ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalOverlay,
-  SimpleGrid,
-  useDisclosure,
+  ModalBody,
+  ModalCloseButton,
   useTheme,
+  useDisclosure,
 } from '@chakra-ui/core';
-import { graphql, StaticQuery } from 'gatsby';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { getZipcodesByRadius } from '../../utils/locationUtils';
-import Button from '../Button';
-import { CardContent, CardHeading, CardText, CardWrapper } from '../Card';
+
 import AllyCard from '../Cards/AllyCard';
 import NoResultsCard from '../Cards/NoResultsCard';
-import SubmitAlly from '../Forms/SubmitAlly';
+import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
+import Button from '../Button';
 import Image from '../Image';
+import SubmitAlly from '../Forms/SubmitAlly';
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
@@ -40,7 +40,7 @@ const AllyFeed = props => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = useRef();
   const theme = useTheme();
-  const { skill: skillFilter, location: locationFilter } = props.filters;
+  const { skill: skillFilter } = props.filters;
   const [loaded, setLoaded] = useState(false);
 
   // This fixes an SSR bug with Chakra SimpleGrid
@@ -50,23 +50,13 @@ const AllyFeed = props => {
   }, []);
 
   useMemo(() => {
-    const filteredAllies = allAllies
-      .filter(ally => {
-        if (skillFilter === '' || skillFilter === null) return ally;
-        return ally.data['Speciality'] === skillFilter;
-      })
-      .filter(ally => {
-        if (locationFilter === '') return ally;
-
-        const zipcodesInRadius = getZipcodesByRadius(locationFilter, 25);
-
-        if (zipcodesInRadius.length === 0) return ally;
-
-        return zipcodesInRadius.includes(ally.data['Zip_Code']);
-      });
+    const filteredAllies = allAllies.filter(ally => {
+      if (skillFilter === '' || skillFilter === null) return ally;
+      return ally.data['Speciality'] === skillFilter;
+    });
 
     setAllies(filteredAllies);
-  }, [locationFilter, skillFilter, allAllies]);
+  }, [skillFilter, allAllies]);
 
   return (
     <>
@@ -78,6 +68,11 @@ const AllyFeed = props => {
         {loaded && allies.length > 0 ? (
           <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
             {allies.map((allies, index) => {
+              const formattedLocation = `${
+                allies.data.City ? allies.data.City : ''
+              }${allies.data.City && allies.data.State ? ', ' : ''}${
+                allies.data.State ? allies.data.State : ''
+              }`;
               if (index === 4)
                 return (
                   <React.Fragment key={index}>
@@ -154,7 +149,7 @@ const AllyFeed = props => {
                       last={allies.data.Last_Name}
                       email={allies.data.Email}
                       specialty={allies.data.Speciality}
-                      location={allies.data.Zip_Code}
+                      location={formattedLocation}
                     />
                   </React.Fragment>
                 );
@@ -165,7 +160,7 @@ const AllyFeed = props => {
                   last={allies.data.Last_Name}
                   email={allies.data.Email}
                   specialty={allies.data.Speciality}
-                  location={allies.data.Zip_Code}
+                  location={formattedLocation}
                 />
               );
             })}
@@ -194,7 +189,8 @@ export default props => (
               First_Name
               Last_Name
               Speciality
-              Zip_Code
+              City
+              State
               CreatedAt
             }
           }

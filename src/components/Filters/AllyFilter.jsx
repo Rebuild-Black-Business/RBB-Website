@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react';
-import Geocode from 'react-geocode';
+// import Geocode from 'react-geocode';
 
 import {
   Box,
   Flex,
   FormControl,
   FormLabel,
-  Input,
   Select,
   useTheme,
 } from '@chakra-ui/core';
@@ -23,7 +22,7 @@ const skillTypes = [
 
 function BusinessFilter(props) {
   const { onSearch } = props;
-  const [location, setLocation] = useState('');
+  const [location] = useState('');
   const skillRef = useRef('');
   const theme = useTheme();
 
@@ -32,7 +31,7 @@ function BusinessFilter(props) {
 
   const handleSearchClick = event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    // handleLocationToCoords(location);
     onSearch({
       skill: skillRef.current.value,
       location: location,
@@ -41,27 +40,27 @@ function BusinessFilter(props) {
 
   const handleSearchKeyPress = event => {
     event.preventDefault();
-    handleLocationToCoords(location);
+    // handleLocationToCoords(location);
     onSearch({
       skill: skillRef.current.value,
       location: location,
     });
   };
 
-  const handleLocationToCoords = location => {
-    Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
-    Geocode.fromAddress(location).then(
-      res => {
-        const { lat, lng } = res.results[0].geometry.location;
+  // const handleLocationToCoords = location => {
+  //   Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
+  //   Geocode.fromAddress(location).then(
+  //     res => {
+  //       const { lat, lng } = res.results[0].geometry.location;
 
-        //@TODO :: Need to pass this lat / lng to Algolia.
-        console.log(lat, lng);
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  };
+  //       //@TODO :: Need to pass this lat / lng to Algolia.
+  //       console.log(lat, lng);
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   );
+  // };
 
   return (
     <Box
@@ -100,6 +99,8 @@ function BusinessFilter(props) {
               })}
             </Select>
           </Flex>
+          {/*
+          This markup is left here intentionally, we will leverage zip code search once Allies are indexed in Algolia
           <Flex
             direction="column"
             marginRight={[0, 0, theme.spacing.base]}
@@ -115,7 +116,7 @@ function BusinessFilter(props) {
               value={location}
               id="location"
               type="text"
-              placeholder="30308"
+              placeholder="e.g. 30308"
               onChange={event => setLocation(event.currentTarget.value)}
               onKeyPress={event => {
                 if (event.key === 'Enter') {
@@ -123,7 +124,7 @@ function BusinessFilter(props) {
                 }
               }}
             />
-          </Flex>
+          </Flex> */}
           <Flex
             direction="column"
             alignSelf={['center', 'center', 'flex-end']}
