@@ -1,12 +1,4 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  Heading,
-  List,
-  ListItem,
-  useTheme,
-} from '@chakra-ui/core';
+import { Flex, Grid, Heading, List, ListItem, useTheme } from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
@@ -90,10 +82,18 @@ export default function About() {
                     Render-Atlanta
                   </ExternalLink>{' '}
                   {FOUNDER_MESSAGE}
-                  <br />
-                  <Box marginBottom="1rem">
+                  <Flex
+                    marginBottom="1rem"
+                    marginTop="0.3125rem"
+                    justifyContent={[
+                      'center',
+                      'center',
+                      'flex-start',
+                      'flex-start',
+                    ]}
+                  >
                     <JustinLogo link={JUSTIN_PERSONAL_SITE}></JustinLogo>
-                  </Box>
+                  </Flex>
                   <List>
                     <ListItem>
                       <ExternalLink
