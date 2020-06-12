@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import useMedia from 'react-use/lib/useMedia';
