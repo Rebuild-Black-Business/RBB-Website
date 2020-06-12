@@ -10,7 +10,12 @@ const PLACEHOLDER = '...';
 
 function getUpdatedSearchParams(searchString, { page }) {
   const searchParams = new URLSearchParams(searchString);
-  searchParams.set('page', page);
+
+  if (page === 1) {
+    searchParams.delete('page');
+  } else {
+    searchParams.set('page', page);
+  }
   return searchParams.toString();
 }
 
@@ -89,7 +94,6 @@ function Pagination({ location, currentPage, totalPages }) {
    * @param {integer} page - new page number
    */
   function getPageLink(page) {
-    if (page === 1) return pathname;
     return `${pathname}?${getUpdatedSearchParams(location.search, { page })}`;
   }
 
