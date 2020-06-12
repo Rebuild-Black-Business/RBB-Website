@@ -9,8 +9,8 @@ import {
   CardText,
   CardWrapper,
 } from '../Card';
-import Link from '../Link';
 import ContactModal from '../ContactModal';
+import Link from '../Link';
 
 /**
  * @component
@@ -89,7 +89,7 @@ const AllyCard = forwardRef(
                   onClick={onOpen}
                   ref={updateRef}
                 >
-                  Report or update
+                  Report or unlist
                 </Link>
               </Text>
             </Box>
@@ -98,7 +98,7 @@ const AllyCard = forwardRef(
 
         <ContactModal
           isOpen={isOpen}
-          title={`Report or Update the listing for "${name}"`}
+          title={`Report or Unlist the listing for "${name}"`}
           onClose={onClose}
         />
       </>
