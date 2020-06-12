@@ -1,18 +1,28 @@
-import { Flex, Grid, Heading, List, ListItem, useTheme } from '@chakra-ui/core';
+import {
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  List,
+  ListItem,
+  useTheme,
+} from '@chakra-ui/core';
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
 import ErrorBoundary from '../components/ErrorBoundary';
+import PageHeading from '../components/Headings/PageHeading';
 import Image from '../components/Image';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
+import { JustinLogo } from '../components/SVG/JustinLogo';
 import {
   FOUNDER_MESSAGE,
+  JUSTIN_PERSONAL_SITE,
   MISSION_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
-import PageHeading from '../components/Headings/PageHeading';
 
 export default function About() {
   const theme = useTheme();
@@ -81,6 +91,9 @@ export default function About() {
                   </Link>{' '}
                   {FOUNDER_MESSAGE}
                   <br />
+                  <Box marginBottom="1rem">
+                    <JustinLogo link={JUSTIN_PERSONAL_SITE}></JustinLogo>
+                  </Box>
                   <List>
                     <ListItem>
                       <Link

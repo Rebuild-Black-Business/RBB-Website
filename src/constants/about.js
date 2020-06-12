@@ -9,3 +9,4 @@ Even after the current situation begins to resolve and months tick by, these bus
 Justin E. Samuels
 `;
 export const VOLUNTEER_URL = `http://join.rebuildblackbusiness.com/`;
+export const JUSTIN_PERSONAL_SITE = 'https://linktr.ee/thugdebugger';
