@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { navigate } from 'gatsby';
 
 import {
   Flex,
@@ -34,7 +33,7 @@ const ModalForm = ({ isOpen, onClose }) => (
   </Modal>
 );
 
-function generateURL(filters, location) {
+function generateURL(filters) {
   let newPath = '/businesses';
 
   if (filters.need === 'false') {
@@ -49,7 +48,7 @@ function generateURL(filters, location) {
     newPath += `?location=${filters.location}`;
   }
 
-  navigate(newPath);
+  window.history.replaceState({}, undefined, newPath);
 }
 
 function searchingInNeed(location) {
