@@ -6,6 +6,7 @@ import {
   Select,
   useTheme,
 } from '@chakra-ui/core';
+import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { handleLocationToCoords } from '../../api/geocode';
 import PrimaryButton from '../Buttons/PrimaryButton';
@@ -19,8 +20,7 @@ const businessTypes = [
   { id: 'other', label: 'Other' },
 ];
 
-function BusinessFilter(props) {
-  const { onSearch, selectedFilters } = props;
+function BusinessFilter({ isSearching, onSearch, selectedFilters }) {
   const [location, setLocation] = useState(selectedFilters.location || '');
   const typeRef = useRef();
   const needRef = useRef();
@@ -142,6 +142,7 @@ function BusinessFilter(props) {
                 handleSearchKeyPress(event);
               }
             }}
+            isLoading={isSearching}
           >
             Search
           </PrimaryButton>
@@ -150,5 +151,11 @@ function BusinessFilter(props) {
     </FormControl>
   );
 }
+
+BusinessFilter.propTypes = {
+  isSearching: PropTypes.bool,
+  onSearch: PropTypes.func.isRequired,
+  selectedFilters: PropTypes.object.isRequired,
+};
 
 export default BusinessFilter;

@@ -16,7 +16,7 @@ import Pagination from '../components/Pagination';
 
 import { handleLocationToCoords } from '../api/geocode';
 
-import useAlgoliaSearch from '../hooks/useAlgoliaSearch';
+import useAlgoliaSearch, { LOADING_STATE } from '../hooks/useAlgoliaSearch';
 import usePagination from '../hooks/usePagination';
 import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import Button from '../components/Button';
@@ -109,9 +109,15 @@ export default function Businesses(props) {
   }, [props.location]);
 
   const { page } = usePagination(pageLocation);
-  const { results, totalPages } = useAlgoliaSearch(searchFilters, page);
+  const {
+    results,
+    totalPages,
+    loadingState,
+    setLoadingState,
+  } = useAlgoliaSearch(searchFilters, page);
 
   function onSearch(filters) {
+    setLoadingState(LOADING_STATE.SEARCHING);
     generateURL(filters, setPageLocation);
     setSearchFilters(filters);
   }
@@ -171,15 +177,16 @@ export default function Businesses(props) {
           businesses={results}
           onSearch={onSearch}
           selectedFilters={searchFilters}
+          loadingState={loadingState}
         />
 
-        {results.length ? (
+        {!!results.length && (
           <Pagination
             location={pageLocation}
             currentPage={parseInt(page)}
             totalPages={parseInt(totalPages)}
           />
-        ) : null}
+        )}
       </Flex>
     </>
   );

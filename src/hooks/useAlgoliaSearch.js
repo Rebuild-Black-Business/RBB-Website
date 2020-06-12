@@ -35,7 +35,6 @@ function useAlgoliaSearch(filters, page) {
   const [results, setResults] = useState([]);
   const [loadingState, setLoadingState] = useState(LOADING_STATE.INITIAL);
   const [totalPages, setTotalPages] = useState(0);
-  const [totalResults, setTotalResults] = useState(0);
 
   const defaultFilters = `approved=1`;
 
@@ -53,7 +52,6 @@ function useAlgoliaSearch(filters, page) {
 
         setResults(algoliaResponse.hits);
         setTotalPages(algoliaResponse.nbPages);
-        setTotalResults(algoliaResponse.nbHits);
         setLoadingState(LOADING_STATE.NONE);
       } catch (e) {
         console.log('error searching', e);
@@ -66,8 +64,8 @@ function useAlgoliaSearch(filters, page) {
   return {
     results,
     totalPages,
-    totalResults,
     loadingState,
+    setLoadingState,
   };
 }
 
