@@ -19,11 +19,13 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      <BusinessFilter
-        onSearch={filters => onSearch(filters)}
-        selectedFilters={selectedFilters}
-      />
       {!loaded && <CardSkeleton data={businesses}></CardSkeleton>}
+      {loaded && (
+        <BusinessFilter
+          onSearch={filters => onSearch(filters)}
+          selectedFilters={selectedFilters}
+        />
+      )}
       {loaded && businesses.length > 0 ? (
         <>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
