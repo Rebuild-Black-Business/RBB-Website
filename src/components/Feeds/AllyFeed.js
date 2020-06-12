@@ -63,7 +63,7 @@ const AllyFeed = props => {
       <Box
         maxW={theme.containers.main}
         paddingX={[null, theme.spacing.base, theme.spacing.lg]}
-        marginBottom="3.688rem"
+        marginBottom={theme.spacing.lg}
       >
         {loaded && allies.length > 0 ? (
           <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
