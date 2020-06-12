@@ -18,9 +18,9 @@ import Button from '../components/Button';
 import SubscribeForm from '../components/SubscribeForm';
 import { Logo } from './SVG/Logo';
 import { Nav, NavItem, NavLink, NavMenu } from './Nav';
+import { useLocation } from '@reach/router';
 const INITIAL_TOGGLE_STATE = false;
 const NAV_HEIGHT = '100px';
-import { useLocation } from '@reach/router';
 
 const PrimaryNav = forwardRef(
   ({ menuLinks, logoInformation, ...props }, ref) => {
@@ -37,8 +37,19 @@ const PrimaryNav = forwardRef(
     };
 
     useEffect(() => {
+      // Handle the first render when the location state will be null.
+      if (!isVisible && location.state === null) {
+        document.body.style.position = 'unset';
+      }
+    }, []);
+
+    useEffect(() => {
       // if the sidenav is open and the pages path does not match the previous path then we unset the position: fixed on the body
-      if (!isVisible && location.pathname !== location.state.referrer) {
+      if (
+        !isVisible &&
+        location.state !== null &&
+        location.pathname !== location.state.referrer
+      ) {
         document.body.style.position = 'unset';
       }
     }, [isVisible]);

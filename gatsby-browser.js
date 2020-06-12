@@ -4,6 +4,6 @@ import '@reach/skip-nav/styles.css';
 // Defaults to the home route as thats where we start
 export const onRouteUpdate = ({ location, prevLocation }) => {
   if (location && location.state) {
-    location.state.referrer = prevLocation ? prevLocation.pathname : '/';
+    location.state.referrer = prevLocation ? prevLocation.pathname : null;
   }
 };
