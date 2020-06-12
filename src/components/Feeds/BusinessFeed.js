@@ -1,6 +1,6 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import { LOADING_STATE } from '../../hooks/useAlgoliaSearch';
