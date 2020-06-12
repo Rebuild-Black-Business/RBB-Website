@@ -1,7 +1,6 @@
 import { Box, Icon, Text, useDisclosure, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef, useRef } from 'react';
-import { zipcodeConversion } from '../../utils/locationUtils';
 import {
   CardButton,
   CardButtonGroup,
@@ -32,8 +31,6 @@ const AllyCard = forwardRef(
     const theme = useTheme();
 
     const name = `${first} ${last}`;
-    const zipInfo = zipcodeConversion(location);
-    const formattedCity = zipInfo ? `${zipInfo.city}, ${zipInfo.state}` : null;
 
     return (
       <>
@@ -56,13 +53,13 @@ const AllyCard = forwardRef(
             >
               {name}
             </CardHeading>
-            {formattedCity && (
+            {location && (
               <CardText
                 as="p"
                 fontFamily={theme.fonts.heading}
                 fontSize={theme.fontSizes.lg}
               >
-                {formattedCity}
+                {location}
               </CardText>
             )}
             {specialty && (

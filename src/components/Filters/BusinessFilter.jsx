@@ -100,7 +100,7 @@ function BusinessFilter(props) {
             value={location}
             id="location"
             type="text"
-            placeholder="Atlanta or 30308"
+            placeholder="e.g. Atlanta or 30308"
             onChange={event => setLocation(event.currentTarget.value)}
             onKeyPress={event => {
               if (event.key === 'Enter') {
