@@ -15,7 +15,7 @@ function usePagination(location, onChange) {
     }
   }, [location.search, onChange]);
 
-  return page;
+  return { page };
 }
 
 export default usePagination;
