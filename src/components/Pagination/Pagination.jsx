@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
-import PropTypes from 'prop-types';
-import useMedia from 'react-use/lib/useMedia';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { useMemo } from 'react';
+import useMedia from 'react-use/lib/useMedia';
 import { range } from '../../utils/common';
 import PaginationArrow from '../Svgs/PaginationArrow';
 
@@ -89,7 +89,6 @@ function Pagination({ location, currentPage, totalPages }) {
    * @param {integer} page - new page number
    */
   function getPageLink(page) {
-    if (page === 1) return pathname;
     return `${pathname}?${getUpdatedSearchParams(location.search, { page })}`;
   }
 
