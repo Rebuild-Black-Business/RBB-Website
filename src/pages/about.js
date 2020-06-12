@@ -88,7 +88,7 @@ export default function About() {
                     justifyContent={[
                       'center',
                       'center',
-                      'flex-start',
+                      'center',
                       'flex-start',
                     ]}
                   >
