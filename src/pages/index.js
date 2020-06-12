@@ -121,18 +121,7 @@ export default () => {
                 h="auto"
                 px="30px"
               >
-                I need help
-              </Button>
-              <Button
-                as={Link}
-                href="/allies"
-                variant="primary"
-                style={{ textDecoration: 'none' }}
-                m={3}
-                h="auto"
-                px="30px"
-              >
-                I can help
+                See Businesses
               </Button>
             </ButtonGroup>
           </Box>
@@ -169,32 +158,18 @@ export default () => {
                 you are doing well, we're here to help.
               </Text>
               <Text fontFamily={theme.fonts.heading} lineHeight="1.25">
-                You can add your business to our online directory of Black-owned
-                businesses. You can also contact one of our registered Allies
-                directly for help. <strong>We are all in this together.</strong>
+                Contact one of our registered Allies directly for help.{' '}
+                <strong>We are all in this together.</strong>
               </Text>
             </Box>
             <ButtonGroup spacing={4} mt={theme.spacing.base}>
               <Button
-                as={Link}
-                href={'/businesses'}
-                style={{ textDecoration: 'none' }}
                 variant="primary"
-                maxW="230px;"
-                m={3}
-                h="auto"
-                px="30px"
-              >
-                Add Business
-              </Button>
-              <Button
-                variant="secondary"
                 m={3}
                 h="auto"
                 px="30px"
                 as={Link}
                 href="/allies"
-                style={secondaryButtonStyle}
               >
                 See Allies
               </Button>
@@ -244,7 +219,7 @@ export default () => {
                 as={Link}
                 href="/businesses"
               >
-                View Directory
+                See Businesses
               </Button>
               <Button
                 as={Link}
@@ -254,6 +229,7 @@ export default () => {
                 maxW="230px"
                 m={3}
                 h="auto"
+                style={secondaryButtonStyle}
                 px="30px"
               >
                 Sign up as an Ally
