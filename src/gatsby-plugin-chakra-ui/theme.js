@@ -100,7 +100,7 @@ const customTheme = {
     'rbb-white': '#F7F7F2',
     'rbb-white-100-alpha90': 'rgba(222, 222, 218, 0.9);',
     'rbb-red': '#BA2A2A',
-    'rbb-orange': '#F46036',
+    'rbb-orange': '#F05F37',
     'rbb-result-card-grey': '#DEDEDA',
   },
   letterSpacings: {
