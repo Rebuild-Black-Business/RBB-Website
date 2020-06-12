@@ -229,6 +229,7 @@ export default () => {
               </Button>
               <Button
                 variant="secondary"
+                maxW="230px"
                 m={3}
                 h="auto"
                 px="30px"
