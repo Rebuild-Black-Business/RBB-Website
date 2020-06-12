@@ -1,26 +1,25 @@
-import React, { useState, useRef, useMemo, useEffect } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 import {
   Box,
-  SimpleGrid,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
-  useTheme,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  SimpleGrid,
   useDisclosure,
+  useTheme,
 } from '@chakra-ui/core';
-
+import { graphql, StaticQuery } from 'gatsby';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getZipcodesByRadius } from '../../utils/locationUtils';
-
+import Button from '../Button';
+import { CardContent, CardHeading, CardText, CardWrapper } from '../Card';
 import AllyCard from '../Cards/AllyCard';
 import NoResultsCard from '../Cards/NoResultsCard';
-import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
-import Button from '../Button';
-import Image from '../Image';
 import SubmitAlly from '../Forms/SubmitAlly';
+import Image from '../Image';
+
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -74,6 +73,7 @@ const AllyFeed = props => {
       <Box
         maxW={theme.containers.main}
         paddingX={[null, theme.spacing.base, theme.spacing.lg]}
+        marginBottom="3.688rem"
       >
         {loaded && allies.length > 0 ? (
           <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
