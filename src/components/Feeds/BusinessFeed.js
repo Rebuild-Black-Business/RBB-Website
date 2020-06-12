@@ -5,6 +5,7 @@ import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import ResultCard from '../ResultCard';
 import CardSkeleton from '../Loading/CardSkeleton';
+import { scrollToId } from '../../utils/scrollToId';
 
 function BusinessFeed({ businesses, onSearch, selectedFilters }) {
   const theme = useTheme();
@@ -13,6 +14,14 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  useEffect(() => {
+    if (window && window.location.hash) {
+      window.setTimeout(() => {
+        scrollToId(window.location.hash);
+      }, 200);
+    }
+  }, [loaded]);
 
   return (
     <Box
@@ -26,7 +35,7 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
       {!loaded && <CardSkeleton data={businesses}></CardSkeleton>}
       {loaded && businesses.length > 0 ? (
         <>
-          <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+          <SimpleGrid id="results" columns={[null, 1, 2]} spacing={10}>
             {businesses.map(business => {
               const formattedLocation = `${business.city ? business.city : ''}${
                 business.city && business.state ? ', ' : ''

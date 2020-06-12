@@ -90,7 +90,9 @@ function Pagination({ location, currentPage, totalPages }) {
    */
   function getPageLink(page) {
     if (page === 1) return pathname;
-    return `${pathname}?${getUpdatedSearchParams(location.search, { page })}`;
+    return `${pathname}?${getUpdatedSearchParams(location.search, {
+      page,
+    })}#results`;
   }
 
   const prevPageLink = getPageLink(currentPage - 1);
@@ -133,7 +135,7 @@ function Pagination({ location, currentPage, totalPages }) {
         const isActivePage = currentPage === page;
 
         return (
-          <Link to={getPageLink(page)}>
+          <a href={getPageLink(page)}>
             <Button
               key={index}
               display="flex"
@@ -153,7 +155,7 @@ function Pagination({ location, currentPage, totalPages }) {
             >
               {page}
             </Button>
-          </Link>
+          </a>
         );
       })}
       <PaginationArrow
