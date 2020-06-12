@@ -13,7 +13,7 @@ function usePagination(location, onChange) {
     }
   }, [location, onChange]);
 
-  return { page };
+  return page;
 }
 
 export default usePagination;

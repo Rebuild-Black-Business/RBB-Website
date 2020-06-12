@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 
 import {
   Flex,
@@ -33,9 +34,8 @@ const ModalForm = ({ isOpen, onClose }) => (
   </Modal>
 );
 
-function generateURL(filters, setPageLocation) {
+function generateURL(filters, location) {
   let newPath = '/businesses';
-  let queryString = '';
 
   if (filters.need === 'false') {
     newPath += '/all';
@@ -46,18 +46,10 @@ function generateURL(filters, setPageLocation) {
   }
 
   if (filters.location) {
-    queryString += `?location=${filters.location}`;
+    newPath += `?location=${filters.location}`;
   }
 
-  // Update the page location state so pagination works
-  // This imitates what navigation should do without a refresh.
-  setPageLocation(location => ({
-    ...location,
-    pathname: newPath,
-    search: queryString,
-  }));
-  // Decided not to use nagivate here as it was causing a DOM refresh.
-  window.history.replaceState({}, undefined, newPath + queryString);
+  navigate(newPath);
 }
 
 function searchingInNeed(location) {
@@ -83,13 +75,14 @@ async function searchCoordinates(location) {
 
 export default function Businesses(props) {
   const { onOpen, isOpen, onClose } = useDisclosure();
-  const [pageLocation, setPageLocation] = useState(props.location); // Used to handle paginaton
+  const [pageLocation, setPageLocation] = useState(props.location);
   const [searchFilters, setSearchFilters] = useState({
     location: searchLocation(props.location),
     need: searchingInNeed(props.location),
     type: searchCategory(props.category),
     coordinates: {},
   });
+  const theme = useTheme();
 
   // Do this before we start searching and paginating
   useEffect(() => {
@@ -110,11 +103,9 @@ export default function Businesses(props) {
   const { page } = usePagination(pageLocation);
   const { results, totalPages } = useAlgoliaSearch(searchFilters, page);
 
-  const theme = useTheme();
-
   function onSearch(filters) {
     setSearchFilters(filters);
-    generateURL(filters, setPageLocation);
+    generateURL(filters, props.location);
   }
 
   const pageSubtitle = (
@@ -176,7 +167,7 @@ export default function Businesses(props) {
 
         {results.length ? (
           <Pagination
-            location={pageLocation}
+            location={props.location}
             currentPage={parseInt(page)}
             totalPages={parseInt(totalPages)}
           />
