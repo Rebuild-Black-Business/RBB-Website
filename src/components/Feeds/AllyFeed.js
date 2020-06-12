@@ -19,6 +19,7 @@ import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
 import Image from '../Image';
 import SubmitAlly from '../Forms/SubmitAlly';
+
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -62,6 +63,7 @@ const AllyFeed = props => {
       <Box
         maxW={theme.containers.main}
         paddingX={[null, theme.spacing.base, theme.spacing.lg]}
+        marginBottom={theme.spacing.lg}
       >
         {loaded && allies.length > 0 ? (
           <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
