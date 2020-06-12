@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import ErrorBoundary from './../ErrorBoundary';
 import { Flex, useTheme, Text } from '@chakra-ui/core';
 import { useLocation } from '@reach/router';
-import Link from '../Link';
+import ExternalLink from '../ExternalLink';
 
 const CreditLink = () => {
   const theme = useTheme();
@@ -35,9 +35,9 @@ const CreditLink = () => {
               )}
               {pagePhotoCreditLinks.map((link, index) => {
                 return (
-                  <Link
+                  <ExternalLink
                     variant="footer"
-                    to={link.url}
+                    href={link.url}
                     fontSize="12px"
                     fontWeight="bold"
                     ml="1"
@@ -47,7 +47,7 @@ const CreditLink = () => {
                     key={index}
                   >
                     {link.photographer}
-                  </Link>
+                  </ExternalLink>
                 );
               })}
             </Flex>

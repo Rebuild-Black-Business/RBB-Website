@@ -5,6 +5,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import Image from '../components/Image';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
+import ExternalLink from '../components/ExternalLink';
 
 export default function NotFound() {
   const theme = useTheme();
@@ -50,12 +51,12 @@ export default function NotFound() {
                   lineHeight="30px"
                 >
                   If this problem continues,{' '}
-                  <Link
+                  <ExternalLink
                     variant="cta"
                     href={`mailto:${data.site.siteMetadata.social.bugs}`}
                   >
                     please let us know.
-                  </Link>
+                  </ExternalLink>
                 </Text>
                 <br />
                 <Text
@@ -82,22 +83,22 @@ export default function NotFound() {
                   </ListItem>
 
                   <ListItem>
-                    <Link
+                    <ExternalLink
                       variant="standard"
                       to="http://join.rebuildblackbusiness.com/"
                       color="#000"
                     >
                       Volunteer with us
-                    </Link>
+                    </ExternalLink>
                   </ListItem>
                   <ListItem>
-                    <Link
+                    <ExternalLink
                       href={`mailto:${data.site.siteMetadata.social.contact}`}
                       variant="standard"
                       color="#000"
                     >
                       Contact us
-                    </Link>
+                    </ExternalLink>
                   </ListItem>
                 </List>
               </Flex>

@@ -6,7 +6,8 @@ import Content from '../components/about/Content';
 import ErrorBoundary from '../components/ErrorBoundary';
 import Image from '../components/Image';
 import Layout from '../components/Layout';
-import Link from '../components/Link';
+import ExternalLink from '../components/ExternalLink';
+
 import {
   FOUNDER_MESSAGE,
   MISSION_MESSAGE,
@@ -76,41 +77,41 @@ export default function About() {
               message={
                 <>
                   When I started {''}
-                  <Link variant="cta" href="https://www.renderatl.com/">
+                  <ExternalLink variant="cta" href="https://www.renderatl.com/">
                     Render-Atlanta
-                  </Link>{' '}
+                  </ExternalLink>{' '}
                   {FOUNDER_MESSAGE}
                   <br />
                   <List>
                     <ListItem>
-                      <Link
+                      <ExternalLink
                         variant="cta"
                         href="https://twitter.com/ThugDebugger"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Twitter
-                      </Link>
+                      </ExternalLink>
                     </ListItem>
                     <ListItem>
-                      <Link
+                      <ExternalLink
                         variant="cta"
                         href="https://www.instagram.com/thugdebugger/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Instagram
-                      </Link>
+                      </ExternalLink>
                     </ListItem>
                     <ListItem>
-                      <Link
+                      <ExternalLink
                         variant="cta"
                         href="https://www.facebook.com/thugdebugger-109112997164763/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Facebook
-                      </Link>
+                      </ExternalLink>
                     </ListItem>
                   </List>
                 </>
