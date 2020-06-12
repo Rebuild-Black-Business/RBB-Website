@@ -1,6 +1,5 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { Flex } from '@chakra-ui/core';
 import ErrorBoundary from './../ErrorBoundary';
 import { NavMenu, NavItem } from '../Nav';
 import Link from './../Link';
@@ -13,11 +12,11 @@ const FooterLinks = () => {
         render={data => {
           return (
             <NavMenu
-              as={Flex}
-              w={['90%', '90%', '90%', 'full']}
-              justify="space-evenly"
-              wrap={['wrap', 'wrap', 'wrap', null]}
-              align="center"
+              style={{
+                display: 'flex',
+                'justify-content': 'space-evenly',
+                width: '100%',
+              }}
             >
               {[
                 ...data.site.siteMetadata.menuLinks,
