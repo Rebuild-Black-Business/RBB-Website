@@ -32,8 +32,10 @@ jobs:
 
       - name: Run Jest tests
         run: npm test
-        
-      # - name: Run Cypress tests
-      #   env:
-      #     AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-      #   run: npm run test:e2e:ci
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v1
+        with:
+          command: npm run test:e2e:ci
+          # start: npm run develop
+          # wait-on: 'http://localhost:8000'
