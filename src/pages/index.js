@@ -70,6 +70,7 @@ export default () => {
                 lineHeight="1"
                 fontFamily={theme.fonts['heading-slab']}
                 textTransform="uppercase"
+                ml={[0, 0, -1]}
               >
                 Black
               </Text>
@@ -228,6 +229,7 @@ export default () => {
               </Button>
               <Button
                 variant="secondary"
+                maxW="230px"
                 m={3}
                 h="auto"
                 px="30px"
@@ -265,7 +267,12 @@ export default () => {
               marketers, project managers, policy makers, and web professionals.
               Welcome!
             </Text>
-            <Button variant="cta" as={Link} href={VOLUNTEER_URL}>
+            <Button
+              variant="cta"
+              as={Link}
+              href={VOLUNTEER_URL}
+              mt={theme.spacing.base}
+            >
               Join Us
             </Button>
           </Box>
