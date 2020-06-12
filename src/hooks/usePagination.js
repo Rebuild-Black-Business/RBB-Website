@@ -8,12 +8,10 @@ function usePagination(location, onChange) {
 
     if (pageParam) {
       setPage(pageParam);
-      onChange(pageParam);
     } else {
       setPage(1);
-      onChange(1);
     }
-  }, [location.search, onChange]);
+  }, [location, onChange]);
 
   return { page };
 }

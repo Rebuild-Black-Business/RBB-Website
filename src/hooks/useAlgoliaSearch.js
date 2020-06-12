@@ -31,7 +31,7 @@ function createFilterString(defaultFilters = '', filters) {
   return filterArr.join(' AND ');
 }
 
-function useAlgoliaSearch(filters) {
+function useAlgoliaSearch(filters, page) {
   const [results, setResults] = useState([]);
   const [loadingState, setLoadingState] = useState(LOADING_STATE.INITIAL);
   const [totalPages, setTotalPages] = useState(0);
@@ -44,6 +44,10 @@ function useAlgoliaSearch(filters) {
   useMemo(() => {
     setSearchFilters(filters);
   }, [filters]);
+
+  useMemo(() => {
+    setCurrentPage(page);
+  }, [page]);
 
   useEffect(() => {
     async function getBusinesses() {
@@ -74,7 +78,6 @@ function useAlgoliaSearch(filters) {
     totalPages,
     totalResults,
     loadingState,
-    setSearchPage: setCurrentPage,
   };
 }
 

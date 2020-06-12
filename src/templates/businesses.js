@@ -91,15 +91,11 @@ export default function Businesses(props) {
     coordinates: {},
   });
 
-  const { results, totalPages, setSearchPage } = useAlgoliaSearch(
-    searchFilters
-  );
-  const { page } = usePagination(pageLocation, newPage => {
-    setSearchPage(newPage);
-  });
-  const theme = useTheme();
-
+  // Do this before we start searching and paginating
   useEffect(() => {
+    // Make sure it gets updated on page navigation
+    setPageLocation(props.location);
+
     // Does not use pageLocation as it should only run on first load.
     async function setLocationCoordinatesFromURL() {
       const coordinates = await searchCoordinates(props.location);
@@ -110,6 +106,11 @@ export default function Businesses(props) {
     }
     setLocationCoordinatesFromURL();
   }, [props.location]);
+
+  const { page } = usePagination(pageLocation);
+  const { results, totalPages } = useAlgoliaSearch(searchFilters, page);
+
+  const theme = useTheme();
 
   function onSearch(filters) {
     setSearchFilters(filters);
