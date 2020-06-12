@@ -6,6 +6,8 @@ function usePagination(location, onChange) {
   useEffect(() => {
     const pageParam = new URLSearchParams(location.search).get('page');
 
+    // Duplicated because otherwise it wants it to be inside useEffect
+    // And then that gets complex. Easier this way for now!
     if (pageParam) {
       setPage(pageParam);
       onChange(pageParam);
@@ -15,7 +17,7 @@ function usePagination(location, onChange) {
     }
   }, [location.search, onChange]);
 
-  return page;
+  return { page };
 }
 
 export default usePagination;
