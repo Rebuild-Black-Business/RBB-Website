@@ -92,12 +92,31 @@ function Pagination({ location, currentPage, totalPages }) {
     [...new Array(pages.length)].map(() => React.createRef())
   );
   const [refWithFocus, setRefWithFocus] = useState();
+  const [refWithHover, setRefWithHover] = useState();
 
-  // Blurres currently focused elem and then resets the state
-  function removeFocus() {
+  /**
+   * Sets state of the ref that currently is being hovered and unset state of refWithFocus to remove the focus styles when elem is being hovered
+   *
+   * @param {HTMLElement} elem
+   */
+  function addHoverRemoveFocus(elem) {
     if (refWithFocus) {
       refWithFocus.blur();
+      setRefWithHover(elem);
       setRefWithFocus(null);
+    }
+  }
+
+  /**
+   * Sets state of the ref that currently has focus and unset state of refWithHover to remove the hover styles when elem is being focused
+   *
+   * @param {HTMLElement} elem
+   */
+  function addFocusRemoveHover(elem) {
+    setRefWithFocus(elem);
+
+    if (refWithHover) {
+      setRefWithHover(null);
     }
   }
 
@@ -167,11 +186,16 @@ function Pagination({ location, currentPage, totalPages }) {
               fontWeight={theme.fontWeights.bold}
               cursor="pointer"
               _focus={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
-              _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
+              _hover={{
+                bg:
+                  !isActivePage &&
+                  refWithHover &&
+                  theme.colors['rbb-lightgray'],
+              }}
               title={`Go to page ${page}`}
               aria-label={`Go to page ${page}`}
-              onFocus={() => setRefWithFocus(refs.current[index])}
-              onMouseEnter={removeFocus}
+              onFocus={() => addFocusRemoveHover(refs.current[index])}
+              onMouseEnter={() => addHoverRemoveFocus(refs.current[index])}
             >
               {page}
             </Button>
