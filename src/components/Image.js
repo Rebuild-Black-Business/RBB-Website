@@ -19,6 +19,7 @@ export default function Image(props) {
         // fetch: 'auto' is applied internally
         // crop: 'scale' is applied automatically when a width or height is supplied
         quality: 'auto',
+        dpr: 2,
       },
     });
   }, [publicId]);

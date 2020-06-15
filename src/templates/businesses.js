@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { navigate } from 'gatsby';
 
 import {
   Flex,
@@ -17,7 +16,7 @@ import Pagination from '../components/Pagination';
 
 import { handleLocationToCoords } from '../api/geocode';
 
-import useAlgoliaSearch from '../hooks/useAlgoliaSearch';
+import useAlgoliaSearch, { LOADING_STATE } from '../hooks/useAlgoliaSearch';
 import usePagination from '../hooks/usePagination';
 import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import Button from '../components/Button';
@@ -34,8 +33,9 @@ const ModalForm = ({ isOpen, onClose }) => (
   </Modal>
 );
 
-function generateURL(filters, location) {
+function generateURL(filters, setPageLocation) {
   let newPath = '/businesses';
+  let queryString = '';
 
   if (filters.need === 'false') {
     newPath += '/all';
@@ -46,10 +46,18 @@ function generateURL(filters, location) {
   }
 
   if (filters.location) {
-    newPath += `?location=${filters.location}`;
+    queryString += `?location=${filters.location}`;
   }
 
-  navigate(newPath);
+  // Update the page location state so pagination works
+  // This imitates what navigation should do without a refresh.
+  setPageLocation(location => ({
+    ...location,
+    pathname: newPath,
+    search: queryString,
+  }));
+  // Decided not to use nagivate here as it was causing a DOM refresh.
+  window.history.replaceState({}, undefined, newPath + queryString);
 }
 
 function searchingInNeed(location) {
@@ -75,20 +83,21 @@ async function searchCoordinates(location) {
 
 export default function Businesses(props) {
   const { onOpen, isOpen, onClose } = useDisclosure();
+  const [pageLocation, setPageLocation] = useState(props.location);
   const [searchFilters, setSearchFilters] = useState({
     location: searchLocation(props.location),
     need: searchingInNeed(props.location),
     type: searchCategory(props.category),
     coordinates: {},
   });
-
-  const { results, totalPages, setSearchPage } = useAlgoliaSearch(
-    searchFilters
-  );
-  const page = usePagination(props.location, page => setSearchPage(page));
   const theme = useTheme();
 
+  // Do this before we start searching and paginating
   useEffect(() => {
+    // Make sure it gets updated on page navigation
+    setPageLocation(props.location);
+
+    // Does not use pageLocation as it should only run on first load.
     async function setLocationCoordinatesFromURL() {
       const coordinates = await searchCoordinates(props.location);
       setSearchFilters(current => ({
@@ -99,9 +108,18 @@ export default function Businesses(props) {
     setLocationCoordinatesFromURL();
   }, [props.location]);
 
+  const { page } = usePagination(pageLocation);
+  const {
+    results,
+    totalPages,
+    loadingState,
+    setLoadingState,
+  } = useAlgoliaSearch(searchFilters, page);
+
   function onSearch(filters) {
+    setLoadingState(LOADING_STATE.SEARCHING);
+    generateURL(filters, setPageLocation);
     setSearchFilters(filters);
-    generateURL(filters, props.location);
   }
 
   const pageSubtitle = (
@@ -159,15 +177,16 @@ export default function Businesses(props) {
           businesses={results}
           onSearch={onSearch}
           selectedFilters={searchFilters}
+          loadingState={loadingState}
         />
 
-        {results.length ? (
+        {!!results.length && (
           <Pagination
-            location={props.location}
+            location={pageLocation}
             currentPage={parseInt(page)}
             totalPages={parseInt(totalPages)}
           />
-        ) : null}
+        )}
       </Flex>
     </>
   );

@@ -1,32 +1,30 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
+import { LOADING_STATE } from '../../hooks/useAlgoliaSearch';
+
 import ResultCard from '../ResultCard';
-import CardSkeleton from '../Loading/CardSkeleton';
 
-function BusinessFeed({ businesses, onSearch, selectedFilters }) {
+function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
   const theme = useTheme();
-  const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+  const loaded = loadingState === LOADING_STATE.NONE;
+  const initialLoad = loadingState === LOADING_STATE.INITIAL;
+  const hasResults = businesses.length > 0;
 
   return (
     <Box
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
     >
-      {!loaded && <CardSkeleton data={businesses}></CardSkeleton>}
-      {loaded && (
-        <BusinessFilter
-          onSearch={filters => onSearch(filters)}
-          selectedFilters={selectedFilters}
-        />
-      )}
-      {loaded && businesses.length > 0 ? (
+      <BusinessFilter
+        onSearch={filters => onSearch(filters)}
+        selectedFilters={selectedFilters}
+        isSearching={loadingState === LOADING_STATE.SEARCHING}
+      />
+      {!initialLoad && hasResults && (
         <>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
             {businesses.map(business => {
@@ -47,9 +45,8 @@ function BusinessFeed({ businesses, onSearch, selectedFilters }) {
             })}
           </SimpleGrid>
         </>
-      ) : (
-        <NoResultsCard type="businesses" />
       )}
+      {loaded && !hasResults && <NoResultsCard type="businesses" />}
       <Box
         display="flex"
         justifyContent="flex-end"
@@ -98,6 +95,7 @@ BusinessFeed.propTypes = {
   businesses: PropTypes.arrayOf(PropTypes.object),
   onSearch: PropTypes.func.isRequired,
   selectedFilters: PropTypes.object.isRequired,
+  loadingState: PropTypes.object.isRequired,
 };
 
 export default BusinessFeed;
