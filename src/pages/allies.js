@@ -17,7 +17,7 @@ import { AllyFeed, AllyFilter, Image, Layout, PageHero } from '../components';
 import Button from '../components/Button';
 import Link from '../components/Link';
 
-export default function Allies(props) {
+export default function Allies() {
   const [allyFilters, setAllyFilters] = useState({
     skill: '',
     location: '',

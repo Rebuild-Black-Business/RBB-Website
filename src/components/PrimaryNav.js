@@ -13,11 +13,12 @@ import {
 } from '@chakra-ui/core';
 import VisuallyHidden from '@reach/visually-hidden';
 import { Link as GatsbyLink } from 'gatsby';
-import React, { forwardRef, useLayoutEffect, useState } from 'react';
+import React, { forwardRef, useLayoutEffect, useState, useEffect } from 'react';
 import Button from '../components/Button';
 import SubscribeForm from '../components/SubscribeForm';
 import { Logo } from './SVG/Logo';
 import { Nav, NavItem, NavLink, NavMenu } from './Nav';
+import { useLocation } from '@reach/router';
 const INITIAL_TOGGLE_STATE = false;
 const NAV_HEIGHT = '100px';
 
@@ -28,11 +29,32 @@ const PrimaryNav = forwardRef(
     const theme = useTheme();
     const toUpperCase = text => text.toUpperCase();
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const location = useLocation();
     const handleToggle = () => {
-      // TODO: Prevent scrolling while the slideout is open. The below logic works, but if a user clicks a link they'll keep the fixed position
-      // document.body.style.position = isVisible ? 'unset' : 'fixed';
+      // If the sidenav is open then on its toggle we set the body position: fixed
+      document.body.style.position = 'fixed';
       setIsVisible(!isVisible);
     };
+
+    /* eslint-disable react-hooks/exhaustive-deps */
+    useEffect(() => {
+      // Handle the first render when the location state will be null.
+      if (!isVisible && location.state === null) {
+        document.body.style.position = 'unset';
+      }
+    }, []);
+    /* eslint-enable react-hooks/exhaustive-deps */
+
+    useEffect(() => {
+      // if the sidenav is open and the pages path does not match the previous path then we unset the position: fixed on the body
+      if (
+        !isVisible &&
+        location.state !== null &&
+        location.pathname !== location.state.referrer
+      ) {
+        document.body.style.position = 'unset';
+      }
+    }, [isVisible, location.pathname, location.state]);
 
     // Layout effect prevents a flash of visibility when resizing the screen
     useLayoutEffect(() => {
@@ -129,7 +151,11 @@ const PrimaryNav = forwardRef(
             my={[5, 5, 0]}
             width={['50%', '50%', 'auto']}
           >
-            <Link as={GatsbyLink} to="/">
+            <Link
+              as={GatsbyLink}
+              to="/"
+              state={{ prevLocation: location.pathname }}
+            >
               <Logo />
             </Link>
           </Flex>
@@ -175,7 +201,12 @@ const PrimaryNav = forwardRef(
                 fontWeight="bold"
                 textAlign="left"
               >
-                <NavLink to={link.slug}>{toUpperCase(link.name)}</NavLink>
+                <NavLink
+                  state={{ prevLocation: location.pathname }}
+                  to={link.slug}
+                >
+                  {toUpperCase(link.name)}
+                </NavLink>
               </NavItem>
             ))}
             <NavItem marginLeft="auto">
