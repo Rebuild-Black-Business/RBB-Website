@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import useMedia from 'react-use/lib/useMedia';
@@ -85,6 +85,41 @@ function Pagination({ location, currentPage, totalPages }) {
     return range(1, totalPages);
   }, [currentPage, totalPages, pageNeighbors]);
 
+  /**
+   * Need to store a ref of each pagination link to handle removing focused styles when hovering
+   */
+  const refs = useRef(
+    [...new Array(pages.length)].map(() => React.createRef())
+  );
+  const [refWithFocus, setRefWithFocus] = useState();
+  const [refWithHover, setRefWithHover] = useState();
+
+  /**
+   * Sets state of the ref that currently is being hovered and unset state of refWithFocus to remove the focus styles when elem is being hovered
+   *
+   * @param {HTMLElement} elem
+   */
+  function addHoverRemoveFocus(elem) {
+    if (refWithFocus) {
+      refWithFocus.blur();
+      setRefWithHover(elem);
+      setRefWithFocus(null);
+    }
+  }
+
+  /**
+   * Sets state of the ref that currently has focus and unset state of refWithHover to remove the hover styles when elem is being focused
+   *
+   * @param {HTMLElement} elem
+   */
+  function addFocusRemoveHover(elem) {
+    setRefWithFocus(elem);
+
+    if (refWithHover) {
+      setRefWithHover(null);
+    }
+  }
+
   // check to make sure pagination doesn't crash out pages that accidentally include it
   if (!location) return null;
   const pathname = location.pathname;
@@ -139,6 +174,7 @@ function Pagination({ location, currentPage, totalPages }) {
         return (
           <Link to={getPageLink(page)} key={index}>
             <Button
+              ref={el => (refs.current[index] = el)}
               display="flex"
               justifyContent="center"
               alignItems="center"
@@ -150,9 +186,16 @@ function Pagination({ location, currentPage, totalPages }) {
               fontWeight={theme.fontWeights.bold}
               cursor="pointer"
               _focus={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
-              _hover={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
+              _hover={{
+                bg:
+                  !isActivePage &&
+                  refWithHover &&
+                  theme.colors['rbb-lightgray'],
+              }}
               title={`Go to page ${page}`}
               aria-label={`Go to page ${page}`}
+              onFocus={() => addFocusRemoveHover(refs.current[index])}
+              onMouseEnter={() => addHoverRemoveFocus(refs.current[index])}
             >
               {page}
             </Button>
