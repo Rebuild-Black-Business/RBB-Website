@@ -21,10 +21,10 @@ workflows:
               only:
                 - staging
                 - trying
-      - publish:
-          requires:
-            - test
-          # only publish site changes on 'merge'
-          filters:
-            branches:
-              only: staging
+      # - publish:
+      #     requires:
+      #       - test
+      #     # only publish site changes on 'merge'
+      #     filters:
+      #       branches:
+      #         only: staging
