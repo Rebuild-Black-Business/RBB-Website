@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  build-deploy:
+  test:
     executor:
       name: node/default
     steps:
@@ -18,7 +18,7 @@ workflows:
           # run full test cycle for 'merge' or 'try'
           filters:
             branches:
-              only: 
+              only:
                 - staging
                 - trying
       - publish:
