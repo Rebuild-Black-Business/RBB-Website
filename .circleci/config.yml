@@ -10,17 +10,26 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm ci
-            - run: npm run test:e2e:ci
+            - run:
+                name: 'Cypress Tests'
+                command: npm run test:e2e:ci
+                environment:
+                  AIRTABLE_API_KEY: $AIRTABLE_API_KEY
+                  AIRTABLE_BASE_ID: $AIRTABLE_BASE_ID
+                  GATSBY_ALGOLIA_APP_ID: $GATSBY_ALGOLIA_APP_ID
+                  GATSBY_ALGOLIA_SEARCH_KEY: $GATSBY_ALGOLIA_SEARCH_KEY
+                  GATSBY_ALGOLIA_INDEX: $GATSBY_ALGOLIA_INDEX
+                  GATSBY_GOOGLE_PLACES_API_KEY: $GATSBY_GOOGLE_PLACES_API_KEY
 workflows:
   build-deploy:
     jobs:
       - test:
           # run full test cycle for 'merge' or 'try'
-          filters:
-            branches:
-              only:
-                - staging
-                - trying
+          # filters:
+          #   branches:
+          #     only:
+          #       - staging
+          #       - trying
       # - publish:
       #     requires:
       #       - test
