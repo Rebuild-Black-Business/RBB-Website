@@ -33,26 +33,23 @@ const PaginationArrow = ({ hidden, direction, linkTo }) => {
         color: 'rbb-white',
       }}
     >
-      <Link to={linkTo}>
-        <IconButton
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          aria-label={`Go to ${
-            direction === 'NEXT' ? 'next' : 'previous'
-          } page`}
-          variant="unstyled"
-          icon={direction === 'NEXT' ? 'arrowRight' : 'arrowLeft'}
-          fontSize="28px"
-          minWidth={0}
-        />
-      </Link>
+      <IconButton
+        as={Link}
+        to={linkTo}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        aria-label={`Go to ${direction === 'NEXT' ? 'next' : 'previous'} page`}
+        variant="unstyled"
+        icon={direction === 'NEXT' ? 'arrowRight' : 'arrowLeft'}
+        fontSize="28px"
+        minWidth={0}
+      />
     </PseudoBox>
   );
 };
 
 PaginationArrow.propTypes = {
-  isDisabled: PropTypes.bool.isRequired,
   direction: PropTypes.oneOf(['PREVIOUS', 'NEXT']).isRequired,
   linkTo: PropTypes.string.isRequired,
 };
