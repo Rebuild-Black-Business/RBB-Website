@@ -1,15 +1,15 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: cypress-io/cypress@1
 jobs:
   test:
     executor:
       name: node/default
     steps:
       - checkout
-      - node/install-packages:
+      - run: npm ci
       - run:
-          name: 'Cypress Tests'
+          name: 'Cypress tests'
           command: npm run test:e2e:ci
           environment:
             AIRTABLE_API_KEY: $AIRTABLE_API_KEY
@@ -19,19 +19,6 @@ jobs:
             GATSBY_ALGOLIA_INDEX: $GATSBY_ALGOLIA_INDEX
             GATSBY_GOOGLE_PLACES_API_KEY: $GATSBY_GOOGLE_PLACES_API_KEY
 workflows:
-  build-deploy:
+  integration-tests:
     jobs:
-      - test:
-          # run full test cycle for 'merge' or 'try'
-          # filters:
-          #   branches:
-          #     only:
-          #       - staging
-          #       - trying
-      # - publish:
-      #     requires:
-      #       - test
-      #     # only publish site changes on 'merge'
-      #     filters:
-      #       branches:
-      #         only: staging
+      - test
