@@ -126,10 +126,18 @@ function Pagination({ location, currentPage, totalPages }) {
 
   /**
    * Create the correct page link
+   * Only adds '?' to url when page is > 1
+   *
    * @param {integer} page - new page number
    */
   function getPageLink(page) {
-    return `${pathname}?${getUpdatedSearchParams(location.search, { page })}`;
+    const params = getUpdatedSearchParams(location.search, { page });
+
+    if (params) {
+      return `${pathname}?${params}`;
+    }
+
+    return pathname;
   }
 
   const prevPageLink = getPageLink(currentPage - 1);
@@ -142,6 +150,7 @@ function Pagination({ location, currentPage, totalPages }) {
       marginTop={theme.spacing.lg}
       marginBottom={theme.spacing.lg}
       marginX={theme.spacing.lg}
+      role="navigation"
     >
       <PaginationArrow
         hidden={currentPage === 1}
@@ -172,34 +181,34 @@ function Pagination({ location, currentPage, totalPages }) {
         const isActivePage = currentPage === page;
 
         return (
-          <Link to={getPageLink(page)} key={index}>
-            <Button
-              ref={el => (refs.current[index] = el)}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              width={10}
-              height={10}
-              backgroundColor={isActivePage && theme.colors['rbb-orange']}
-              fontFamily={theme.fonts['heading-slab']}
-              fontSize={theme.fontSizes.lg}
-              fontWeight={theme.fontWeights.bold}
-              cursor="pointer"
-              _focus={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
-              _hover={{
-                bg:
-                  !isActivePage &&
-                  refWithHover &&
-                  theme.colors['rbb-lightgray'],
-              }}
-              title={`Go to page ${page}`}
-              aria-label={`Go to page ${page}`}
-              onFocus={() => addFocusRemoveHover(refs.current[index])}
-              onMouseEnter={() => addHoverRemoveFocus(refs.current[index])}
-            >
-              {page}
-            </Button>
-          </Link>
+          <Button
+            key={index}
+            as={Link}
+            to={getPageLink(page)}
+            ref={el => (refs.current[index] = el)}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            width={10}
+            height={10}
+            backgroundColor={isActivePage && theme.colors['rbb-orange']}
+            fontFamily={theme.fonts['heading-slab']}
+            fontSize={theme.fontSizes.lg}
+            fontWeight={theme.fontWeights.bold}
+            cursor="pointer"
+            _focus={{ bg: !isActivePage && theme.colors['rbb-lightgray'] }}
+            _hover={{
+              bg:
+                !isActivePage && refWithHover && theme.colors['rbb-lightgray'],
+            }}
+            title={`Go to page ${page}`}
+            aria-label={`Go to page ${page}`}
+            aria-current={isActivePage ? 'page' : null}
+            onFocus={() => addFocusRemoveHover(refs.current[index])}
+            onMouseEnter={() => addHoverRemoveFocus(refs.current[index])}
+          >
+            {page}
+          </Button>
         );
       })}
       <PaginationArrow
