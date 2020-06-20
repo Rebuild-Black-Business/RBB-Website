@@ -34,6 +34,7 @@ export default function About() {
           <PageHeading>About</PageHeading>
           <Image
             publicId="assets/people-protesting-on-street-4552840_gginry"
+            alt="close up of a fist in the air"
             cloudName="rebuild-black-business"
             pos="absolute"
             left={0}
@@ -167,6 +168,7 @@ export default function About() {
               modalCard
               title="Business Owners"
               publicId="assets/contact-left"
+              alt="business shop window"
               transforms={{ width: 800, height: 450, crop: 'crop' }}
               blurb="Add your business to our list"
             />
@@ -180,6 +182,7 @@ export default function About() {
                     email={data.site.siteMetadata.social.contact}
                     blurb="Send us an email and we will be in touch"
                     publicId="assets/contact-middle"
+                    alt="aerial view of user typing at keyboard"
                   />
                 )}
               />
@@ -188,6 +191,7 @@ export default function About() {
               title="Volunteers"
               blurb="Join us"
               publicId="assets/contact-right"
+              alt="aerial view of group of people putting their hands into the middle"
             />
           </Grid>
         </Flex>
