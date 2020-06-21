@@ -1,0 +1,18 @@
+version: 2.1
+orbs:
+  node: cypress-io/cypress@1
+jobs:
+  test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - run: npm ci
+      - run:
+          name: 'Cypress tests'
+          command: npm run test:e2e:ci
+
+workflows:
+  integration-tests:
+    jobs:
+      - test
