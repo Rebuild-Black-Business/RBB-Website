@@ -106,6 +106,7 @@ export default function NotFound() {
               <Image
                 publicId="/assets/business-services"
                 cloudName="rebuild-black-business"
+                alt="illustration of professionals standing"
                 transforms={{
                   height: 0.2,
                 }}

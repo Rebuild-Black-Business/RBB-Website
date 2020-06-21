@@ -7,6 +7,7 @@ const PageHeading = ({ children, ...rest }) => {
 
   return (
     <Heading
+      data-testid="heading"
       textAlign="center"
       as="h1"
       size="2xl"
