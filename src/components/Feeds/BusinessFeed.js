@@ -38,8 +38,8 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
                   category={business.category}
                   description={business.description}
                   location={formattedLocation}
-                  websiteUrl={business.website}
-                  donationUrl={business.donation_link}
+                  websiteUrl={business.site}
+                  donationUrl={business.donationLink}
                 />
               );
             })}
