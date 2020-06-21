@@ -13,14 +13,9 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 ### How can I get involved now?
 
-The first step is to make sure that you're a part of the [Discord Community](https://discord.gg/272XMuv). State in the #sorting-hat channel your desire to join the Developer team. This will get you access to the development channels for further information.
+The first step is to make sure that you've sign up as a volunteer at http://join.rebuildblackbusiness.com/ indicating your interested in contributing and reviewed our [Code of Conduct](https://github.com/Rebuild-Black-Business/RBB-Website/blob/master/CODE_OF_CONDUCT.md). This will get you access to our Discord development channels for further information.
 
-We're tracking all high level Web Development tasks in Trello:
-
-- [Front-End Development Trello](https://trello.com/b/d1sguaj6/rebuild-black-business-frontend-dev)
-- [Back-End Development Trello](https://trello.com/b/034hEV4X/rebuild-black-business-backend-dev)
-
-If you see a task in the Trello that seems like something you'd like to tackle, comment on the task expressing your interest. A project manager will assign the task to you. Tasks are then elaborated on in detail within [GitHub Issues](https://github.com/Rebuild-Black-Business/RBB-Website/issues). The Trello card will have a link to the corresponding issue so you can get started!
+If you see a [GitHub Issues](https://github.com/Rebuild-Black-Business/RBB-Website/issues) you're interested in working on, comment on the task expressing your interest. A project manager will assign the task to you. 
 
 ### Branch Name Conventions
 
@@ -40,7 +35,7 @@ Code reviewers will automatically be notified for a review.
 
 ## Terminology
 
-- User Types - Dynamic user data for the various types of data used on the site. Currently this includes the following
+- Data Types - Dynamic user-generated data for the various types of data used on the site. Currently this includes the following
   - Business In Need
   - Black Owned Business
   - Service Organization
@@ -50,13 +45,13 @@ Code reviewers will automatically be notified for a review.
 
 **Frontend**
 
-The website is built using [Gatsby](https://www.gatsbyjs.org/docs/), with UI components leveraging [Chakra UI](https://chakra-ui.com/getting-started) with custom theming for rapid and consistent component driven development.
+The website is built using [Gatsby](https://www.gatsbyjs.org/docs/), with UI components leveraging [Chakra UI](https://chakra-ui.com/getting-started) with custom theming for rapid and consistent component driven development. Unit tests are written with the [React-Testing-Library](https://github.com/testing-library/react-testing-library)
 
 **Data**
 
 Data for the various user types is stored in [Airtable](https://airtable.com/). Each user type has it's own table that the site pulls from and displays.
 
-To get access to this data, please join the [Rebuild Black Business Discord](https://discord.gg/272XMuv) and express your interest in helping to your assigned Team Lead. They'll get you read access to the data in a timely manner.
+To get access to this data, sign up as a volunteer at http://join.rebuildblackbusiness.com/ to get access to the Rebuild Black Business Discord and express your interest in helping on Discord to your assigned Team Lead. They'll get you read access to the data in a timely manner.
 
 ## Install
 
@@ -142,6 +137,17 @@ npm run develop
 This will start Gatsby and show you a local development URL. Whenever you make code changes, Gatsby will automatically reload the browser to show you your changes.
 
 To stop the development server, press `control + C` in your terminal.
+
+### Troubleshooting
+If `npm run develop` throws an error like:
+```
+ERROR #85923  GRAPHQL
+
+There was an error in your GraphQL query:
+
+Cannot query field "allAirtableResources" on type "Query".
+```
+this is likely due to misconfigured environemnt variables for that particular resource (i.e., Airtable API key is missing or invalid). To resolve this issue you can double-check that you've followed the env setup instructions in this README or ask for help in Discord.
 
 ## Run tests
 
