@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import 'isomorphic-fetch';
 
-const endpoint = process.env.SEARCH_API_ENDPOINT;
+const endpoint = process.env.GATSBY_SEARCH_API_ENDPOINT;
 const LOADING_STATE = {
   NONE: 'none',
   INITIAL: 'intial',
@@ -48,7 +48,6 @@ function useSearch(filters, page) {
           `${endpoint}api/v1/businesses?page=${page}&${filterStr}`
         );
         const results = await response.json();
-        console.log('results', results);
 
         setResults(results.records);
         setTotalPages(Math.ceil(results.total / pageSize));
