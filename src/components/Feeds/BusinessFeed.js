@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
-import { LOADING_STATE } from '../../hooks/useAlgoliaSearch';
+import { LOADING_STATE } from '../../hooks/useSearch';
 
 import ResultCard from '../ResultCard';
 
@@ -34,9 +34,9 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
               return (
                 <ResultCard
                   key={business.objectID}
-                  name={business.business_name || business.name}
+                  name={business.businessName || business.name}
                   category={business.category}
-                  description={business.business_description}
+                  description={business.description}
                   location={formattedLocation}
                   websiteUrl={business.website}
                   donationUrl={business.donation_link}

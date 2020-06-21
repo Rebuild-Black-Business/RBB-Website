@@ -109,11 +109,13 @@ Additionally, the `.env.EXAMPLE` file has the `AIRTABLE_BASE_ID` pre-defined for
 
 If you ever lose the base ID for the dummy database, it is `appkenjGlBB01wr3i`.
 
-### Algolia
+### Search
 
-We are using Algolia for our searching backend, please ask for API keys as currently we only have database setup and I don't wanna put the keys in here.
+We have a PHP backend setup for search, it does not have an API key as of right now however not too much of an issue as it is a public API anyway.
 
-All the Algolia keys need to be set in .env.development as Gatsby uses this method to seperate out environment variables that are loaded on the frontend from the rest.
+The search endpoint needs to be set in .env.development as Gatsby uses this method to seperate out environment variables that are loaded on the frontend from the rest.
+
+Please ask for the endpoint when running locally (also check pinned messages).
 
 ## Cloudinary
 

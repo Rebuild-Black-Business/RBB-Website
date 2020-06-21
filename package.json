@@ -43,6 +43,7 @@
     "gatsby-plugin-sitemap": "^2.4.5",
     "gatsby-source-airtable": "^2.1.1",
     "gatsby-source-filesystem": "^2.3.10",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-geocode": "^0.2.1",
