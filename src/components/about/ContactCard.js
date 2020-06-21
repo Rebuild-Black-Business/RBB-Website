@@ -19,12 +19,12 @@ import Image from '../../components/Image.js';
 import SubmitBusiness from '../Forms/SubmitBusiness.js';
 import { VOLUNTEER_URL } from '../../constants/about';
 
-const CardContent = ({ title, blurb, publicId, transforms = {} }) => {
+const CardContent = ({ title, blurb, publicId, alt, transforms = {} }) => {
   const theme = useTheme();
   return (
     <>
       {publicId ? (
-        <CardImage publicId={publicId} transforms={transforms} />
+        <CardImage publicId={publicId} transforms={transforms} alt={alt} />
       ) : (
         <NoImage />
       )}
@@ -40,7 +40,7 @@ const CardContent = ({ title, blurb, publicId, transforms = {} }) => {
         <Heading
           color="white"
           fontFamily={theme.fonts.heading}
-          as="h5"
+          as="h3"
           size="md"
         >
           {title}
@@ -68,10 +68,10 @@ const NoImage = () => (
 );
 
 // @TODO :: Replace with new Image component
-const CardImage = ({ publicId, transforms }) => {
+const CardImage = ({ publicId, transforms, alt }) => {
   return (
     <Flex w="100%" minH="220px" position="relative" overflow="hidden">
-      <Image publicId={publicId} transforms={{ ...transforms }} />
+      <Image publicId={publicId} transforms={{ ...transforms }} alt={alt} />
     </Flex>
   );
 };
@@ -92,6 +92,7 @@ const ModalForm = ({ isOpen, onClose, title }) => (
 
 const ModalCard = ({
   publicId,
+  alt,
   modalTitle,
   title,
   blurb,
@@ -116,6 +117,7 @@ const ModalCard = ({
           title={title}
           blurb={blurb}
           publicId={publicId}
+          alt={alt}
           transforms={transforms}
         />
       </Flex>
@@ -124,7 +126,14 @@ const ModalCard = ({
   );
 };
 
-const MailtoCard = ({ publicId, email, title, blurb, transforms = {} }) => (
+const MailtoCard = ({
+  publicId,
+  alt,
+  email,
+  title,
+  blurb,
+  transforms = {},
+}) => (
   <Flex
     as="a"
     href={`mailto:${email}`}
@@ -136,12 +145,13 @@ const MailtoCard = ({ publicId, email, title, blurb, transforms = {} }) => (
       title={title}
       blurb={blurb}
       publicId={publicId}
+      alt={alt}
       transforms={transforms}
     />
   </Flex>
 );
 
-const VolunteerCard = ({ publicId, title, blurb, transforms = {} }) => (
+const VolunteerCard = ({ publicId, alt, title, blurb, transforms = {} }) => (
   <Flex
     as={Link}
     href={VOLUNTEER_URL}
@@ -153,6 +163,7 @@ const VolunteerCard = ({ publicId, title, blurb, transforms = {} }) => (
       title={title}
       blurb={blurb}
       publicId={publicId}
+      alt={alt}
       transforms={transforms}
     />
   </Flex>
@@ -175,6 +186,7 @@ const ContactCard = ({
   title,
   blurb,
   publicId,
+  alt,
   modalCard,
   mailtoCard,
   modalTitle,
@@ -199,6 +211,7 @@ const ContactCard = ({
           title={title}
           blurb={blurb}
           publicId={publicId}
+          alt={alt}
           transforms={transforms}
         />
       </PseudoBox>
@@ -212,6 +225,7 @@ const ContactCard = ({
           title={title}
           blurb={blurb}
           publicId={publicId}
+          alt={alt}
           transforms={transforms}
         />
       </PseudoBox>
@@ -223,6 +237,7 @@ const ContactCard = ({
         title={title}
         blurb={blurb}
         publicId={publicId}
+        alt={alt}
         transforms={transforms}
       />
     </PseudoBox>

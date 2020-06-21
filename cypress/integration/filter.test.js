@@ -33,8 +33,8 @@ describe('Allies Screen', () => {
 
   it('Filtering Allies will show a Signup form when there are no results', () => {
     // Fill and Submit the form
+    cy.findByTestId('toc-agree').click();
     cy.get('#skill').selectNth(1);
-    cy.get('#location').click().type(`${ZIP}{enter}`);
 
     // Check for the things we want to see
     cy.findByTestId('heading');

@@ -86,6 +86,7 @@ export default function Allies() {
                 </ModalBody>
                 <ModalFooter>
                   <Button
+                    data-testid="toc-agree"
                     margin="0 auto"
                     variant="primary"
                     rightIcon="check"
