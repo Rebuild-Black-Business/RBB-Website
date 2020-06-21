@@ -6,6 +6,7 @@ const PageSubtitle = ({ children, ...rest }) => {
   const theme = useTheme();
   return (
     <Heading
+      data-testid="subheading"
       as="h2"
       fontSize={theme.fontSizes.lg}
       maxWidth="960px"
