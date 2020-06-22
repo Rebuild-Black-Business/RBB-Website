@@ -16,7 +16,7 @@ import Pagination from '../components/Pagination';
 
 import { handleLocationToCoords } from '../api/geocode';
 
-import useAlgoliaSearch, { LOADING_STATE } from '../hooks/useAlgoliaSearch';
+import useSearch, { LOADING_STATE } from '../hooks/useSearch';
 import usePagination from '../hooks/usePagination';
 import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import Button from '../components/Button';
@@ -109,12 +109,10 @@ export default function Businesses(props) {
   }, [props.location]);
 
   const { page } = usePagination(pageLocation);
-  const {
-    results,
-    totalPages,
-    loadingState,
-    setLoadingState,
-  } = useAlgoliaSearch(searchFilters, page);
+  const { results, totalPages, loadingState, setLoadingState } = useSearch(
+    searchFilters,
+    page
+  );
 
   function onSearch(filters) {
     setLoadingState(LOADING_STATE.SEARCHING);

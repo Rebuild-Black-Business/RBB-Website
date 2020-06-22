@@ -107,7 +107,7 @@ const ResultCard = forwardRef(
     },
     ref
   ) => {
-    const catVar = toCamelCase(category || 'other');
+    const catVar = category ? toCamelCase(category.name) : 'Other';
     const hasFallbackImage =
       category && Object.keys(categoryData).includes(catVar);
     const hasImage = !!(imageSrc || hasFallbackImage);
