@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Rebuild Black Business 👋</h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -201,6 +201,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://chances.dev/"><img src="https://avatars0.githubusercontent.com/u/3082153?v=4" width="100px;" alt=""/><br /><sub><b>Chance Strickland</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=chancestrickland" title="Code">💻</a></td>
     <td align="center"><a href="http://jordanandree.com/"><img src="https://avatars0.githubusercontent.com/u/235503?v=4" width="100px;" alt=""/><br /><sub><b>Jordan Andree</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jordanandree" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/QMaximillian"><img src="https://avatars2.githubusercontent.com/u/25488451?v=4" width="100px;" alt=""/><br /><sub><b>Quinn Lashinsky</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=QMaximillian" title="Code">💻</a></td>
   </tr>
 </table>
 
