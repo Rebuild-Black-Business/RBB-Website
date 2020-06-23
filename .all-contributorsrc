@@ -189,6 +189,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jbolda",
+      "name": "Jacob Bolda",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2019387?v=4",
+      "profile": "http://www.jacobbolda.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
