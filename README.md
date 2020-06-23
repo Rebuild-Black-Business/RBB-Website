@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Rebuild Black Business 👋</h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -196,6 +196,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/shapirone"><img src="https://avatars0.githubusercontent.com/u/20157895?v=4" width="100px;" alt=""/><br /><sub><b>shapirone</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=shapirone" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/domitriusclark"><img src="https://avatars2.githubusercontent.com/u/10120288?v=4" width="100px;" alt=""/><br /><sub><b>Domitrius</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=domitriusclark" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/subject026"><img src="https://avatars2.githubusercontent.com/u/36077932?v=4" width="100px;" alt=""/><br /><sub><b>Louis Samuel</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=subject026" title="Code">💻</a></td>
+    <td align="center"><a href="https://chrisbrownie.dev/"><img src="https://avatars2.githubusercontent.com/u/19195374?v=4" width="100px;" alt=""/><br /><sub><b>Chris</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=ChrisBrownie55" title="Code">💻</a></td>
   </tr>
 </table>
 
