@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Rebuild Black Business 👋</h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -215,6 +215,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://learnwithjason.dev/"><img src="https://avatars2.githubusercontent.com/u/163561?v=4" width="100px;" alt=""/><br /><sub><b>Jason Lengstorf</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jlengstorf" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/mmosholder"><img src="https://avatars1.githubusercontent.com/u/1707467?v=4" width="100px;" alt=""/><br /><sub><b>Malinda Mosholder</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=mmosholder" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/beattheprose"><img src="https://avatars0.githubusercontent.com/u/45179933?v=4" width="100px;" alt=""/><br /><sub><b>Alex Jackson</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=beattheprose" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.marcuslyons.com/"><img src="https://avatars1.githubusercontent.com/u/10541922?v=4" width="100px;" alt=""/><br /><sub><b>Marcus Lyons</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=marcuslyons" title="Code">💻</a></td>
   </tr>
 </table>
 
