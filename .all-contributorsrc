@@ -171,6 +171,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "brewswain",
+      "name": "Brandon Lee",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6282435?v=4",
+      "profile": "https://github.com/brewswain",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
