@@ -14,7 +14,9 @@
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,d.ts}\"",
     "lint": "eslint . --ext .jsx,.js,.tsx,.ts",
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "keywords": [],
   "author": "",
@@ -58,6 +60,7 @@
     "@testing-library/react": "^10.1.0",
     "@typescript-eslint/eslint-plugin": "2.x",
     "@typescript-eslint/parser": "2.x",
+    "all-contributors-cli": "^6.16.0",
     "axe-core": "^3.5.4",
     "babel-eslint": "10.x",
     "babel-jest": "^26.0.1",
