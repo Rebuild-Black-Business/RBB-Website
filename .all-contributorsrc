@@ -162,6 +162,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "andrewchough",
+      "name": "Andrew Chough",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8335579?v=4",
+      "profile": "http://andrewchough.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
