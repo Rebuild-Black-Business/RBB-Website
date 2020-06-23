@@ -279,6 +279,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "brentmclark",
+      "name": "Brent Clark",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/316743?v=4",
+      "profile": "https://brentmclark.dev/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
