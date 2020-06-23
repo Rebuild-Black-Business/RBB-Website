@@ -81,6 +81,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jakeleboeuf",
+      "name": "Jake LeBoeuf",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/690573?v=4",
+      "profile": "https://github.com/jakeleboeuf",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
