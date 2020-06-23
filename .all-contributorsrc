@@ -225,6 +225,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "kieranklaassen",
+      "name": "Kieran Klaassen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/209089?v=4",
+      "profile": "http://www.kieranklaassen.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
