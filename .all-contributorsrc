@@ -54,6 +54,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "racedale",
+      "name": "Dale Race",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6390640?v=4",
+      "profile": "https://github.com/racedale",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
