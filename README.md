@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Rebuild Black Business 👋</h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -187,6 +187,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://mikebifulco.com/"><img src="https://avatars2.githubusercontent.com/u/1844496?v=4" width="100px;" alt=""/><br /><sub><b>Mike Bifulco</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=mbifulco" title="Code">💻</a></td>
     <td align="center"><a href="https://www.richardhaines.dev/"><img src="https://avatars1.githubusercontent.com/u/22930449?v=4" width="100px;" alt=""/><br /><sub><b>Richard Haines</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=molebox" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/racedale"><img src="https://avatars0.githubusercontent.com/u/6390640?v=4" width="100px;" alt=""/><br /><sub><b>Dale Race</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=racedale" title="Code">💻</a></td>
+    <td align="center"><a href="https://ryanharris.dev/"><img src="https://avatars2.githubusercontent.com/u/4997781?v=4" width="100px;" alt=""/><br /><sub><b>Ryan Harris</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=ryancharris" title="Code">💻</a></td>
   </tr>
 </table>
 

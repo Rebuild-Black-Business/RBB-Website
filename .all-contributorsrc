@@ -63,6 +63,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ryancharris",
+      "name": "Ryan Harris",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4997781?v=4",
+      "profile": "https://ryanharris.dev/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
