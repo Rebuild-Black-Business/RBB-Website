@@ -76,9 +76,7 @@ This site uses Airtable to keep track of business data. We have set up a dummy d
 
 Upon clicking the above link, you will get "Read Only" access to the database.
 
-Once you've obtained access, go to the API docs and grab your API key by visiting the following link: https://airtable.com/appFoFzjMcciPUgoK/api/docs#javascript/authentication
-
-Or by clicking on HELP button in the upper right hand corner of Airtable, and finding the "API Documentation" link:
+Once you've obtained access, go to the API docs and grab your API key clicking on HELP button in the upper right hand corner Airtable, and finding the "API Documentation" link. 
 
 ![Airtable API documentation link](docs/images/airtable-api-key-api-documentation.png)
 
