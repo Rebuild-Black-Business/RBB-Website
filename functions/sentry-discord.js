@@ -12,7 +12,7 @@ exports.handler = function (event, context, callback) {
 
     const payload = {
       username: 'Sentry',
-      avatar_url: `https://raw.githubusercontent.com/IanMitchell/sentry-discord/master/sentry-icon.png`,
+      avatar_url: `https://sentry-brand.storage.googleapis.com/sentry-glyph-black.png`,
       embeds: [
         {
           title: body.project_name,
@@ -21,10 +21,6 @@ exports.handler = function (event, context, callback) {
           url: body.url,
           timestamp: new Date(body.event.received * 1000).toISOString(),
           color: COLORS[body.level] || COLORS.error,
-          footer: {
-            icon_url: 'https://github.com/fluidicon.png',
-            text: 'ianmitchell/sentry-discord',
-          },
           fields: [],
         },
       ],
