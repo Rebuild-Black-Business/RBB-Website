@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
+import { Box, SimpleGrid, useTheme, Skeleton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
@@ -12,6 +12,8 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
 
   const loaded = loadingState === LOADING_STATE.NONE;
   const initialLoad = loadingState === LOADING_STATE.INITIAL;
+  const searching = loadingState === LOADING_STATE.SEARCHING;
+
   const hasResults = businesses.length > 0;
 
   return (
@@ -24,7 +26,17 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
         selectedFilters={selectedFilters}
         isSearching={loadingState === LOADING_STATE.SEARCHING}
       />
-      {!initialLoad && hasResults && (
+      {(searching || initialLoad) && (
+        <Box mb={10}>
+          <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+            {[...Array.from(new Array(4))].map((val, index) => (
+              <Skeleton key={index} height="300px" />
+            ))}
+          </SimpleGrid>
+        </Box>
+      )}
+
+      {!initialLoad && hasResults && !searching && (
         <>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
             {businesses.map(business => {
@@ -33,7 +45,7 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
               }${business.state ? business.state : ''}`;
               return (
                 <ResultCard
-                  key={business.objectID}
+                  key={business.id}
                   name={business.businessName || business.name}
                   category={business.category}
                   description={business.description}
