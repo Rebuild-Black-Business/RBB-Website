@@ -15,7 +15,7 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 The first step is to make sure that you've sign up as a volunteer at http://join.rebuildblackbusiness.com/ indicating your interested in contributing and reviewed our [Code of Conduct](https://github.com/Rebuild-Black-Business/RBB-Website/blob/master/CODE_OF_CONDUCT.md). This will get you access to our Discord development channels for further information.
 
-If you see a [GitHub Issues](https://github.com/Rebuild-Black-Business/RBB-Website/issues) you're interested in working on, comment on the task expressing your interest. A project manager will assign the task to you. 
+If you see a [GitHub Issues](https://github.com/Rebuild-Black-Business/RBB-Website/issues) you're interested in working on, comment on the task expressing your interest. A project manager will assign the task to you.
 
 ### Branch Name Conventions
 
@@ -141,7 +141,9 @@ This will start Gatsby and show you a local development URL. Whenever you make c
 To stop the development server, press `control + C` in your terminal.
 
 ### Troubleshooting
+
 If `npm run develop` throws an error like:
+
 ```
 ERROR #85923  GRAPHQL
 
@@ -149,6 +151,7 @@ There was an error in your GraphQL query:
 
 Cannot query field "allAirtableResources" on type "Query".
 ```
+
 this is likely due to misconfigured environemnt variables for that particular resource (i.e., Airtable API key is missing or invalid). To resolve this issue you can double-check that you've followed the env setup instructions in this README or ask for help in Discord.
 
 ## Run tests
@@ -162,3 +165,62 @@ npm run test
 👤 **Rebuild Black Business**
 
 - Github: [@Rebuild-Black-Business](https://github.com/Rebuild-Black-Business)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>  <td align="center"><a href="https://www.aboutmonica.com/"><img src="https://avatars0.githubusercontent.com/u/6998954?v=4" width="100px;" alt=""/><br /><sub><b>Monica Powell</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=M0nica" title="Code">💻</a></td>
+    <td align="center"><a href="http://dommagnifi.co/"><img src="https://avatars1.githubusercontent.com/u/1380536?v=4" width="100px;" alt=""/><br /><sub><b>Dominic Magnifico</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=magnificode" title="Code">💻</a></td>
+    <td align="center"><a href="https://juanri0s.github.io/"><img src="https://avatars0.githubusercontent.com/u/8475305?v=4" width="100px;" alt=""/><br /><sub><b>Juan</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=juanri0s" title="Code">💻</a></td>
+    <td align="center"><a href="https://mikebifulco.com/"><img src="https://avatars2.githubusercontent.com/u/1844496?v=4" width="100px;" alt=""/><br /><sub><b>Mike Bifulco</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=mbifulco" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.richardhaines.dev/"><img src="https://avatars1.githubusercontent.com/u/22930449?v=4" width="100px;" alt=""/><br /><sub><b>Richard Haines</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=molebox" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/racedale"><img src="https://avatars0.githubusercontent.com/u/6390640?v=4" width="100px;" alt=""/><br /><sub><b>Dale Race</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=racedale" title="Code">💻</a></td>
+    <td align="center"><a href="https://ryanharris.dev/"><img src="https://avatars2.githubusercontent.com/u/4997781?v=4" width="100px;" alt=""/><br /><sub><b>Ryan Harris</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=ryancharris" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/asaki444"><img src="https://avatars0.githubusercontent.com/u/12377459?v=4" width="100px;" alt=""/><br /><sub><b>Aditi</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=asaki444" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jakeleboeuf"><img src="https://avatars0.githubusercontent.com/u/690573?v=4" width="100px;" alt=""/><br /><sub><b>Jake LeBoeuf</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jakeleboeuf" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/llexical"><img src="https://avatars2.githubusercontent.com/u/3781568?v=4" width="100px;" alt=""/><br /><sub><b>Lizzie</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=llexical" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/shapirone"><img src="https://avatars0.githubusercontent.com/u/20157895?v=4" width="100px;" alt=""/><br /><sub><b>shapirone</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=shapirone" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/domitriusclark"><img src="https://avatars2.githubusercontent.com/u/10120288?v=4" width="100px;" alt=""/><br /><sub><b>Domitrius</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=domitriusclark" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/subject026"><img src="https://avatars2.githubusercontent.com/u/36077932?v=4" width="100px;" alt=""/><br /><sub><b>Louis Samuel</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=subject026" title="Code">💻</a></td>
+    <td align="center"><a href="https://chrisbrownie.dev/"><img src="https://avatars2.githubusercontent.com/u/19195374?v=4" width="100px;" alt=""/><br /><sub><b>Chris</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=ChrisBrownie55" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://chances.dev/"><img src="https://avatars0.githubusercontent.com/u/3082153?v=4" width="100px;" alt=""/><br /><sub><b>Chance Strickland</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=chancestrickland" title="Code">💻</a></td>
+    <td align="center"><a href="http://jordanandree.com/"><img src="https://avatars0.githubusercontent.com/u/235503?v=4" width="100px;" alt=""/><br /><sub><b>Jordan Andree</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jordanandree" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/QMaximillian"><img src="https://avatars2.githubusercontent.com/u/25488451?v=4" width="100px;" alt=""/><br /><sub><b>Quinn Lashinsky</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=QMaximillian" title="Code">💻</a></td>
+    <td align="center"><a href="http://andrewchough.com/"><img src="https://avatars2.githubusercontent.com/u/8335579?v=4" width="100px;" alt=""/><br /><sub><b>Andrew Chough</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=andrewchough" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/brewswain"><img src="https://avatars1.githubusercontent.com/u/6282435?v=4" width="100px;" alt=""/><br /><sub><b>Brandon Lee</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=brewswain" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/bcgoss"><img src="https://avatars0.githubusercontent.com/u/8137732?v=4" width="100px;" alt=""/><br /><sub><b>Bryan Goss</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=bcgoss" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.jacobbolda.com/"><img src="https://avatars2.githubusercontent.com/u/2019387?v=4" width="100px;" alt=""/><br /><sub><b>Jacob Bolda</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jbolda" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/aka-tpayne"><img src="https://avatars2.githubusercontent.com/u/1674958?v=4" width="100px;" alt=""/><br /><sub><b>Tristan Payne</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=aka-tpayne" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.chrisdemars.com/"><img src="https://avatars2.githubusercontent.com/u/6799474?v=4" width="100px;" alt=""/><br /><sub><b>Chris DeMars</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=chrisdemars" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/billy-le"><img src="https://avatars3.githubusercontent.com/u/9342687?v=4" width="100px;" alt=""/><br /><sub><b>Billy Le</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=billy-le" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.kieranklaassen.com/"><img src="https://avatars1.githubusercontent.com/u/209089?v=4" width="100px;" alt=""/><br /><sub><b>Kieran Klaassen</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=kieranklaassen" title="Code">💻</a></td>
+    <td align="center"><a href="https://learnwithjason.dev/"><img src="https://avatars2.githubusercontent.com/u/163561?v=4" width="100px;" alt=""/><br /><sub><b>Jason Lengstorf</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jlengstorf" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/mmosholder"><img src="https://avatars1.githubusercontent.com/u/1707467?v=4" width="100px;" alt=""/><br /><sub><b>Malinda Mosholder</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=mmosholder" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/beattheprose"><img src="https://avatars0.githubusercontent.com/u/45179933?v=4" width="100px;" alt=""/><br /><sub><b>Alex Jackson</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=beattheprose" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.marcuslyons.com/"><img src="https://avatars1.githubusercontent.com/u/10541922?v=4" width="100px;" alt=""/><br /><sub><b>Marcus Lyons</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=marcuslyons" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/dilloncoffman"><img src="https://avatars1.githubusercontent.com/u/22205705?v=4" width="100px;" alt=""/><br /><sub><b>Dillon Coffman</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=dilloncoffman" title="Code">💻</a></td>
+    <td align="center"><a href="https://brentmclark.dev/"><img src="https://avatars0.githubusercontent.com/u/316743?v=4" width="100px;" alt=""/><br /><sub><b>Brent Clark</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=brentmclark" title="Code">💻</a></td>
+    <td align="center"><a href="https://jamie.build/"><img src="https://avatars0.githubusercontent.com/u/952783?v=4" width="100px;" alt=""/><br /><sub><b>Jamie Kyle</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jamiebuilds" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/kkemple"><img src="https://avatars3.githubusercontent.com/u/3629876?v=4" width="100px;" alt=""/><br /><sub><b>Kurt Kemple</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=kkemple" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

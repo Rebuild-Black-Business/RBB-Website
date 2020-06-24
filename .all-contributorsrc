@@ -1,0 +1,312 @@
+{
+  "projectName": "RBB-Website",
+  "projectOwner": "Rebuild-Black-Business",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "M0nica",
+      "name": "Monica Powell",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6998954?v=4",
+      "profile": "https://www.aboutmonica.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "magnificode",
+      "name": "Dominic Magnifico",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1380536?v=4",
+      "profile": "http://dommagnifi.co/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "juanri0s",
+      "name": "Juan",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8475305?v=4",
+      "profile": "https://juanri0s.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mbifulco",
+      "name": "Mike Bifulco",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1844496?v=4",
+      "profile": "https://mikebifulco.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "molebox",
+      "name": "Richard Haines",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22930449?v=4",
+      "profile": "https://www.richardhaines.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "racedale",
+      "name": "Dale Race",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6390640?v=4",
+      "profile": "https://github.com/racedale",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ryancharris",
+      "name": "Ryan Harris",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4997781?v=4",
+      "profile": "https://ryanharris.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "asaki444",
+      "name": "Aditi",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/12377459?v=4",
+      "profile": "https://github.com/asaki444",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jakeleboeuf",
+      "name": "Jake LeBoeuf",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/690573?v=4",
+      "profile": "https://github.com/jakeleboeuf",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "llexical",
+      "name": "Lizzie",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3781568?v=4",
+      "profile": "https://github.com/llexical",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "shapirone",
+      "name": "shapirone",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/20157895?v=4",
+      "profile": "https://github.com/shapirone",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "domitriusclark",
+      "name": "Domitrius",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/10120288?v=4",
+      "profile": "https://github.com/domitriusclark",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "subject026",
+      "name": "Louis Samuel",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/36077932?v=4",
+      "profile": "https://github.com/subject026",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ChrisBrownie55",
+      "name": "Chris",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19195374?v=4",
+      "profile": "https://chrisbrownie.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "chancestrickland",
+      "name": "Chance Strickland",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3082153?v=4",
+      "profile": "https://chances.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jordanandree",
+      "name": "Jordan Andree",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/235503?v=4",
+      "profile": "http://jordanandree.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "QMaximillian",
+      "name": "Quinn Lashinsky",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/25488451?v=4",
+      "profile": "https://github.com/QMaximillian",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "andrewchough",
+      "name": "Andrew Chough",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8335579?v=4",
+      "profile": "http://andrewchough.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "brewswain",
+      "name": "Brandon Lee",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6282435?v=4",
+      "profile": "https://github.com/brewswain",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bcgoss",
+      "name": "Bryan Goss",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8137732?v=4",
+      "profile": "https://github.com/bcgoss",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jbolda",
+      "name": "Jacob Bolda",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2019387?v=4",
+      "profile": "http://www.jacobbolda.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aka-tpayne",
+      "name": "Tristan Payne",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1674958?v=4",
+      "profile": "https://github.com/aka-tpayne",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "chrisdemars",
+      "name": "Chris DeMars",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6799474?v=4",
+      "profile": "http://www.chrisdemars.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "billy-le",
+      "name": "Billy Le",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9342687?v=4",
+      "profile": "https://github.com/billy-le",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kieranklaassen",
+      "name": "Kieran Klaassen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/209089?v=4",
+      "profile": "http://www.kieranklaassen.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jlengstorf",
+      "name": "Jason Lengstorf",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/163561?v=4",
+      "profile": "https://learnwithjason.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mmosholder",
+      "name": "Malinda Mosholder",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1707467?v=4",
+      "profile": "https://github.com/mmosholder",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "beattheprose",
+      "name": "Alex Jackson",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/45179933?v=4",
+      "profile": "https://github.com/beattheprose",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "marcuslyons",
+      "name": "Marcus Lyons",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/10541922?v=4",
+      "profile": "https://www.marcuslyons.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dilloncoffman",
+      "name": "Dillon Coffman",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22205705?v=4",
+      "profile": "https://github.com/dilloncoffman",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "brentmclark",
+      "name": "Brent Clark",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/316743?v=4",
+      "profile": "https://brentmclark.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jamiebuilds",
+      "name": "Jamie Kyle",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/952783?v=4",
+      "profile": "https://jamie.build/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kkemple",
+      "name": "Kurt Kemple",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3629876?v=4",
+      "profile": "https://github.com/kkemple",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
