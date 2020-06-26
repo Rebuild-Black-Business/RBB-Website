@@ -69,7 +69,7 @@ export default () => {
           backgroundColor="#000"
           backgroundMode="fade"
         >
-          <Box pt={16} pb={[72, 72, 145]} color="white">
+          <Box pt={16} pb={[72, 72, 145]} pl={[0, 0, 'inherit']} color="white">
             <Heading mb={theme.spacing.lg} as="h1">
               <Text
                 lineHeight="0.5"
