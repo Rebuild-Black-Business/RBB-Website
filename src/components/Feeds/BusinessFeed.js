@@ -20,6 +20,7 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
     <Box
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
+      width="100%"
     >
       <BusinessFilter
         onSearch={filters => onSearch(filters)}
@@ -29,8 +30,16 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
       {(searching || initialLoad) && (
         <Box mb={10}>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
-            {[...Array.from(new Array(4))].map((val, index) => (
-              <Skeleton key={index} height="300px" />
+            {[...Array.from(new Array(20))].map((_, index) => (
+              <Skeleton key={index}>
+                <ResultCard
+                  category={{ id: 1, name: 'Entertainment' }}
+                  name="Saving Small Businesses In Chicago- Skyway Bowl"
+                  description="PlaceHolder Description"
+                  location="Placeholder Location"
+                  donationUrl="Placeholder Url"
+                />
+              </Skeleton>
             ))}
           </SimpleGrid>
         </Box>
