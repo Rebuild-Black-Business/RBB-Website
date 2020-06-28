@@ -114,6 +114,8 @@ export default function Businesses(props) {
     page
   );
 
+  const searching = loadingState === LOADING_STATE.SEARCHING;
+
   function onSearch(filters) {
     setLoadingState(LOADING_STATE.SEARCHING);
     generateURL(filters, setPageLocation);
@@ -178,7 +180,7 @@ export default function Businesses(props) {
           loadingState={loadingState}
         />
 
-        {!!results.length && (
+        {!!results.length && !searching && (
           <Pagination
             location={pageLocation}
             currentPage={parseInt(page)}

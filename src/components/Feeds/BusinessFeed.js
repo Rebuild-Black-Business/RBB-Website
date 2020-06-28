@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
+import { Box, SimpleGrid, useTheme, Skeleton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
@@ -12,19 +12,40 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
 
   const loaded = loadingState === LOADING_STATE.NONE;
   const initialLoad = loadingState === LOADING_STATE.INITIAL;
+  const searching = loadingState === LOADING_STATE.SEARCHING;
+
   const hasResults = businesses.length > 0;
 
   return (
     <Box
       maxW={theme.containers.main}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
+      width="100%"
     >
       <BusinessFilter
         onSearch={filters => onSearch(filters)}
         selectedFilters={selectedFilters}
         isSearching={loadingState === LOADING_STATE.SEARCHING}
       />
-      {!initialLoad && hasResults && (
+      {(searching || initialLoad) && (
+        <Box mb={10}>
+          <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+            {[...Array.from(new Array(20))].map((_, index) => (
+              <Skeleton key={index}>
+                <ResultCard
+                  category={{ id: 1, name: 'Entertainment' }}
+                  name="Saving Small Businesses In Chicago- Skyway Bowl"
+                  description="PlaceHolder Description"
+                  location="Placeholder Location"
+                  donationUrl="Placeholder Url"
+                />
+              </Skeleton>
+            ))}
+          </SimpleGrid>
+        </Box>
+      )}
+
+      {!initialLoad && hasResults && !searching && (
         <>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
             {businesses.map(business => {
@@ -33,7 +54,7 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
               }${business.state ? business.state : ''}`;
               return (
                 <ResultCard
-                  key={business.objectID}
+                  key={business.id}
                   name={business.businessName || business.name}
                   category={business.category}
                   description={business.description}
