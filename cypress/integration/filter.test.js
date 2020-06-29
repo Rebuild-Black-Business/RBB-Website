@@ -2,6 +2,7 @@
 
 describe('Business Screen', () => {
   const LOCATION = 'San Francisco';
+  const ZIP = '02215';
 
   beforeEach(() => {
     cy.visit('/businesses');
@@ -21,6 +22,22 @@ describe('Business Screen', () => {
     // cy.get('@subheading').should('contain', LOCATION);
 
     // TODO: Look for some form and assert
+  });
+
+  it("Leading 0's are not removed from ZIP code search", () => {
+    cy.server();
+    cy.route('https://maps.google.com/maps/api/geocode/*').as('googleApi');
+
+    cy.get('#need').selectNth(1);
+    cy.get('#type').selectNth(1);
+    cy.get('#location').click().type(`${ZIP}{enter}`);
+
+    // Make sure we redirect to the correct url and
+    // Intercept the request and make sure it has the zip
+    cy.url().should('contain', `location=${ZIP}`);
+    cy.wait('@googleApi').then(req => {
+      expect(req.url).to.contain(`address=${ZIP}`);
+    });
   });
 });
 
