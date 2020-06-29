@@ -16,7 +16,7 @@ function setUrlUtm(link) {
 
   if (
     // Ensure that the link is external and follows http protocol (as opposed to mailto)
-    url.hostname !== window.location.hostname &&
+    !url.hostname.includes('rebuildblackbusiness.com') &&
     url.protocol.includes('http')
   ) {
     const query = url.query;
