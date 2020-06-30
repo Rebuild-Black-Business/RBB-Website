@@ -60,22 +60,25 @@ const BusinessSignUpForm = () => {
       return;
     }
 
+    //needs cors-anywhere prepended for this method to work. Kinda scetchy so waiting to see the best way forward before implimenting.
     //Validates that website returns 200
-    const validSite = await fetch(`https://${businessWebsite}`)
-      .then(res => {
-        console.log(res);
-        return true;
-      })
-      .catch(err => {
-        console.log(err);
-        return false;
-      });
-    if (!validSite) {
-      setValidationMessage(
-        'Please make sure your website url is formatted correctly.'
-      );
-      return;
-    }
+    // const validSite = await fetch(
+    //   `https://cors-anywhere.herokuapp.com/${businessWebsite}`
+    // )
+    //   .then(res => {
+    //     console.log(res);
+    //     return true;
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //     return false;
+    //   });
+    // if (!validSite) {
+    //   setValidationMessage(
+    //     'Please make sure your website url is formatted correctly.'
+    //   );
+    //   return;
+    // }
 
     submitBusiness(infoToSubmit);
 
