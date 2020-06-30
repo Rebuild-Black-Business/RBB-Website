@@ -1,4 +1,7 @@
-import 'gatsby';
+const Airtable = require('airtable');
+const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API_KEY }).base(
+  process.env.GATSBY_AIRTABLE_BASE_ID
+);
 
 export function submitAlly({ email, firstName, lastName, skill, zipcode }) {
   const AirtableData = {
@@ -12,21 +15,11 @@ export function submitAlly({ email, firstName, lastName, skill, zipcode }) {
     },
   };
 
-  console.log('env', process.env.GATSBY_AIRTABLE_API_KEY);
-
-  fetch('https://api.airtable.com/v0/appkenjGlBB01wr3i/Allies', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.GATSBY_AIRTABLE_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(AirtableData),
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+  base('Allies').create(AirtableData, function (err, record) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(record);
+  });
 }
