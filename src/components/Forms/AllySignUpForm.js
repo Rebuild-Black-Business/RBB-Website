@@ -26,7 +26,7 @@ const AllySignUpForm = () => {
   const [lastName, setLastName] = useState(null);
   const [zipcode, setZipcode] = useState(null);
   const [skill, setSkill] = useState(null);
-  const [validationBool, setValidationBool] = useState(false);
+  const [validationMessage, setValidationMessage] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const theme = useTheme();
 
@@ -42,8 +42,9 @@ const AllySignUpForm = () => {
 
     //Custom Validation
     const valuesToValidate = Object.values(infoToSubmit);
+    //Validates all fields are filled
     if (valuesToValidate.includes(null)) {
-      setValidationBool(true);
+      setValidationMessage('All fields are required.');
       return;
     }
 
@@ -68,8 +69,8 @@ const AllySignUpForm = () => {
         }
       }}
     >
-      {/* renders when form is submitted with empty fields */}
-      {validationBool && <Text>All Fields Are Required</Text>}
+      {/* renders when form is submitted with validation errors */}
+      {validationMessage && <Text>{validationMessage}</Text>}
 
       <Flex width="100%" direction="column">
         <Flex direction="column" margin={theme.spacing.base}>

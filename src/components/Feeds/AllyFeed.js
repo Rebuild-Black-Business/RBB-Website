@@ -29,6 +29,7 @@ const ModalForm = ({ isOpen, onClose, title }) => (
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
       <ModalBody>
+        {/* <SubmitAlly */}
         <AllySignUpForm />
       </ModalBody>
     </ModalContent>
