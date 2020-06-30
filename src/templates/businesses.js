@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 
 import {
   Flex,
@@ -91,6 +91,11 @@ export default function Businesses(props) {
     coordinates: {},
   });
   const theme = useTheme();
+  const { page } = usePagination(pageLocation);
+  const { results, totalPages, loadingState, setLoadingState } = useSearch(
+    searchFilters,
+    page
+  );
 
   // Do this before we start searching and paginating
   useEffect(() => {
@@ -108,11 +113,15 @@ export default function Businesses(props) {
     setLocationCoordinatesFromURL();
   }, [props.location]);
 
-  const { page } = usePagination(pageLocation);
-  const { results, totalPages, loadingState, setLoadingState } = useSearch(
-    searchFilters,
-    page
-  );
+  // useLayoutEffect will make sure the skeleton loaders appear immediately when the page location changes
+  // using useEffect will also work but it will show a flash of ResultCards before showing the skeleton loaders
+  useLayoutEffect(() => {
+    setLoadingState(currLoadingState =>
+      currLoadingState === LOADING_STATE.INITIAL
+        ? currLoadingState
+        : LOADING_STATE.SEARCHING
+    );
+  }, [props.location, setLoadingState]);
 
   const searching = loadingState === LOADING_STATE.SEARCHING;
 
