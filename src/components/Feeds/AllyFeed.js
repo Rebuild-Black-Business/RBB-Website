@@ -19,16 +19,17 @@ import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import Button from '../Button';
 import Image from '../Image';
 import SubmitAlly from '../Forms/SubmitAlly';
+import AllySignUpForm from '../Forms/AllySignUpForm';
 
 // @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
+  <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
     <ModalOverlay />
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
       <ModalBody>
-        <SubmitAlly />
+        <AllySignUpForm />
       </ModalBody>
     </ModalContent>
   </Modal>
