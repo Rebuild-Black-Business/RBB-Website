@@ -52,7 +52,6 @@
     "react-use": "^15.2.2",
     "typeface-arvo": "^1.1.3",
     "typeface-inter": "^3.12.0",
-    "url-parse": "^1.4.7",
     "use-cloudinary": "^2.2.5"
   },
   "devDependencies": {

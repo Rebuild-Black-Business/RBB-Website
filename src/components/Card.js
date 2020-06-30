@@ -8,30 +8,8 @@ import {
   Text,
   Stack,
 } from '@chakra-ui/core';
-import URL from 'url-parse';
+import { setUrlUtm } from '../utils/urlUtils';
 import { Button, Image } from '.';
-
-function setUrlUtm(link) {
-  let url = new URL(link);
-
-  if (
-    // Ensure that the link is external and follows http protocol (as opposed to mailto)
-    !url.hostname.includes('rebuildblackbusiness.com') &&
-    url.protocol.includes('http')
-  ) {
-    const query = url.query;
-
-    if (!query.includes('?')) {
-      // Set the one and only query
-      url.set('query', { utm_source: 'Rebuild+Black+Business' }, false);
-    } else if (!query.includes('utm_source')) {
-      // Append if there are multiple queries and no utm_source
-      url.set('query', url.query + '&utm_source=Rebuild+Black+Business', false);
-    }
-  }
-
-  return url.href;
-}
 
 const CardWrapper = forwardRef(({ children, ...props }, ref) => {
   return (
