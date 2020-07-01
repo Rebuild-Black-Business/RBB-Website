@@ -36,6 +36,7 @@ function BusinessFeed({
         h="100%"
         top="0"
         left="0"
+        alt="looking-ip_whbkeh"
       />
       <CardContent
         color={theme.colors['rbb-black-200']}
