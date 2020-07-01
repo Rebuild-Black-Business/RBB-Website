@@ -187,6 +187,7 @@ export default function Businesses(props) {
           onSearch={onSearch}
           selectedFilters={searchFilters}
           loadingState={loadingState}
+          onOpen={onOpen}
         />
 
         {!!results.length && !searching && (
