@@ -13,16 +13,10 @@ import {
 } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
-import { submitBusiness } from '../../services/AirtableServices';
-
-const businessTypes = [
-  { id: 'entertainment', label: 'Entertainment' },
-  { id: 'food', label: 'Food and Beverage' },
-  { id: 'health', label: 'Health and Wellness' },
-  { id: 'professional', label: 'Professional Services' },
-  { id: 'retail', label: 'Retail' },
-  { id: 'other', label: 'Other' },
-];
+import {
+  submitBusiness,
+  useBusinessCategories,
+} from '../../services/AirtableServices';
 
 const BusinessSignUpForm = () => {
   const [firstName, setFirstName] = useState(null);
@@ -33,10 +27,15 @@ const BusinessSignUpForm = () => {
   const [businessDescription, setBusinessDescription] = useState(null);
   const [businessWebsite, setBusinessWebsite] = useState('');
   const [physicalLocation, setPhysicalLocation] = useState(false);
+  const [zipcode, setZipcode] = useState('');
+  const [donationLink, setDonationLink] = useState('');
   const [directlyAffected, setDirectlyAffected] = useState(false);
   const [validationMessage, setValidationMessage] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const theme = useTheme();
+
+  // fetches select options
+  const businessCategories = useBusinessCategories();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -49,36 +48,18 @@ const BusinessSignUpForm = () => {
       businessDescription,
       businessWebsite,
       physicalLocation,
+      zipcode,
       directlyAffected,
+      donationLink,
     };
 
     //Custom Validation
     const valuesToValidate = Object.values(infoToSubmit);
-    //Validates all fields are filled (exept website which defaults to empty string)
+    //Validates all required fields are filled (non-required fields need to default to empty string for this to work)
     if (valuesToValidate.includes(null)) {
-      setValidationMessage('All fields are required.');
+      setValidationMessage('All fields with * are required.');
       return;
     }
-
-    //needs cors-anywhere prepended for this method to work. Kinda scetchy so waiting to see the best way forward before implimenting.
-    //Validates that website returns 200
-    // const validSite = await fetch(
-    //   `https://cors-anywhere.herokuapp.com/${businessWebsite}`
-    // )
-    //   .then(res => {
-    //     console.log(res);
-    //     return true;
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     return false;
-    //   });
-    // if (!validSite) {
-    //   setValidationMessage(
-    //     'Please make sure your website url is formatted correctly.'
-    //   );
-    //   return;
-    // }
 
     submitBusiness(infoToSubmit);
 
@@ -105,7 +86,9 @@ const BusinessSignUpForm = () => {
 
       <Flex width="100%" direction="column">
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="firstName">Your First name</FormLabel>
+          <FormLabel isRequired htmlFor="firstName">
+            Your First name
+          </FormLabel>
           <Input
             value={firstName}
             id="firstName"
@@ -115,7 +98,9 @@ const BusinessSignUpForm = () => {
           />
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="lastName">Your Last name</FormLabel>
+          <FormLabel isRequired htmlFor="lastName">
+            Your Last name
+          </FormLabel>
           <Input
             value={lastName}
             id="lastName"
@@ -125,7 +110,9 @@ const BusinessSignUpForm = () => {
           />
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="email">Your Email</FormLabel>
+          <FormLabel isRequired htmlFor="email">
+            Your Email
+          </FormLabel>
           <Input
             value={email}
             id="email"
@@ -135,7 +122,9 @@ const BusinessSignUpForm = () => {
           />
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="businessName">Business Name</FormLabel>
+          <FormLabel isRequired htmlFor="businessName">
+            Business Name
+          </FormLabel>
           <Input
             value={businessName}
             id="businessName"
@@ -145,24 +134,26 @@ const BusinessSignUpForm = () => {
           />
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="category">Category</FormLabel>
+          <FormLabel isRequired htmlFor="category">
+            Category
+          </FormLabel>
           <Select
             id="category"
             placeholder="Category"
             value={category}
             onChange={event => setCategory(event.currentTarget.value)}
           >
-            {businessTypes.map(category => {
+            {businessCategories.map(category => {
               return (
-                <option key={category.id} value={category.label}>
-                  {category.label}
+                <option key={category} value={category}>
+                  {category}
                 </option>
               );
             })}
           </Select>
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="businessDescription">
+          <FormLabel isRequired htmlFor="businessDescription">
             Business Description
           </FormLabel>
           <Textarea
@@ -176,28 +167,45 @@ const BusinessSignUpForm = () => {
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
           <FormLabel htmlFor="businessWebsite">Business Website</FormLabel>
-          <Flex>
-            <InputLeftAddon children="https://" />
-            <Input
-              value={businessWebsite}
-              id="businessWebsite"
-              type="text"
-              placeholder="Business website"
-              onChange={event => setBusinessWebsite(event.currentTarget.value)}
-            />
-          </Flex>
+          <Input
+            value={businessWebsite}
+            id="businessWebsite"
+            type="text"
+            placeholder="Business website"
+            onChange={event => setBusinessWebsite(event.currentTarget.value)}
+          />
         </Flex>
         <Flex align="center" margin={theme.spacing.base}>
           <Checkbox
             value={physicalLocation}
             id="physicalLocation"
-            onChange={() => setPhysicalLocation(prev => !prev)}
+            onChange={() => {
+              setPhysicalLocation(prev => !prev);
+
+              //needed for custome validation
+              if (zipcode === '') setZipcode(null);
+              if (zipcode === null) setZipcode('');
+            }}
             marginRight="0.5rem"
           />
           <FormLabel htmlFor="physicalLocation" paddingTop="5px">
             Business has a physical location
           </FormLabel>
         </Flex>
+        {physicalLocation && (
+          <Flex direction="column" margin={theme.spacing.base}>
+            <FormLabel isRequired htmlFor="zipcode">
+              Zipcode
+            </FormLabel>
+            <Input
+              value={zipcode}
+              id="zipcode"
+              type="text"
+              placeholder="Zipcode"
+              onChange={event => setZipcode(event.currentTarget.value)}
+            />
+          </Flex>
+        )}
         <Flex align="center" margin={theme.spacing.base}>
           <Checkbox
             value={directlyAffected}
@@ -210,6 +218,18 @@ const BusinessSignUpForm = () => {
           </FormLabel>
         </Flex>
       </Flex>
+      {directlyAffected && (
+        <Flex direction="column" margin={theme.spacing.base}>
+          <FormLabel htmlFor="donationLink">Donation Link (optional)</FormLabel>
+          <Input
+            value={donationLink}
+            id="donationLink"
+            type="text"
+            placeholder="Donation Link"
+            onChange={event => setDonationLink(event.currentTarget.value)}
+          />
+        </Flex>
+      )}
       <Flex width="100%" justify="center">
         <PrimaryButton onClick={handleSubmit}>Register</PrimaryButton>
       </Flex>

@@ -10,25 +10,23 @@ import {
 } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
-import { submitAlly } from '../../services/AirtableServices';
-
-const skillTypes = [
-  { id: 'business', label: 'Business' },
-  { id: 'marketing', label: 'Marketing' },
-  { id: 'outreach', label: 'Outreach' },
-  { id: 'tech', label: 'Tech' },
-  { id: 'government', label: 'Government' },
-];
+import {
+  submitAlly,
+  useAllySpecialities,
+} from '../../services/AirtableServices';
 
 const AllySignUpForm = () => {
   const [email, setEmail] = useState(null);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [zipcode, setZipcode] = useState(null);
-  const [skill, setSkill] = useState(null);
+  const [speciality, setSpeciality] = useState(null);
   const [validationMessage, setValidationMessage] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const theme = useTheme();
+
+  //for select options
+  const allySpecialities = useAllySpecialities();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -36,7 +34,7 @@ const AllySignUpForm = () => {
       email,
       firstName,
       lastName,
-      skill,
+      speciality,
       zipcode,
     };
 
@@ -104,17 +102,17 @@ const AllySignUpForm = () => {
           />
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="skill">Specialty</FormLabel>
+          <FormLabel htmlFor="speciality">Speciality</FormLabel>
           <Select
-            id="skill"
+            id="speciality"
             placeholder="Specialty"
-            value={skill}
-            onChange={event => setSkill(event.currentTarget.value)}
+            value={speciality}
+            onChange={event => setSpeciality(event.currentTarget.value)}
           >
-            {skillTypes.map(skill => {
+            {allySpecialities.map(speciality => {
               return (
-                <option key={skill.id} value={skill.label}>
-                  {skill.label}
+                <option key={speciality} value={speciality}>
+                  {speciality}
                 </option>
               );
             })}
