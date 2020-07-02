@@ -10,10 +10,9 @@ import {
 } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
-import {
-  submitAlly,
-  useAllySpecialities,
-} from '../../services/AirtableServices';
+import { submitAlly } from '../../services/AirtableServices';
+
+const allySpecialities = ['Outreach', 'Tech', 'Business', 'Marketing'];
 
 const AllySignUpForm = () => {
   const [email, setEmail] = useState(null);
@@ -24,9 +23,6 @@ const AllySignUpForm = () => {
   const [validationMessage, setValidationMessage] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const theme = useTheme();
-
-  //for select options
-  const allySpecialities = useAllySpecialities();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -42,7 +38,7 @@ const AllySignUpForm = () => {
     const valuesToValidate = Object.values(infoToSubmit);
     //Validates all fields are filled
     if (valuesToValidate.includes(null)) {
-      setValidationMessage('All fields are required.');
+      setValidationMessage('All fields with * are required.');
       return;
     }
 

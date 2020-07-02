@@ -9,14 +9,19 @@ import {
   Text,
   Textarea,
   Checkbox,
-  InputLeftAddon,
 } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
-import {
-  submitBusiness,
-  useBusinessCategories,
-} from '../../services/AirtableServices';
+import { submitBusiness } from '../../services/AirtableServices';
+
+const businessCategories = [
+  'Entertainment',
+  'Retail',
+  'Professional services',
+  'Food and beverage',
+  'Health and wellness',
+  'Other',
+];
 
 const BusinessSignUpForm = () => {
   const [firstName, setFirstName] = useState(null);
@@ -33,9 +38,6 @@ const BusinessSignUpForm = () => {
   const [validationMessage, setValidationMessage] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const theme = useTheme();
-
-  // fetches select options
-  const businessCategories = useBusinessCategories();
 
   const handleSubmit = async event => {
     event.preventDefault();
