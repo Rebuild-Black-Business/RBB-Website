@@ -93,14 +93,14 @@ _Note:_ If you don't see this checkbox, make sure you're logged in to Airtable, 
 Once you have your API key, create a file called `.env` and add your API key:
 
 ```bash
-AIRTABLE_API_KEY=YOUR_API_KEY
+GATSBY_AIRTABLE_API_KEY=YOUR_API_KEY
 ```
 
 > **NOTE:** See `.env.EXAMPLE` for a copy-pasteable template to get set up!
 
 ### Airtable Base ID
 
-Additionally, the `.env.EXAMPLE` file has the `AIRTABLE_BASE_ID` pre-defined for you. This ID references the dummy database mentioned above. Copy and paste that directly into your newly created `.env` file as well.
+Additionally, the `.env.EXAMPLE` file has the `GATSBY_AIRTABLE_BASE_ID` pre-defined for you. This ID references the dummy database mentioned above. Copy and paste that directly into your newly created `.env` file as well.
 
 If you ever lose the base ID for the dummy database, it is `appkenjGlBB01wr3i`.
 
