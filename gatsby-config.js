@@ -138,10 +138,10 @@ module.exports = {
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        apiKey: process.env.AIRTABLE_API_KEY, // pulls in from your .env file
+        apiKey: process.env.GATSBY_AIRTABLE_API_KEY, // pulls in from your .env file
         tables: [
           {
-            baseId: process.env.AIRTABLE_BASE_ID, // note that this is not a secret, just an id
+            baseId: process.env.GATSBY_AIRTABLE_BASE_ID, // note that this is not a secret, just an id
             tableName: `Businesses`,
             tableView: `Approved`, // optional
             queryName: `Businesses`,
@@ -153,7 +153,7 @@ module.exports = {
             },
           },
           {
-            baseId: process.env.AIRTABLE_BASE_ID, // note that this is not a secret, just an id
+            baseId: process.env.GATSBY_AIRTABLE_BASE_ID, // note that this is not a secret, just an id
             tableName: `Allies`,
             tableView: `Approved`, // optional
             queryName: `Allies`,

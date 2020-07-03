@@ -18,16 +18,16 @@ import { handleLocationToCoords } from '../api/geocode';
 
 import useSearch, { LOADING_STATE } from '../hooks/useSearch';
 import usePagination from '../hooks/usePagination';
-import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import Button from '../components/Button';
+import BusinessSignUpForm from '../components/Forms/BusinessSignUpForm';
 
 const ModalForm = ({ isOpen, onClose }) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
+  <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
     <ModalOverlay />
     <ModalContent>
       <ModalCloseButton />
       <ModalBody>
-        <SubmitBusiness />
+        <BusinessSignUpForm />
       </ModalBody>
     </ModalContent>
   </Modal>

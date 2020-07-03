@@ -18,6 +18,7 @@ import React from 'react';
 import Image from '../../components/Image.js';
 import SubmitBusiness from '../Forms/SubmitBusiness.js';
 import { VOLUNTEER_URL } from '../../constants/about';
+import BusinessSignUpForm from '../Forms/BusinessSignUpForm.js';
 
 const CardContent = ({ title, blurb, publicId, alt, transforms = {} }) => {
   const theme = useTheme();
@@ -76,7 +77,6 @@ const CardImage = ({ publicId, transforms, alt }) => {
   );
 };
 
-// @TODO :: Add proper content to this modal. Probably pull this out into its own file seeing as its going to be a form
 const ModalForm = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
@@ -84,7 +84,7 @@ const ModalForm = ({ isOpen, onClose, title }) => (
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
       <ModalBody>
-        <SubmitBusiness />
+        <BusinessSignUpForm />
       </ModalBody>
     </ModalContent>
   </Modal>
