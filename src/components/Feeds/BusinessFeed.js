@@ -1,13 +1,11 @@
 import { Box, SimpleGrid, useTheme, Skeleton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import { LOADING_STATE } from '../../hooks/useSearch';
-import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import ResultCard from '../ResultCard';
-import Button from '../Button';
-import Image from '../Image';
+import RegistrationPromo from '../Promos/RegistrationPromo';
 
 function BusinessFeed({
   businesses,
@@ -16,7 +14,6 @@ function BusinessFeed({
   loadingState,
   onOpen,
 }) {
-  const focusRef = useRef();
   const theme = useTheme();
 
   const loaded = loadingState === LOADING_STATE.NONE;
@@ -24,69 +21,6 @@ function BusinessFeed({
   const searching = loadingState === LOADING_STATE.SEARCHING;
 
   const hasResults = businesses.length > 0;
-
-  const RegistrationPromo = () => (
-    <CardWrapper pos="relative">
-      <Image
-        publicId="assets/looking-up_whbkeh.jpg"
-        objectFit="cover"
-        pos="absolute"
-        zIndex="-1"
-        w="100%"
-        h="100%"
-        top="0"
-        left="0"
-        alt="looking-ip_whbkeh"
-      />
-      <CardContent
-        color={theme.colors['rbb-black-200']}
-        display="flex"
-        flexDirection="column"
-        h="100%"
-        justifyContent="space-between"
-      >
-        <Box
-          flex="1"
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-        >
-          <CardHeading
-            fontFamily={theme.fonts['heading-slab']}
-            textTransform="uppercase"
-            fontSize={theme.fontSizes.xl}
-            lineHeight="1"
-            overflowWrap="break-word"
-            wordWrap="break-word"
-            wordBreak="break-word"
-            hyphens="auto"
-            mb={theme.spacing.lg}
-            fontWeight={theme.fontWeights[900]}
-          >
-            Add a business
-          </CardHeading>
-          <CardText
-            as="p"
-            fontFamily={theme.fonts.heading}
-            fontSize={theme.fontSizes.base}
-            mb={theme.spacing.lg}
-          >
-            If you are a business owner that has been impacted, please send us
-            your information. New submissions are added every 24 hours.
-          </CardText>
-        </Box>
-        <Button
-          variant="cta"
-          mt={theme.spacing.base}
-          onClick={onOpen}
-          ref={focusRef}
-          mb={theme.spacing.lg}
-        >
-          Register
-        </Button>
-      </CardContent>
-    </CardWrapper>
-  );
 
   return (
     <Box
@@ -126,7 +60,20 @@ function BusinessFeed({
               }${business.state ? business.state : ''}`;
 
               if (index === 3) {
-                return <RegistrationPromo />;
+                return (
+                  <>
+                    <RegistrationPromo onOpen={onOpen} />
+                    <ResultCard
+                      key={business.id}
+                      name={business.businessName || business.name}
+                      category={business.category}
+                      description={business.description}
+                      location={formattedLocation}
+                      websiteUrl={business.site}
+                      donationUrl={business.donationLink}
+                    />
+                  </>
+                );
               }
               return (
                 <ResultCard
