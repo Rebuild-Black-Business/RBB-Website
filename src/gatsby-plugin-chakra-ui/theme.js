@@ -35,6 +35,7 @@ const customTheme = {
   breakpoints: ['16em', '56em', '64em', '80em'],
   fontWeights: {
     bold: 'bold',
+    900: '900',
   },
   icons: {
     ...theme.icons,
