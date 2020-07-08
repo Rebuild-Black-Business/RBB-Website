@@ -24,10 +24,12 @@ export const setUrlUtm = url => {
 };
 
 export const verifyHttpUrl = (url, useHttps = false) => {
-  try {
-    new URL('', url);
-  } catch {
-    url = url.replace(/^[^a-zA-Z0-9]*/, `http${useHttps ? 's' : ''}://`);
+  if (!url.includes('mailto:')) {
+    try {
+      new URL('', url);
+    } catch {
+      url = url.replace(/^[^a-zA-Z0-9]*/, `http${useHttps ? 's' : ''}://`);
+    }
   }
 
   return url;
