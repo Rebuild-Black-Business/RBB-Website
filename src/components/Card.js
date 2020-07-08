@@ -8,7 +8,7 @@ import {
   Text,
   Stack,
 } from '@chakra-ui/core';
-import { setUrlUtm } from '../utils/urlUtils';
+import { setUrlUtm, verifyHttpUrl } from '../utils/urlUtils';
 import { Button, Image } from '.';
 
 const CardWrapper = forwardRef(({ children, ...props }, ref) => {
@@ -91,7 +91,7 @@ const CardButtonGroup = forwardRef(({ children, ...props }, ref) => {
 });
 
 const CardButton = forwardRef(({ children, ...props }, ref) => {
-  props.href = setUrlUtm(props.href);
+  props.href = setUrlUtm(verifyHttpUrl(props.href));
 
   return (
     <Button flexGrow={1} variant="primary" {...props} ref={ref}>

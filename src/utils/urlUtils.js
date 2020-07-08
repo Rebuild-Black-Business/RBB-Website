@@ -22,3 +22,13 @@ export const setUrlUtm = url => {
 
   return url.toString();
 };
+
+export const verifyHttpUrl = (url, useHttps = false) => {
+  try {
+    new URL('', url);
+  } catch {
+    url = url.replace(/^[^a-zA-Z0-9]*/, `http${useHttps ? 's' : ''}://`);
+  }
+
+  return url;
+};
