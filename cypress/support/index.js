@@ -18,6 +18,9 @@ import './commands';
 import 'cypress-axe';
 import '@testing-library/cypress/add-commands';
 
+// Polyfill whatwg-fetch in test
+import 'whatwg-fetch';
+
 // Delete window.fetch on every window load so we can
 // intercept tests using whatwg-fetch
 Cypress.on('window:before:load', win => {

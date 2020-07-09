@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from 'gatsby';
 import ErrorBoundary from './ErrorBoundary';
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
 import Footer from './footer/Footer';
-import 'whatwg-fetch';
 
 export default function Layout({ children }) {
   return (
