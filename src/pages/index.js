@@ -222,7 +222,6 @@ export default () => {
               <Button
                 as={Link}
                 href="/allies"
-                style={{ textDecoration: 'none' }}
                 variant="secondary"
                 maxW="230px"
                 m={3}
