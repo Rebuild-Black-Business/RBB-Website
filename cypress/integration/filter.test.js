@@ -25,8 +25,6 @@ describe('Business Screen', () => {
 });
 
 describe('Allies Screen', () => {
-  const ZIP = '29407';
-
   beforeEach(() => {
     cy.visit('/allies');
   });
@@ -42,7 +40,7 @@ describe('Allies Screen', () => {
 
     // TODO check for location in message
     // cy.get('@subheading').should('contain', ZIP);
-
+    // const ZIP = '29407';
     // TODO: Look for some form and assert
   });
 });
