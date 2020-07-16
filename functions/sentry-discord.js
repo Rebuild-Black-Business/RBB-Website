@@ -9,6 +9,7 @@ const COLORS = {
 exports.handler = function (event, context, callback) {
   try {
     const { body } = event;
+    console.log(body);
 
     const payload = {
       username: 'Sentry',
