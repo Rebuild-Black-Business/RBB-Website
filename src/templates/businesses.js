@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 
 import {
   Flex,
@@ -18,16 +18,16 @@ import { handleLocationToCoords } from '../api/geocode';
 
 import useSearch, { LOADING_STATE } from '../hooks/useSearch';
 import usePagination from '../hooks/usePagination';
-import SubmitBusiness from '../components/Forms/SubmitBusiness';
 import Button from '../components/Button';
+import BusinessSignUpForm from '../components/Forms/BusinessSignUpForm';
 
 const ModalForm = ({ isOpen, onClose }) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
+  <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
     <ModalOverlay />
     <ModalContent>
       <ModalCloseButton />
       <ModalBody>
-        <SubmitBusiness />
+        <BusinessSignUpForm />
       </ModalBody>
     </ModalContent>
   </Modal>
@@ -91,6 +91,11 @@ export default function Businesses(props) {
     coordinates: {},
   });
   const theme = useTheme();
+  const { page } = usePagination(pageLocation);
+  const { results, totalPages, loadingState, setLoadingState } = useSearch(
+    searchFilters,
+    page
+  );
 
   // Do this before we start searching and paginating
   useEffect(() => {
@@ -108,11 +113,15 @@ export default function Businesses(props) {
     setLocationCoordinatesFromURL();
   }, [props.location]);
 
-  const { page } = usePagination(pageLocation);
-  const { results, totalPages, loadingState, setLoadingState } = useSearch(
-    searchFilters,
-    page
-  );
+  // useLayoutEffect will make sure the skeleton loaders appear immediately when the page location changes
+  // using useEffect will also work but it will show a flash of ResultCards before showing the skeleton loaders
+  useLayoutEffect(() => {
+    setLoadingState(currLoadingState =>
+      currLoadingState === LOADING_STATE.INITIAL
+        ? currLoadingState
+        : LOADING_STATE.SEARCHING
+    );
+  }, [props.location, setLoadingState]);
 
   const searching = loadingState === LOADING_STATE.SEARCHING;
 
@@ -178,6 +187,7 @@ export default function Businesses(props) {
           onSearch={onSearch}
           selectedFilters={searchFilters}
           loadingState={loadingState}
+          onOpen={onOpen}
         />
 
         {!!results.length && !searching && (

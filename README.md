@@ -76,9 +76,7 @@ This site uses Airtable to keep track of business data. We have set up a dummy d
 
 Upon clicking the above link, you will get "Read Only" access to the database.
 
-Once you've obtained access, go to the API docs and grab your API key by visiting the following link: https://airtable.com/appFoFzjMcciPUgoK/api/docs#javascript/authentication
-
-Or by clicking on your user image in Airtable, and finding the "API Documentation" link:
+Once you've obtained access, grab your API key clicking on HELP button in the upper right hand corner Airtable, and clicking the "API Documentation" link. 
 
 ![Airtable API documentation link](docs/images/airtable-api-key-api-documentation.png)
 
@@ -93,14 +91,14 @@ _Note:_ If you don't see this checkbox, make sure you're logged in to Airtable, 
 Once you have your API key, create a file called `.env` and add your API key:
 
 ```bash
-AIRTABLE_API_KEY=YOUR_API_KEY
+GATSBY_AIRTABLE_API_KEY=YOUR_API_KEY
 ```
 
 > **NOTE:** See `.env.EXAMPLE` for a copy-pasteable template to get set up!
 
 ### Airtable Base ID
 
-Additionally, the `.env.EXAMPLE` file has the `AIRTABLE_BASE_ID` pre-defined for you. This ID references the dummy database mentioned above. Copy and paste that directly into your newly created `.env` file as well.
+Additionally, the `.env.EXAMPLE` file has the `GATSBY_AIRTABLE_BASE_ID` pre-defined for you. This ID references the dummy database mentioned above. Copy and paste that directly into your newly created `.env` file as well.
 
 If you ever lose the base ID for the dummy database, it is `appkenjGlBB01wr3i`.
 

@@ -15,15 +15,11 @@ import {
 } from '@chakra-ui/core';
 import React, { useState } from 'react';
 
-import {
-  Button,
-  ContentBlock,
-  Layout,
-  SubmitAlly,
-  SubmitBusiness,
-} from '../components';
+import { Button, ContentBlock, Layout } from '../components';
 
 import { VOLUNTEER_URL } from '../constants/about';
+import AllySignUpForm from '../components/Forms/AllySignUpForm';
+import BusinessSignUpForm from '../components/Forms/BusinessSignUpForm';
 
 const InfoModal = ({ isOpen, onClose, modalType }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -31,8 +27,8 @@ const InfoModal = ({ isOpen, onClose, modalType }) => (
     <ModalContent>
       <ModalCloseButton />
       <ModalBody>
-        {modalType === 'ally' && <SubmitAlly />}
-        {modalType === 'business' && <SubmitBusiness />}
+        {modalType === 'ally' && <AllySignUpForm />}
+        {modalType === 'business' && <BusinessSignUpForm />}
       </ModalBody>
     </ModalContent>
   </Modal>
@@ -69,7 +65,7 @@ export default () => {
           backgroundColor="#000"
           backgroundMode="fade"
         >
-          <Box pt={16} pb={[72, 72, 145]} color="white">
+          <Box pt={16} pb={[72, 72, 145]} ml={[0, 0, 10]} color="white">
             <Heading mb={theme.spacing.lg} as="h1">
               <Text
                 lineHeight="0.5"

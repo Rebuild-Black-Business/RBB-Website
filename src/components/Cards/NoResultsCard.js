@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Heading, Text, useTheme } from '@chakra-ui/core';
-import SubmitAlly from '../Forms/SubmitAlly';
-import SubmitBusiness from '../Forms/SubmitBusiness';
+import BusinessSignUpForm from '../Forms/BusinessSignUpForm';
+import AllySignUpForm from '../Forms/AllySignUpForm';
 
 const NoResultsCard = ({ type }) => {
   const theme = useTheme();
@@ -33,7 +33,7 @@ const NoResultsCard = ({ type }) => {
             We’d love to have Allies in your area. If you’ve got skills to
             assist Black-owned businesses, sign up to be added.
           </Text>
-          <SubmitAlly />
+          <AllySignUpForm />
         </>
       )}
 
@@ -51,7 +51,7 @@ const NoResultsCard = ({ type }) => {
             need, include a donation link.
           </Text>
 
-          <SubmitBusiness />
+          <BusinessSignUpForm />
         </>
       )}
     </Box>

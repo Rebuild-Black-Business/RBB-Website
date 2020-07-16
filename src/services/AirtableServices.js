@@ -1,0 +1,131 @@
+import { useState, useEffect } from 'react';
+
+const Airtable = require('airtable');
+const base = new Airtable({ apiKey: process.env.GATSBY_AIRTABLE_API_KEY }).base(
+  process.env.GATSBY_AIRTABLE_BASE_ID
+);
+
+export function submitAlly({
+  email,
+  firstName,
+  lastName,
+  speciality,
+  zipcode,
+}) {
+  const AirtableData = {
+    Email: email,
+    Name: `${firstName} ${lastName}`,
+    Speciality: speciality,
+    'Zip Code': zipcode,
+    'First Name': firstName,
+    'Last Name': lastName,
+  };
+
+  base('Allies').create(AirtableData, function (err, record) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(record);
+  });
+}
+
+export function submitBusiness({
+  email,
+  firstName,
+  lastName,
+  businessName,
+  category,
+  businessDescription,
+  businessWebsite,
+  physicalLocation,
+  directlyAffected,
+  zipcode,
+  donationLink,
+}) {
+  const AirtableData = {
+    Email: email,
+    Name: `${firstName} ${lastName}`,
+    'Business Name': businessName,
+    Category: category,
+    'Zip Code': zipcode,
+    'Business Description': businessDescription,
+    Website: businessWebsite,
+    'Donation Link': donationLink,
+    'In Need': directlyAffected,
+    'Physical Location': physicalLocation,
+  };
+
+  base('Businesses').create(AirtableData, function (err, record) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(record);
+  });
+}
+
+//Only fetches from first page of docs for performance concerns.
+//If this starts missing select options you can swap .firstPage(()=>{...}) for the following
+
+// .eachPage(function page(records, fetchNextPage) {
+//   records.forEach(function(record) {
+//     setSpecialities(prev => [...prev, record.get('Speciality')]);
+//   });
+//   fetchNextPage();
+// }, function done(err) {
+//   if (err) { console.error(err); return; }
+// });
+
+//fetches Ally Specialities dynamically
+export function useAllySpecialities() {
+  const [specialities, setSpecialities] = useState([]);
+
+  useEffect(() => {
+    base('Allies')
+      .select({
+        fields: ['Speciality'],
+      })
+      .firstPage((err, records) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        records.forEach(record => {
+          setSpecialities(prev => [...prev, record.get('Speciality')]);
+        });
+      });
+  }, []);
+
+  const unique = new Set(specialities);
+
+  return [...unique];
+}
+
+//fetches Business Categories dynamically
+export function useBusinessCategories() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    base('Businesses')
+      .select({
+        fields: ['Category'],
+      })
+      .firstPage((err, records) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        records.forEach(record => {
+          setCategories(prev => [...prev, record.get('Category')]);
+        });
+      });
+  }, []);
+
+  const unique = new Set(categories);
+  const uniqueWithOther = [...unique].includes('Other')
+    ? [...unique]
+    : [...unique, 'Other'];
+
+  return uniqueWithOther;
+}
