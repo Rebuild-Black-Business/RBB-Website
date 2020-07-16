@@ -24,6 +24,8 @@ export const setUrlUtm = url => {
 };
 
 export const verifyHttpUrl = (url, useHttps = false) => {
+  if (!url) return url;
+
   if (!url.includes('mailto:')) {
     try {
       new URL('', url);
