@@ -5,6 +5,7 @@ import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import { LOADING_STATE } from '../../hooks/useSearch';
 import ResultCard from '../ResultCard';
+import { verifyHttpUrl } from '../../utils/urlUtils';
 import RegistrationPromo from '../Promos/RegistrationPromo';
 
 function BusinessFeed({
@@ -82,8 +83,8 @@ function BusinessFeed({
                   category={business.category}
                   description={business.description}
                   location={formattedLocation}
-                  websiteUrl={business.site}
-                  donationUrl={business.donationLink}
+                  websiteUrl={verifyHttpUrl(business.site)}
+                  donationUrl={verifyHttpUrl(business.donationLink)}
                 />
               );
             })}

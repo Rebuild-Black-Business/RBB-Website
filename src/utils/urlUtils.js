@@ -22,3 +22,17 @@ export const setUrlUtm = url => {
 
   return url.toString();
 };
+
+export const verifyHttpUrl = (url, useHttps = false) => {
+  if (!url) return url;
+
+  if (!url.includes('mailto:')) {
+    try {
+      new URL('', url);
+    } catch {
+      url = url.replace(/^[^a-zA-Z0-9]*/, `http${useHttps ? 's' : ''}://`);
+    }
+  }
+
+  return url;
+};
