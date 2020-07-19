@@ -1,28 +1,29 @@
 export const setUrlUtm = url => {
-  if (
-    // Ensure that the link is external and follows http protocol (as opposed to mailto)
-    !url.includes('rebuildblackbusiness.com') &&
-    url.includes('http')
-  ) {
-    try {
-      url = new URL('', url);
-    } catch (e) {
-      return null;
-    }
+  // basic error checking
+  if (!url) return null;
 
-    if (!url.search) {
+  // make sure we're formatting an external URL that contains http
+  if (url.includes('rebuildblackbusiness.com')) return url;
+  if (!url.includes('http')) return url;
+
+  try {
+    let formattedURL = new URL('', url);
+
+    if (!formattedURL.search) {
       // Set the one and only query
-      url += '?utm_source=Rebuild+Black+Business';
-    } else if (!url.search?.includes('utm_source')) {
+      formattedURL += '?utm_source=Rebuild+Black+Business';
+    } else if (!formattedURL.search?.includes('utm_source')) {
       // Append if there are multiple queries and no utm_source
-      const urlString = url.toString();
+      const urlString = formattedURL.toString();
       const index = urlString.indexOf('?') + 1;
-      url =
+      formattedURL =
         urlString.slice(0, index) +
         'utm_source=Rebuild+Black+Business&' +
         urlString.slice(index);
     }
+    return formattedURL.toString();
+  } catch (e) {
+    // something went wrong, let's just try to return the input URL
+    return url.toString();
   }
-
-  return url.toString();
 };
