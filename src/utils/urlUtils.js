@@ -4,7 +4,11 @@ export const setUrlUtm = url => {
     !url.includes('rebuildblackbusiness.com') &&
     url.includes('http')
   ) {
-    url = new URL('', url);
+    try {
+      url = new URL('', url);
+    } catch (e) {
+      return null;
+    }
 
     if (!url.search) {
       // Set the one and only query
