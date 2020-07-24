@@ -34,7 +34,7 @@ const BusinessSignUpForm = () => {
   const [businessName, setBusinessName] = useState(null);
   const [category, setCategory] = useState(null);
   const [businessDescription, setBusinessDescription] = useState(null);
-  const [phone, setPhone] = useState(null);
+  const [phone, setPhone] = useState('');
   const [physicalLocation, setPhysicalLocation] = useState(true);
   const [onlineOnly, setOnlineOnly] = useState(false);
   const [streetAddress, setStreetAddress] = useState(null);
@@ -49,7 +49,10 @@ const BusinessSignUpForm = () => {
   const [donationLink, setDonationLink] = useState('');
   const [isOwner, setIsOwner] = useState('');
   const [story, setStory] = useState('');
-  const [paymentTypes, setPaymentTypes] = useState('');
+  const [cash, setCash] = useState(false);
+  const [check, setCheck] = useState(false);
+  const [credit, setCredit] = useState(false);
+  const [bitcoin, setBitcoin] = useState(false);
   const [bobAgreement, setBobAgreement] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [validationMessage, setValidationMessage] = useState(null);
@@ -75,7 +78,10 @@ const BusinessSignUpForm = () => {
       adult,
       donationLink,
       story,
-      paymentTypes,
+      cash,
+      check,
+      credit,
+      bitcoin,
     };
 
     //Custom Validation
@@ -99,6 +105,9 @@ const BusinessSignUpForm = () => {
     } else if ('online' === val) {
       setPhysicalLocation(false);
       setOnlineOnly(true);
+      setStreetAddress('');
+      setCity('');
+      setBizState('');
     }
   };
 
@@ -185,9 +194,7 @@ const BusinessSignUpForm = () => {
           />
         </Flex>
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel isRequired htmlFor="phone">
-            Business Phone Number
-          </FormLabel>
+          <FormLabel htmlFor="phone">Business Phone Number</FormLabel>
           <InputGroup>
             <InputLeftElement
               children={<Icon name="phone" color="gray.300" />}
@@ -316,6 +323,7 @@ const BusinessSignUpForm = () => {
             What area do you service?
           </FormLabel>
           <Select
+            placeholder="Select your service area"
             id="serviceArea"
             value={serviceArea}
             onChange={event => setServiceArea(event.currentTarget.value)}
@@ -357,7 +365,12 @@ const BusinessSignUpForm = () => {
           <Checkbox
             value={hasDonation}
             id="hasDonation"
-            onChange={() => setHasDonation(prev => !prev)}
+            onChange={() => {
+              setHasDonation(prev => !prev);
+              if (hasDonation === false) {
+                setDonationLink('');
+              }
+            }}
             marginRight="0.5rem"
           />
           <FormLabel htmlFor="hasDonation">
@@ -392,7 +405,16 @@ const BusinessSignUpForm = () => {
           <Checkbox
             value={isOwner}
             id="isOwner"
-            onChange={() => setIsOwner(prev => !prev)}
+            onChange={() => {
+              setIsOwner(prev => !prev);
+              if (isOwner === false) {
+                setStory('');
+                setCash(false);
+                setCheck(false);
+                setCredit(false);
+                setBitcoin(false);
+              }
+            }}
             marginRight="0.5rem"
           />
           <FormLabel htmlFor="isOwner">I am the owner</FormLabel>
@@ -413,15 +435,50 @@ const BusinessSignUpForm = () => {
               <FormLabel isRequired htmlFor="paymentTypes">
                 Accepted Payment Types
               </FormLabel>
-              <Select
-                id="paymentTypes"
-                placeholder="Select accpeted payment types"
-                value={paymentTypes}
-                onChange={event => setPaymentTypes(event.currentTarget.value)}
-              >
-                <option value="credit-cash">Credit Card, Cash</option>
-                <option value="cash-only">Cash Only</option>
-              </Select>
+              <Flex align="center" mb={theme.spacing.base}>
+                <Checkbox
+                  value={cash}
+                  id="cash"
+                  onChange={() => {
+                    setCash(prev => !prev);
+                  }}
+                  marginRight="0.5rem"
+                />
+                <FormLabel htmlFor="cash">Cash</FormLabel>
+              </Flex>
+              <Flex align="center" mb={theme.spacing.base}>
+                <Checkbox
+                  value={check}
+                  id="check"
+                  onChange={() => {
+                    setCheck(prev => !prev);
+                  }}
+                  marginRight="0.5rem"
+                />
+                <FormLabel htmlFor="check">Check</FormLabel>
+              </Flex>
+              <Flex align="center" mb={theme.spacing.base}>
+                <Checkbox
+                  value={credit}
+                  id="credit"
+                  onChange={() => {
+                    setCredit(prev => !prev);
+                  }}
+                  marginRight="0.5rem"
+                />
+                <FormLabel htmlFor="credit">Credit</FormLabel>
+              </Flex>
+              <Flex align="center" mb={theme.spacing.base}>
+                <Checkbox
+                  value={bitcoin}
+                  id="bitcoin"
+                  onChange={() => {
+                    setBitcoin(prev => !prev);
+                  }}
+                  marginRight="0.5rem"
+                />
+                <FormLabel htmlFor="bitcoin">Bitcoin</FormLabel>
+              </Flex>
             </Flex>
           </Flex>
         )}
