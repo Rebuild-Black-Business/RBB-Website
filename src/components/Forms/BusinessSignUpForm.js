@@ -45,9 +45,9 @@ const BusinessSignUpForm = () => {
   const [website, setWebsite] = useState('');
   const [yelp, setYelp] = useState('');
   const [adult, setAdult] = useState(false);
-  const [hasDonation, setHasDonation] = useState('');
+  const [hasDonation, setHasDonation] = useState(false);
   const [donationLink, setDonationLink] = useState('');
-  const [isOwner, setIsOwner] = useState('');
+  const [isOwner, setIsOwner] = useState(false);
   const [story, setStory] = useState('');
   const [cash, setCash] = useState(false);
   const [check, setCheck] = useState(false);
@@ -108,6 +108,30 @@ const BusinessSignUpForm = () => {
       setStreetAddress('');
       setCity('');
       setBizState('');
+    }
+  };
+
+  const handleDonation = event => {
+    const val = event.target.checked;
+    if (false === val) {
+      setHasDonation(false);
+      setDonationLink('');
+    } else if (true === val) {
+      setHasDonation(true);
+    }
+  };
+
+  const handleOwnership = event => {
+    const val = event.target.checked;
+    if (false === val) {
+      setIsOwner(false);
+      setStory('');
+      setCash(false);
+      setCheck(false);
+      setCredit(false);
+      setBitcoin(false);
+    } else if (true === val) {
+      setIsOwner(true);
     }
   };
 
@@ -365,12 +389,7 @@ const BusinessSignUpForm = () => {
           <Checkbox
             value={hasDonation}
             id="hasDonation"
-            onChange={() => {
-              setHasDonation(prev => !prev);
-              if (hasDonation === false) {
-                setDonationLink('');
-              }
-            }}
+            onChange={event => handleDonation(event)}
             marginRight="0.5rem"
           />
           <FormLabel htmlFor="hasDonation">
@@ -405,16 +424,7 @@ const BusinessSignUpForm = () => {
           <Checkbox
             value={isOwner}
             id="isOwner"
-            onChange={() => {
-              setIsOwner(prev => !prev);
-              if (isOwner === false) {
-                setStory('');
-                setCash(false);
-                setCheck(false);
-                setCredit(false);
-                setBitcoin(false);
-              }
-            }}
+            onChange={event => handleOwnership(event)}
             marginRight="0.5rem"
           />
           <FormLabel htmlFor="isOwner">I am the owner</FormLabel>
