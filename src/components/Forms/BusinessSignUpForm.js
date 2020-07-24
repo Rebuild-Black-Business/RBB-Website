@@ -118,6 +118,7 @@ const BusinessSignUpForm = () => {
       setDonationLink('');
     } else if (true === val) {
       setHasDonation(true);
+      setDonationLink(null);
     }
   };
 
