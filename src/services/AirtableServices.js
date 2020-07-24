@@ -48,7 +48,10 @@ export function submitBusiness({
   adult,
   donationLink,
   story,
-  paymentTypes,
+  cash,
+  check,
+  credit,
+  bitcoin,
 }) {
   const AirtableData = {
     Email: email,
@@ -68,7 +71,10 @@ export function submitBusiness({
     Adult: adult,
     'Donation Link': donationLink,
     Story: story,
-    'Payment Types': paymentTypes,
+    Cash: cash,
+    Check: check,
+    Credit: credit,
+    Bitcoin: bitcoin,
   };
 
   base('Businesses').create(AirtableData, function (err, record) {
