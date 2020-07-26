@@ -259,7 +259,7 @@ const BusinessSignUpForm = () => {
                   value={streetAddress}
                   id="streetAddress"
                   type="text"
-                  placeholder="123 Marin Luther King Blvd."
+                  placeholder="123 Martin Luther King Blvd."
                   onChange={event =>
                     setStreetAddress(event.currentTarget.value)
                   }
