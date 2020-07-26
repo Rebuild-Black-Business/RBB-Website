@@ -451,49 +451,51 @@ const BusinessSignUpForm = () => {
               <FormLabel isRequired htmlFor="paymentTypes">
                 Accepted Payment Types
               </FormLabel>
-              <Flex align="center" mb={theme.spacing.base}>
-                <Checkbox
-                  value={cash}
-                  id="cash"
-                  onChange={() => {
-                    setCash(prev => !prev);
-                  }}
-                  marginRight="0.5rem"
-                />
-                <FormLabel htmlFor="cash">Cash</FormLabel>
-              </Flex>
-              <Flex align="center" mb={theme.spacing.base}>
-                <Checkbox
-                  value={check}
-                  id="check"
-                  onChange={() => {
-                    setCheck(prev => !prev);
-                  }}
-                  marginRight="0.5rem"
-                />
-                <FormLabel htmlFor="check">Check</FormLabel>
-              </Flex>
-              <Flex align="center" mb={theme.spacing.base}>
-                <Checkbox
-                  value={credit}
-                  id="credit"
-                  onChange={() => {
-                    setCredit(prev => !prev);
-                  }}
-                  marginRight="0.5rem"
-                />
-                <FormLabel htmlFor="credit">Credit</FormLabel>
-              </Flex>
-              <Flex align="center" mb={theme.spacing.base}>
-                <Checkbox
-                  value={bitcoin}
-                  id="bitcoin"
-                  onChange={() => {
-                    setBitcoin(prev => !prev);
-                  }}
-                  marginRight="0.5rem"
-                />
-                <FormLabel htmlFor="bitcoin">Bitcoin</FormLabel>
+              <Flex wrap="wrap">
+                <Flex align="center" mb={theme.spacing.base}>
+                  <Checkbox
+                    value={cash}
+                    id="cash"
+                    onChange={() => {
+                      setCash(prev => !prev);
+                    }}
+                    marginRight="0.5rem"
+                  />
+                  <FormLabel htmlFor="cash">Cash</FormLabel>
+                </Flex>
+                <Flex align="center" mb={theme.spacing.base}>
+                  <Checkbox
+                    value={check}
+                    id="check"
+                    onChange={() => {
+                      setCheck(prev => !prev);
+                    }}
+                    marginRight="0.5rem"
+                  />
+                  <FormLabel htmlFor="check">Check</FormLabel>
+                </Flex>
+                <Flex align="center" mb={theme.spacing.base}>
+                  <Checkbox
+                    value={credit}
+                    id="credit"
+                    onChange={() => {
+                      setCredit(prev => !prev);
+                    }}
+                    marginRight="0.5rem"
+                  />
+                  <FormLabel htmlFor="credit">Credit</FormLabel>
+                </Flex>
+                <Flex align="center" mb={theme.spacing.base}>
+                  <Checkbox
+                    value={bitcoin}
+                    id="bitcoin"
+                    onChange={() => {
+                      setBitcoin(prev => !prev);
+                    }}
+                    marginRight="0.5rem"
+                  />
+                  <FormLabel htmlFor="bitcoin">Bitcoin</FormLabel>
+                </Flex>
               </Flex>
             </Flex>
           </Flex>
