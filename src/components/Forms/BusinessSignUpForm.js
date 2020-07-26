@@ -101,6 +101,7 @@ const BusinessSignUpForm = () => {
     const val = event.target.value;
     if ('physical' === val) {
       setPhysicalLocation(true);
+      setWebsite('');
       setOnlineOnly(false);
     } else if ('online' === val) {
       setPhysicalLocation(false);
@@ -108,6 +109,7 @@ const BusinessSignUpForm = () => {
       setStreetAddress('');
       setCity('');
       setBizState('');
+      setWebsite(null);
     }
   };
 
@@ -191,10 +193,12 @@ const BusinessSignUpForm = () => {
           </FormLabel>
           <Select
             id="category"
-            placeholder="Category"
             value={category}
             onChange={event => setCategory(event.currentTarget.value)}
           >
+            <option value="" disabled selected>
+              Select a Category
+            </option>
             {businessCategories.map(category => {
               return (
                 <option key={category} value={category}>
@@ -251,20 +255,15 @@ const BusinessSignUpForm = () => {
                 <FormLabel isRequired htmlFor="streetAddress">
                   Street Address
                 </FormLabel>
-                <InputGroup>
-                  <InputLeftElement
-                    children={<Icon name="home" color="gray.300" />}
-                  />
-                  <Input
-                    value={streetAddress}
-                    id="streetAddress"
-                    type="text"
-                    placeholder="123 Marin Luther King Blvd."
-                    onChange={event =>
-                      setStreetAddress(event.currentTarget.value)
-                    }
-                  />
-                </InputGroup>
+                <Input
+                  value={streetAddress}
+                  id="streetAddress"
+                  type="text"
+                  placeholder="123 Marin Luther King Blvd."
+                  onChange={event =>
+                    setStreetAddress(event.currentTarget.value)
+                  }
+                />
               </Flex>
               <Flex direction="column" mt={theme.spacing.base}>
                 <FormLabel isRequired htmlFor="city">
@@ -284,10 +283,12 @@ const BusinessSignUpForm = () => {
                 </FormLabel>
                 <Select
                   id="state"
-                  placeholder="Select a State"
                   value={bizState}
                   onChange={event => setBizState(event.currentTarget.value)}
                 >
+                  <option value="" disabled selected>
+                    Select a State
+                  </option>
                   {Object.entries(stateObj).map(([key, value]) => (
                     <option key={key} value={key}>
                       {value}
@@ -324,7 +325,9 @@ const BusinessSignUpForm = () => {
                 />
               </Flex>
               <Flex direction="column" mt={theme.spacing.base}>
-                <FormLabel htmlFor="website">Website</FormLabel>
+                <FormLabel isRequired htmlFor="website">
+                  Website
+                </FormLabel>
                 <InputGroup>
                   <InputLeftElement
                     children={<Icon name="link" color="gray.300" />}
@@ -348,11 +351,13 @@ const BusinessSignUpForm = () => {
             What area do you service?
           </FormLabel>
           <Select
-            placeholder="Select your service area"
             id="serviceArea"
             value={serviceArea}
             onChange={event => setServiceArea(event.currentTarget.value)}
           >
+            <option value="" disabled selected>
+              Select your service area
+            </option>
             <option value="nationwide">Nationwide</option>
             <option value="local">Local</option>
             <option value="global">Global</option>
