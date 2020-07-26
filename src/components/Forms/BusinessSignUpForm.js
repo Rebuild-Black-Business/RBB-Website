@@ -461,7 +461,9 @@ const BusinessSignUpForm = () => {
                     }}
                     marginRight="0.5rem"
                   />
-                  <FormLabel htmlFor="cash">Cash</FormLabel>
+                  <FormLabel pb="0" htmlFor="cash">
+                    Cash
+                  </FormLabel>
                 </Flex>
                 <Flex align="center" mb={theme.spacing.base}>
                   <Checkbox
@@ -472,7 +474,9 @@ const BusinessSignUpForm = () => {
                     }}
                     marginRight="0.5rem"
                   />
-                  <FormLabel htmlFor="check">Check</FormLabel>
+                  <FormLabel pb="0" htmlFor="check">
+                    Check
+                  </FormLabel>
                 </Flex>
                 <Flex align="center" mb={theme.spacing.base}>
                   <Checkbox
@@ -483,7 +487,9 @@ const BusinessSignUpForm = () => {
                     }}
                     marginRight="0.5rem"
                   />
-                  <FormLabel htmlFor="credit">Credit</FormLabel>
+                  <FormLabel pb="0" htmlFor="credit">
+                    Credit
+                  </FormLabel>
                 </Flex>
                 <Flex align="center" mb={theme.spacing.base}>
                   <Checkbox
@@ -494,7 +500,9 @@ const BusinessSignUpForm = () => {
                     }}
                     marginRight="0.5rem"
                   />
-                  <FormLabel htmlFor="bitcoin">Bitcoin</FormLabel>
+                  <FormLabel pb="0" htmlFor="bitcoin">
+                    Bitcoin
+                  </FormLabel>
                 </Flex>
               </Flex>
             </Flex>
