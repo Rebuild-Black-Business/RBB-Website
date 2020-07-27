@@ -45,12 +45,7 @@ function useSearch(filters, page) {
       try {
         const filterStr = createFilterString(defaultFilters, filters);
         const response = await fetch(
-          `${endpoint}api/v1/businesses?page=${page}&${filterStr}`,
-          {
-            headers: {
-              'x-api-key': process.env.GATSBY_RBB_API_KEY,
-            },
-          }
+          `${endpoint}api/v1/businesses?page=${page}&${filterStr}`
         );
         const results = await response.json();
 
