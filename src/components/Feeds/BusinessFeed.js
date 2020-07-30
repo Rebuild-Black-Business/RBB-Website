@@ -4,10 +4,17 @@ import React from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import { LOADING_STATE } from '../../hooks/useSearch';
-
 import ResultCard from '../ResultCard';
+import { verifyHttpUrl } from '../../utils/urlUtils';
+import RegistrationPromo from '../Promos/RegistrationPromo';
 
-function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
+function BusinessFeed({
+  businesses,
+  onSearch,
+  selectedFilters,
+  loadingState,
+  onOpen,
+}) {
   const theme = useTheme();
 
   const loaded = loadingState === LOADING_STATE.NONE;
@@ -48,10 +55,27 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
       {!initialLoad && hasResults && !searching && (
         <>
           <SimpleGrid columns={[null, 1, 2]} spacing={10}>
-            {businesses.map(business => {
+            {businesses.map((business, index) => {
               const formattedLocation = `${business.city ? business.city : ''}${
                 business.city && business.state ? ', ' : ''
               }${business.state ? business.state : ''}`;
+
+              if (index === 3) {
+                return (
+                  <>
+                    <RegistrationPromo onOpen={onOpen} />
+                    <ResultCard
+                      key={business.id}
+                      name={business.businessName || business.name}
+                      category={business.category}
+                      description={business.description}
+                      location={formattedLocation}
+                      websiteUrl={business.site}
+                      donationUrl={business.donationLink}
+                    />
+                  </>
+                );
+              }
               return (
                 <ResultCard
                   key={business.id}
@@ -59,8 +83,8 @@ function BusinessFeed({ businesses, onSearch, selectedFilters, loadingState }) {
                   category={business.category}
                   description={business.description}
                   location={formattedLocation}
-                  websiteUrl={business.site}
-                  donationUrl={business.donationLink}
+                  websiteUrl={verifyHttpUrl(business.site)}
+                  donationUrl={verifyHttpUrl(business.donationLink)}
                 />
               );
             })}

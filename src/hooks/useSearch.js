@@ -7,7 +7,7 @@ const LOADING_STATE = {
   INITIAL: 'intial',
   SEARCHING: 'searching',
 };
-const pageSize = 20;
+const pageSize = 19;
 
 function createFilterString(defaultFilters = '', filters) {
   const filterArr = [];
@@ -45,7 +45,12 @@ function useSearch(filters, page) {
       try {
         const filterStr = createFilterString(defaultFilters, filters);
         const response = await fetch(
-          `${endpoint}api/v1/businesses?page=${page}&${filterStr}`
+          `${endpoint}api/v1/businesses?page=${page}&${filterStr}`,
+          {
+            headers: {
+              'x-api-key': process.env.GATSBY_RBB_API_KEY,
+            },
+          }
         );
         const results = await response.json();
 

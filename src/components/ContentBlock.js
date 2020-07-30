@@ -24,6 +24,7 @@ const ContentBlockContent = props => {
       h="100%"
       w="100%"
       px={[4, 4, 8]}
+      zIndex={1}
       {...props}
     >
       {props.children}
@@ -45,7 +46,6 @@ const ContentBlockColorOverlay = ({
       left="0"
       opacity={backgroundOpacity}
       backgroundColor={backgroundColor}
-      zIndex="-1"
       {...props}
     />
   );
@@ -96,6 +96,7 @@ const LeftSideContentBlock = ({
     return (
       <ContentBlockWrapper
         imageSource={imageSource}
+        backgroundColor={backgroundColor}
         textAlign={['center', 'center', 'left']}
         right="0"
       >
@@ -112,7 +113,6 @@ const LeftSideContentBlock = ({
           right="0"
           w={['100%', '100%', '52%']}
           height="100%"
-          zIndex="-1"
         />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
@@ -130,6 +130,7 @@ const LeftSideContentBlock = ({
         imageWidth={['100%', '100%', '55%']}
         imagePosition={{ right: 0 }}
         textAlign={['center', 'center', 'left']}
+        backgroundColor={backgroundColor}
       >
         <Image
           publicId={imageSource}
@@ -144,7 +145,6 @@ const LeftSideContentBlock = ({
           right="0"
           w={['100%', '100%', '52%']}
           height="100%"
-          zIndex="-1"
         />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
@@ -202,7 +202,6 @@ const RightSideContentBlock = ({
           left="0"
           w={['100%', '100%', '52%']}
           height="100%"
-          zIndex="-1"
         />
         <ContentBlockColorOverlay
           backgroundColor={backgroundColor}
@@ -232,7 +231,6 @@ const RightSideContentBlock = ({
           left="0"
           w={['100%', '100%', '52%']}
           height="100%"
-          zIndex="-1"
         />
         <ContentBlockColorOverlay
           backgroundMode={backgroundMode}
@@ -274,7 +272,6 @@ const FullWidthContentBlock = ({
         left="0"
         w="100%"
         height="100%"
-        zIndex="-1"
       />
       <ContentBlockColorOverlay
         backgroundColor={backgroundColor}
