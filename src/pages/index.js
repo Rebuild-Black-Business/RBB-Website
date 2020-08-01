@@ -39,6 +39,8 @@ export default () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalType, setModalType] = useState(null);
 
+  // TODO: Re-enable this lint rule once handleType() is used!
+  // eslint-disable-next-line no-unused-vars
   const handleType = newType => {
     setModalType(newType);
     onOpen();
@@ -220,7 +222,6 @@ export default () => {
               <Button
                 as={Link}
                 href="/allies"
-                style={{ textDecoration: 'none' }}
                 variant="secondary"
                 maxW="230px"
                 m={3}

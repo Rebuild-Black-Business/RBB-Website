@@ -79,7 +79,7 @@ const PrimaryNav = forwardRef(
           ></Box>
         ) : null}
         <Nav
-          zIndex={1}
+          zIndex={2}
           position="absolute"
           width="100%"
           height={NAV_HEIGHT}

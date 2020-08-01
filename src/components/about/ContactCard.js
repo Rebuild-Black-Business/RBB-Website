@@ -16,7 +16,6 @@ import {
 } from '@chakra-ui/core';
 import React from 'react';
 import Image from '../../components/Image.js';
-import SubmitBusiness from '../Forms/SubmitBusiness.js';
 import { VOLUNTEER_URL } from '../../constants/about';
 import BusinessSignUpForm from '../Forms/BusinessSignUpForm.js';
 
