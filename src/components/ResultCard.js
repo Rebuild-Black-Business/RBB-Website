@@ -177,10 +177,13 @@ const ResultCard = forwardRef(
               {location}
             </CardText>
           )}
+          {/* TODO: spacing={0} and wrap="wrap" are added temporarily.  Fix this and replace it with <Wrap/> component in newer Chakra-UI version */}
           <CardButtonGroup
             mt="auto"
             mb={theme.spacing.base}
             pt={theme.spacing.base}
+            spacing={0}
+            wrap="wrap"
           >
             {websiteUrl && (
               <CardButton
