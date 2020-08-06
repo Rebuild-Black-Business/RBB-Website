@@ -1,4 +1,4 @@
-import 'isomorphic-fetch';
+require('isomorphic-fetch');
 
 const COLORS = {
   debug: parseInt('fbe14f', 16),
