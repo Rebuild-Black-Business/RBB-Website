@@ -10,9 +10,8 @@ const COLORS = {
 
 exports.handler = function (event, context, callback) {
   try {
-    const { body } = event;
+    const body = JSON.parse(event.body);
     console.log('body', typeof body, body);
-    console.log('event', typeof body.event, body.event);
 
     const payload = {
       username: 'Sentry',
