@@ -14,7 +14,7 @@ const FooterLinks = () => {
             <NavMenu
               style={{
                 display: 'flex',
-                'justify-content': 'space-evenly',
+                justifyContent: 'space-evenly',
                 width: '100%',
               }}
             >
