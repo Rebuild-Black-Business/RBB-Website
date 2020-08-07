@@ -143,7 +143,13 @@ const ResultCard = forwardRef(
           bg={theme.colors['rbb-result-card-grey']}
           color={hasImage ? undefined : theme.colors['rbb-black-200']}
         >
-          <Heading as="h2" itemprop="name" size="md" fontWeight="normal">
+          <Heading
+            as="h2"
+            itemprop="name"
+            size="md"
+            fontWeight="normal"
+            wordBreak="break-all"
+          >
             {name}
           </Heading>
           {category && (
