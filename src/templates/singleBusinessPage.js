@@ -27,15 +27,9 @@ const SingleBusinessPage = ({ data }) => {
 
   if (!approved) return null;
 
-  // assemble the string to use in the page title for SEO purposese
-  let pageTitle = businessName;
-  if (business.physicalLocation) {
-    pageTitle += `in ${business.physicalLocation}`;
-  }
-
   return (
     <Layout>
-      <SEO title={pageTitle} description={businessDescription} />
+      <SEO title={businessName} description={businessDescription} />
       <Flex
         align="center"
         justify="center"
