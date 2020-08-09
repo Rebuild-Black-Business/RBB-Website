@@ -149,6 +149,7 @@ const ResultCard = forwardRef(
             size="md"
             fontWeight="normal"
             wordBreak="break-all"
+            style={{ hyphens: 'auto' }}
           >
             {name}
           </Heading>
