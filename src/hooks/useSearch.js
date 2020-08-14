@@ -7,7 +7,7 @@ const LOADING_STATE = {
   INITIAL: 'intial',
   SEARCHING: 'searching',
 };
-const pageSize = 19;
+const pageSize = 11;
 
 function createFilterString(defaultFilters = '', filters) {
   const filterArr = [];

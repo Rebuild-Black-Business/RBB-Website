@@ -1,3 +1,5 @@
+require('isomorphic-fetch');
+
 const COLORS = {
   debug: parseInt('fbe14f', 16),
   info: parseInt('2788ce', 16),
@@ -8,8 +10,8 @@ const COLORS = {
 
 exports.handler = function (event, context, callback) {
   try {
-    const { body } = event;
-    console.log(body);
+    const body = JSON.parse(event.body);
+    console.log('body', typeof body, body);
 
     const payload = {
       username: 'Sentry',
@@ -44,6 +46,7 @@ exports.handler = function (event, context, callback) {
       });
     }
 
+    console.log('sending', payload);
     fetch(process.env.SENTRY_DISCORD_WEBHOOK_URL, {
       method: 'POST',
       body: JSON.stringify(payload),
