@@ -92,6 +92,20 @@ const customTheme = {
   },
   colors: {
     ...theme.colors,
+    // purple color generated from https://smart-swatch.netlify.app/#635BF6
+    purple: {
+      50: '#e7e6ff',
+      100: '#b9b6ff',
+      200: '#8c86f9',
+      300: '#5e56f6', // purple 300 is the RBB purple theme color
+      400: '#3125f2',
+      500: '#190dd9',
+      600: '#1209a9',
+      700: '#0b077a',
+      800: '#05034c',
+      900: '#02001e',
+    },
+    darkBackground: '#001514',
     'rbb-black-000': '#140303',
     'rbb-black-100': '#001514',
     'rbb-black-200': '#0E1111',

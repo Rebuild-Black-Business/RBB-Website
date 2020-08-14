@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import { Flex, Heading, useTheme } from '@chakra-ui/core';
+import { Box, Flex, Grid, Heading, Text, useTheme } from '@chakra-ui/core';
 
 import { Layout, SEO } from '../components';
 
@@ -14,7 +14,7 @@ const SingleBusinessPage = ({ data }) => {
     approved,
     businessName,
     businessDescription,
-    // category,
+    category,
     // createdAt,
     // donationLink,
     // email,
@@ -34,9 +34,32 @@ const SingleBusinessPage = ({ data }) => {
         align="center"
         justify="center"
         direction="column"
-        marginTop={theme.spacing.base}
+        margin={`${theme.spacing.base} auto`}
+        maxWidth={theme.containers.main}
       >
-        <Heading as="h1">{businessName}</Heading>
+        <Flex
+          direction="column"
+          width="100%"
+          color={theme.colors['rbb-white']}
+          backgroundColor={theme.colors.darkBackground}
+          padding={theme.spacing.base}
+          style={{ filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))' }}
+          height="240px"
+        >
+          <div>
+            <Heading as="h1" textTransform="uppercase">
+              {businessName}
+            </Heading>
+            <Text>{category}</Text>
+          </div>
+
+          <Flex direction="row">
+            <div>
+              {/* TODO: render social media links for this profile here */}
+            </div>
+            <div>{/* TODO: share and flag buttons */}</div>
+          </Flex>
+        </Flex>
       </Flex>
     </Layout>
   );
