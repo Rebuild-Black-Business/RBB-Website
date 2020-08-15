@@ -24,7 +24,7 @@ export function getLinkStyles(theme, variant) {
 function Link(props) {
   const theme = useTheme();
 
-  if (!['standard', 'cta', 'footer'].includes(props.variant))
+  if (!['standard', 'cta', 'ctaBlackBg', 'footer'].includes(props.variant))
     throw new Error(`Invalid <Link> variant: "${props.variant}"`);
 
   const linkStyles = getLinkStyles(theme, props.variant);
@@ -38,7 +38,7 @@ function Link(props) {
 
 Link.displayName = 'Link';
 Link.propTypes = {
-  variant: PropTypes.oneOf(['standard', 'cta', 'footer']),
+  variant: PropTypes.oneOf(['standard', 'ctaBlackBg', 'cta', 'footer']),
 };
 
 export default Link;
