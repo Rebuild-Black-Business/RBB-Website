@@ -58,6 +58,10 @@ module.exports = {
         name: 'Allies',
         slug: '/allies',
       },
+      {
+        name: 'Fundraisers',
+        slug: '/fundraisers',
+      },
     ],
     photoCreditLinks: [
       {
