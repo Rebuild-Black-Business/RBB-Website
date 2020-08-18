@@ -1,13 +1,107 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Flex, Text, useTheme } from '@chakra-ui/core';
-import { Image, Layout, PageHero } from '../components';
-import { FundraiserFeed, FundraiserFilter } from '../components';
+import { Layout, PageHero } from '../components';
+import { FundraiserFeed } from '../components';
+import useSearch, { LOADING_STATE } from '../hooks/useSearch';
+import usePagination from '../hooks/usePagination';
+import Pagination from '../components/Pagination';
+import { handleLocationToCoords } from '../api/geocode';
 
-export default function Fundraisers() {
-  const [fundraiserFilters, setFundraiserFilters] = useState({
-    name: '',
+function generateURL(filters, setPageLocation) {
+  let newPath = '/fundraisers';
+  let queryString = '';
+
+  if (filters.search) {
+    if (queryString === '') {
+      queryString += `?search=${filters.search}`;
+    } else {
+      queryString += `&&search=${filters.search}`;
+    }
+  }
+
+  if (filters.location) {
+    if (queryString === '') {
+      queryString += `?location=${filters.location}`;
+    } else {
+      queryString += `&&location=${filters.location}`;
+    }
+  }
+
+  setPageLocation(location => ({
+    ...location,
+    pathname: newPath,
+    search: queryString,
+  }));
+
+  window.history.replaceState({}, undefined, newPath + queryString);
+}
+
+// get search param from url
+function searchName(location) {
+  const searchParams = new URLSearchParams(location.search);
+  return searchParams.get('search');
+}
+
+// get location param from url
+function searchLocation(location) {
+  const searchParams = new URLSearchParams(location.search);
+  return searchParams.get('location');
+}
+
+async function searchCoordinates(location) {
+  const searchParams = new URLSearchParams(location.search);
+  const coordinates = await handleLocationToCoords(
+    searchParams.get('location') || ''
+  );
+  return coordinates;
+}
+
+export default function Fundraisers(props) {
+  const [pageLocation, setPageLocation] = useState(props.location);
+  const [searchFilters, setSearchFilters] = useState({
+    coordinates: {},
+    search: searchName(props.location),
+    location: searchLocation(props.location),
   });
+
   const theme = useTheme();
+  const { page } = usePagination(pageLocation);
+  const { results, totalPages, loadingState, setLoadingState } = useSearch(
+    searchFilters,
+    page
+  );
+
+  // update pageLocation on page-location changes (e.g: when opage number changes)
+  useEffect(() => {
+    setPageLocation(props.location);
+
+    // Does not use pageLocation as it should only run on first load.
+    async function setLocationCoordinatesFromURL() {
+      const coordinates = await searchCoordinates(props.location);
+      setSearchFilters(current => ({
+        ...current,
+        coordinates,
+      }));
+    }
+    setLocationCoordinatesFromURL();
+  }, [props.location]);
+
+  // make sure skeleton loaders appear when changing page number
+  useLayoutEffect(() => {
+    setLoadingState(currLoadingState =>
+      currLoadingState === LOADING_STATE.INITIAL
+        ? currLoadingState
+        : LOADING_STATE.SEARCHING
+    );
+  }, [props.location, setLoadingState]);
+
+  const isSearching = loadingState === LOADING_STATE.SEARCHING;
+
+  function onSearch(filters) {
+    setLoadingState(LOADING_STATE.SEARCHING);
+    generateURL(filters, setPageLocation);
+    setSearchFilters(filters);
+  }
 
   const pageSubtitle = (
     <Text
@@ -35,8 +129,21 @@ export default function Fundraisers() {
           heroImageUrl={heroBackgroundImageUrl}
           hasFadedHeroImage
         />
-        <FundraiserFilter onSearch={setFundraiserFilters} />
-        <FundraiserFeed filters={fundraiserFilters} />
+
+        <FundraiserFeed
+          fundraisers={results}
+          loadingState={loadingState}
+          onSearch={onSearch}
+          selectedFilters={searchFilters}
+        />
+
+        {!!results.length && !isSearching && (
+          <Pagination
+            location={pageLocation}
+            currentPage={parseInt(page)}
+            totalPages={parseInt(totalPages)}
+          />
+        )}
       </Flex>
     </Layout>
   );

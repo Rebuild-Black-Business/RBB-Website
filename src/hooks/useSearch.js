@@ -24,6 +24,10 @@ function createFilterString(defaultFilters = '', filters) {
     filterArr.push(`category=${filters.type}`);
   }
 
+  if (filters.search) {
+    filterArr.push(`search=${filters.search}`);
+  }
+
   if (Object.keys(filters.coordinates).length) {
     filterArr.push(
       `lat=${filters.coordinates.lat}&long=${filters.coordinates.lng}&radius=25`

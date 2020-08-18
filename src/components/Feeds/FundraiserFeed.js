@@ -1,34 +1,21 @@
-import React, { useState, useRef, useMemo, useEffect } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { Box, SimpleGrid, useTheme } from '@chakra-ui/core';
-
+import React, { useRef } from 'react';
+import { Box, SimpleGrid, useTheme, Skeleton } from '@chakra-ui/core';
 import Button from '../Button';
 import Image from '../Image';
 import { CardWrapper, CardHeading, CardText, CardContent } from '../Card';
 import FundraiserCard from '../Cards/FundraiserCard';
 import NoResultsCard from '../Cards/NoResultsCard';
+import { LOADING_STATE } from '../../hooks/useSearch';
+import { FundraiserFilter } from '..';
+
 function FundraiserFeed(props) {
-  const [allFundraisers] = useState(props.data.allAirtableBusinesses.nodes);
-  const [fundraisers, setFundraisers] = useState(allFundraisers);
-  const [loaded, setLoaded] = useState(false);
   const focusRef = useRef();
   const theme = useTheme();
-  const { name: nameFilter } = props.filters;
+  const { fundraisers, loadingState, onSearch, selectedFilters } = props;
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-
-  useMemo(() => {
-    const filteredFundraisers = allFundraisers.filter(fundraiser => {
-      if (nameFilter === '' || nameFilter === null) return fundraiser;
-      return fundraiser.data['Business_Name']
-        .toLowerCase()
-        .includes(nameFilter.toLowerCase(), 0);
-    });
-
-    setFundraisers(filteredFundraisers);
-  }, [nameFilter, allFundraisers]);
+  const loaded = loadingState === LOADING_STATE.NONE;
+  const isSearching = loadingState === LOADING_STATE.SEARCHING;
+  const isInitialLoading = loadingState === LOADING_STATE.INITIAL;
 
   return (
     <Box
@@ -36,12 +23,32 @@ function FundraiserFeed(props) {
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
       marginBottom={theme.spacing.lg}
     >
-      {loaded && fundraisers.length > 0 ? (
+      <FundraiserFilter
+        onSearch={filters => onSearch(filters)}
+        selectedFilters={selectedFilters}
+      />
+
+      {(isSearching || isInitialLoading) && (
+        <Box mb={10}>
+          <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
+            {[...Array.from(new Array(12))].map((_, index) => (
+              <Skeleton key={index}>
+                <FundraiserCard
+                  name="Very Long Dummy Name For Fundraiser"
+                  donationLink="Dummy Donation Link"
+                />
+              </Skeleton>
+            ))}
+          </SimpleGrid>
+        </Box>
+      )}
+
+      {!isInitialLoading && fundraisers.length > 0 && !isSearching && (
         <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
-          {fundraisers.map(({ data }, index) => {
+          {fundraisers.map((fundraiser, index) => {
             if (index === 4)
               return (
-                <React.Fragment key={data.ID}>
+                <React.Fragment key={fundraiser.id}>
                   <CardWrapper
                     gridColumn={[null, null, 'span 2']}
                     pr={theme.spacing.lg}
@@ -109,43 +116,26 @@ function FundraiserFeed(props) {
                     </CardContent>
                   </CardWrapper>
                   <FundraiserCard
-                    key={data.ID}
-                    name={data.Business_Name}
-                    donationLink={data.Donation_Link}
+                    name={fundraiser.businessName}
+                    donationLink={fundraiser.donationLink}
                   />
                 </React.Fragment>
               );
             return (
               <FundraiserCard
-                key={data.ID}
-                name={data.Business_Name}
-                donationLink={data.Donation_Link}
+                key={fundraiser.id}
+                name={fundraiser.businessName}
+                donationLink={fundraiser.donationLink}
               />
             );
           })}
         </SimpleGrid>
-      ) : (
+      )}
+      {loaded && fundraisers.length === 0 && !isSearching && (
         <NoResultsCard type="fundraisers" />
       )}
     </Box>
   );
 }
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allAirtableBusinesses(filter: { data: { Donation_Link: { ne: "" } } }) {
-          nodes {
-            data {
-              Donation_Link
-              Business_Name
-              ID
-            }
-          }
-        }
-      }
-    `}
-    render={data => <FundraiserFeed data={data} {...props} />}
-  />
-);
+export default FundraiserFeed;

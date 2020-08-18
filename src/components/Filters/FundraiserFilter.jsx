@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Flex,
@@ -8,27 +8,35 @@ import {
   useTheme,
 } from '@chakra-ui/core';
 
+import { handleLocationToCoords } from '../../api/geocode';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
-function FundraiserFilter(props) {
-  const { onSearch } = props;
-  const nameRef = useRef('');
+function FundraiserFilter({ onSearch, selectedFilters }) {
+  const [name, setName] = useState(selectedFilters.search || '');
+  const [location, setLocation] = useState(selectedFilters.location || '');
+
   const theme = useTheme();
 
   const rbbWhite = theme.colors['rbb-white'];
   const rbbBlack = theme.colors['rbb-black-000'];
 
-  const handleSearchClick = event => {
+  const handleSearchClick = async event => {
     event.preventDefault();
+    const coordinates = await handleLocationToCoords(location);
     onSearch({
-      name: nameRef.current.value,
+      coordinates,
+      search: name,
+      location,
     });
   };
 
-  const handleSearchKeyPress = event => {
+  const handleSearchKeyPress = async event => {
     event.preventDefault();
+    const coordinates = await handleLocationToCoords(location);
     onSearch({
-      name: nameRef.current.value,
+      coordinates,
+      search: name,
+      location,
     });
   };
 
@@ -55,14 +63,35 @@ function FundraiserFilter(props) {
             direction="column"
             marginRight={[0, 0, theme.spacing.base]}
             marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+            flex={1}
           >
             <FormLabel htmlFor="name" color={[rbbBlack, rbbBlack, rbbWhite]}>
               Name
             </FormLabel>
             <Input
-              ref={nameRef}
+              value={name}
+              onChange={e => setName(e.target.value)}
               id="name"
-              placeholder=" e.g. Rebuild the Block "
+              placeholder=" e.g. Rebuild the Block"
+            />
+          </Flex>
+          <Flex
+            direction="column"
+            marginRight={[0, 0, theme.spacing.base]}
+            marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+            flex={1}
+          >
+            <FormLabel
+              htmlFor="location"
+              color={[rbbBlack, rbbBlack, rbbWhite]}
+            >
+              Location
+            </FormLabel>
+            <Input
+              value={location}
+              onChange={e => setLocation(e.target.value)}
+              id="location"
+              placeholder=" e.g Atlanta"
             />
           </Flex>
           <Flex
