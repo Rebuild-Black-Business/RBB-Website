@@ -15,7 +15,6 @@ import {
   MISSION_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
-import SuggestionBox from '../components/Forms/SuggestionBox';
 
 export default function About() {
   const theme = useTheme();
@@ -194,7 +193,14 @@ export default function About() {
               publicId="assets/contact-right"
               alt="aerial view of group of people putting their hands into the middle"
             />
-            <SuggestionBox />
+            <ContactCard
+              modalCard
+              suggestions
+              title="Suggestions"
+              blurb="How can we improve?"
+              publicId="assets/contact-middle"
+              alt="aerial view of user typing at keyboard"
+            />
           </Grid>
         </Flex>
       </Flex>
