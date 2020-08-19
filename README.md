@@ -76,7 +76,7 @@ This site uses Airtable to keep track of business data. We have set up a dummy d
 
 Upon clicking the above link, you will get "Read Only" access to the database.
 
-Once you've obtained access, grab your API key clicking on HELP button in the upper right hand corner Airtable, and clicking the "API Documentation" link. 
+Once you've obtained access, grab your API key clicking on HELP button in the upper right hand corner Airtable, and clicking the "API Documentation" link.
 
 ![Airtable API documentation link](docs/images/airtable-api-key-api-documentation.png)
 
@@ -163,6 +163,10 @@ npm run test
 👤 **Rebuild Black Business**
 
 - Github: [@Rebuild-Black-Business](https://github.com/Rebuild-Black-Business)
+
+## Legal
+
+© 2020 0x42 Software Engineering, LLC. All rights reserved.
 
 ## Contributors ✨
 

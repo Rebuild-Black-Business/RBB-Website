@@ -18,8 +18,8 @@ const Copyright = () => {
           color={theme.colors['rbb-white']}
           opacity={0.5}
         >
-          Copyright &copy; {DynamicYear} Rebuild Black Businesses. All rights
-          reserved.
+          Copyright &copy; {DynamicYear} 0x42 Software Engineering LLC. All
+          rights reserved.
         </Text>
       </Flex>
     </Flex>
