@@ -15,6 +15,7 @@ import {
   MISSION_MESSAGE,
   WHO_WE_ARE_MESSAGE,
 } from '../constants/about';
+import SuggestionBox from '../components/Forms/SuggestionBox';
 
 export default function About() {
   const theme = useTheme();
@@ -193,6 +194,7 @@ export default function About() {
               publicId="assets/contact-right"
               alt="aerial view of group of people putting their hands into the middle"
             />
+            <SuggestionBox />
           </Grid>
         </Flex>
       </Flex>

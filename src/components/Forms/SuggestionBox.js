@@ -7,6 +7,11 @@ import {
   Input,
   Textarea,
   Text,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from '@chakra-ui/core';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
@@ -16,37 +21,62 @@ const encode = data => {
     .join('&');
 };
 
+//how to intigrate with netlifys for handling
+//https://www.netlify.com/blog/2017/07/20/how-to-integrate-netlifys-form-handling-in-a-react-app/#form-handling-with-static-site-generators
+
 export default function SuggestionBox() {
+  const [topic, setTopic] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [benifits, setBenifits] = useState(null);
+  const [urgency, setUrgency] = useState(5);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [textField, setTextField] = useState('');
+  const [validationMessage, setValidationMessage] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const theme = useTheme();
 
   const handleSubmit = event => {
     const toSubmit = {
+      topic,
+      description,
+      benifits,
+      urgency,
       name,
-      subject,
-      textField,
       email,
     };
-    console.log(toSubmit);
 
+    //Custom Validation
+    const valuesToValidate = Object.values(toSubmit);
+    //Validates all required fields (initiated with null) are filled
+    if (valuesToValidate.includes(null)) {
+      setValidationMessage('All fields with * are required.');
+      return;
+    }
+
+    //posts to Netlify intigration
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', toSubmit }),
     })
-      .then(() => alert('Success!'))
-      .catch(error => alert(error));
+      .then(() => console.log('Success!'))
+      .catch(error => console.log(error));
 
     event.preventDefault();
+    setSubmitted(true);
   };
+
+  if (submitted) {
+    return (
+      <Text fontSize="2xl" textAlign="center">
+        Thank you for your suggestion!
+      </Text>
+    );
+  }
 
   return (
     <FormControl
-      isRequired
       width="100%"
       maxWidth="1000px"
       margin="0 auto 3rem"
@@ -61,7 +91,6 @@ export default function SuggestionBox() {
       data-netlify-honeypot="bot-field"
       data-netlify="true"
       name="contact"
-      //netlify form handling
     >
       {/* netlify form handling */}
       <input type="hidden" name="bot-field" />
@@ -71,6 +100,67 @@ export default function SuggestionBox() {
       <Text fontSize="xl" textAlign="center">
         Suggestion Box
       </Text>
+
+      {/* renders when form is submitted with validation errors */}
+      {validationMessage && <Text textAlign="center">{validationMessage}</Text>}
+
+      <Flex direction="column" margin={theme.spacing.base}>
+        <FormLabel isRequired htmlFor="topic">
+          Topic
+        </FormLabel>
+        <Input
+          value={topic}
+          id="topic"
+          type="text"
+          placeholder="e.g. Business, Functionality, New Feature"
+          onChange={event => setTopic(event.currentTarget.value)}
+        />
+      </Flex>
+
+      <Flex direction="column" margin={theme.spacing.base}>
+        <FormLabel isRequired htmlFor="textField">
+          Description
+        </FormLabel>
+        <Textarea
+          value={description}
+          id="description"
+          placeholder="Description"
+          onChange={event => setDescription(event.currentTarget.value)}
+        />
+      </Flex>
+
+      <Flex direction="column" margin={theme.spacing.base}>
+        <FormLabel isRequired htmlFor="benifits">
+          Benifits
+        </FormLabel>
+        <Textarea
+          value={benifits}
+          id="benifits"
+          placeholder="Benifits"
+          onChange={event => setBenifits(event.currentTarget.value)}
+        />
+      </Flex>
+
+      <Flex direction="column" margin={theme.spacing.base}>
+        <FormLabel isRequired htmlFor="urgency">
+          Urgency: 1 (Most Urgent) - 5 (Not Urgent)
+        </FormLabel>
+        <NumberInput
+          id="urgency"
+          type="number"
+          min={1}
+          max={5}
+          value={urgency}
+          onChange={value => setUrgency(value > 5 ? 5 : value)}
+        >
+          <NumberInputField />
+          <NumberInputStepper>
+            <NumberIncrementStepper />
+            <NumberDecrementStepper />
+          </NumberInputStepper>
+        </NumberInput>
+      </Flex>
+
       <Flex width="100%" direction="column">
         <Flex direction="column" margin={theme.spacing.base}>
           <FormLabel htmlFor="name">Name</FormLabel>
@@ -92,26 +182,7 @@ export default function SuggestionBox() {
             onChange={event => setEmail(event.currentTarget.value)}
           />
         </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="subject">Subject</FormLabel>
-          <Input
-            value={subject}
-            id="subject"
-            type="text"
-            placeholder="Subject"
-            onChange={event => setSubject(event.currentTarget.value)}
-          />
-        </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="textField">Suggestions</FormLabel>
-          <Textarea
-            value={textField}
-            id="textField"
-            placeholder="Suggestions"
-            maxLength="250"
-            onChange={event => setTextField(event.currentTarget.value)}
-          />
-        </Flex>
+
         <Flex width="100%" justify="center">
           <PrimaryButton onClick={handleSubmit}>Submit</PrimaryButton>
         </Flex>
