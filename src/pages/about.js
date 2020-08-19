@@ -164,13 +164,22 @@ export default function About() {
             paddingTop="2rem"
             paddingBottom="2rem"
           >
-            <ContactCard
+            {/* <ContactCard
               modalCard
               title="Business Owners"
               publicId="assets/contact-left"
               alt="business shop window"
               transforms={{ width: 800, height: 450, crop: 'crop' }}
               blurb="Add your business to our list"
+            /> */}
+            <ContactCard
+              modalCard
+              suggestions
+              title="Suggestions"
+              blurb="How can we improve?"
+              publicId="assets/contact-left"
+              alt="business shop window"
+              transforms={{ width: 800, height: 450, crop: 'crop' }}
             />
             <ErrorBoundary>
               <StaticQuery
@@ -192,14 +201,6 @@ export default function About() {
               blurb="Join us"
               publicId="assets/contact-right"
               alt="aerial view of group of people putting their hands into the middle"
-            />
-            <ContactCard
-              modalCard
-              suggestions
-              title="Suggestions"
-              blurb="How can we improve?"
-              publicId="assets/contact-middle"
-              alt="aerial view of user typing at keyboard"
             />
           </Grid>
         </Flex>

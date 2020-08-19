@@ -63,6 +63,10 @@ const AllySignUpForm = () => {
         }
       }}
     >
+      <Text fontSize="xl" textAlign="center">
+        Sign up to be an Ally
+      </Text>
+
       {/* renders when form is submitted with validation errors */}
       {validationMessage && <Text>{validationMessage}</Text>}
 
