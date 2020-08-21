@@ -27,7 +27,7 @@ const encode = data => {
 export default function SuggestionBox() {
   const [topic, setTopic] = useState(null);
   const [description, setDescription] = useState(null);
-  const [benifits, setBenifits] = useState(null);
+  const [benefits, setBenefits] = useState(null);
   const [urgency, setUrgency] = useState(5);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -40,7 +40,7 @@ export default function SuggestionBox() {
     const toSubmit = {
       topic,
       description,
-      benifits,
+      benefits,
       urgency,
       name,
       email,
@@ -69,7 +69,7 @@ export default function SuggestionBox() {
 
   if (submitted) {
     return (
-      <Text fontSize="2xl" textAlign="center">
+      <Text fontSize="2xl" textAlign="center" margin="0 0 2rem 0">
         Thank you for your suggestion!
       </Text>
     );
@@ -93,100 +93,103 @@ export default function SuggestionBox() {
       name="contact"
     >
       {/* netlify form handling */}
-      <input type="hidden" name="bot-field" />
-      <input type="hidden" name="form-name" value="contact" />
-      {/* netlify form handling */}
+      <form netlify>
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
 
-      <Text fontSize="xl" textAlign="center">
-        Suggestion Box
-      </Text>
+        <Text fontSize="xl" textAlign="center">
+          Suggestion Box
+        </Text>
 
-      {/* renders when form is submitted with validation errors */}
-      {validationMessage && <Text textAlign="center">{validationMessage}</Text>}
+        {/* renders when form is submitted with validation errors */}
+        {validationMessage && (
+          <Text textAlign="center">{validationMessage}</Text>
+        )}
 
-      <Flex direction="column" margin={theme.spacing.base}>
-        <FormLabel isRequired htmlFor="topic">
-          Topic
-        </FormLabel>
-        <Input
-          value={topic}
-          id="topic"
-          type="text"
-          placeholder="e.g. Business, Functionality, New Feature"
-          onChange={event => setTopic(event.currentTarget.value)}
-        />
-      </Flex>
-
-      <Flex direction="column" margin={theme.spacing.base}>
-        <FormLabel isRequired htmlFor="textField">
-          Description
-        </FormLabel>
-        <Textarea
-          value={description}
-          id="description"
-          placeholder="Description"
-          onChange={event => setDescription(event.currentTarget.value)}
-        />
-      </Flex>
-
-      <Flex direction="column" margin={theme.spacing.base}>
-        <FormLabel isRequired htmlFor="benifits">
-          Benifits
-        </FormLabel>
-        <Textarea
-          value={benifits}
-          id="benifits"
-          placeholder="Benifits"
-          onChange={event => setBenifits(event.currentTarget.value)}
-        />
-      </Flex>
-
-      <Flex direction="column" margin={theme.spacing.base}>
-        <FormLabel isRequired htmlFor="urgency">
-          Urgency: 1 (Most Urgent) - 5 (Not Urgent)
-        </FormLabel>
-        <NumberInput
-          id="urgency"
-          type="number"
-          min={1}
-          max={5}
-          value={urgency}
-          onChange={value => setUrgency(value > 5 ? 5 : value)}
-        >
-          <NumberInputField />
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
-      </Flex>
-
-      <Flex width="100%" direction="column">
         <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="name">Name</FormLabel>
+          <FormLabel isRequired htmlFor="topic">
+            Topic
+          </FormLabel>
           <Input
-            value={name}
-            id="name"
+            value={topic}
+            id="topic"
             type="text"
-            placeholder="Name"
-            onChange={event => setName(event.currentTarget.value)}
-          />
-        </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="email">Email</FormLabel>
-          <Input
-            value={email}
-            id="email"
-            type="text"
-            placeholder="Email"
-            onChange={event => setEmail(event.currentTarget.value)}
+            placeholder="e.g. Business, Functionality, New Feature"
+            onChange={event => setTopic(event.currentTarget.value)}
           />
         </Flex>
 
-        <Flex width="100%" justify="center">
-          <PrimaryButton onClick={handleSubmit}>Submit</PrimaryButton>
+        <Flex direction="column" margin={theme.spacing.base}>
+          <FormLabel isRequired htmlFor="textField">
+            Description
+          </FormLabel>
+          <Textarea
+            value={description}
+            id="description"
+            placeholder="Description"
+            onChange={event => setDescription(event.currentTarget.value)}
+          />
         </Flex>
-      </Flex>
+
+        <Flex direction="column" margin={theme.spacing.base}>
+          <FormLabel isRequired htmlFor="benefits">
+            Benefits
+          </FormLabel>
+          <Textarea
+            value={benefits}
+            id="benefits"
+            placeholder="Benefits"
+            onChange={event => setBenefits(event.currentTarget.value)}
+          />
+        </Flex>
+
+        <Flex direction="column" margin={theme.spacing.base}>
+          <FormLabel isRequired htmlFor="urgency">
+            Urgency: 1 (Most Urgent) - 5 (Not Urgent)
+          </FormLabel>
+          <NumberInput
+            id="urgency"
+            type="number"
+            min={1}
+            max={5}
+            value={urgency}
+            onChange={value => setUrgency(value > 5 ? 5 : value)}
+          >
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+        </Flex>
+
+        <Flex width="100%" direction="column">
+          <Flex direction="column" margin={theme.spacing.base}>
+            <FormLabel htmlFor="name">Name</FormLabel>
+            <Input
+              value={name}
+              id="name"
+              type="text"
+              placeholder="Name"
+              onChange={event => setName(event.currentTarget.value)}
+            />
+          </Flex>
+          <Flex direction="column" margin={theme.spacing.base}>
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <Input
+              value={email}
+              id="email"
+              type="text"
+              placeholder="Email"
+              onChange={event => setEmail(event.currentTarget.value)}
+            />
+          </Flex>
+
+          <Flex width="100%" justify="center">
+            <PrimaryButton onClick={handleSubmit}>Submit</PrimaryButton>
+          </Flex>
+        </Flex>
+      </form>
     </FormControl>
   );
 }

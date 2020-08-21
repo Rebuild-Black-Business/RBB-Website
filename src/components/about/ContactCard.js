@@ -78,7 +78,7 @@ const CardImage = ({ publicId, transforms, alt }) => {
 };
 
 const ModalForm = ({ isOpen, onClose, title, suggestions }) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
+  <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
     <ModalOverlay />
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>

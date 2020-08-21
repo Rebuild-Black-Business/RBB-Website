@@ -164,14 +164,6 @@ export default function About() {
             paddingTop="2rem"
             paddingBottom="2rem"
           >
-            {/* <ContactCard
-              modalCard
-              title="Business Owners"
-              publicId="assets/contact-left"
-              alt="business shop window"
-              transforms={{ width: 800, height: 450, crop: 'crop' }}
-              blurb="Add your business to our list"
-            /> */}
             <ContactCard
               modalCard
               suggestions
