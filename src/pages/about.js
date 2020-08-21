@@ -166,7 +166,6 @@ export default function About() {
           >
             <ContactCard
               modalCard
-              suggestions
               title="Suggestions"
               blurb="How can we improve?"
               publicId="assets/contact-left"

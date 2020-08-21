@@ -77,14 +77,14 @@ const CardImage = ({ publicId, transforms, alt }) => {
   );
 };
 
-const ModalForm = ({ isOpen, onClose, title, suggestions }) => (
+const ModalForm = ({ isOpen, onClose, title }) => (
   <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
     <ModalOverlay />
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
       <ModalBody>
-        {suggestions ? <SuggestionBox /> : <BusinessSignUpForm />}
+        <SuggestionBox />
       </ModalBody>
     </ModalContent>
   </Modal>
@@ -214,7 +214,6 @@ const ContactCard = ({
     return (
       <PseudoBox _hover={cardStyle.hover} _focus={cardStyle.focus}>
         <ModalCard
-          suggestions={suggestions}
           modalTitle={modalTitle}
           title={title}
           blurb={blurb}
