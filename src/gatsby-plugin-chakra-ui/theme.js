@@ -7,6 +7,7 @@ const customTheme = {
   ...theme,
   containers: {
     main: '1220px',
+    lg: '1600px',
   },
   spacing: {
     xs: '0.75rem',

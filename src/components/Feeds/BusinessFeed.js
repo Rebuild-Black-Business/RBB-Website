@@ -25,7 +25,7 @@ function BusinessFeed({
 
   return (
     <Box
-      maxW={theme.containers.main}
+      maxW={theme.containers.lg}
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
       width="100%"
     >
@@ -36,7 +36,7 @@ function BusinessFeed({
       />
       {(searching || initialLoad) && (
         <Box mb={10}>
-          <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+          <SimpleGrid columns={[null, 1, 2, 3, 4]} spacing={10}>
             {[...Array.from(new Array(20))].map((_, index) => (
               <Skeleton key={index}>
                 <ResultCard
@@ -54,7 +54,7 @@ function BusinessFeed({
 
       {!initialLoad && hasResults && !searching && (
         <>
-          <SimpleGrid columns={[null, 1, 2]} spacing={10}>
+          <SimpleGrid columns={[null, 1, 2, 3, 4]} spacing={10}>
             {businesses.map((business, index) => {
               const formattedLocation = `${business.city ? business.city : ''}${
                 business.city && business.state ? ', ' : ''
