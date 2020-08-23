@@ -27,6 +27,7 @@ function FundraiserFilter({ onSearch, selectedFilters }) {
       coordinates,
       search: name,
       location,
+      hasDonationLink: true,
     });
   };
 
@@ -37,6 +38,7 @@ function FundraiserFilter({ onSearch, selectedFilters }) {
       coordinates,
       search: name,
       location,
+      hasDonationLink: true,
     });
   };
 
@@ -63,7 +65,6 @@ function FundraiserFilter({ onSearch, selectedFilters }) {
             direction="column"
             marginRight={[0, 0, theme.spacing.base]}
             marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
-            flex={1}
           >
             <FormLabel htmlFor="name" color={[rbbBlack, rbbBlack, rbbWhite]}>
               Name
@@ -79,7 +80,6 @@ function FundraiserFilter({ onSearch, selectedFilters }) {
             direction="column"
             marginRight={[0, 0, theme.spacing.base]}
             marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
-            flex={1}
           >
             <FormLabel
               htmlFor="location"

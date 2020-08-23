@@ -23,69 +23,78 @@ import ContactModal from '../ContactModal';
  * )
  */
 
-const FundraiserCard = forwardRef(({ name, donationLink, ...props }, ref) => {
-  const { onOpen, isOpen, onClose } = useDisclosure();
-  const { updateRef } = useRef();
-  const theme = useTheme();
+const FundraiserCard = forwardRef(
+  ({ name, donationLink, location, ...props }, ref) => {
+    const { onOpen, isOpen, onClose } = useDisclosure();
+    const { updateRef } = useRef();
+    const theme = useTheme();
 
-  return (
-    <>
-      <CardWrapper ref={ref} {...props}>
-        <CardContent
-          bg={theme.colors['rbb-white']}
-          color={theme.colors['rbb-black-100']}
-          display="flex"
-          flexDirection="column"
-        >
-          <CardHeading
-            fontFamily={theme.fonts['heading-slab']}
-            textTransform="uppercase"
-            fontSize={theme.fontSizes.xl}
-            lineHeight="1"
-            overflowWrap="break-word"
-            wordWrap="break-word"
-            wordBreak="break-word"
-            hyphens="auto"
+    return (
+      <>
+        <CardWrapper ref={ref} {...props}>
+          <CardContent
+            bg={theme.colors['rbb-white']}
+            color={theme.colors['rbb-black-100']}
+            display="flex"
+            flexDirection="column"
           >
-            {name}
-          </CardHeading>
-          {/* {location && (
-            <CardText
-              as="p"
-              fontFamily={theme.fonts.heading}
-              fontSize={theme.fontSizes.lg}
+            <CardHeading
+              fontFamily={theme.fonts['heading-slab']}
+              textTransform="uppercase"
+              fontSize={theme.fontSizes.xl}
+              lineHeight="1"
+              overflowWrap="break-word"
+              wordWrap="break-word"
+              wordBreak="break-word"
+              hyphens="auto"
             >
-              {location}
-            </CardText>
-          )} */}
+              {name}
+            </CardHeading>
+            {location && (
+              <CardText
+                as="p"
+                fontFamily={theme.fonts.heading}
+                fontSize={theme.fontSizes.base}
+                color="rbb-black-100"
+                opacity="0.5"
+              >
+                {location}
+              </CardText>
+            )}
 
-          <Box marginTop="auto" paddingTop={theme.spacing.base}>
-            <CardButtonGroup pb={3}>
-              <CardButton as="a" href={donationLink}>
-                Donate
-              </CardButton>
-            </CardButtonGroup>
-            <Text as="small" fontSize="sm" mt={3} isInline>
-              <Icon
-                name="flag"
-                color={theme.colors['rbb-gray']}
-                mr={theme.spacing.xs}
-              />
-              <Link as="button" variant="cta" ref={updateRef} onClick={onOpen}>
-                Report
-              </Link>
-            </Text>
-          </Box>
-        </CardContent>
-      </CardWrapper>
-      <ContactModal
-        isOpen={isOpen}
-        title={`Report or Unlist the listing for "${name}"`}
-        onClose={onClose}
-      />
-    </>
-  );
-});
+            <Box marginTop="auto" paddingTop={theme.spacing.base}>
+              <CardButtonGroup pb={3}>
+                <CardButton as="a" href={donationLink}>
+                  Donate
+                </CardButton>
+              </CardButtonGroup>
+              <Text as="small" fontSize="sm" mt={3} isInline>
+                <Icon
+                  name="flag"
+                  color={theme.colors['rbb-gray']}
+                  mr={theme.spacing.xs}
+                />
+                <Link
+                  as="button"
+                  variant="cta"
+                  ref={updateRef}
+                  onClick={onOpen}
+                >
+                  Report
+                </Link>
+              </Text>
+            </Box>
+          </CardContent>
+        </CardWrapper>
+        <ContactModal
+          isOpen={isOpen}
+          title={`Report or Unlist the listing for "${name}"`}
+          onClose={onClose}
+        />
+      </>
+    );
+  }
+);
 
 FundraiserCard.displayName = 'FundraiserCard';
 FundraiserCard.propTypes = {

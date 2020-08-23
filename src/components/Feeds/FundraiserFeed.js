@@ -11,7 +11,13 @@ import { FundraiserFilter } from '..';
 function FundraiserFeed(props) {
   const focusRef = useRef();
   const theme = useTheme();
-  const { fundraisers, loadingState, onSearch, selectedFilters } = props;
+  const {
+    fundraisers,
+    loadingState,
+    onSearch,
+    selectedFilters,
+    onOpen,
+  } = props;
 
   const loaded = loadingState === LOADING_STATE.NONE;
   const isSearching = loadingState === LOADING_STATE.SEARCHING;
@@ -31,9 +37,10 @@ function FundraiserFeed(props) {
       {(isSearching || isInitialLoading) && (
         <Box mb={10}>
           <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
-            {[...Array.from(new Array(12))].map((_, index) => (
+            {[...Array.from(new Array(16))].map((_, index) => (
               <Skeleton key={index}>
                 <FundraiserCard
+                  location="none"
                   name="Very Long Dummy Name For Fundraiser"
                   donationLink="Dummy Donation Link"
                 />
@@ -46,6 +53,12 @@ function FundraiserFeed(props) {
       {!isInitialLoading && fundraisers.length > 0 && !isSearching && (
         <SimpleGrid columns={[null, 1, 3, 4]} spacing={theme.spacing.med}>
           {fundraisers.map((fundraiser, index) => {
+            const formattedLocation = `${
+              fundraiser.city ? fundraiser.city : ''
+            }${fundraiser.city && fundraiser.state ? ', ' : ''}${
+              fundraiser.state ? fundraiser.state : ''
+            }`;
+
             if (index === 4)
               return (
                 <React.Fragment key={fundraiser.id}>
@@ -55,7 +68,7 @@ function FundraiserFeed(props) {
                     pos="relative"
                   >
                     <Image
-                      publicId="assets/ally-sign-up"
+                      publicId="assets/coffee-shop_rbgwyx"
                       objectFit="cover"
                       pos="absolute"
                       zIndex="-1"
@@ -65,7 +78,7 @@ function FundraiserFeed(props) {
                       left="0"
                     />
                     <Image
-                      publicId="assets/ally-sign-up"
+                      publicId="assets/coffee-shop_rbgwyx"
                       transforms={{
                         fetchFormat: 'auto',
                         quality: 'auto',
@@ -108,7 +121,7 @@ function FundraiserFeed(props) {
                       <Button
                         variant="cta"
                         mt={theme.spacing.base}
-                        // onClick={onOpen}
+                        onClick={onOpen}
                         ref={focusRef}
                       >
                         Spread The Word
@@ -116,6 +129,7 @@ function FundraiserFeed(props) {
                     </CardContent>
                   </CardWrapper>
                   <FundraiserCard
+                    location={formattedLocation}
                     name={fundraiser.businessName}
                     donationLink={fundraiser.donationLink}
                   />
@@ -124,6 +138,7 @@ function FundraiserFeed(props) {
             return (
               <FundraiserCard
                 key={fundraiser.id}
+                location={formattedLocation}
                 name={fundraiser.businessName}
                 donationLink={fundraiser.donationLink}
               />

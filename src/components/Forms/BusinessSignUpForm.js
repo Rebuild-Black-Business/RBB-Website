@@ -29,7 +29,7 @@ const businessCategories = [
   'Other',
 ];
 
-const BusinessSignUpForm = () => {
+const BusinessSignUpForm = ({ isFundraiser = false }) => {
   const [email, setEmail] = useState(null);
   const [businessName, setBusinessName] = useState(null);
   const [category, setCategory] = useState(null);
@@ -45,8 +45,8 @@ const BusinessSignUpForm = () => {
   const [website, setWebsite] = useState('');
   const [yelp, setYelp] = useState('');
   const [adult, setAdult] = useState(false);
-  const [hasDonation, setHasDonation] = useState(false);
-  const [donationLink, setDonationLink] = useState('');
+  const [hasDonation, setHasDonation] = useState(isFundraiser);
+  const [donationLink, setDonationLink] = useState(isFundraiser ? null : '');
   const [isOwner, setIsOwner] = useState(false);
   const [story, setStory] = useState('');
   const [cash, setCash] = useState(false);
@@ -115,6 +115,9 @@ const BusinessSignUpForm = () => {
 
   const handleDonation = event => {
     const val = event.target.checked;
+    if (isFundraiser) {
+      return;
+    }
     if (false === val) {
       setHasDonation(false);
       setDonationLink('');
@@ -397,6 +400,7 @@ const BusinessSignUpForm = () => {
             id="hasDonation"
             onChange={event => handleDonation(event)}
             marginRight="0.5rem"
+            isChecked={hasDonation}
           />
           <FormLabel htmlFor="hasDonation">
             Business has an ongoing donation campaign
@@ -419,7 +423,13 @@ const BusinessSignUpForm = () => {
                 id="donationLink"
                 type="text"
                 placeholder="Donation Link"
-                onChange={event => setDonationLink(event.currentTarget.value)}
+                onChange={event => {
+                  if (hasDonation && event.target.value === '') {
+                    setDonationLink(null);
+                  } else {
+                    setDonationLink(event.currentTarget.value);
+                  }
+                }}
               />
             </InputGroup>
           </Flex>

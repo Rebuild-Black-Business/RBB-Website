@@ -1,11 +1,34 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { Flex, Text, useTheme } from '@chakra-ui/core';
+import {
+  Flex,
+  Text,
+  useTheme,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  useDisclosure,
+} from '@chakra-ui/core';
 import { Layout, PageHero } from '../components';
 import { FundraiserFeed } from '../components';
 import useSearch, { LOADING_STATE } from '../hooks/useSearch';
 import usePagination from '../hooks/usePagination';
 import Pagination from '../components/Pagination';
 import { handleLocationToCoords } from '../api/geocode';
+import BusinessSignUpForm from '../components/Forms/BusinessSignUpForm';
+
+const ModalForm = ({ isOpen, onClose }) => (
+  <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
+    <ModalOverlay />
+    <ModalContent>
+      <ModalCloseButton />
+      <ModalBody>
+        <BusinessSignUpForm isFundraiser={true} />
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
 
 function generateURL(filters, setPageLocation) {
   let newPath = '/fundraisers';
@@ -57,18 +80,22 @@ async function searchCoordinates(location) {
 }
 
 export default function Fundraisers(props) {
+  const { onOpen, isOpen, onClose } = useDisclosure();
   const [pageLocation, setPageLocation] = useState(props.location);
   const [searchFilters, setSearchFilters] = useState({
     coordinates: {},
     search: searchName(props.location),
     location: searchLocation(props.location),
+    need: true,
+    hasDonationLink: true,
   });
 
   const theme = useTheme();
   const { page } = usePagination(pageLocation);
   const { results, totalPages, loadingState, setLoadingState } = useSearch(
     searchFilters,
-    page
+    page,
+    14
   );
 
   // update pageLocation on page-location changes (e.g: when opage number changes)
@@ -89,7 +116,8 @@ export default function Fundraisers(props) {
   // make sure skeleton loaders appear when changing page number
   useLayoutEffect(() => {
     setLoadingState(currLoadingState =>
-      currLoadingState === LOADING_STATE.INITIAL
+      currLoadingState === LOADING_STATE.INITIAL ||
+      currLoadingState === LOADING_STATE.SEARCHING
         ? currLoadingState
         : LOADING_STATE.SEARCHING
     );
@@ -135,6 +163,7 @@ export default function Fundraisers(props) {
           loadingState={loadingState}
           onSearch={onSearch}
           selectedFilters={searchFilters}
+          onOpen={onOpen}
         />
 
         {!!results.length && !isSearching && (
@@ -144,6 +173,7 @@ export default function Fundraisers(props) {
             totalPages={parseInt(totalPages)}
           />
         )}
+        <ModalForm isOpen={isOpen} onClose={onClose} />
       </Flex>
     </Layout>
   );
