@@ -82,6 +82,9 @@ function FundraiserFeed(props) {
                       transforms={{
                         fetchFormat: 'auto',
                         quality: 'auto',
+                        background: '#000000',
+                        effect: 'saturation:-78',
+                        opacity: '47',
                       }}
                       objectFit="cover"
                       pos="absolute"
