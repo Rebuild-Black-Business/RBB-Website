@@ -86,14 +86,15 @@ export default function SuggestionBox() {
           handleSubmit(event);
         }
       }}
-      //netlify form handling
-      method="post"
-      data-netlify-honeypot="bot-field"
-      data-netlify="true"
-      name="contact"
     >
       {/* netlify form handling */}
-      <form netlify>
+      <form
+        netlify
+        method="POST"
+        data-netlify-honeypot="bot-field"
+        data-netlify="true"
+        name="suggestion-box"
+      >
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
 
