@@ -166,11 +166,11 @@ export default function About() {
           >
             <ContactCard
               modalCard
-              title="Business Owners"
+              title="Suggestions"
+              blurb="How can we improve?"
               publicId="assets/contact-left"
               alt="business shop window"
               transforms={{ width: 800, height: 450, crop: 'crop' }}
-              blurb="Add your business to our list"
             />
             <ErrorBoundary>
               <StaticQuery

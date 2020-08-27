@@ -18,6 +18,7 @@ import React from 'react';
 import Image from '../../components/Image.js';
 import { VOLUNTEER_URL } from '../../constants/about';
 import BusinessSignUpForm from '../Forms/BusinessSignUpForm.js';
+import SuggestionBox from '../Forms/SuggestionBox.js';
 
 const CardContent = ({ title, blurb, publicId, alt, transforms = {} }) => {
   const theme = useTheme();
@@ -77,13 +78,13 @@ const CardImage = ({ publicId, transforms, alt }) => {
 };
 
 const ModalForm = ({ isOpen, onClose, title }) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
+  <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
     <ModalOverlay />
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
       <ModalBody>
-        <BusinessSignUpForm />
+        <SuggestionBox />
       </ModalBody>
     </ModalContent>
   </Modal>
@@ -97,6 +98,7 @@ const ModalCard = ({
   blurb,
   margin,
   transforms = {},
+  suggestions,
 }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const focusRef = React.useRef();
@@ -120,7 +122,12 @@ const ModalCard = ({
           transforms={transforms}
         />
       </Flex>
-      <ModalForm isOpen={isOpen} title={modalTitle} onClose={onClose} />
+      <ModalForm
+        isOpen={isOpen}
+        title={modalTitle}
+        onClose={onClose}
+        suggestions={suggestions}
+      />
     </>
   );
 };
@@ -191,6 +198,7 @@ const ContactCard = ({
   modalTitle,
   email,
   transforms = {},
+  suggestions,
 }) => {
   const cardStyle = {
     hover: {
