@@ -156,9 +156,6 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
         }
       }}
     >
-      <Text fontSize="xl" textAlign="center">
-        Register your business
-      </Text>
       {/* renders when form is submitted with validation errors */}
       {validationMessage && <Text>{validationMessage}</Text>}
 

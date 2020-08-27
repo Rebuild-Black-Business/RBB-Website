@@ -167,7 +167,11 @@ const AllyFeed = props => {
         ) : (
           <NoResultsCard type="allies" />
         )}
-        <ModalForm isOpen={isOpen} onClose={onClose} />
+        <ModalForm
+          isOpen={isOpen}
+          title="Sign up to be an Ally"
+          onClose={onClose}
+        />
       </Box>
     </>
   );
