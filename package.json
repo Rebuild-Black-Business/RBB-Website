@@ -50,6 +50,7 @@
     "react-geocode": "^0.2.1",
     "react-helmet": "^6.0.0",
     "react-use": "^15.2.2",
+    "slugify": "^1.4.5",
     "typeface-arvo": "^1.1.3",
     "typeface-inter": "^3.12.0",
     "use-cloudinary": "^3.0.1",

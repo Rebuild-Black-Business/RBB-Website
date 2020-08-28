@@ -67,7 +67,7 @@ const SingleBusinessPage = ({ data }) => {
 
 export const query = graphql`
   query SingleBusinessPageQuery($businessId: String) {
-    airtableBusinesses(id: { eq: $businessId }) {
+    airtableBusinesses(recordId: { eq: $businessId }) {
       data {
         name: Name
         approved: Approved

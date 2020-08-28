@@ -20,7 +20,10 @@ exports.createPages = async ({ graphql, actions }) => {
     query {
       businesses: allAirtableBusinesses {
         nodes {
-          id
+          data {
+            Business_Name
+          }
+          recordId
         }
       }
     }
@@ -32,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/business/${slug}`,
       component: require.resolve('./src/templates/singleBusinessPage'),
       context: {
-        businessId: business.id,
+        businessId: business.recordId,
       },
     });
   });
