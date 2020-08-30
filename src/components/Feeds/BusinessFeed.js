@@ -65,6 +65,7 @@ function BusinessFeed({
                   <>
                     <RegistrationPromo onOpen={onOpen} />
                     <ResultCard
+                      airTableId={business.airTableId}
                       key={business.id}
                       name={business.businessName || business.name}
                       category={business.category}
@@ -78,6 +79,7 @@ function BusinessFeed({
               }
               return (
                 <ResultCard
+                  airTableId={business.airTableId}
                   key={business.id}
                   name={business.businessName || business.name}
                   category={business.category}

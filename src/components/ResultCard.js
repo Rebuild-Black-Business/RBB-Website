@@ -20,6 +20,8 @@ import {
   CardWrapper,
 } from './Card';
 
+import { getSlugForBusiness } from '../utils/business';
+
 const DESCRIPTION_MAX_LENGTH = 250; // length in characters after which we'll trim descriptions
 
 // TODO: Replace with real fallback images for each category.
@@ -94,6 +96,7 @@ const categoryData = {
 const ResultCard = forwardRef(
   (
     {
+      airTableId,
       children,
       imageSrc,
       imageAlt,
@@ -120,6 +123,16 @@ const ResultCard = forwardRef(
     const categoryLabel =
       (categoryData[catVar] && categoryData[catVar].label) || category;
 
+    const businessPageSlug = getSlugForBusiness({
+      name: name,
+      businessName: name,
+      airtableId: airTableId,
+    });
+
+    const businessPageUrl = businessPageSlug
+      ? `/business/${businessPageSlug}`
+      : null;
+
     return (
       <CardWrapper
         ref={ref}
@@ -144,7 +157,9 @@ const ResultCard = forwardRef(
           color={hasImage ? undefined : theme.colors['rbb-black-200']}
         >
           <Heading as="h2" itemprop="name" size="md" fontWeight="normal">
-            {name}
+            <Link variant="standard" to={businessPageUrl}>
+              {name}
+            </Link>
           </Heading>
           {category && (
             <CardText
@@ -234,6 +249,7 @@ const ResultCard = forwardRef(
 
 ResultCard.displayName = 'ResultCard';
 ResultCard.propTypes = {
+  airTableId: PropTypes.string.isRequired,
   category: PropTypes.string,
   name: PropTypes.string.isRequired,
   description: PropTypes.string,

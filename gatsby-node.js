@@ -22,6 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           data {
             Business_Name
+            Name
           }
           recordId
         }
@@ -30,13 +31,20 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   result.data.businesses.nodes.forEach(business => {
-    const slug = getSlugForBusiness(business);
-    actions.createPage({
-      path: `/business/${slug}`,
-      component: require.resolve('./src/templates/singleBusinessPage'),
-      context: {
-        businessId: business.recordId,
-      },
+    const slug = getSlugForBusiness({
+      businessName: business.data.Business_Name,
+      name: business.data.Name,
+      airtableId: business.recordId,
     });
+
+    if (slug) {
+      actions.createPage({
+        path: `/business/${slug}`,
+        component: require.resolve('./src/templates/singleBusinessPage'),
+        context: {
+          businessId: business.recordId,
+        },
+      });
+    }
   });
 };
