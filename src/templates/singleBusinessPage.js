@@ -184,6 +184,7 @@ const SingleBusinessPage = ({ data }) => {
             padding={theme.spacing.base}
             border={`2px solid ${theme.colors['rbb-black-000']}`}
             borderRadius={'8px'}
+            height="fit-content"
           >
             <Heading
               as="h3"
@@ -192,6 +193,7 @@ const SingleBusinessPage = ({ data }) => {
               fontFamily={theme.fonts['heading-slab']}
               fontSize={theme.fontSizes.lg}
               fontWeight="900"
+              marginBottom={theme.spacing.xs}
             >
               Details
             </Heading>
