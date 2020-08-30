@@ -1,12 +1,14 @@
 import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
+import { Box } from '@chakra-ui/core';
+
 import { SEO } from '.';
 import PrimaryNav from './PrimaryNav';
-import { StaticQuery, graphql } from 'gatsby';
 import ErrorBoundary from './ErrorBoundary';
-import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
 import Footer from './footer/Footer';
 
-export default function Layout({ children }) {
+export default function Layout({ children, ...props }) {
   return (
     <ErrorBoundary>
       <StaticQuery
@@ -20,12 +22,14 @@ export default function Layout({ children }) {
               logoInformation={data.site.siteMetadata.logo}
             />
             <SkipNavContent />
-            <main
+            <Box
+              as="main"
               id="primary-content"
               style={{ maxWidth: '100vw', minHeight: 'calc(100vh - 475px)' }}
+              {...props}
             >
               {children}
-            </main>
+            </Box>
             <Footer />
           </>
         )}
