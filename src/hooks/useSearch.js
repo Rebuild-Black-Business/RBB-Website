@@ -7,7 +7,6 @@ const LOADING_STATE = {
   INITIAL: 'intial',
   SEARCHING: 'searching',
 };
-const pageSize = 19;
 
 function createFilterString(defaultFilters = '', filters) {
   const filterArr = [];
@@ -24,6 +23,14 @@ function createFilterString(defaultFilters = '', filters) {
     filterArr.push(`category=${filters.type}`);
   }
 
+  if (filters.search) {
+    filterArr.push(`search=${filters.search}`);
+  }
+
+  if (filters.hasDonationLink === true) {
+    filterArr.push(`hasDonationLink=${filters.hasDonationLink}`);
+  }
+
   if (Object.keys(filters.coordinates).length) {
     filterArr.push(
       `lat=${filters.coordinates.lat}&long=${filters.coordinates.lng}&radius=25`
@@ -33,12 +40,12 @@ function createFilterString(defaultFilters = '', filters) {
   return filterArr.join('&');
 }
 
-const defaultFilters = `pageSize=${pageSize}`;
-
-function useSearch(filters, page) {
+function useSearch(filters, page, pageSize = 11) {
   const [results, setResults] = useState([]);
   const [loadingState, setLoadingState] = useState(LOADING_STATE.INITIAL);
   const [totalPages, setTotalPages] = useState(0);
+
+  const defaultFilters = `pageSize=${pageSize}`;
 
   useEffect(() => {
     async function getBusinesses() {

@@ -1,5 +1,7 @@
 export { default as AllyFeed } from './Feeds/AllyFeed';
+export { default as FundraiserFeed } from './Feeds/FundraiserFeed';
 export { default as AllyFilter } from './Filters/AllyFilter';
+export { default as FundraiserFilter } from './Filters/FundraiserFilter';
 export { default as BusinessFeed } from './Feeds/BusinessFeed';
 export { default as Button } from './Buttons/PrimaryButton';
 export { default as ContentBlock } from './ContentBlock';

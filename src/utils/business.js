@@ -77,11 +77,24 @@ exports.useImageForBusiness = business => {
     category && Object.keys(categoryData).includes(catVar);
   const hasImage = !!(imageSrc || hasFallbackImage);
 
+  let publicId = null;
+  if (categoryData[catVar]) {
+    publicId = categoryData[catVar].image.src;
+  }
+
+  let alt = imageAlt;
+  if (!alt) {
+    if (categoryData[catVar]) {
+      alt = categoryData[catVar].image.alt;
+    }
+  }
+
+  debugger;
   return {
     hasImage,
-    publicId: !imageSrc ? categoryData[catVar]?.image.src : null,
+    publicId: !imageSrc ? publicId : 'assets/business-entertainment',
     src: imageSrc ? imageSrc : null,
-    alt: imageAlt || categoryData[catVar]?.image.alt,
+    alt,
   };
 };
 
@@ -94,7 +107,9 @@ exports.useCategoryMetadataForBusiness = category => {
   const categoryLabel =
     (categoryData[catVar] && categoryData[catVar].label) || category;
 
-  const buttonText =
-    (category && categoryData[category]?.buttonText) || 'Learn More';
+  let buttonText = 'Learn More';
+  if (category && categoryData[category]) {
+    buttonText = categoryData[category].buttonText;
+  }
   return { label: categoryLabel, buttonText };
 };

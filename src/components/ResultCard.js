@@ -107,7 +107,14 @@ const ResultCard = forwardRef(
           bg={theme.colors['rbb-result-card-grey']}
           color={hasImage ? undefined : theme.colors['rbb-black-200']}
         >
-          <Heading as="h2" itemprop="name" size="md" fontWeight="normal">
+          <Heading
+            as="h2"
+            itemprop="name"
+            size="md"
+            fontWeight="normal"
+            wordBreak="break-all"
+            style={{ hyphens: 'auto' }}
+          >
             {businessPageUrl ? (
               <Link variant="standard" to={businessPageUrl}>
                 {name}
@@ -147,10 +154,13 @@ const ResultCard = forwardRef(
               {location}
             </CardText>
           )}
+          {/* TODO: spacing={0} and wrap="wrap" are added temporarily.  Fix this and replace it with <Wrap/> component in newer Chakra-UI version */}
           <CardButtonGroup
             mt="auto"
             mb={theme.spacing.base}
             pt={theme.spacing.base}
+            spacing={0}
+            wrap="wrap"
           >
             {websiteUrl && (
               <CardButton

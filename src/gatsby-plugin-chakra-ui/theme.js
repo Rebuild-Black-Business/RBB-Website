@@ -7,6 +7,7 @@ const customTheme = {
   ...theme,
   containers: {
     main: '1220px',
+    lg: '1600px',
   },
   spacing: {
     xs: '0.75rem',
@@ -255,22 +256,29 @@ const customTheme = {
     font: 'Arvo',
     standard: {
       color: {
-        default: '#00000',
-        hover: '#F46036',
-        focus: '#F46036',
+        default: '#000000',
+        hover: '#635AF6',
+        focus: '#BA2A2A',
       },
     },
     cta: {
       color: {
-        default: '#F46036',
-        hover: '#BA2A2A',
+        default: '#BA2A2A',
+        hover: '#635AF6',
         focus: '#BA2A2A',
+      },
+    },
+    ctaBlackBg: {
+      color: {
+        default: '#F7C902',
+        hover: '#F7F7F2',
+        focus: '#60992D',
       },
     },
     footer: {
       color: {
         default: '#F7F7F2',
-        hover: '#F7F7F2',
+        hover: '#FFFFFF',
         focus: '#F7F7F2',
       },
       opacity: {

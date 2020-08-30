@@ -16,6 +16,7 @@ const FooterLinks = () => {
                 display: 'flex',
                 justifyContent: 'space-evenly',
                 width: '100%',
+                flexWrap: 'wrap',
               }}
             >
               {[

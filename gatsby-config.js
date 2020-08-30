@@ -43,16 +43,16 @@ module.exports = {
     siteUrl: BASE_SITE_URL,
     menuLinks: [
       {
-        name: 'Home',
-        slug: '/',
-      },
-      {
         name: 'About',
         slug: '/about',
       },
       {
         name: 'Businesses',
         slug: '/businesses',
+      },
+      {
+        name: 'Fundraisers',
+        slug: '/fundraisers',
       },
       {
         name: 'Allies',
