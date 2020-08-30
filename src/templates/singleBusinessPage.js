@@ -1,9 +1,20 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import { Flex, Heading, Text, useTheme } from '@chakra-ui/core';
+import {
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Icon,
+  Link,
+  Text,
+  useTheme,
+  Stack,
+} from '@chakra-ui/core';
 
-import { Image, Layout, SEO } from '../components';
+import { Image, LabeledSection, Layout, SEO } from '../components';
+import { Button } from '../components/Button';
 
 import { useImageForBusiness } from '../utils/business';
 
@@ -20,12 +31,12 @@ const SingleBusinessPage = ({ data }) => {
     imageAlt, // TODO: these need to be populated in airtable?
     imageSrc, // TODO: these need to be populated in airtable?
     // createdAt,
-    // donationLink,
+    donationLink,
     // email,
     // id,
-    // inNeed,
+    inNeed,
     // physicalLocation,
-    // website,
+    website,
     // zipCode,
   } = business;
 
@@ -38,23 +49,25 @@ const SingleBusinessPage = ({ data }) => {
   if (!approved) return null;
 
   return (
-    <Layout>
+    <Layout background={theme.colors['rbb-white']}>
       <SEO title={businessName} description={businessDescription} />
-      <Flex
-        align="center"
-        justify="center"
-        direction="column"
-        margin={`${theme.spacing.base} auto`}
+      <Stack
+        padding={`${theme.spacing.med} ${theme.spacing.base}`}
+        margin={`0 auto`}
         maxWidth={theme.containers.main}
+        spacing={theme.spacing.med}
       >
-        <Flex>
+        <Flex
+          style={{ filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))' }}
+        >
           {hasImage && (
-            <div maxHeight="240px">
+            <div height="100%">
               <Image
                 publicId={publicId}
                 src={src}
                 alt={alt}
-                transforms={{ width: 464, height: 240, crop: 'fit', dpr: 2 }}
+                transforms={{ width: 464, height: 249, crop: 'fit', dpr: 2 }}
+                maxHeight="100%"
               />
             </div>
           )}
@@ -64,7 +77,6 @@ const SingleBusinessPage = ({ data }) => {
             color={theme.colors['rbb-white']}
             backgroundColor={theme.colors.darkBackground}
             padding={theme.spacing.base}
-            style={{ filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))' }}
             height="270px"
           >
             <div>
@@ -86,7 +98,129 @@ const SingleBusinessPage = ({ data }) => {
             </Flex>
           </Flex>
         </Flex>
-      </Flex>
+        {inNeed && donationLink && (
+          <Flex
+            borderColor={theme.colors.yellow[400]}
+            borderWidth="1px"
+            borderRadius={theme.spacing.xs}
+            flexDirection="row"
+            padding={theme.spacing.xs}
+            backgroundColor={theme.colors.yellow[100]}
+            justifyContent="space-between"
+          >
+            <Text>
+              This business needs our help. If you have the means, please
+              support them by donating and/or giving them business.
+            </Text>
+            <Link to={donationLink} _hover={{ textDecoration: 'none' }}>
+              <Button
+                fontSize={theme.fontSizes.helper}
+                variant="info"
+                style={{
+                  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+                }}
+              >
+                Donate
+              </Button>
+            </Link>
+          </Flex>
+        )}
+
+        <Grid isInline gridTemplateColumns="3fr 1fr">
+          <div>
+            {website && (
+              <LabeledSection label={'Where to Find us'}>
+                <Stack>
+                  <Stack
+                    isInline
+                    spacing={theme.spacing.md}
+                    alignItems="center"
+                    alignContent="flex-start"
+                  >
+                    <Icon name="at-sign" color="gray.600" />
+                    <Stack spacing={0}>
+                      <Text>12345 S Main St</Text>
+                      <Text>Portland, OR 97219</Text>
+                    </Stack>
+                  </Stack>
+
+                  <Stack
+                    isInline
+                    spacing={theme.spacing.md}
+                    alignItems="center"
+                  >
+                    <Icon name="link" color="gray.600" />
+                    <Link to={website} fontSize={theme.fontSizes.helper}>
+                      {website}
+                    </Link>
+                  </Stack>
+
+                  <Stack
+                    isInline
+                    spacing={theme.spacing.md}
+                    alignItems="center"
+                  >
+                    <Icon name="phone" color="gray.600" />
+                    <Text>(280) 555-1212</Text>
+                  </Stack>
+                </Stack>
+              </LabeledSection>
+            )}
+
+            {businessDescription && (
+              <LabeledSection label={'What we do'}>
+                <Text>{businessDescription}</Text>
+              </LabeledSection>
+            )}
+
+            <LabeledSection label={'Who we are'}>
+              <Text>
+                Uncertain what's supposed to go here but here's some sample text
+                for y'all
+              </Text>
+            </LabeledSection>
+          </div>
+          <Box
+            padding={theme.spacing.base}
+            border={`2px solid ${theme.colors['rbb-black-000']}`}
+            borderRadius={'8px'}
+          >
+            <Heading
+              as="h3"
+              textAlign="center"
+              textTransform="uppercase"
+              fontFamily={theme.fonts['heading-slab']}
+              fontSize={theme.fontSizes.lg}
+              fontWeight="900"
+            >
+              Details
+            </Heading>
+
+            <Heading
+              as="h4"
+              textTransform="uppercase"
+              fontFamily={theme.fonts['heading-slab']}
+              fontSize={theme.fontSizes.base}
+              fontWeight="900"
+            >
+              Area of Service
+            </Heading>
+            <Text paddingLeft={theme.spacing.xs}>Lorem ipsum</Text>
+
+            <Heading
+              as="h4"
+              textTransform="uppercase"
+              fontFamily={theme.fonts['heading-slab']}
+              fontSize={theme.fontSizes.base}
+              fontWeight="900"
+              marginTop={theme.spacing.xs}
+            >
+              Payment Types
+            </Heading>
+            <Text paddingLeft={theme.spacing.xs}>Lorem, Ipsum, Dolor sit</Text>
+          </Box>
+        </Grid>
+      </Stack>
     </Layout>
   );
 };
