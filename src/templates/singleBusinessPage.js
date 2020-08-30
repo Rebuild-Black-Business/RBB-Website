@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import { Box, Flex, Grid, Heading, Text, useTheme } from '@chakra-ui/core';
+import { Flex, Heading, Text, useTheme } from '@chakra-ui/core';
 
 import { Layout, SEO } from '../components';
 
