@@ -3,7 +3,9 @@ import { graphql } from 'gatsby';
 
 import { Flex, Heading, Text, useTheme } from '@chakra-ui/core';
 
-import { Layout, SEO } from '../components';
+import { Image, Layout, SEO } from '../components';
+
+import { useImageForBusiness } from '../utils/business';
 
 const SingleBusinessPage = ({ data }) => {
   const theme = useTheme();
@@ -15,6 +17,8 @@ const SingleBusinessPage = ({ data }) => {
     businessName,
     businessDescription,
     category,
+    imageAlt, // TODO: these need to be populated in airtable?
+    imageSrc, // TODO: these need to be populated in airtable?
     // createdAt,
     // donationLink,
     // email,
@@ -24,6 +28,12 @@ const SingleBusinessPage = ({ data }) => {
     // website,
     // zipCode,
   } = business;
+
+  const { hasImage, publicId, src, alt } = useImageForBusiness({
+    category,
+    imageAlt,
+    imageSrc,
+  });
 
   if (!approved) return null;
 
@@ -37,27 +47,43 @@ const SingleBusinessPage = ({ data }) => {
         margin={`${theme.spacing.base} auto`}
         maxWidth={theme.containers.main}
       >
-        <Flex
-          direction="column"
-          width="100%"
-          color={theme.colors['rbb-white']}
-          backgroundColor={theme.colors.darkBackground}
-          padding={theme.spacing.base}
-          style={{ filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))' }}
-          height="240px"
-        >
-          <div>
-            <Heading as="h1" textTransform="uppercase">
-              {businessName}
-            </Heading>
-            <Text>{category}</Text>
-          </div>
-
-          <Flex direction="row">
-            <div>
-              {/* TODO: render social media links for this profile here */}
+        <Flex>
+          {hasImage && (
+            <div maxHeight="240px">
+              <Image
+                publicId={publicId}
+                src={src}
+                alt={alt}
+                transforms={{ width: 464, height: 240, crop: 'fit', dpr: 2 }}
+              />
             </div>
-            <div>{/* TODO: share and flag buttons */}</div>
+          )}
+          <Flex
+            direction="column"
+            width="100%"
+            color={theme.colors['rbb-white']}
+            backgroundColor={theme.colors.darkBackground}
+            padding={theme.spacing.base}
+            style={{ filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))' }}
+            height="270px"
+          >
+            <div>
+              <Heading
+                as="h1"
+                textTransform="uppercase"
+                fontFamily={theme.fonts['heading-slab']}
+              >
+                {businessName}
+              </Heading>
+              <Text>{category}</Text>
+            </div>
+
+            <Flex direction="row">
+              <div>
+                {/* TODO: render social media links for this profile here */}
+              </div>
+              <div>{/* TODO: share and flag buttons */}</div>
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
