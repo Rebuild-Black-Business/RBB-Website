@@ -342,6 +342,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "JtSchwartz",
+      "name": "Jacob Schwartz",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/39858613?v=4",
+      "profile": "http://jtschwartz.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
