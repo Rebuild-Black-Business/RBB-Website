@@ -176,7 +176,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>  <td align="center"><a href="https://www.aboutmonica.com/"><img src="https://avatars0.githubusercontent.com/u/6998954?v=4" width="100px;" alt=""/><br /><sub><b>Monica Powell</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=M0nica" title="Code">💻</a></td>
+  <tr>
+    <td align="center"><a href="https://www.aboutmonica.com/"><img src="https://avatars0.githubusercontent.com/u/6998954?v=4" width="100px;" alt=""/><br /><sub><b>Monica Powell</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=M0nica" title="Code">💻</a></td>
     <td align="center"><a href="http://dommagnifi.co/"><img src="https://avatars1.githubusercontent.com/u/1380536?v=4" width="100px;" alt=""/><br /><sub><b>Dominic Magnifico</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=magnificode" title="Code">💻</a></td>
     <td align="center"><a href="https://juanri0s.github.io/"><img src="https://avatars0.githubusercontent.com/u/8475305?v=4" width="100px;" alt=""/><br /><sub><b>Juan</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=juanri0s" title="Code">💻</a></td>
     <td align="center"><a href="https://mikebifulco.com/"><img src="https://avatars2.githubusercontent.com/u/1844496?v=4" width="100px;" alt=""/><br /><sub><b>Mike Bifulco</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=mbifulco" title="Code">💻</a></td>
@@ -217,12 +218,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://brentmclark.dev/"><img src="https://avatars0.githubusercontent.com/u/316743?v=4" width="100px;" alt=""/><br /><sub><b>Brent Clark</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=brentmclark" title="Code">💻</a></td>
     <td align="center"><a href="https://jamie.build/"><img src="https://avatars0.githubusercontent.com/u/952783?v=4" width="100px;" alt=""/><br /><sub><b>Jamie Kyle</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=jamiebuilds" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/kkemple"><img src="https://avatars3.githubusercontent.com/u/3629876?v=4" width="100px;" alt=""/><br /><sub><b>Kurt Kemple</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=kkemple" title="Code">💻</a></td>
+    <td align="center"><a href="http://hublabtt.com"><img src="https://avatars1.githubusercontent.com/u/9298105?v=4" width="100px;" alt=""/><br /><sub><b>johnpaulanderson</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=johnpaulanderson" title="Code">💻</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
