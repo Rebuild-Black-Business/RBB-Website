@@ -224,6 +224,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://scottharlan.dev"><img src="https://avatars0.githubusercontent.com/u/56773004?v=4" width="100px;" alt=""/><br /><sub><b>Scott Harlan</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=SeHarlan" title="Code">💻</a></td>
     <td align="center"><a href="https://mhmdabed.dev"><img src="https://avatars0.githubusercontent.com/u/39762577?v=4" width="100px;" alt=""/><br /><sub><b>Mohammad Abed</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=Mhmdabed11" title="Code">💻</a></td>
+    <td align="center"><a href="http://jtschwartz.com"><img src="https://avatars0.githubusercontent.com/u/39858613?v=4" width="100px;" alt=""/><br /><sub><b>Jacob Schwartz</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=JtSchwartz" title="Code">💻</a></td>
   </tr>
 </table>
 
