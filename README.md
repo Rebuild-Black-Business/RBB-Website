@@ -221,11 +221,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://hublabtt.com"><img src="https://avatars1.githubusercontent.com/u/9298105?v=4" width="100px;" alt=""/><br /><sub><b>johnpaulanderson</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=johnpaulanderson" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/AdrianTNare"><img src="https://avatars0.githubusercontent.com/u/53913806?v=4" width="100px;" alt=""/><br /><sub><b>AdrianTNare</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=AdrianTNare" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://scottharlan.dev"><img src="https://avatars0.githubusercontent.com/u/56773004?v=4" width="100px;" alt=""/><br /><sub><b>Scott Harlan</b></sub></a><br /><a href="https://github.com/Rebuild-Black-Business/RBB-Website/commits?author=SeHarlan" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
