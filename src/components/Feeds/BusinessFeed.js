@@ -1,12 +1,13 @@
 import { Box, SimpleGrid, useTheme, Skeleton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import NoResultsCard from '../Cards/NoResultsCard';
 import BusinessFilter from '../Filters/BusinessFilter';
 import { LOADING_STATE } from '../../hooks/useSearch';
 import ResultCard from '../ResultCard';
 import { verifyHttpUrl } from '../../utils/urlUtils';
 import RegistrationPromo from '../Promos/RegistrationPromo';
+import { scrollToId } from '../../utils/scrollToId';
 
 function BusinessFeed({
   businesses,
@@ -22,6 +23,14 @@ function BusinessFeed({
   const searching = loadingState === LOADING_STATE.SEARCHING;
 
   const hasResults = businesses.length > 0;
+
+  useEffect(() => {
+    if (window && window.location.hash) {
+      window.setTimeout(() => {
+        scrollToId(window.location.hash);
+      }, 200);
+    }
+  }, [loaded]);
 
   return (
     <Box
@@ -54,7 +63,7 @@ function BusinessFeed({
 
       {!initialLoad && hasResults && !searching && (
         <>
-          <SimpleGrid columns={[null, 1, 2, 3, 4]} spacing={10}>
+          <SimpleGrid id="results" columns={[null, 1, 2, 3, 4]} spacing={10}>
             {businesses.map((business, index) => {
               const formattedLocation = `${business.city ? business.city : ''}${
                 business.city && business.state ? ', ' : ''

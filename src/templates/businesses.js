@@ -46,7 +46,7 @@ function generateURL(filters, setPageLocation) {
   }
 
   if (filters.location) {
-    queryString += `?location=${filters.location}`;
+    queryString += `?location=${filters.location}#results`;
   }
 
   // Update the page location state so pagination works
