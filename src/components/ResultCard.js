@@ -148,8 +148,9 @@ const ResultCard = forwardRef(
             itemprop="name"
             size="md"
             fontWeight="normal"
-            wordBreak="break-all"
-            style={{ hyphens: 'auto' }}
+            wordBreak="break-word"
+            overflowWrap="break-word"
+            fontFamily={theme.fonts['heading-slab']}
           >
             {name}
           </Heading>
