@@ -61,10 +61,14 @@ export default function SuggestionBox() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', toSubmit }),
     })
-      .then(() => console.log('Success!'))
-      .catch(error => console.log(error));
-
-    setSubmitted(true);
+      .then(() => {
+        console.log('Success!');
+        setSubmitted(true);
+      })
+      .catch(error => {
+        console.log(error);
+        setValidationMessage(error);
+      });
   };
 
   if (submitted) {
