@@ -21,13 +21,16 @@ export function submitAlly({
     'Last Name': lastName,
   };
 
+  let error = null;
+
   base('Allies').create(AirtableData, function (err, record) {
     if (err) {
       console.error(err);
-      return;
-    }
-    console.log(record);
+      error = err;
+    } else console.log(record);
   });
+
+  if (error) return error;
 }
 
 export function submitBusiness({
@@ -77,13 +80,14 @@ export function submitBusiness({
     Bitcoin: bitcoin,
   };
 
+  let error = null;
   base('Businesses').create(AirtableData, function (err, record) {
     if (err) {
       console.error(err);
-      return;
-    }
-    console.log(record);
+      error = err;
+    } else console.log(record);
   });
+  if (error) return error;
 }
 
 //Only fetches from first page of docs for performance concerns.
@@ -112,9 +116,11 @@ export function useAllySpecialities() {
           console.error(err);
           return;
         }
-        records.forEach(record => {
-          setSpecialities(prev => [...prev, record.get('Speciality')]);
-        });
+        setSpecialities(
+          records.map(record => {
+            return record.get('Speciality');
+          })
+        );
       });
   }, []);
 
@@ -137,9 +143,11 @@ export function useBusinessCategories() {
           console.error(err);
           return;
         }
-        records.forEach(record => {
-          setCategories(prev => [...prev, record.get('Category')]);
-        });
+        setCategories(
+          records.map(record => {
+            return record.get('Category');
+          })
+        );
       });
   }, []);
 

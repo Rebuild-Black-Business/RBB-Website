@@ -92,9 +92,10 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
       return;
     }
 
-    submitBusiness(infoToSubmit);
+    const possibleError = submitBusiness(infoToSubmit);
 
-    setSubmitted(true);
+    if (possibleError) setValidationMessage(possibleError);
+    else setSubmitted(true);
   };
 
   const handleLocationType = event => {
@@ -156,6 +157,9 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
         }
       }}
     >
+      <Text fontSize="xl" textAlign="center">
+        Register your business
+      </Text>
       {/* renders when form is submitted with validation errors */}
       {validationMessage && <Text>{validationMessage}</Text>}
 
