@@ -114,6 +114,7 @@ export default function SuggestionBox() {
           <Input
             value={topic}
             id="topic"
+            name="topic"
             type="text"
             placeholder="e.g. Business, Functionality, New Feature"
             onChange={event => setTopic(event.currentTarget.value)}
@@ -127,6 +128,7 @@ export default function SuggestionBox() {
           <Textarea
             value={description}
             id="description"
+            name="description"
             placeholder="Description"
             onChange={event => setDescription(event.currentTarget.value)}
           />
@@ -139,6 +141,7 @@ export default function SuggestionBox() {
           <Textarea
             value={benefits}
             id="benefits"
+            name="benefits"
             placeholder="Benefits"
             onChange={event => setBenefits(event.currentTarget.value)}
           />
@@ -150,6 +153,7 @@ export default function SuggestionBox() {
           </FormLabel>
           <NumberInput
             id="urgency"
+            name="urgency"
             type="number"
             min={1}
             max={5}
@@ -170,6 +174,7 @@ export default function SuggestionBox() {
             <Input
               value={name}
               id="name"
+              name="name"
               type="text"
               placeholder="Name"
               onChange={event => setName(event.currentTarget.value)}
@@ -180,6 +185,7 @@ export default function SuggestionBox() {
             <Input
               value={email}
               id="email"
+              name="email"
               type="text"
               placeholder="Email"
               onChange={event => setEmail(event.currentTarget.value)}
