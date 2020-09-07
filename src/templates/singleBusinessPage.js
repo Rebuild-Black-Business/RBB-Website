@@ -48,6 +48,26 @@ const SingleBusinessPage = ({ data }) => {
   });
 
   const { data: apiResponse } = useBusinessDetails(id);
+  const {
+    city,
+    isPhysicalLocation,
+    phone,
+    serviceArea,
+    state,
+    story,
+    streetAddress,
+    takesBitcoin,
+    takesCash,
+    takesCheck,
+    takesCredit,
+    zip,
+  } = apiResponse || {};
+
+  const paymentTypes = [];
+  if (takesCash) paymentTypes.push('cash');
+  if (takesCheck) paymentTypes.push('check');
+  if (takesCredit) paymentTypes.push('credit');
+  if (takesBitcoin) paymentTypes.push('bitcoin');
 
   // this page returns nothing if this is not an approved business
   if (!approved) return null;
@@ -111,6 +131,7 @@ const SingleBusinessPage = ({ data }) => {
             padding={theme.spacing.xs}
             backgroundColor={theme.colors.yellow[100]}
             justifyContent="space-between"
+            alignItems="center"
           >
             <Text>
               This business needs our help. If you have the means, please
@@ -132,9 +153,9 @@ const SingleBusinessPage = ({ data }) => {
 
         <Grid isInline gridTemplateColumns="3fr 1fr">
           <div>
-            {website && (
-              <LabeledSection label={'Where to Find us'}>
-                <Stack>
+            <LabeledSection label={'Where to Find us'}>
+              <Stack>
+                {isPhysicalLocation && (
                   <Stack
                     isInline
                     spacing={theme.spacing.md}
@@ -143,33 +164,43 @@ const SingleBusinessPage = ({ data }) => {
                   >
                     <Icon name="at-sign" color="gray.600" />
                     <Stack spacing={0}>
-                      <Text>12345 S Main St</Text>
-                      <Text>Portland, OR 97219</Text>
+                      <Text>{streetAddress}</Text>
+                      <Text as="address">
+                        {city} {city && state ? ', ' : ''} {state} {zip}
+                      </Text>
                     </Stack>
                   </Stack>
+                )}
 
+                {website && (
                   <Stack
                     isInline
                     spacing={theme.spacing.md}
                     alignItems="center"
                   >
                     <Icon name="link" color="gray.600" />
-                    <Link to={website} fontSize={theme.fontSizes.helper}>
+                    <Link
+                      to={website}
+                      fontSize={theme.fontSizes.helper}
+                      textDecoration="underline"
+                    >
                       {website}
                     </Link>
                   </Stack>
+                )}
 
+                {phone && (
                   <Stack
                     isInline
                     spacing={theme.spacing.md}
                     alignItems="center"
                   >
                     <Icon name="phone" color="gray.600" />
-                    <Text>(280) 555-1212</Text>
+                    <Link href={`tel:${phone}`}>{phone}</Link>
                   </Stack>
-                </Stack>
-              </LabeledSection>
-            )}
+                )}
+              </Stack>
+            </LabeledSection>
 
             {businessDescription && (
               <LabeledSection label={'What we do'}>
@@ -177,18 +208,18 @@ const SingleBusinessPage = ({ data }) => {
               </LabeledSection>
             )}
 
-            <LabeledSection label={'Who we are'}>
-              <Text>
-                Uncertain what's supposed to go here but here's some sample text
-                for y'all
-              </Text>
-            </LabeledSection>
+            {story && (
+              <LabeledSection label={'Who we are'}>
+                <Text>{story}</Text>
+              </LabeledSection>
+            )}
           </div>
           <Box
             padding={theme.spacing.base}
             border={`2px solid ${theme.colors['rbb-black-000']}`}
             borderRadius={'8px'}
             height="fit-content"
+            hidden={!serviceArea && paymentTypes.length === 0}
           >
             <Heading
               as="h3"
@@ -202,28 +233,41 @@ const SingleBusinessPage = ({ data }) => {
               Details
             </Heading>
 
-            <Heading
-              as="h4"
-              textTransform="uppercase"
-              fontFamily={theme.fonts['heading-slab']}
-              fontSize={theme.fontSizes.base}
-              fontWeight="900"
-            >
-              Area of Service
-            </Heading>
-            <Text paddingLeft={theme.spacing.xs}>Lorem ipsum</Text>
+            {serviceArea && (
+              <>
+                <Heading
+                  as="h4"
+                  textTransform="uppercase"
+                  fontFamily={theme.fonts['heading-slab']}
+                  fontSize={theme.fontSizes.base}
+                  fontWeight="900"
+                >
+                  Area of Service
+                </Heading>
+                <Text paddingLeft={theme.spacing.xs}>{serviceArea}</Text>
+              </>
+            )}
 
-            <Heading
-              as="h4"
-              textTransform="uppercase"
-              fontFamily={theme.fonts['heading-slab']}
-              fontSize={theme.fontSizes.base}
-              fontWeight="900"
-              marginTop={theme.spacing.xs}
-            >
-              Payment Types
-            </Heading>
-            <Text paddingLeft={theme.spacing.xs}>Lorem, Ipsum, Dolor sit</Text>
+            {paymentTypes.length && (
+              <>
+                <Heading
+                  as="h4"
+                  textTransform="uppercase"
+                  fontFamily={theme.fonts['heading-slab']}
+                  fontSize={theme.fontSizes.base}
+                  fontWeight="900"
+                  marginTop={theme.spacing.xs}
+                >
+                  Payment Types
+                </Heading>
+                <Text paddingLeft={theme.spacing.xs} textTransform="capitalize">
+                  {paymentTypes.map(
+                    (type, idx) =>
+                      `${type} ${paymentTypes.length > idx + 1 ? ' ,' : ''}`
+                  )}
+                </Text>
+              </>
+            )}
           </Box>
         </Grid>
 
