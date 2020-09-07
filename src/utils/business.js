@@ -89,7 +89,6 @@ exports.useImageForBusiness = business => {
     }
   }
 
-  debugger;
   return {
     hasImage,
     publicId: !imageSrc ? publicId : 'assets/business-entertainment',
