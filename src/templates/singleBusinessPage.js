@@ -17,6 +17,7 @@ import { Image, LabeledSection, Layout, SEO } from '../components';
 import { Button } from '../components/Button';
 
 import { useImageForBusiness } from '../utils/business';
+import { useBusinessDetails } from '../hooks/useBusinessDetails';
 
 const SingleBusinessPage = ({ data }) => {
   const theme = useTheme();
@@ -33,7 +34,7 @@ const SingleBusinessPage = ({ data }) => {
     // createdAt,
     donationLink,
     // email,
-    // id,
+    id,
     inNeed,
     // physicalLocation,
     website,
@@ -46,6 +47,9 @@ const SingleBusinessPage = ({ data }) => {
     imageSrc,
   });
 
+  const { data: apiResponse } = useBusinessDetails(id);
+
+  // this page returns nothing if this is not an approved business
   if (!approved) return null;
 
   return (
@@ -222,6 +226,27 @@ const SingleBusinessPage = ({ data }) => {
             <Text paddingLeft={theme.spacing.xs}>Lorem, Ipsum, Dolor sit</Text>
           </Box>
         </Grid>
+
+        <Link
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer"
+          alignSelf="center"
+        >
+          <Button variant="primary" maxWidth="266px" leftIcon="external-link">
+            Share profile
+          </Button>
+        </Link>
+
+        <Text as="small" alignSelf="center" width="245px" fontWeight={500}>
+          <div>Notice something wrong with this listing?</div>
+          <Link
+            href="mailto:social@rebuildblackbusiness.com"
+            color={theme.colors.red[400]}
+          >
+            Send us an email and let us know.
+          </Link>
+        </Text>
       </Stack>
     </Layout>
   );
