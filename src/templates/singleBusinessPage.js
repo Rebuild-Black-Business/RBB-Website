@@ -50,6 +50,7 @@ const SingleBusinessPage = ({ data }) => {
   const { data: apiResponse } = useBusinessDetails(id);
   const {
     city,
+    isAdult,
     isPhysicalLocation,
     phone,
     serviceArea,
@@ -111,7 +112,10 @@ const SingleBusinessPage = ({ data }) => {
               >
                 {businessName}
               </Heading>
-              <Text>{category}</Text>
+              <Text>
+                {category}
+                {isAdult && <Text as="span"> &bull; Adult (18+)</Text>}
+              </Text>
             </div>
 
             <Flex direction="row">
