@@ -306,7 +306,62 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "johnpaulanderson",
+      "name": "johnpaulanderson",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/9298105?v=4",
+      "profile": "http://hublabtt.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "AdrianTNare",
+      "name": "AdrianTNare",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/53913806?v=4",
+      "profile": "https://github.com/AdrianTNare",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "SeHarlan",
+      "name": "Scott Harlan",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/56773004?v=4",
+      "profile": "http://scottharlan.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Mhmdabed11",
+      "name": "Mohammad Abed",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/39762577?v=4",
+      "profile": "https://mhmdabed.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JtSchwartz",
+      "name": "Jacob Schwartz",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/39858613?v=4",
+      "profile": "http://jtschwartz.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ajadams",
+      "name": "Adam Adams",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6609405?v=4",
+      "profile": "https://github.com/ajadams",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }

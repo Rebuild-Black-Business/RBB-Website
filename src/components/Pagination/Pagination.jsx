@@ -134,7 +134,7 @@ function Pagination({ location, currentPage, totalPages }) {
     const params = getUpdatedSearchParams(location.search, { page });
 
     if (params) {
-      return `${pathname}?${params}`;
+      return `${pathname}?${params}#results`;
     }
 
     return pathname;
