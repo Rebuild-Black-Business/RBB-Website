@@ -19,7 +19,7 @@ import { Button } from '../components/Button';
 import { useImageForBusiness } from '../utils/business';
 import { useBusinessDetails } from '../hooks/useBusinessDetails';
 
-const SingleBusinessPage = ({ data }) => {
+const SingleBusinessPage = ({ data, pageContext }) => {
   const theme = useTheme();
 
   const business = data.airtableBusinesses.data;
@@ -47,7 +47,7 @@ const SingleBusinessPage = ({ data }) => {
     imageSrc,
   });
 
-  const { data: apiResponse } = useBusinessDetails(id);
+  const { data: apiResponse } = useBusinessDetails(pageContext.recordId);
   const {
     city,
     isAdult,
