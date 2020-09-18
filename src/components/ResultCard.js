@@ -245,10 +245,10 @@ const ResultCard = forwardRef(
 
 ResultCard.displayName = 'ResultCard';
 ResultCard.propTypes = {
-  category: PropTypes.string,
+  category: PropTypes.object,
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
-  location: PropTypes.number,
+  location: PropTypes.string,
   websiteUrl: PropTypes.string,
   donationUrl: PropTypes.string,
   imageSrc: PropTypes.string,
