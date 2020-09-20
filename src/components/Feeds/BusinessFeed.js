@@ -111,7 +111,7 @@ BusinessFeed.propTypes = {
   businesses: PropTypes.arrayOf(PropTypes.object),
   onSearch: PropTypes.func.isRequired,
   selectedFilters: PropTypes.object.isRequired,
-  loadingState: PropTypes.object.isRequired,
+  loadingState: PropTypes.string.isRequired,
 };
 
 export default BusinessFeed;
