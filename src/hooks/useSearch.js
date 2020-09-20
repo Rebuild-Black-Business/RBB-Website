@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import 'isomorphic-fetch';
+import { useEffect, useState } from 'react';
 
 const endpoint = process.env.GATSBY_SEARCH_API_ENDPOINT;
 const LOADING_STATE = {
@@ -15,7 +15,7 @@ function createFilterString(defaultFilters = '', filters) {
     filterArr.push(defaultFilters);
   }
 
-  if (filters.need !== 'false') {
+  if (filters.need && filters.need !== 'false') {
     filterArr.push(`in-need=true`);
   }
 
