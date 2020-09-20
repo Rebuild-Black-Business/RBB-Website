@@ -6,7 +6,7 @@ import { MESSAGE } from '../constants/vettingProcess';
 
 const Process = () => {
   const theme = useTheme();
-  console.log(MESSAGE);
+
   return (
     <Layout>
       <Flex align="center" justify="center" direction="column">
