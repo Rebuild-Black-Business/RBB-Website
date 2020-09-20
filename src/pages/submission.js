@@ -3,6 +3,7 @@ import { Flex, useTheme, Text } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import PageHeading from '../components/Headings/PageHeading';
 import { MESSAGE } from '../constants/vettingProcess';
+import ExternalLink from '../components/ExternalLink';
 
 const Process = () => {
   const theme = useTheme();
@@ -53,9 +54,14 @@ const Process = () => {
               marginBottom="2.9375rem"
             >
               If you have questions, please email us at{' '}
-              <a href="mailto:social@rebuildblackbusiness.com">
+              <ExternalLink
+                variant="standard"
+                href="mailto:social@rebuildblackbusiness.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 social@rebuildblackbusiness.com.
-              </a>
+              </ExternalLink>
             </Text>
           </Flex>
         </Flex>

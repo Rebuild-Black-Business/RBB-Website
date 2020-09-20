@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
+import Link from '../Link';
 import {
   Flex,
   FormControl,
@@ -532,7 +532,9 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
         </FormLabel>
       </Flex>
       <Flex width="100%" marginBottom="1.9375rem" justify="center">
-        <Link to="/submission">Explanation Of The Vetting Process.</Link>
+        <Link href="/submission" variant="cta" target="_blank">
+          Learn more about the vetting process.
+        </Link>
       </Flex>
       <Flex width="100%" justify="center">
         <PrimaryButton onClick={handleSubmit}>Register</PrimaryButton>
