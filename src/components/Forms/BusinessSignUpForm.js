@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from '../Link';
 import {
   Flex,
   FormControl,
@@ -529,6 +530,11 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
         <FormLabel htmlFor="bobAgreement">
           I understand that I am registering this business as Black-owned
         </FormLabel>
+      </Flex>
+      <Flex width="100%" marginBottom="1.9375rem" justify="center">
+        <Link href="/submission" variant="cta" target="_blank">
+          Learn more about the vetting process.
+        </Link>
       </Flex>
       <Flex width="100%" justify="center">
         <PrimaryButton onClick={handleSubmit}>Register</PrimaryButton>
