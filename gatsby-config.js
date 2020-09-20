@@ -191,6 +191,9 @@ module.exports = {
       resolve: `gatsby-plugin-facebook-pixel`,
       options: {
         pixelId: process.env.FACEBOOK_PIXEL_ID,
+        environment: process.env.NODE_ENV,
+        enabled: (() =>
+          ['production', 'staging'].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
     'gatsby-plugin-react-helmet',

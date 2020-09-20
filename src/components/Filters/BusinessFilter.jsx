@@ -74,14 +74,15 @@ function BusinessFilter({ isSearching, onSearch, selectedFilters }) {
           <FormLabel htmlFor="type" color={[rbbBlack, rbbBlack, rbbWhite]}>
             Business Type
           </FormLabel>
-          <Select ref={typeRef} id="type" placeholder="All">
+          <Select
+            ref={typeRef}
+            id="type"
+            placeholder="All"
+            defaultValue={typeToLabel}
+          >
             {businessTypes.map(resource => {
               return (
-                <option
-                  key={resource.id}
-                  value={resource.label}
-                  selected={resource.label === typeToLabel}
-                >
+                <option key={resource.id} value={resource.label}>
                   {resource.label}
                 </option>
               );
