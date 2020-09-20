@@ -23,6 +23,7 @@ const businessTypes = [
 function BusinessFilter({ isSearching, onSearch, selectedFilters }) {
   const [location, setLocation] = useState(selectedFilters.location || '');
   const typeRef = useRef();
+  const needRef = useRef();
   const theme = useTheme();
 
   const typeToLabel = selectedFilters.type.replace(/-/g, ' ');
@@ -36,6 +37,7 @@ function BusinessFilter({ isSearching, onSearch, selectedFilters }) {
     onSearch({
       type: typeRef.current.value,
       location: location,
+      need: needRef.current.value,
       coordinates,
     });
   };
@@ -46,6 +48,7 @@ function BusinessFilter({ isSearching, onSearch, selectedFilters }) {
     onSearch({
       type: typeRef.current.value,
       location,
+      need: needRef.current.value,
       coordinates,
     });
   };
@@ -106,6 +109,27 @@ function BusinessFilter({ isSearching, onSearch, selectedFilters }) {
               }
             }}
           />
+        </Flex>
+        <Flex
+          direction="column"
+          marginRight={[0, 0, theme.spacing.base]}
+          marginBottom={[theme.spacing.base, theme.spacing.base, 0]}
+        >
+          <FormLabel htmlFor="need" color={[rbbBlack, rbbBlack, rbbWhite]}>
+            Show me
+          </FormLabel>
+          <Select ref={needRef} id="need">
+            <option
+              value="true"
+              defaultValue
+              selected={selectedFilters.need === 'true'}
+            >
+              Businesses in need
+            </option>
+            <option value="false" selected={selectedFilters.need === 'false'}>
+              All
+            </option>
+          </Select>
         </Flex>
         <Flex
           direction="column"
