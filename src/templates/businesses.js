@@ -1,22 +1,25 @@
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+
 import {
   Flex,
+  Text,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  Text,
   useDisclosure,
   useTheme,
 } from '@chakra-ui/core';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { PageHero, BusinessFeed } from '../components';
+import Pagination from '../components/Pagination';
+
 import { handleLocationToCoords } from '../api/geocode';
-import { BusinessFeed, PageHero } from '../components';
+
+import useSearch, { LOADING_STATE } from '../hooks/useSearch';
+import usePagination from '../hooks/usePagination';
 import Button from '../components/Button';
 import BusinessSignUpForm from '../components/Forms/BusinessSignUpForm';
-import Pagination from '../components/Pagination';
-import usePagination from '../hooks/usePagination';
-import useSearch, { LOADING_STATE } from '../hooks/useSearch';
 
 const ModalForm = ({ isOpen, onClose }) => (
   <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
@@ -34,7 +37,7 @@ function generateURL(filters, setPageLocation) {
   let newPath = '/businesses';
   let queryString = '';
 
-  if (filters.need === 'false' || !filters.need) {
+  if (filters.need === 'false') {
     newPath += '/all';
   }
 
