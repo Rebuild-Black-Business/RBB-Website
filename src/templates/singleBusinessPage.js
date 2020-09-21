@@ -47,7 +47,8 @@ const SingleBusinessPage = ({ data, pageContext }) => {
     imageSrc,
   });
 
-  const { data: apiResponse } = useBusinessDetails(pageContext.recordId);
+  const { data: apiResponse } = useBusinessDetails(pageContext.businessId);
+
   const {
     city,
     isAdult,
