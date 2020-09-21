@@ -210,7 +210,8 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
                   >
                     <Icon name="link" color="gray.600" />
                     <Link
-                      to={website}
+                      isExternal
+                      href={website}
                       fontSize={theme.fontSizes.helper}
                       textDecoration="underline"
                     >
