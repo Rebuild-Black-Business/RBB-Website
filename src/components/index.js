@@ -5,6 +5,7 @@ export { default as FundraiserFilter } from './Filters/FundraiserFilter';
 export { default as BusinessFeed } from './Feeds/BusinessFeed';
 export { default as Button } from './Buttons/PrimaryButton';
 export { default as ContentBlock } from './ContentBlock';
+export { default as ExternalLink } from './ExternalLink';
 export { default as Image } from './Image';
 export { LabeledSection } from './LabeledSection';
 export { default as Link } from './Link.js';
