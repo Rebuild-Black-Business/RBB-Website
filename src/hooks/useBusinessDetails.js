@@ -5,12 +5,9 @@ const API_ENDPOINT = process.env.GATSBY_SEARCH_API_ENDPOINT;
 const API_KEY = process.env.GATSBY_RBB_API_KEY;
 
 const fetchBusiness = async (_, id) => {
-  const businessFetchUrl = `${API_ENDPOINT}private/api/v1/businesses/airtable/${id}`;
-  const { data } = await axios.get(businessFetchUrl, {
-    headers: {
-      'x-api-key': API_KEY,
-    },
-  });
+  const businessFetchUrl = `${API_ENDPOINT}private/api/v1/businesses/airtable/${id}?apiKey=${API_KEY}`;
+
+  const { data } = await axios.get(businessFetchUrl);
 
   return data;
 };
