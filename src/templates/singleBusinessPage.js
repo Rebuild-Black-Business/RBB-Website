@@ -1,5 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import copy from 'copy-to-clipboard';
+import { useToast } from '@chakra-ui/core';
 
 import {
   Box,
@@ -19,7 +21,7 @@ import { Button } from '../components/Button';
 import { useImageForBusiness } from '../utils/business';
 import { useBusinessDetails } from '../hooks/useBusinessDetails';
 
-const SingleBusinessPage = ({ data, pageContext }) => {
+const SingleBusinessPage = ({ data, location, pageContext }) => {
   const theme = useTheme();
 
   const business = data.airtableBusinesses.data;
@@ -49,6 +51,8 @@ const SingleBusinessPage = ({ data, pageContext }) => {
 
   const { data: apiResponse } = useBusinessDetails(pageContext.businessId);
 
+  const toast = useToast();
+
   const {
     city,
     isAdult,
@@ -64,6 +68,23 @@ const SingleBusinessPage = ({ data, pageContext }) => {
     takesCredit,
     zip,
   } = apiResponse || {};
+
+  const shareClicked = event => {
+    if (event && typeof event.preventDefault === 'function')
+      event.preventDefault();
+
+    debugger;
+    if (location && location.href) {
+      copy(location.href);
+      toast({
+        title: 'URL Copied to clipboard',
+        description: 'Thanks for sharing!',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
 
   const paymentTypes = [];
   if (takesCash) paymentTypes.push('cash');
@@ -281,16 +302,15 @@ const SingleBusinessPage = ({ data, pageContext }) => {
           </Box>
         </Grid>
 
-        <Link
-          href={website}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          onClick={shareClicked}
           alignSelf="center"
+          variant="primary"
+          maxWidth="266px"
+          leftIcon="copy"
         >
-          <Button variant="primary" maxWidth="266px" leftIcon="external-link">
-            Share profile
-          </Button>
-        </Link>
+          Share profile
+        </Button>
 
         <Text as="small" alignSelf="center" width="245px" fontWeight={500}>
           <div>Notice something wrong with this listing?</div>
