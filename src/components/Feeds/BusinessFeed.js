@@ -71,7 +71,7 @@ function BusinessFeed({
 
               if (index === 3) {
                 return (
-                  <>
+                  <div key="registration-promo">
                     <RegistrationPromo onOpen={onOpen} />
                     <ResultCard
                       airTableId={business.airTableId}
@@ -83,7 +83,7 @@ function BusinessFeed({
                       websiteUrl={business.site}
                       donationUrl={business.donationLink}
                     />
-                  </>
+                  </div>
                 );
               }
               return (
