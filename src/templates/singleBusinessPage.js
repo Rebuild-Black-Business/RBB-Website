@@ -142,7 +142,12 @@ const SingleBusinessPage = ({ data, pageContext }) => {
               This business needs our help. If you have the means, please
               support them by donating and/or giving them business.
             </Text>
-            <Link to={donationLink} _hover={{ textDecoration: 'none' }}>
+            <Link
+              href={donationLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              _hover={{ textDecoration: 'none' }}
+            >
               <Button
                 fontSize={theme.fontSizes.helper}
                 variant="info"
