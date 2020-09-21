@@ -44,7 +44,7 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
   const [zipcode, setZipcode] = useState(null);
   const [serviceArea, setServiceArea] = useState(null);
   const [website, setWebsite] = useState('');
-  const [yelp, setYelp] = useState('');
+  const [yelp /* setYelp */] = useState('');
   const [adult, setAdult] = useState(false);
   const [hasDonation, setHasDonation] = useState(isFundraiser);
   const [donationLink, setDonationLink] = useState(isFundraiser ? null : '');

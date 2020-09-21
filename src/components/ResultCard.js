@@ -10,7 +10,9 @@ import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 import ContactModal from '../components/ContactModal';
 import Link from '../components/Link';
-import { toCamelCase } from '../utils/stringUtils';
+
+import { Link as GatsbyLink } from 'gatsby';
+
 import {
   CardButton,
   CardButtonGroup,
@@ -20,60 +22,13 @@ import {
   CardWrapper,
 } from './Card';
 
-const DESCRIPTION_MAX_LENGTH = 250; // length in characters after which we'll trim descriptions
+import {
+  getSlugForBusiness,
+  useImageForBusiness,
+  useCategoryMetadataForBusiness,
+} from '../utils/business';
 
-// TODO: Replace with real fallback images for each category.
-// This should all probably be defined in the database somewhere, eh?
-const categoryData = {
-  other: {
-    label: 'Other',
-    image: {
-      src: 'assets/business-entertainment',
-      alt: 'Other',
-    },
-    buttonText: 'Learn More',
-  },
-  entertainment: {
-    label: 'Entertainment',
-    image: {
-      src: 'assets/business-entertainment-option',
-      alt: 'Entertainment business',
-    },
-    buttonText: 'Learn more',
-  },
-  foodAndBeverage: {
-    label: 'Food and Beverage',
-    image: {
-      src: 'assets/business-food-beverage',
-      alt: 'Food and beverage business',
-    },
-    buttonText: 'Order',
-  },
-  healthAndWellness: {
-    label: 'Health and Wellness',
-    image: {
-      src: 'assets/business-health',
-      alt: 'Health and wellness business',
-    },
-    buttonText: 'Learn more',
-  },
-  professionalServices: {
-    label: 'Professional Services',
-    image: {
-      src: 'assets/business-services',
-      alt: 'Professional servicess business',
-    },
-    buttonText: 'Contact',
-  },
-  retail: {
-    label: 'Retail',
-    image: {
-      src: 'assets/business-retail',
-      alt: 'Retail business',
-    },
-    buttonText: 'Shop',
-  },
-};
+const DESCRIPTION_MAX_LENGTH = 250; // length in characters after which we'll trim descriptions
 
 /**
  * @component
@@ -94,6 +49,7 @@ const categoryData = {
 const ResultCard = forwardRef(
   (
     {
+      airTableId,
       children,
       imageSrc,
       imageAlt,
@@ -107,18 +63,28 @@ const ResultCard = forwardRef(
     },
     ref
   ) => {
-    const catVar = category ? toCamelCase(category.name) : 'Other';
-    const hasFallbackImage =
-      category && Object.keys(categoryData).includes(catVar);
-    const hasImage = !!(imageSrc || hasFallbackImage);
     const theme = useTheme();
     const { onOpen, isOpen, onClose } = useDisclosure();
 
-    // I'm not sure how categories are going to work, so this probaably needs to
-    // change. Also unsure how we're going to handle the schema category on the
-    // card wrapee
-    const categoryLabel =
-      (categoryData[catVar] && categoryData[catVar].label) || category;
+    const { hasImage, publicId, src, alt } = useImageForBusiness({
+      category,
+      imageAlt,
+      imageSrc,
+    });
+
+    const { categoryLabel, buttonText } = useCategoryMetadataForBusiness(
+      category
+    );
+
+    const businessPageSlug = getSlugForBusiness({
+      name: name,
+      businessName: name,
+      airtableId: airTableId,
+    });
+
+    const businessPageUrl = businessPageSlug
+      ? `/business/${businessPageSlug}`
+      : null;
 
     return (
       <CardWrapper
@@ -131,9 +97,9 @@ const ResultCard = forwardRef(
       >
         {hasImage && (
           <CardImage
-            publicId={!imageSrc ? categoryData[catVar]?.image.src : null}
-            src={imageSrc ? imageSrc : null}
-            alt={imageAlt || categoryData[catVar]?.image.alt}
+            publicId={publicId}
+            src={src}
+            alt={alt}
             transforms={{ width: 500, height: 350, crop: 'fit', dpr: 2 }}
           />
         )}
@@ -152,7 +118,13 @@ const ResultCard = forwardRef(
             overflowWrap="break-word"
             fontFamily={theme.fonts['heading-slab']}
           >
-            {name}
+            {businessPageUrl ? (
+              <Link variant="standard" to={businessPageUrl}>
+                {name}
+              </Link>
+            ) : (
+              `${name}`
+            )}
           </Heading>
           {category && (
             <CardText
@@ -193,22 +165,23 @@ const ResultCard = forwardRef(
             spacing={0}
             wrap="wrap"
           >
-            {websiteUrl && (
+            {businessPageUrl && (
               <CardButton
-                as="a"
-                href={websiteUrl}
+                as={GatsbyLink}
+                to={businessPageUrl}
                 style={{
                   /* @TODO: primary buttons should be white! */
                   color: theme.colors['rbb-white'],
                 }}
               >
-                {(category && categoryData[category]?.buttonText) ||
-                  'Learn More'}
+                {buttonText}
               </CardButton>
             )}
             {donationUrl && (
               <CardButton
                 href={donationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 as="a"
                 style={{
                   /* @TODO: primary buttons should be white! */
@@ -245,6 +218,7 @@ const ResultCard = forwardRef(
 
 ResultCard.displayName = 'ResultCard';
 ResultCard.propTypes = {
+  airTableId: PropTypes.string,
   category: PropTypes.object,
   name: PropTypes.string.isRequired,
   description: PropTypes.string,

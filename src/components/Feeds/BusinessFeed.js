@@ -70,23 +70,26 @@ function BusinessFeed({
               }${business.state ? business.state : ''}`;
 
               if (index === 3) {
-                return (
-                  <>
-                    <RegistrationPromo onOpen={onOpen} />
-                    <ResultCard
-                      key={business.id}
-                      name={business.businessName || business.name}
-                      category={business.category}
-                      description={business.description}
-                      location={formattedLocation}
-                      websiteUrl={business.site}
-                      donationUrl={business.donationLink}
-                    />
-                  </>
-                );
+                return [
+                  <RegistrationPromo
+                    onOpen={onOpen}
+                    key="registration-promo"
+                  />,
+                  <ResultCard
+                    airTableId={business.airTableId}
+                    key={business.id}
+                    name={business.businessName || business.name}
+                    category={business.category}
+                    description={business.description}
+                    location={formattedLocation}
+                    websiteUrl={business.site}
+                    donationUrl={business.donationLink}
+                  />,
+                ];
               }
               return (
                 <ResultCard
+                  airTableId={business.airTableId}
                   key={business.id}
                   name={business.businessName || business.name}
                   category={business.category}

@@ -6,6 +6,7 @@ export { default as BusinessFeed } from './Feeds/BusinessFeed';
 export { default as Button } from './Buttons/PrimaryButton';
 export { default as ContentBlock } from './ContentBlock';
 export { default as Image } from './Image';
+export { LabeledSection } from './LabeledSection';
 export { default as Link } from './Link.js';
 export { default as Layout } from './Layout';
 export { default as PageHero } from './PageHero';
