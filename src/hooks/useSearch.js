@@ -70,7 +70,7 @@ function useSearch(filters, page, pageSize = 11) {
     }
 
     getBusinesses();
-  }, [page, filters]);
+  }, [page, filters, defaultFilters, pageSize]);
 
   return {
     results,

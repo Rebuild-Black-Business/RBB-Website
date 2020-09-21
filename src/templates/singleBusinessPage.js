@@ -36,7 +36,7 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
     // createdAt,
     donationLink,
     // email,
-    id,
+    // id,
     inNeed,
     // physicalLocation,
     website,
@@ -73,7 +73,6 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
     if (event && typeof event.preventDefault === 'function')
       event.preventDefault();
 
-    debugger;
     if (location && location.href) {
       copy(location.href);
       toast({
