@@ -11,6 +11,8 @@ import React, { forwardRef } from 'react';
 import ContactModal from '../components/ContactModal';
 import Link from '../components/Link';
 
+import { Link as GatsbyLink } from 'gatsby';
+
 import {
   CardButton,
   CardButtonGroup,
@@ -163,10 +165,10 @@ const ResultCard = forwardRef(
             spacing={0}
             wrap="wrap"
           >
-            {websiteUrl && (
+            {businessPageUrl && (
               <CardButton
-                as="a"
-                href={websiteUrl}
+                as={GatsbyLink}
+                to={businessPageUrl}
                 style={{
                   /* @TODO: primary buttons should be white! */
                   color: theme.colors['rbb-white'],
@@ -178,6 +180,8 @@ const ResultCard = forwardRef(
             {donationUrl && (
               <CardButton
                 href={donationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 as="a"
                 style={{
                   /* @TODO: primary buttons should be white! */
