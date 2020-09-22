@@ -15,7 +15,13 @@ import {
   Stack,
 } from '@chakra-ui/core';
 
-import { Image, LabeledSection, Layout, SEO } from '../components';
+import {
+  ExternalLink,
+  Image,
+  LabeledSection,
+  Layout,
+  SEO,
+} from '../components';
 import { Button } from '../components/Button';
 
 import { useImageForBusiness } from '../utils/business';
@@ -162,10 +168,11 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
               This business needs our help. If you have the means, please
               support them by donating and/or giving them business.
             </Text>
-            <Link
+            <ExternalLink
+              variant="standard"
               href={donationLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              textDecoration="none"
+              isExternal
               _hover={{ textDecoration: 'none' }}
             >
               <Button
@@ -177,7 +184,7 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
               >
                 Donate
               </Button>
-            </Link>
+            </ExternalLink>
           </Flex>
         )}
 
@@ -209,13 +216,15 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
                     alignItems="center"
                   >
                     <Icon name="link" color="gray.600" />
-                    <Link
-                      to={website}
+                    <ExternalLink
+                      variant="standard"
+                      isExternal
+                      href={website}
                       fontSize={theme.fontSizes.helper}
                       textDecoration="underline"
                     >
                       {website}
-                    </Link>
+                    </ExternalLink>
                   </Stack>
                 )}
 
