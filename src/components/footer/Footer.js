@@ -4,6 +4,7 @@ import SocialLinks from './SocialLinks';
 import FooterLinks from './FooterLinks';
 import PhotoCredit from './PhotoCredits';
 import Copyright from './Copyright';
+import NetlifyThanks from './NetlifyThanks';
 
 const Footer = () => {
   const theme = useTheme();
@@ -28,6 +29,7 @@ const Footer = () => {
         <FooterLinks />
         <Flex direction="column">
           <PhotoCredit />
+          <NetlifyThanks />
           <Copyright />
         </Flex>
       </Flex>
