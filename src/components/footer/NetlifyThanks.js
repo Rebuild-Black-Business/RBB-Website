@@ -22,7 +22,7 @@ const NetlifyThanks = () => {
           color={theme.colors['rbb-white']}
           opacity={0.5}
         >
-          This site is powered by
+          This site is powered by{' '}
           <ExternalLink variant="footer" isExternal href="https://netlify.com">
             Netlify
           </ExternalLink>
