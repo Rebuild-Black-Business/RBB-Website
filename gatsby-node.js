@@ -48,3 +48,13 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   });
 };
+
+// switch off type inference for SitePage.context
+// more info here - https://www.gatsbyjs.com/docs/scaling-issues/#switch-off-type-inference-for-sitepagecontext
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type SitePage implements Node @dontInfer {
+      path: String!
+    }
+  `);
+};
