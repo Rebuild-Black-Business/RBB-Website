@@ -22,11 +22,20 @@ const NetlifyThanks = () => {
           color={theme.colors['rbb-white']}
           opacity={0.5}
         >
-          This site is powered by{' '}
-          <ExternalLink variant="footer" isExternal href="https://netlify.com">
-            Netlify
-          </ExternalLink>
+          This site is powered by
         </Text>
+        <ExternalLink
+          fontSize="12px"
+          fontWeight="bold"
+          ml="1"
+          mr="1"
+          color={theme.footer.photoCreditLink}
+          isExternal
+          variant="footer"
+          href="https://netlify.com"
+        >
+          Netlify
+        </ExternalLink>
       </Flex>
     </Flex>
   );
