@@ -166,7 +166,7 @@ npm run test
 
 ## Legal
 
-© 2020 0x42 Software Engineering, LLC. All rights reserved.
+Copyright © 2020 0x42 Software Engineering ,LLC. All rights reserved.
 
 ## Contributors ✨
 
