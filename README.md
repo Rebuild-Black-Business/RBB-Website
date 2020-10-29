@@ -13,7 +13,7 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 ### How can I get involved now?
 
-The first step is to make sure that you've sign up as a volunteer at http://join.rebuildblackbusiness.com/ indicating your interested in contributing and reviewed our [Code of Conduct](https://github.com/Rebuild-Black-Business/RBB-Website/blob/master/CODE_OF_CONDUCT.md). This will get you access to our Discord development channels for further information.
+The first step is to make sure that you've signed up as a volunteer at http://join.rebuildblackbusiness.com/ indicating your interest in contributing and reviewed our [Code of Conduct](https://github.com/Rebuild-Black-Business/RBB-Website/blob/master/CODE_OF_CONDUCT.md). This will get you access to our Discord development channels for further information.
 
 If you see a [GitHub Issues](https://github.com/Rebuild-Black-Business/RBB-Website/issues) you're interested in working on, comment on the task expressing your interest. A project manager will assign the task to you.
 
@@ -25,7 +25,7 @@ When contributing, please fork this repository by clicking the “fork” button
 
 `fix/task-description` - Fix branches should be leveraged for bug fixes on existing features
 
-`hotfix/task-description` - Hotfix branches should only ever be leveraged for _critical_ bug fixes that need attention immediately. This would only be use if there is a broken feature or bug on production that needs to be addressed urgently.
+`hotfix/task-description` - Hotfix branches should only ever be leveraged for _critical_ bug fixes that need attention immediately. This would only be used if there is a broken feature or bug on production that needs to be addressed urgently.
 
 ### Pull Requests
 
@@ -49,7 +49,7 @@ The website is built using [Gatsby](https://www.gatsbyjs.org/docs/), with UI com
 
 **Data**
 
-Data for the various user types is stored in [Airtable](https://airtable.com/). Each user type has it's own table that the site pulls from and displays.
+Data for the various user types is stored in [Airtable](https://airtable.com/). Each user type has its own table that the site pulls from and displays.
 
 To get access to this data, sign up as a volunteer at http://join.rebuildblackbusiness.com/ to get access to the Rebuild Black Business Discord and express your interest in helping on Discord to your assigned Team Lead. They'll get you read access to the data in a timely manner.
 
@@ -106,7 +106,7 @@ If you ever lose the base ID for the dummy database, it is `appkenjGlBB01wr3i`.
 
 We have a PHP backend setup for search, it does not have an API key as of right now however not too much of an issue as it is a public API anyway.
 
-The search endpoint needs to be set in .env.development as Gatsby uses this method to seperate out environment variables that are loaded on the frontend from the rest.
+The search endpoint needs to be set in .env.development as Gatsby uses this method to separate out environment variables that are loaded on the frontend from the rest.
 
 Please ask for the endpoint when running locally (also check pinned messages).
 
