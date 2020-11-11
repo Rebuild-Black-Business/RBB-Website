@@ -1,5 +1,4 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 import {
   Box,
   SimpleGrid,

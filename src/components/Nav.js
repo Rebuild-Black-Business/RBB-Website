@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { Flex, Link, List, ListItem } from '@chakra-ui/core';
-import { Link as GatsbyLink } from 'gatsby';
+import NextLink from 'next/link';
 
 const Nav = forwardRef(
   (
@@ -43,7 +43,7 @@ const NavItem = forwardRef(
   )
 );
 
-const NavLink = forwardRef(({ as = GatsbyLink, children, ...props }, ref) => (
+const NavLink = forwardRef(({ as = NextLink, children, ...props }, ref) => (
   <Link ref={ref} as={as} display="block" {...props}>
     {children}
   </Link>

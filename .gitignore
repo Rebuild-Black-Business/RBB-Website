@@ -95,9 +95,6 @@ typings/
 .env
 .env.test
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-
 # next.js build output
 .next
 
@@ -240,9 +237,6 @@ $RECYCLE.BIN/
 # Non-generated entries (DO NOT REMOVE)
 .env.development
 .env.production
-
-# Gatsby
-public/
 
 # WebStorm IDE
 .idea/

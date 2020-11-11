@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Button, Flex, PseudoBox, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 import useMedia from 'react-use/lib/useMedia';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import { range } from '../../utils/common';
 import PaginationArrow from '../Svgs/PaginationArrow';
 
@@ -184,7 +184,7 @@ function Pagination({ location, currentPage, totalPages }) {
           <Button
             key={index}
             as={Link}
-            to={getPageLink(page)}
+            href={getPageLink(page)}
             ref={el => (refs.current[index] = el)}
             display="flex"
             justifyContent="center"

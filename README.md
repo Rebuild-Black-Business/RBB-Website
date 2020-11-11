@@ -91,7 +91,7 @@ _Note:_ If you don't see this checkbox, make sure you're logged in to Airtable, 
 Once you have your API key, create a file called `.env` and add your API key:
 
 ```bash
-GATSBY_AIRTABLE_API_KEY=YOUR_API_KEY
+NEXT_PUBLIC_AIRTABLE_API_KEY=YOUR_API_KEY
 ```
 
 > **NOTE:** See `.env.EXAMPLE` for a copy-pasteable template to get set up!

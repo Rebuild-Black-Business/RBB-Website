@@ -1,5 +1,5 @@
 import { Flex, Grid, Heading, List, ListItem, useTheme } from '@chakra-ui/core';
-import { graphql, StaticQuery } from 'gatsby';
+import config from '../config';
 import React from 'react';
 import ContactCard from '../components/about/ContactCard';
 import Content from '../components/about/Content';
@@ -173,18 +173,13 @@ export default function About() {
               blurb="Add your business to our list"
             />
             <ErrorBoundary>
-              <StaticQuery
-                query={ContactQuery}
-                render={data => (
-                  <ContactCard
-                    mailtoCard
-                    title="General Inquiry"
-                    email={data.site.siteMetadata.social.contact}
-                    blurb="Send us an email and we will be in touch"
-                    publicId="assets/contact-middle"
-                    alt="aerial view of user typing at keyboard"
-                  />
-                )}
+              <ContactCard
+                mailtoCard
+                title="General Inquiry"
+                email={config.siteMetadata.social.contact}
+                blurb="Send us an email and we will be in touch"
+                publicId="assets/contact-middle"
+                alt="aerial view of user typing at keyboard"
               />
             </ErrorBoundary>
             <ContactCard
@@ -199,15 +194,3 @@ export default function About() {
     </Layout>
   );
 }
-
-const ContactQuery = graphql`
-  query AboutContactQuery {
-    site {
-      siteMetadata {
-        social {
-          contact
-        }
-      }
-    }
-  }
-`;

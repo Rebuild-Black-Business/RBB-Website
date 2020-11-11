@@ -1,7 +1,7 @@
 import 'isomorphic-fetch';
 import { useEffect, useState } from 'react';
 
-const endpoint = process.env.GATSBY_SEARCH_API_ENDPOINT;
+const endpoint = process.env.NEXT_PUBLIC_SEARCH_API_ENDPOINT;
 const LOADING_STATE = {
   NONE: 'none',
   INITIAL: 'intial',
@@ -55,7 +55,7 @@ function useSearch(filters, page, pageSize = 11) {
           `${endpoint}api/v1/businesses?page=${page}&${filterStr}`,
           {
             headers: {
-              'x-api-key': process.env.GATSBY_RBB_API_KEY,
+              'x-api-key': process.env.NEXT_PUBLIC_RBB_API_KEY,
             },
           }
         );

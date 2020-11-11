@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
   Flex,
   Text,
@@ -80,12 +81,13 @@ async function searchCoordinates(location) {
 }
 
 export default function Fundraisers(props) {
+  const router = useRouter();
   const { onOpen, isOpen, onClose } = useDisclosure();
-  const [pageLocation, setPageLocation] = useState(props.location);
+  const [pageLocation, setPageLocation] = useState(router);
   const [searchFilters, setSearchFilters] = useState({
     coordinates: {},
-    search: searchName(props.location),
-    location: searchLocation(props.location),
+    search: searchName(router),
+    location: searchLocation(router),
     need: true,
     hasDonationLink: true,
   });
@@ -100,18 +102,18 @@ export default function Fundraisers(props) {
 
   // update pageLocation on page-location changes (e.g: when opage number changes)
   useEffect(() => {
-    setPageLocation(props.location);
+    setPageLocation(router);
 
     // Does not use pageLocation as it should only run on first load.
     async function setLocationCoordinatesFromURL() {
-      const coordinates = await searchCoordinates(props.location);
+      const coordinates = await searchCoordinates(router);
       setSearchFilters(current => ({
         ...current,
         coordinates,
       }));
     }
     setLocationCoordinatesFromURL();
-  }, [props.location]);
+  }, [router]);
 
   // make sure skeleton loaders appear when changing page number
   useLayoutEffect(() => {
@@ -121,7 +123,7 @@ export default function Fundraisers(props) {
         ? currLoadingState
         : LOADING_STATE.SEARCHING
     );
-  }, [props.location, setLoadingState]);
+  }, [router, setLoadingState]);
 
   const isSearching = loadingState === LOADING_STATE.SEARCHING;
 

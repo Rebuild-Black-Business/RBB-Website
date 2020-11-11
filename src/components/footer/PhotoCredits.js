@@ -1,29 +1,26 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { useRouter } from 'next/router';
+import config from '../../config';
 import ErrorBoundary from './../ErrorBoundary';
 import { Flex, useTheme, Text } from '@chakra-ui/core';
-import { useLocation } from '@reach/router';
 import ExternalLink from '../ExternalLink';
 
 const CreditLink = () => {
   const theme = useTheme();
-  const location = useLocation();
+  const router = useRouter();
 
   return (
     <ErrorBoundary>
-      <StaticQuery
-        query={PhotoCreditsLinks}
-        render={data => {
-          // We check the current pages pathname against the credits pathname to render the correct photographers for each page
-          const pagePhotoCreditLinks = data.site.siteMetadata.photoCreditLinks.filter(
-            link => link.pagePathname === location.pathname
-          );
-          return (
-            <Flex
-              justify="center"
-              direction={['column', 'column', 'column', 'row']}
-            >
-              {pagePhotoCreditLinks.length > 0 && (
+      {
+        // We check the current pages pathname against the credits pathname to render the correct photographers for each page
+        config.siteMetadata.photoCreditLinks
+          .filter(link => link.pagePathname === router.pathname)
+          .map((link, index) => {
+            return (
+              <Flex
+                justify="center"
+                direction={['column', 'column', 'column', 'row']}
+              >
                 <Text
                   fontSize="12px"
                   fontFamily={theme.fonts.heading}
@@ -32,28 +29,23 @@ const CreditLink = () => {
                 >
                   Photography credits:
                 </Text>
-              )}
-              {pagePhotoCreditLinks.map((link, index) => {
-                return (
-                  <ExternalLink
-                    variant="footer"
-                    href={link.url}
-                    fontSize="12px"
-                    fontWeight="bold"
-                    ml="1"
-                    mr="1"
-                    color={theme.footer.photoCreditLink}
-                    isExternal
-                    key={index}
-                  >
-                    {link.photographer}
-                  </ExternalLink>
-                );
-              })}
-            </Flex>
-          );
-        }}
-      />
+                <ExternalLink
+                  variant="footer"
+                  href={link.url}
+                  fontSize="12px"
+                  fontWeight="bold"
+                  ml="1"
+                  mr="1"
+                  color={theme.footer.photoCreditLink}
+                  isExternal
+                  key={index}
+                >
+                  {link.photographer}
+                </ExternalLink>
+              </Flex>
+            );
+          })
+      }
     </ErrorBoundary>
   );
 };
@@ -72,17 +64,3 @@ const PhotoCredit = () => {
 };
 
 export default PhotoCredit;
-
-const PhotoCreditsLinks = graphql`
-  query PhotoCreditsLinksQuery {
-    site {
-      siteMetadata {
-        photoCreditLinks {
-          photographer
-          url
-          pagePathname
-        }
-      }
-    }
-  }
-`;

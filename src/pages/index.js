@@ -13,6 +13,7 @@ import {
   useDisclosure,
   useTheme,
 } from '@chakra-ui/core';
+
 import React, { useState } from 'react';
 
 import { Button, ContentBlock, Layout } from '../components';
@@ -34,7 +35,7 @@ const InfoModal = ({ isOpen, onClose, modalType }) => (
   </Modal>
 );
 
-export default () => {
+const Index = () => {
   const theme = useTheme();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalType, setModalType] = useState(null);
@@ -276,3 +277,4 @@ export default () => {
     </Layout>
   );
 };
+export default Index;

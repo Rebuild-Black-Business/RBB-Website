@@ -11,7 +11,7 @@ import React, { forwardRef } from 'react';
 import ContactModal from '../components/ContactModal';
 import Link from '../components/Link';
 
-import { Link as GatsbyLink } from 'gatsby';
+import NextLink from 'next/link';
 
 import {
   CardButton,
@@ -119,7 +119,7 @@ const ResultCard = forwardRef(
             fontFamily={theme.fonts['heading-slab']}
           >
             {businessPageUrl ? (
-              <Link variant="standard" to={businessPageUrl}>
+              <Link variant="standard" href={businessPageUrl}>
                 {name}
               </Link>
             ) : (
@@ -167,8 +167,8 @@ const ResultCard = forwardRef(
           >
             {businessPageUrl && (
               <CardButton
-                as={GatsbyLink}
-                to={businessPageUrl}
+                as={NextLink}
+                href={businessPageUrl}
                 style={{
                   /* @TODO: primary buttons should be white! */
                   color: theme.colors['rbb-white'],

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PseudoBox, Box, IconButton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 
 /**
  * @function PaginationArrow
@@ -35,7 +35,7 @@ const PaginationArrow = ({ hidden, direction, linkTo }) => {
     >
       <IconButton
         as={Link}
-        to={linkTo}
+        href={linkTo}
         display="flex"
         alignItems="center"
         justifyContent="center"

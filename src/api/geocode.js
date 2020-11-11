@@ -1,7 +1,7 @@
 import Geocode from 'react-geocode';
 
 async function handleLocationToCoords(location) {
-  Geocode.setApiKey(process.env.GATSBY_GOOGLE_PLACES_API_KEY);
+  Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY);
 
   if (!location.trim()) {
     return {};

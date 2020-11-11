@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import copy from 'copy-to-clipboard';
 import { useToast } from '@chakra-ui/core';
 
@@ -334,26 +333,26 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
   );
 };
 
-export const query = graphql`
-  query SingleBusinessPageQuery($businessId: String) {
-    airtableBusinesses(recordId: { eq: $businessId }) {
-      data {
-        name: Name
-        approved: Approved
-        businessName: Business_Name
-        businessDescription: Business_Description
-        category: Category
-        createdAt: CreatedAt
-        donationLink: Donation_Link
-        email: Email
-        id: ID
-        inNeed: In_Need
-        physicalLocation: Physical_Location
-        website: Website
-        zipCode: Zip_Code
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query SingleBusinessPageQuery($businessId: String) {
+//     airtableBusinesses(recordId: { eq: $businessId }) {
+//       data {
+//         name: Name
+//         approved: Approved
+//         businessName: Business_Name
+//         businessDescription: Business_Description
+//         category: Category
+//         createdAt: CreatedAt
+//         donationLink: Donation_Link
+//         email: Email
+//         id: ID
+//         inNeed: In_Need
+//         physicalLocation: Physical_Location
+//         website: Website
+//         zipCode: Zip_Code
+//       }
+//     }
+//   }
+// `;
 
 export default SingleBusinessPage;

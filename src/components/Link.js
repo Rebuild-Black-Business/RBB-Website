@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as ChakraLink, useTheme } from '@chakra-ui/core';
-import { Link as GatsbyLink } from 'gatsby';
-
+import NextLink from 'next/link';
 export function getLinkStyles(theme, variant) {
   const linkOpacityStates = theme.links[variant].opacity || {};
   return {
@@ -30,7 +29,7 @@ function Link(props) {
   const linkStyles = getLinkStyles(theme, props.variant);
 
   return (
-    <ChakraLink as={GatsbyLink} {...linkStyles} {...props}>
+    <ChakraLink as={NextLink} {...linkStyles} {...props}>
       {props.children}
     </ChakraLink>
   );
