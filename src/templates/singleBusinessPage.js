@@ -99,8 +99,37 @@ const SingleBusinessPage = ({ location, params }) => {
   if (takesCredit) paymentTypes.push('credit');
   if (takesBitcoin) paymentTypes.push('bitcoin');
 
-  // this page returns nothing if this is not an approved business
-  if (!approved && !isError) return <Layout>{null}</Layout>;
+  // // this page returns nothing if this is not an approved business
+  if (approved === false && !isError)
+    return (
+      <Layout>
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          marginTop={['4rem', '4rem', 0, 0]}
+          marginBottom={['4rem', '4rem', 0, 0]}
+          textAlign={['center', 'center ', 'left ', 'left ']}
+          direction={['column', 'column', 'column', 'row']}
+        >
+          <Flex direction="column" maxW="335px">
+            <Text
+              as="h1"
+              fontFamily={theme.fonts['heading-slab']}
+              color={theme.colors['rbb-gray']}
+              mt={theme.spacing['med']}
+              fontWeight="900"
+              fontSize="64px"
+              lineHeight="77px"
+              textTransform="uppercase"
+              marginBottom="0.625rem"
+              textAlign="center"
+            >
+              THIS BUSINESS HAS NOT BEEN APPROVED YET !
+            </Text>
+          </Flex>
+        </Flex>
+      </Layout>
+    );
 
   if (isError) {
     return (

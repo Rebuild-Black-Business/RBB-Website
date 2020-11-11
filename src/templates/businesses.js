@@ -83,7 +83,7 @@ export default function Businesses(props) {
   const [pageLocation, setPageLocation] = useState(props.location);
   const [searchFilters, setSearchFilters] = useState({
     location: searchLocation(props.location),
-    need: searchingInNeed(props.location),
+    need: false,
     type: searchCategory(props.category),
     coordinates: {},
   });
