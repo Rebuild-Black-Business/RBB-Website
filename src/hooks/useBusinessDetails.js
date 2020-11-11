@@ -5,7 +5,7 @@ const API_ENDPOINT = process.env.GATSBY_SEARCH_API_ENDPOINT;
 const API_KEY = process.env.GATSBY_RBB_API_KEY;
 
 const fetchBusiness = async (_, id) => {
-  const businessFetchUrl = `${API_ENDPOINT}private/api/v1/businesses/airtable/${id}?apiKey=${API_KEY}`;
+  const businessFetchUrl = `${API_ENDPOINT}api/v1/businesses/${id}?apiKey=${API_KEY}`;
 
   const { data } = await axios.get(businessFetchUrl);
 
@@ -15,5 +15,6 @@ const fetchBusiness = async (_, id) => {
 export const useBusinessDetails = airtableId => {
   return useQuery(['business-details', airtableId], fetchBusiness, {
     cacheTime: 1000 * 60 * 5, // cache results for up to 5 minutes
+    refetchOnWindowFocus: false,
   });
 };

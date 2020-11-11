@@ -15,39 +15,47 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
-  const result = await graphql(`
-    query {
-      businesses: allAirtableBusinesses {
-        nodes {
-          data {
-            Business_Name
-            Name
-          }
-          recordId
-        }
-      }
-    }
-  `);
-
-  result.data.businesses.nodes.forEach(business => {
-    const slug = getSlugForBusiness({
-      businessName: business.data.Business_Name,
-      name: business.data.Name,
-      airtableId: business.recordId,
-    });
-
-    if (slug) {
-      actions.createPage({
-        path: `/business/${slug}`,
-        component: require.resolve('./src/templates/singleBusinessPage'),
-        context: {
-          businessId: business.recordId,
-        },
-      });
-    }
+exports.createPages = ({ actions }) => {
+  actions.createPage({
+    path: `/business`,
+    matchPath: `/business/:id`,
+    component: require.resolve('./src/templates/singleBusinessPage'),
   });
 };
+
+// exports.createPages = async ({ graphql, actions }) => {
+//   const result = await graphql(`
+//     query {
+//       businesses: allAirtableBusinesses {
+//         nodes {
+//           data {
+//             Business_Name
+//             Name
+//           }
+//           recordId
+//         }
+//       }
+//     }
+//   `);
+
+//   result.data.businesses.nodes.forEach(business => {
+//     const slug = getSlugForBusiness({
+//       businessName: business.data.Business_Name,
+//       name: business.data.Name,
+//       airtableId: business.recordId,
+//     });
+
+//     if (slug) {
+//       actions.createPage({
+//         path: `/business/${slug}`,
+//         component: require.resolve('./src/templates/singleBusinessPage'),
+//         context: {
+//           businessId: business.recordId,
+//         },
+//       });
+//     }
+//   });
+// };
 
 // switch off type inference for SitePage.context
 // more info here - https://www.gatsbyjs.com/docs/scaling-issues/#switch-off-type-inference-for-sitepagecontext

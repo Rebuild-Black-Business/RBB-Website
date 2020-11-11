@@ -23,7 +23,6 @@ function BusinessFeed({
   const searching = loadingState === LOADING_STATE.SEARCHING;
 
   const hasResults = businesses.length > 0;
-
   useEffect(() => {
     if (window && window.location.hash) {
       window.setTimeout(() => {
@@ -76,6 +75,7 @@ function BusinessFeed({
                     key="registration-promo"
                   />,
                   <ResultCard
+                    id={business.id}
                     airTableId={business.airTableId}
                     key={business.id}
                     name={business.businessName || business.name}
@@ -89,6 +89,7 @@ function BusinessFeed({
               }
               return (
                 <ResultCard
+                  id={business.id}
                   airTableId={business.airTableId}
                   key={business.id}
                   name={business.businessName || business.name}
