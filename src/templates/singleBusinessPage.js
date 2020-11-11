@@ -27,9 +27,14 @@ import { useBusinessDetails } from '../hooks/useBusinessDetails';
 
 const SingleBusinessPage = ({ location, params }) => {
   const theme = useTheme();
-  const { id: businessSlug } = params;
-  const splitSlug = businessSlug && businessSlug.split('-');
-  const businessId = splitSlug.length > 0 && splitSlug[splitSlug.length - 1];
+
+  let businessId = '';
+
+  if (typeof window !== `undefined`) {
+    const { id: businessSlug } = params;
+    const splitSlug = businessSlug && businessSlug.split('-');
+    businessId = splitSlug.length > 0 && splitSlug[splitSlug.length - 1];
+  }
 
   const { data: apiResponse, isError } = useBusinessDetails(businessId);
 

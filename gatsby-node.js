@@ -1,5 +1,3 @@
-const { getSlugForBusiness } = require('./src/utils/business');
-
 // Implement the Gatsby API “onCreatePage”. This is
 // called after every page is created.
 exports.onCreatePage = async ({ page, actions }) => {
@@ -22,40 +20,6 @@ exports.createPages = ({ actions }) => {
     component: require.resolve('./src/templates/singleBusinessPage'),
   });
 };
-
-// exports.createPages = async ({ graphql, actions }) => {
-//   const result = await graphql(`
-//     query {
-//       businesses: allAirtableBusinesses {
-//         nodes {
-//           data {
-//             Business_Name
-//             Name
-//           }
-//           recordId
-//         }
-//       }
-//     }
-//   `);
-
-//   result.data.businesses.nodes.forEach(business => {
-//     const slug = getSlugForBusiness({
-//       businessName: business.data.Business_Name,
-//       name: business.data.Name,
-//       airtableId: business.recordId,
-//     });
-
-//     if (slug) {
-//       actions.createPage({
-//         path: `/business/${slug}`,
-//         component: require.resolve('./src/templates/singleBusinessPage'),
-//         context: {
-//           businessId: business.recordId,
-//         },
-//       });
-//     }
-//   });
-// };
 
 // switch off type inference for SitePage.context
 // more info here - https://www.gatsbyjs.com/docs/scaling-issues/#switch-off-type-inference-for-sitepagecontext
