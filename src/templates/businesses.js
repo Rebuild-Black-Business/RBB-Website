@@ -58,7 +58,7 @@ function generateURL(filters, setPageLocation) {
 }
 
 function searchingInNeed(location) {
-  return location.pathname.match(/\/all/) ? 'false' : true;
+  return location.pathname.match(/\/all|\/businesses\/?$/) ? 'false' : true;
 }
 
 function searchCategory(category) {
