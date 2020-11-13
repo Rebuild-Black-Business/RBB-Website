@@ -59,6 +59,7 @@ const ResultCard = forwardRef(
       location,
       websiteUrl,
       donationUrl,
+      id,
       ...props
     },
     ref
@@ -79,7 +80,7 @@ const ResultCard = forwardRef(
     const businessPageSlug = getSlugForBusiness({
       name: name,
       businessName: name,
-      airtableId: airTableId,
+      dbId: id,
     });
 
     const businessPageUrl = businessPageSlug

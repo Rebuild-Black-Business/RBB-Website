@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import copy from 'copy-to-clipboard';
 import { useToast } from '@chakra-ui/core';
 
@@ -23,19 +22,27 @@ import {
   SEO,
 } from '../components';
 import { Button } from '../components/Button';
-
 import { useImageForBusiness } from '../utils/business';
 import { useBusinessDetails } from '../hooks/useBusinessDetails';
 
-const SingleBusinessPage = ({ data, location, pageContext }) => {
+const SingleBusinessPage = ({ location, params }) => {
   const theme = useTheme();
 
-  const business = data.airtableBusinesses.data;
+  let businessId = '';
+
+  if (typeof window !== `undefined`) {
+    const { id: businessSlug } = params;
+    const splitSlug = businessSlug && businessSlug.split('-');
+    businessId = splitSlug.length > 0 && splitSlug[splitSlug.length - 1];
+  }
+
+  const { data: apiResponse, isError } = useBusinessDetails(businessId);
+
   const {
     // name,
     approved,
     businessName,
-    businessDescription,
+    description: businessDescription,
     category,
     imageAlt, // TODO: these need to be populated in airtable?
     imageSrc, // TODO: these need to be populated in airtable?
@@ -45,21 +52,8 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
     // id,
     inNeed,
     // physicalLocation,
-    website,
+    site: website,
     // zipCode,
-  } = business;
-
-  const { hasImage, publicId, src, alt } = useImageForBusiness({
-    category,
-    imageAlt,
-    imageSrc,
-  });
-
-  const { data: apiResponse } = useBusinessDetails(pageContext.businessId);
-
-  const toast = useToast();
-
-  const {
     city,
     isAdult,
     isPhysicalLocation,
@@ -74,6 +68,14 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
     takesCredit,
     zip,
   } = apiResponse || {};
+
+  const { hasImage, publicId, src, alt } = useImageForBusiness({
+    category,
+    imageAlt,
+    imageSrc,
+  });
+
+  const toast = useToast();
 
   const shareClicked = event => {
     if (event && typeof event.preventDefault === 'function')
@@ -97,11 +99,71 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
   if (takesCredit) paymentTypes.push('credit');
   if (takesBitcoin) paymentTypes.push('bitcoin');
 
-  // this page returns nothing if this is not an approved business
-  if (!approved) return null;
+  // // this page returns nothing if this is not an approved business
+  if (approved === false && !isError)
+    return (
+      <Layout>
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          marginTop={['4rem', '4rem', 0, 0]}
+          marginBottom={['4rem', '4rem', 0, 0]}
+          textAlign={['center', 'center ', 'left ', 'left ']}
+          direction={['column', 'column', 'column', 'row']}
+        >
+          <Flex direction="column" maxW="335px">
+            <Text
+              as="h1"
+              fontFamily={theme.fonts['heading-slab']}
+              color={theme.colors['rbb-gray']}
+              mt={theme.spacing['med']}
+              fontWeight="900"
+              fontSize="64px"
+              lineHeight="77px"
+              textTransform="uppercase"
+              marginBottom="0.625rem"
+              textAlign="center"
+            >
+              THIS BUSINESS HAS NOT BEEN APPROVED YET !
+            </Text>
+          </Flex>
+        </Flex>
+      </Layout>
+    );
 
+  if (isError) {
+    return (
+      <Layout>
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          marginTop={['4rem', '4rem', 0, 0]}
+          marginBottom={['4rem', '4rem', 0, 0]}
+          textAlign={['center', 'center ', 'left ', 'left ']}
+          direction={['column', 'column', 'column', 'row']}
+        >
+          <Flex direction="column" maxW="335px">
+            <Text
+              as="h1"
+              fontFamily={theme.fonts['heading-slab']}
+              color={theme.colors['rbb-gray']}
+              mt={theme.spacing['med']}
+              fontWeight="900"
+              fontSize="64px"
+              lineHeight="77px"
+              textTransform="uppercase"
+              marginBottom="0.625rem"
+              textAlign="center"
+            >
+              BUSINESS NOT FOUND !
+            </Text>
+          </Flex>
+        </Flex>
+      </Layout>
+    );
+  }
   return (
-    <Layout background={theme.colors['rbb-white']}>
+    <Layout>
       <SEO title={businessName} description={businessDescription} />
       <Stack
         padding={`${theme.spacing.med} ${theme.spacing.base}`}
@@ -140,7 +202,7 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
                 {businessName}
               </Heading>
               <Text>
-                {category}
+                {category && category.name}
                 {isAdult && <Text as="span"> &bull; Adult (18+)</Text>}
               </Text>
             </div>
@@ -333,27 +395,5 @@ const SingleBusinessPage = ({ data, location, pageContext }) => {
     </Layout>
   );
 };
-
-export const query = graphql`
-  query SingleBusinessPageQuery($businessId: String) {
-    airtableBusinesses(recordId: { eq: $businessId }) {
-      data {
-        name: Name
-        approved: Approved
-        businessName: Business_Name
-        businessDescription: Business_Description
-        category: Category
-        createdAt: CreatedAt
-        donationLink: Donation_Link
-        email: Email
-        id: ID
-        inNeed: In_Need
-        physicalLocation: Physical_Location
-        website: Website
-        zipCode: Zip_Code
-      }
-    }
-  }
-`;
 
 export default SingleBusinessPage;

@@ -5,11 +5,11 @@ const { toCamelCase } = require('./stringUtils');
 // business-name-with-hyphens-rec123456
 // where "rec123456" is the airtable ID for this business
 // fallback is to generate a slug of _just_ the airtable id if no name is provided
-exports.getSlugForBusiness = ({ name, businessName, airtableId }) => {
-  if (!airtableId) {
+exports.getSlugForBusiness = ({ name, businessName, dbId }) => {
+  if (!dbId) {
     return null;
   }
-  return `${slugify(businessName || name).toLowerCase()}-${airtableId}`;
+  return `${slugify(businessName || name).toLowerCase()}-${dbId}`;
 };
 
 // TODO: Replace with real fallback images for each category.
