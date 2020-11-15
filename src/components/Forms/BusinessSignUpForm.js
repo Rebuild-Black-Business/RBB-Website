@@ -153,7 +153,7 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} method="POST" noValidate>
+    <form onSubmit={handleSubmit} method="POST">
       {/* renders when form is submitted with validation errors */}
       {validationMessage && (
         <Box bg="red.50" p={4} color="red.500">
