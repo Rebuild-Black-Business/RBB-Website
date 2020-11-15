@@ -41,7 +41,7 @@ describe('validateSignUpForm', () => {
       };
 
       expect(validateSignUpForm(data)).toMatchObject({
-        website: 'Please enter a valid URL',
+        website: 'Please enter the full URL including http:// or https://',
       });
     });
   });
