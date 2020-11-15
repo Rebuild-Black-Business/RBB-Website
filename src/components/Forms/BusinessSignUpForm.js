@@ -99,7 +99,7 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
       return;
     }
 
-    // submitBusiness(infoToSubmit);
+    submitBusiness(infoToSubmit);
     setSubmitted(true);
   };
 
