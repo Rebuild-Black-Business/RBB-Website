@@ -30,7 +30,7 @@ const ModalForm = ({ isOpen, onClose }) => (
   </Modal>
 );
 
-function generateURL(filters, setPageLocation) {
+export function generateURL(filters, setPageLocation) {
   let newPath = '/businesses';
   let queryString = '';
 
@@ -48,11 +48,13 @@ function generateURL(filters, setPageLocation) {
 
   // Update the page location state so pagination works
   // This imitates what navigation should do without a refresh.
-  setPageLocation(location => ({
-    ...location,
-    pathname: newPath,
-    search: queryString,
-  }));
+  if (setPageLocation) {
+    setPageLocation(location => ({
+      ...location,
+      pathname: newPath,
+      search: queryString,
+    }));
+  }
   // Decided not to use nagivate here as it was causing a DOM refresh.
   window.history.replaceState({}, undefined, newPath + queryString);
 }
