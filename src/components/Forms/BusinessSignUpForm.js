@@ -15,11 +15,14 @@ import {
   Icon,
   RadioGroup,
   Radio,
+  FormErrorMessage,
+  Box,
 } from '@chakra-ui/core';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import { submitBusiness } from '../../services/AirtableServices';
 import { stateObj } from '../../utils/stateObj';
+import { validateSignUpForm } from '../../utils/validateSignUpForm';
 
 const businessCategories = [
   'Entertainment',
@@ -57,10 +60,12 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
   const [bobAgreement, setBobAgreement] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [validationMessage, setValidationMessage] = useState(null);
+  const [errors, setErrors] = useState({});
   const theme = useTheme();
 
   const handleSubmit = async event => {
     event.preventDefault();
+
     const infoToSubmit = {
       email,
       businessName,
@@ -86,15 +91,15 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
     };
 
     //Custom Validation
-    const valuesToValidate = Object.values(infoToSubmit);
-    //Validates all required fields are filled (non-required fields need to default to empty string for this to work)
-    if (valuesToValidate.includes(null)) {
-      setValidationMessage('All fields with * are required.');
+    const validationErrors = validateSignUpForm(infoToSubmit);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length) {
+      setValidationMessage('Please correct the errors highlighted below.');
       return;
     }
 
     submitBusiness(infoToSubmit);
-
     setSubmitted(true);
   };
 
@@ -143,105 +148,110 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
   };
 
   //renders in place of form once it has been submitted
-  if (submitted) return <Text fontSize="2xl">Thank you for signing up!</Text>;
+  if (submitted) {
+    return <Text fontSize="2xl">Thank you for signing up!</Text>;
+  }
 
   return (
-    <FormControl
-      width="100%"
-      maxWidth="1000px"
-      margin="0 auto 3rem"
-      padding="0 24px"
-      onKeyPress={event => {
-        if (event.key === 'Enter') {
-          handleSubmit(event);
-        }
-      }}
-    >
+    <form onSubmit={handleSubmit} method="POST">
       {/* renders when form is submitted with validation errors */}
-      {validationMessage && <Text>{validationMessage}</Text>}
+      {validationMessage && (
+        <Box bg="red.50" p={4} color="red.500">
+          <Text>{validationMessage}</Text>
+        </Box>
+      )}
 
       <Flex width="100%" direction="column">
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel isRequired htmlFor="email">
-            Your Email
-          </FormLabel>
+        <Flex direction="column" my={theme.spacing.base}>
+          <FormControl isInvalid={errors.email} isRequired={true}>
+            <FormLabel htmlFor="email">Your Email</FormLabel>
 
-          <InputGroup>
-            <InputLeftElement
-              children={<Icon name="email" color="gray.300" />}
-            />
+            <InputGroup>
+              <InputLeftElement
+                children={<Icon name="email" color="gray.300" />}
+              />
+              <Input
+                value={email}
+                id="email"
+                type="text"
+                placeholder="Email"
+                onChange={event => setEmail(event.currentTarget.value)}
+              />
+            </InputGroup>
+            <FormErrorMessage>{errors.email}</FormErrorMessage>
+          </FormControl>
+        </Flex>
+        <Flex direction="column" my={theme.spacing.base}>
+          <FormControl isInvalid={errors.businessName} isRequired={true}>
+            <FormLabel htmlFor="businessName">Business Name</FormLabel>
             <Input
-              value={email}
-              id="email"
+              value={businessName}
+              id="businessName"
               type="text"
-              placeholder="Email"
-              onChange={event => setEmail(event.currentTarget.value)}
+              placeholder="Business name"
+              onChange={event => setBusinessName(event.currentTarget.value)}
             />
-          </InputGroup>
+            <FormErrorMessage>{errors.businessName}</FormErrorMessage>
+          </FormControl>
         </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel isRequired htmlFor="businessName">
-            Business Name
-          </FormLabel>
-          <Input
-            value={businessName}
-            id="businessName"
-            type="text"
-            placeholder="Business name"
-            onChange={event => setBusinessName(event.currentTarget.value)}
-          />
+        <Flex direction="column" my={theme.spacing.base}>
+          <FormControl isInvalid={errors.category} isRequired={true}>
+            <FormLabel htmlFor="category">Category</FormLabel>
+            <Select
+              id="category"
+              value={category}
+              onChange={event => setCategory(event.currentTarget.value)}
+            >
+              <option value="" disabled selected>
+                Select a Category
+              </option>
+              {businessCategories.map(category => {
+                return (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                );
+              })}
+            </Select>
+            <FormErrorMessage>{errors.category}</FormErrorMessage>
+          </FormControl>
         </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel isRequired htmlFor="category">
-            Category
-          </FormLabel>
-          <Select
-            id="category"
-            value={category}
-            onChange={event => setCategory(event.currentTarget.value)}
-          >
-            <option value="" disabled selected>
-              Select a Category
-            </option>
-            {businessCategories.map(category => {
-              return (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              );
-            })}
-          </Select>
-        </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel isRequired htmlFor="businessDescription">
-            Business Description
-          </FormLabel>
-          <Textarea
-            value={businessDescription}
-            id="businessDescription"
-            placeholder="Business description"
-            maxLength="250"
-            onChange={event =>
-              setBusinessDescription(event.currentTarget.value)
-            }
-          />
-        </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="phone">Business Phone Number</FormLabel>
-          <InputGroup>
-            <InputLeftElement
-              children={<Icon name="phone" color="gray.300" />}
+        <Flex direction="column" my={theme.spacing.base}>
+          <FormControl isInvalid={errors.businessDescription} isRequired={true}>
+            <FormLabel htmlFor="businessDescription">
+              Business Description
+            </FormLabel>
+            <Textarea
+              value={businessDescription}
+              id="businessDescription"
+              placeholder="Business description"
+              maxLength="250"
+              onChange={event =>
+                setBusinessDescription(event.currentTarget.value)
+              }
             />
-            <Input
-              value={phone}
-              id="phone"
-              type="phone"
-              placeholder="(281) 330-8004"
-              onChange={event => setPhone(event.currentTarget.value)}
-            />
-          </InputGroup>
+            <FormErrorMessage>{errors.businessDescription}</FormErrorMessage>
+          </FormControl>
         </Flex>
-        <Flex direction="column" margin={theme.spacing.base}>
+        <Flex direction="column" my={theme.spacing.base}>
+          <FormControl isInvalid={errors.phone}>
+            <FormLabel htmlFor="phone">Business Phone Number</FormLabel>
+            <InputGroup>
+              <InputLeftElement
+                children={<Icon name="phone" color="gray.300" />}
+              />
+              <Input
+                value={phone}
+                id="phone"
+                type="phone"
+                placeholder="(281) 330-8004"
+                onChange={event => setPhone(event.currentTarget.value)}
+              />
+            </InputGroup>
+            <FormErrorMessage>{errors.phone}</FormErrorMessage>
+          </FormControl>
+        </Flex>
+        <Flex direction="column" my={theme.spacing.base}>
           <Flex>
             <RadioGroup
               defaultValue="physical"
@@ -256,136 +266,159 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
           {physicalLocation && (
             <Flex direction="column">
               <Flex direction="column" mt={theme.spacing.base}>
-                <FormLabel isRequired htmlFor="streetAddress">
-                  Street Address
-                </FormLabel>
-                <Input
-                  value={streetAddress}
-                  id="streetAddress"
-                  type="text"
-                  placeholder="123 Martin Luther King Blvd."
-                  onChange={event =>
-                    setStreetAddress(event.currentTarget.value)
-                  }
-                />
+                <FormControl isInvalid={errors.streetAddress}>
+                  <FormLabel isRequired htmlFor="streetAddress">
+                    Street Address
+                  </FormLabel>
+                  <Input
+                    value={streetAddress}
+                    id="streetAddress"
+                    type="text"
+                    placeholder="123 Martin Luther King Blvd."
+                    onChange={event =>
+                      setStreetAddress(event.currentTarget.value)
+                    }
+                  />
+                  <FormErrorMessage>{errors.streetAddress}</FormErrorMessage>
+                </FormControl>
               </Flex>
               <Flex direction="column" mt={theme.spacing.base}>
-                <FormLabel isRequired htmlFor="city">
-                  City
-                </FormLabel>
-                <Input
-                  value={city}
-                  id="city"
-                  type="text"
-                  placeholder="Atlanta"
-                  onChange={event => setCity(event.currentTarget.value)}
-                />
+                <FormControl isInvalid={errors.city}>
+                  <FormLabel isRequired htmlFor="city">
+                    City
+                  </FormLabel>
+                  <Input
+                    value={city}
+                    id="city"
+                    type="text"
+                    placeholder="Atlanta"
+                    onChange={event => setCity(event.currentTarget.value)}
+                  />
+                  <FormErrorMessage>{errors.city}</FormErrorMessage>
+                </FormControl>
               </Flex>
               <Flex direction="column" mt={theme.spacing.base}>
-                <FormLabel isRequired htmlFor="state">
-                  State
-                </FormLabel>
-                <Select
-                  id="state"
-                  value={bizState}
-                  onChange={event => setBizState(event.currentTarget.value)}
-                >
-                  <option value="" disabled selected>
-                    Select a State
-                  </option>
-                  {Object.entries(stateObj).map(([key, value]) => (
-                    <option key={key} value={key}>
-                      {value}
+                <FormControl isInvalid={errors.state}>
+                  <FormLabel isRequired htmlFor="state">
+                    State
+                  </FormLabel>
+                  <Select
+                    id="state"
+                    value={bizState}
+                    onChange={event => setBizState(event.currentTarget.value)}
+                  >
+                    <option value="" disabled selected>
+                      Select a State
                     </option>
-                  ))}
-                </Select>
+                    {Object.entries(stateObj).map(([key, value]) => (
+                      <option key={key} value={key}>
+                        {value}
+                      </option>
+                    ))}
+                  </Select>
+                  <FormErrorMessage>{errors.state}</FormErrorMessage>
+                </FormControl>
               </Flex>
               <Flex direction="column" mt={theme.spacing.base}>
-                <FormLabel isRequired htmlFor="zipcode">
-                  Zipcode
-                </FormLabel>
-                <Input
-                  value={zipcode}
-                  id="zipcode"
-                  type="text"
-                  placeholder="Zipcode"
-                  onChange={event => setZipcode(event.currentTarget.value)}
-                />
+                <FormControl isInvalid={errors.zipcode}>
+                  <FormLabel isRequired htmlFor="zipcode">
+                    Zipcode
+                  </FormLabel>
+                  <Input
+                    value={zipcode}
+                    id="zipcode"
+                    type="text"
+                    placeholder="Zipcode"
+                    onChange={event => setZipcode(event.currentTarget.value)}
+                  />
+                  <FormErrorMessage>{errors.zipcode}</FormErrorMessage>
+                </FormControl>
               </Flex>
             </Flex>
           )}
           {onlineOnly && (
             <Flex direction="column">
               <Flex direction="column" mt={theme.spacing.base}>
-                <FormLabel isRequired htmlFor="zipcode">
-                  Zipcode
-                </FormLabel>
-                <Input
-                  value={zipcode}
-                  id="zipcode"
-                  type="text"
-                  placeholder="Zipcode"
-                  onChange={event => setZipcode(event.currentTarget.value)}
-                />
+                <FormControl isInvalid={errors.zipcode}>
+                  <FormLabel isRequired htmlFor="zipcode">
+                    Zipcode
+                  </FormLabel>
+                  <Input
+                    value={zipcode}
+                    id="zipcode"
+                    type="text"
+                    placeholder="Zipcode"
+                    onChange={event => setZipcode(event.currentTarget.value)}
+                  />
+                  <FormErrorMessage>{errors.zipcode}</FormErrorMessage>
+                </FormControl>
               </Flex>
               <Flex direction="column" mt={theme.spacing.base}>
-                <FormLabel isRequired htmlFor="website">
-                  Website
-                </FormLabel>
-                <InputGroup>
-                  <InputLeftElement
-                    children={<Icon name="link" color="gray.300" />}
-                  />
-                  <Input
-                    value={website}
-                    id="website"
-                    type="url"
-                    placeholder="https://"
-                    onChange={event => setWebsite(event.currentTarget.value)}
-                  />
-                </InputGroup>
+                <FormControl isInvalid={errors.website}>
+                  <FormLabel isRequired htmlFor="website">
+                    Website
+                  </FormLabel>
+                  <InputGroup>
+                    <InputLeftElement
+                      children={<Icon name="link" color="gray.300" />}
+                    />
+                    <Input
+                      value={website}
+                      id="website"
+                      placeholder="https://"
+                      onChange={event => setWebsite(event.currentTarget.value)}
+                    />
+                  </InputGroup>
+                  <FormErrorMessage>{errors.website}</FormErrorMessage>
+                </FormControl>
               </Flex>
             </Flex>
           )}
         </Flex>
       </Flex>
-      <Flex direction="column" margin={theme.spacing.base}>
+      <Flex direction="column" my={theme.spacing.base}>
         <Flex direction="column">
-          <FormLabel isRequired htmlFor="serviceArea">
-            What area do you service?
-          </FormLabel>
-          <Select
-            id="serviceArea"
-            value={serviceArea}
-            onChange={event => setServiceArea(event.currentTarget.value)}
-          >
-            <option value="" disabled selected>
-              Select your service area
-            </option>
-            <option value="nationwide">Nationwide</option>
-            <option value="local">Local</option>
-            <option value="global">Global</option>
-          </Select>
+          <FormControl isInvalid={errors.serviceArea}>
+            <FormLabel isRequired htmlFor="serviceArea">
+              What area do you service?
+            </FormLabel>
+            <Select
+              id="serviceArea"
+              value={serviceArea}
+              onChange={event => setServiceArea(event.currentTarget.value)}
+            >
+              <option value="" disabled selected>
+                Select your service area
+              </option>
+              <option value="nationwide">Nationwide</option>
+              <option value="local">Local</option>
+              <option value="global">Global</option>
+            </Select>
+            <FormErrorMessage>{errors.serviceArea}</FormErrorMessage>
+          </FormControl>
         </Flex>
       </Flex>
       {physicalLocation && (
-        <Flex direction="column" margin={theme.spacing.base}>
-          <FormLabel htmlFor="website">Website</FormLabel>
-          <InputGroup>
-            <InputLeftElement
-              children={<Icon name="link" color="gray.300" />}
-            />
-            <Input
-              value={website}
-              id="website"
-              type="url"
-              placeholder="https://"
-              onChange={event => setWebsite(event.currentTarget.value)}
-            />
-          </InputGroup>
+        <Flex direction="column" my={theme.spacing.base}>
+          <FormControl isInvalid={errors.website}>
+            <FormLabel htmlFor="website">Website</FormLabel>
+            <InputGroup>
+              <InputLeftElement
+                children={<Icon name="link" color="gray.300" />}
+              />
+              <Input
+                value={website}
+                id="website"
+                type="url"
+                placeholder="https://"
+                onChange={event => setWebsite(event.currentTarget.value)}
+              />
+            </InputGroup>
+            <FormErrorMessage>{errors.website}</FormErrorMessage>
+          </FormControl>
         </Flex>
       )}
-      <Flex align="center" margin={theme.spacing.base}>
+      <Flex align="center" my={theme.spacing.base}>
         <Checkbox
           value={adult}
           id="adult"
@@ -394,7 +427,7 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
         />
         <FormLabel htmlFor="adult">Adult Business (18+)</FormLabel>
       </Flex>
-      <Flex direction="column" margin={theme.spacing.base}>
+      <Flex direction="column" my={theme.spacing.base}>
         <Flex>
           <Checkbox
             value={hasDonation}
@@ -409,34 +442,37 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
         </Flex>
         {hasDonation && (
           <Flex direction="column" mt={theme.spacing.base}>
-            <FormLabel
-              isRequired={hasDonation ? true : false}
-              htmlFor="donationLink"
-            >
-              Donation Link
-            </FormLabel>
-            <InputGroup>
-              <InputLeftElement
-                children={<Icon name="link" color="gray.300" />}
-              />
-              <Input
-                value={donationLink}
-                id="donationLink"
-                type="text"
-                placeholder="Donation Link"
-                onChange={event => {
-                  if (hasDonation && event.target.value === '') {
-                    setDonationLink(null);
-                  } else {
-                    setDonationLink(event.currentTarget.value);
-                  }
-                }}
-              />
-            </InputGroup>
+            <FormControl isInvalid={errors.donationLink}>
+              <FormLabel
+                isRequired={hasDonation ? true : false}
+                htmlFor="donationLink"
+              >
+                Donation Link
+              </FormLabel>
+              <InputGroup>
+                <InputLeftElement
+                  children={<Icon name="link" color="gray.300" />}
+                />
+                <Input
+                  value={donationLink}
+                  id="donationLink"
+                  type="text"
+                  placeholder="Donation Link"
+                  onChange={event => {
+                    if (hasDonation && event.target.value === '') {
+                      setDonationLink(null);
+                    } else {
+                      setDonationLink(event.currentTarget.value);
+                    }
+                  }}
+                />
+              </InputGroup>
+              <FormErrorMessage>{errors.donationLink}</FormErrorMessage>
+            </FormControl>
           </Flex>
         )}
       </Flex>
-      <Flex direction="column" margin={theme.spacing.base}>
+      <Flex direction="column" my={theme.spacing.base}>
         <Flex>
           <Checkbox
             value={isOwner}
@@ -520,7 +556,7 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
           </Flex>
         )}
       </Flex>
-      <Flex align="center" margin={theme.spacing.base}>
+      <Flex align="center" my={theme.spacing.base}>
         <Checkbox
           value={bobAgreement}
           id="bobAgreement"
@@ -537,9 +573,9 @@ const BusinessSignUpForm = ({ isFundraiser = false }) => {
         </Link>
       </Flex>
       <Flex width="100%" justify="center">
-        <PrimaryButton onClick={handleSubmit}>Register</PrimaryButton>
+        <PrimaryButton type="submit">Register</PrimaryButton>
       </Flex>
-    </FormControl>
+    </form>
   );
 };
 

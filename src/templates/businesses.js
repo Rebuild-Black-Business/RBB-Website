@@ -18,17 +18,25 @@ import Pagination from '../components/Pagination';
 import usePagination from '../hooks/usePagination';
 import useSearch, { LOADING_STATE } from '../hooks/useSearch';
 
-const ModalForm = ({ isOpen, onClose }) => (
-  <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
-    <ModalOverlay />
-    <ModalContent>
-      <ModalCloseButton />
-      <ModalBody>
-        <BusinessSignUpForm />
-      </ModalBody>
-    </ModalContent>
-  </Modal>
-);
+const ModalForm = ({ isOpen, onClose }) => {
+  const theme = useTheme();
+  return (
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      closeOnOverlayClick={false}
+      size="xl"
+    >
+      <ModalOverlay />
+      <ModalContent>
+        <ModalCloseButton />
+        <ModalBody py={theme.spacing.lg} px={theme.spacing.med}>
+          <BusinessSignUpForm />
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  );
+};
 
 export function generateURL(filters, setPageLocation) {
   let newPath = '/businesses';
@@ -109,6 +117,7 @@ export default function Businesses(props) {
         coordinates,
       }));
     }
+
     setLocationCoordinatesFromURL();
   }, [props.location]);
 
