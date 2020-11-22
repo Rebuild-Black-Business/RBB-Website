@@ -37,11 +37,13 @@ function BusinessFeed({
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
       width="100%"
     >
-      <BusinessFilter
-        onSearch={filters => onSearch(filters)}
-        selectedFilters={selectedFilters}
-        isSearching={loadingState === LOADING_STATE.SEARCHING}
-      />
+      <Box margin="0 0 3rem 0">
+        <BusinessFilter
+          onSearch={filters => onSearch(filters)}
+          selectedFilters={selectedFilters}
+          isSearching={loadingState === LOADING_STATE.SEARCHING}
+        />
+      </Box>
       {(searching || initialLoad) && (
         <Box mb={10}>
           <SimpleGrid columns={[null, 1, 2, 3, 4]} spacing={10}>

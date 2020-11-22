@@ -14,12 +14,15 @@ import {
   useTheme,
 } from '@chakra-ui/core';
 import React, { useState } from 'react';
+import { useNavigate } from '@reach/router';
 
 import { Button, ContentBlock, Layout } from '../components';
 
 import { VOLUNTEER_URL } from '../constants/about';
 import AllySignUpForm from '../components/Forms/AllySignUpForm';
 import BusinessSignUpForm from '../components/Forms/BusinessSignUpForm';
+import BusinessFilter from '../components/Filters/BusinessFilter';
+import { generateURL } from '../templates/businesses';
 
 const InfoModal = ({ isOpen, onClose, modalType }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -38,6 +41,7 @@ export default () => {
   const theme = useTheme();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalType, setModalType] = useState(null);
+  const navigate = useNavigate();
 
   // TODO: Re-enable this lint rule once handleType() is used!
   // eslint-disable-next-line no-unused-vars
@@ -61,6 +65,21 @@ export default () => {
   return (
     <Layout>
       <Flex direction="column" align="center" justify="center">
+        <Box p={8}>
+          <BusinessFilter
+            onSearch={filters => {
+              const url = generateURL(filters);
+              console.log({ url });
+              navigate(
+                `/businesses/${filters.type}?location=${filters.location}#results`
+              );
+            }}
+            selectedFilters={{ location: '', type: '' }}
+            isSearching={false}
+            variant="onLight"
+            padding="3rem 0 0"
+          />
+        </Box>
         <ContentBlock
           layout="left"
           imageSource="assets/home-header-bg" // @TODO :: Pass this to cloudinary
