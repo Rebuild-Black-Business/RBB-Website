@@ -105,6 +105,7 @@ function BusinessFilter({ isSearching, onSearch, selectedFilters, variant }) {
       maxWidth="1000px"
       padding={['24px', '24px', '0 24px']}
       fontFamily="Arvo"
+      margin="0 auto"
     >
       <Flex
         width="100%"

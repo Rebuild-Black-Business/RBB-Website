@@ -37,7 +37,7 @@ function BusinessFeed({
       paddingX={[null, theme.spacing.base, theme.spacing.lg]}
       width="100%"
     >
-      <Box margin="0 auto 3rem">
+      <Box margin="0 0 3rem 0">
         <BusinessFilter
           onSearch={filters => onSearch(filters)}
           selectedFilters={selectedFilters}
