@@ -47,6 +47,10 @@ module.exports = {
         slug: '/about',
       },
       {
+        name: 'Watch',
+        slug: '/watch',
+      },
+      {
         name: 'Businesses',
         slug: '/businesses',
       },

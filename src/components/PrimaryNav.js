@@ -203,7 +203,7 @@ const PrimaryNav = forwardRef(
               >
                 <NavLink
                   state={{ prevLocation: location.pathname }}
-                  to={link.slug}
+                  to={link.slug !== '/watch' ? link.slug : 'http://bit.ly/3csKkSE'  }
                 >
                   {toUpperCase(link.name)}
                 </NavLink>
