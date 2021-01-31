@@ -32,7 +32,15 @@ const FooterLinks = () => {
                   mt={[2, 2, 2, null]}
                   display="flex"
                 >
-                  <Link variant="footer" to={link.slug}>
+                  <Link
+                    variant="footer"
+                    to={
+                      link.slug !== '/watch'
+                        ? link.slug
+                        : 'http://bit.ly/3csKkSE'
+                    }
+                    isExternal={link.slug === '/watch'}
+                  >
                     {link.name}
                   </Link>
                 </NavItem>
